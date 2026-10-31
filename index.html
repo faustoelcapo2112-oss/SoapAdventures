@@ -176,7 +176,7 @@ button{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-se
 .cards button{border:0!important;border-radius:16px!important;box-shadow:0 5px 16px rgba(20,25,45,.14)!important}
 .cards button.gold{background:linear-gradient(135deg,#fff8df,#ffe9a6)!important;box-shadow:0 5px 16px rgba(130,100,25,.13)!important}
 .cards .e{font-family:system-ui,-apple-system,sans-serif;font-weight:800;color:#5268ce}
-.ui-symbol{display:inline-grid;place-items:center;width:23px;height:23px;margin-right:8px;border-radius:7px;background:rgba(83,111,232,.09);color:#536fe8;font-size:16px;font-weight:850;vertical-align:middle}
+.ui-symbol{display:none}
 button:active{filter:brightness(.97)}
 
 /* Decoración temática v2.7: espuma, burbujas y pequeños virus */
@@ -214,7 +214,7 @@ button:active{filter:brightness(.97)}
 #msg .mbtns button:not(:first-child),#setbody button,#msg .dopt button{background:linear-gradient(180deg,#fff 0%,#f7edf2 100%)}
 #pick{background:radial-gradient(circle at 12% 18%,rgba(129,224,243,.25) 0 7px,transparent 9px),radial-gradient(circle at 88% 78%,rgba(129,224,243,.22) 0 10px,transparent 12px),rgba(39,29,49,.66)}
 .cards button{background:linear-gradient(145deg,#fff 0%,#fff4f7 100%)}
-.ui-symbol{background:rgba(239,71,120,.1);color:#d64c7b}
+
 @media(max-width:420px){#msg>div:after,.gbox:after{opacity:.42}}
 
 </style></head><body>
@@ -309,7 +309,7 @@ button:active{filter:brightness(.97)}
 <h3>Qué hereda tu aliado</h3>
 <p>El aliado dispara con tus modificadores de daño, multidisparo, disparo trasero, burbuja triple, perforantes, teledirigidas, burbujas grandes y explosiones. También le afectan Cadencia eterna, Cadencia invertida, Daño debilitado, Disparo rápido, Lentitud, Escudo y Vida extra.</p>
 </div><button class="bk" onclick="document.getElementById('guide').style.display='none'">Volver</button></div></div>
-<button id="cbtn" aria-label="Modo creativo" title="Modo creativo">⌘</button>
+<button id="cbtn" aria-label="Modo creativo" title="Modo creativo">🛠️</button>
 <div id="cpanel"><div class="gbox"><h2>⌘ Modo creativo</h2><div class="gbody" id="cbody"></div><button class="bk" id="cClose">Cerrar</button></div></div>
 <div id="custom"><div class="gbox"><h2>Personalizar</h2><div class="gbody" id="cusbody"></div><button class="bk" id="cusClose">Listo</button></div></div>
 <button id="gear" aria-label="Configuración" title="Configuración">⚙</button>
@@ -485,8 +485,8 @@ cv.addEventListener('pointerdown',e=>{
   g.holding=true;g.hx=px;g.hy=py;if(g.cool<=0){shoot(px,py);g.cool=(g.fx.fast>0?.05:.12)*Math.pow(.85,g.gold.rate)*Math.pow(1.18,g.gold.badRate)*(g.fx.slow>0?2.5:1)}
 });
 
-const PW={dmg:{e:'✦',n:'Daño +1'},life:{e:'♥',n:'Vida'},minus:{e:'−',n:'Virus -1'},fast:{e:'ϟ',n:'Rápido'},freeze:{e:'❄',n:'Congelar'}};
-Object.assign(PW,{bomb:{e:'◆',n:'Explosiones',t:'s'},shield:{e:'🛡️',n:'Escudo',t:'s'},nuke:{e:'☢️',n:'Limpieza',t:'s'},gdmg:{e:'🌟',n:'Daño eterno',t:'g'},grate:{e:'🚀',n:'Cadencia eterna',t:'g'},gmulti:{e:'🔱',n:'Multidisparo',t:'g'}});
+const PW={dmg:{e:'💥',n:'Daño +1'},life:{e:'❤️',n:'Vida'},minus:{e:'➖',n:'Virus -1'},fast:{e:'⚡',n:'Rápido'},freeze:{e:'❄️',n:'Congelar'}};
+Object.assign(PW,{bomb:{e:'💣',n:'Explosiones',t:'s'},shield:{e:'🛡️',n:'Escudo',t:'s'},nuke:{e:'☢️',n:'Limpieza',t:'s'},gdmg:{e:'🌟',n:'Daño eterno',t:'g'},grate:{e:'🚀',n:'Cadencia eterna',t:'g'},gmulti:{e:'🔱',n:'Multidisparo',t:'g'}});
 PW.freeze.t='s';PW.life.t='g';PW.minus.t='g';PW.double={e:'✌️',n:'Doble tiro'};PW.shieldg={e:'🛡️',n:'Escudo dorado',t:'g'};
 Object.assign(PW,{haste:{e:'💨',n:'Furia',t:'b'},hpup:{e:'🧬',n:'Mutación',t:'b'},steal:{e:'🕳️',n:'Robo',t:'gb'},swarm:{e:'☣️',n:'Plaga',t:'b'},slow:{e:'🐌',n:'Lentitud',t:'b'},gdmgdown:{e:'💢',n:'Daño debilitado',t:'gb'},grateslow:{e:'🐢',n:'Cadencia invertida',t:'gb'}});
 function pickW(ks){const w=ks.map(k=>k=='life'?1.05:1);let r=Math.random()*w.reduce((a,b)=>a+b,0);for(let i=0;i<ks.length;i++){if(r<w[i])return ks[i];r-=w[i]}return ks[ks.length-1]}
@@ -560,7 +560,7 @@ function hurt(v,dm){if(v.dead)return;v.hp-=dm*(v.btype=='tank'?.5:1);v.flash=.1;
 addEventListener('pointerup',()=>{g.holding=false});addEventListener('pointercancel',()=>{g.holding=false});
 cv.addEventListener('pointermove',e=>{if(g.holding){const r=cv.getBoundingClientRect();g.hx=toL(e).x;g.hy=toL(e).y}});
 const PERKS={
-  ally:{e:'●',n:'Jabón aliado',d:'Un jabón verde dispara solo y prioriza a los jefes. Tiene 3 vidas (máx. 3 aliados)'},
+  ally:{e:'🧼',n:'Jabón aliado',d:'Un jabón verde dispara solo y prioriza a los jefes. Tiene 3 vidas (máx. 3 aliados)'},
   back:{e:'⟲',n:'Disparo trasero',d:'Cada disparo lanza otra burbuja hacia atrás'},
   split:{e:'⑂',n:'Burbuja triple',d:'Tus burbujas se dividen en 3 en el aire'},
   homing:{e:'◎',n:'Teledirigidas',d:'Las burbujas persiguen al virus más cercano'},
@@ -628,7 +628,7 @@ function drawAllies(){
   }
 }
 const TYPEC={div:['#5aa9ff','#1e5fb8'],pad:['#3a6ae0','#18308a'],todo:['#7a45d8','#2a1470'],med:['#58d27a','#1f8a42'],glot:['#f4a63c','#a8641a']};
-const TYN={div:{e:'●',n:'Divisor'},pad:{e:'■',n:'Padre Divisor'},todo:{e:'◆',n:'Todo Divisor'},med:{e:'+',n:'Médico'},glot:{e:'◉',n:'Glotón'}};
+const TYN={div:{e:'🦠',n:'Divisor'},pad:{e:'🧫',n:'Padre Divisor'},todo:{e:'☣️',n:'Todo Divisor'},med:{e:'🩺',n:'Médico'},glot:{e:'😋',n:'Glotón'}};
 const SPLIT={div:['norm',2],pad:['div',2],todo:['pad',3]};
 const HPM={div:1,pad:1.5,todo:2.5,med:.8,glot:1.5},RM={div:1.1,pad:1.4,todo:1.9,med:1,glot:1.25};
 const MED={radius:170,interval:1.2,amount:1,dist:260};
@@ -1104,7 +1104,7 @@ function draw(){
 var KACT=[['up','Disparar arriba'],['down','Disparar abajo'],['left','Disparar izquierda'],['right','Disparar derecha'],['shoot','Disparar al puntero']];var KEYS={up:'ArrowUp',down:'ArrowDown',left:'ArrowLeft',right:'ArrowRight',shoot:'Space'};try{const s=JSON.parse(localStorage.getItem('soapKeys')||'null');if(s)KEYS=Object.assign(KEYS,s)}catch(e){}var KWAIT=null;
 function keyLabel(c){const m={ArrowUp:'↑',ArrowDown:'↓',ArrowLeft:'←',ArrowRight:'→',Space:'Espacio'};return m[c]||String(c).replace(/^Key/,'').replace(/^Digit/,'')}function saveKeys(){try{localStorage.setItem('soapKeys',JSON.stringify(KEYS))}catch(e){}}
 function openSettings(){g.cmenu=true;g.holding=false;document.getElementById('settings').style.display='flex';renderSettings()}function closeSettings(){document.getElementById('settings').style.display='none';g.cmenu=false;KWAIT=null}
-function renderSettings(){document.getElementById('setbody').innerHTML='<button data-s="cust"><span class="ui-symbol">◈</span> Personalizar</button><button data-s="keys"><span class="ui-symbol">⌘</span> Controles de PC</button><button data-s="perf"><span class="ui-symbol">ϟ</span> Modo Rendimiento: '+(CUST.perf?'SÍ':'NO')+'</button><button data-s="acc">👁 Distinción visual: '+(CUST.acc?'SÍ':'NO')+'</button><p style="font-size:14px">F3 (en PC) muestra un panel técnico.</p><button data-s="exit" class="danger-action">↩ Salir al menú principal</button>'}
+function renderSettings(){document.getElementById('setbody').innerHTML='<button data-s="cust">🎨 Personalizar</button><button data-s="keys">🖥️ Controles de PC</button><button data-s="perf">⚡ Modo Rendimiento: '+(CUST.perf?'SÍ':'NO')+'</button><button data-s="acc">👁 Distinción visual: '+(CUST.acc?'SÍ':'NO')+'</button><p style="font-size:14px">F3 (en PC) muestra un panel técnico.</p><button data-s="exit" class="danger-action">↩️ Salir al menú principal</button>'}
 function renderKeys(msg){let h='<p style="font-size:14px">Las flechas disparan hacia su lado y la tecla de puntero dispara hacia donde toques. Tocá Cambiar y después la tecla. Esc cancela.</p>';for(const [a,l] of KACT)h+='<p>'+l+': <b>'+keyLabel(KEYS[a])+'</b> <button data-kc="'+a+'">Cambiar</button></p>';h+='<p id="kmsg" style="font-size:14px;min-height:20px">'+(msg||(KWAIT?'Presioná una tecla…':''))+'</p><button data-kr="1">Restablecer</button> <button data-kb="1">Volver</button>';document.getElementById('setbody').innerHTML=h}
 document.getElementById('setbody').onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.s){const s=b.dataset.s;if(s=='cust'){document.getElementById('settings').style.display='none';openCust(true)}else if(s=='exit'){exitToMenu()}else if(s=='keys')renderKeys();else if(s=='perf'){CUST.perf=!CUST.perf;saveCust();renderSettings()}else if(s=='acc'){CUST.acc=!CUST.acc;saveCust();renderSettings()}}else if(b.dataset.kc){KWAIT=b.dataset.kc;renderKeys()}else if(b.dataset.kr){KEYS={up:'ArrowUp',down:'ArrowDown',left:'ArrowLeft',right:'ArrowRight',shoot:'Space'};saveKeys();renderKeys('Teclas restablecidas.')}else if(b.dataset.kb){KWAIT=null;renderSettings()}};
 document.getElementById('setClose').onclick=closeSettings;document.getElementById('gear').onclick=openSettings;
