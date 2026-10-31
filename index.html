@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Soap Adventures</title>
+<title>Soap Adventures v1.9</title>
 <style>
 :root{--bg:#fcc1d1;--ink:#8a1f43;--panel:#fff4f7}
 @media (prefers-color-scheme: dark){:root{--bg:#fcc1d1;--ink:#8a1f43;--panel:#fff4f7}}
@@ -35,7 +35,7 @@ canvas{display:block;width:100%;height:100%}
 .cards{display:flex;flex-direction:column;gap:10px;width:min(420px,100%)}
 .cards button{display:grid;grid-template-columns:48px 1fr;column-gap:12px;align-items:center;text-align:left;background:var(--panel);color:var(--ink);border:4px solid #c9405f;border-radius:20px;padding:10px 14px;font:inherit;box-shadow:0 5px 0 #c9405f;cursor:pointer}
 .cards button:active{transform:translateY(3px);box-shadow:0 2px 0 #c9405f}
-.cards .e{grid-row:span 2;font-size:34px;text-align:center}
+.cards .e{grid-row:span 2;font-size:34px;text-align:center;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;font-variant-emoji:emoji}
 .cards b{font-size:18px}.cards small{font-size:14px}
 .cards button.gold{background:linear-gradient(#fff6b8,#ffd23a);border-color:#a87000;box-shadow:0 5px 0 #a87000}
 #msg h1{margin:0 0 8px;font-size:34px}#msg p{margin:4px 0;font-size:18px}
@@ -46,7 +46,7 @@ input[type="range"]{font-size:16px !important;}
   input:not([type="range"]), textarea, select{-webkit-text-size-adjust:100%;}
 }
 
-/* v2.7 — interfaz renovada, con aspecto de juego móvil */
+/* Interfaz renovada, con aspecto de juego móvil */
 :root{
   --ui-ink:#263047;
   --ui-muted:#69748a;
@@ -159,7 +159,7 @@ button{ -webkit-tap-highlight-color:transparent; }
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}}
 
 
-/* v2.7 — botones e iconografía de estilo app/arcade */
+/* Botones e iconografía de estilo app/arcade */
 button{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.05px;outline:none}
 #msg .mbtns button,#msg .dopt button,.gbox .bk,#custom .bk,#cpanel .bk,#settings .bk,#warn button{border:0!important;border-radius:14px!important;box-shadow:0 4px 0 rgba(35,45,72,.12),0 8px 18px rgba(35,45,72,.08)!important;font-weight:750}
 #msg .mbtns button:not(:first-child){background:#edf0f7;color:#35415d}
@@ -179,7 +179,7 @@ button{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-se
 .ui-symbol{display:none}
 button:active{filter:brightness(.97)}
 
-/* Decoración temática v2.7: espuma, burbujas y pequeños virus */
+/* Decoración temática: espuma, burbujas y pequeños virus */
 #msg>div,.gbox{
   position:relative;isolation:isolate;overflow:hidden;
   border:2px solid #ef9bb7!important;
@@ -217,9 +217,15 @@ button:active{filter:brightness(.97)}
 
 @media(max-width:420px){#msg>div:after,.gbox:after{opacity:.42}}
 
+/* v1.9 */
+html,body{font-family:"Trebuchet MS","Arial Rounded MT Bold",Arial,"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
+.emoji,.cards .e{font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;font-variant-emoji:emoji}
+#msg h1,#msg p,.gbox h2,.gbody,#setbody button,#msg .mbtns button,#msg .dopt button,.cbs button,.cards button,#cbtn,#gear{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
+.emoji,.cards .e{font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;font-variant-emoji:emoji}
+
 </style></head><body>
 <canvas id="c"></canvas>
-<div id="ver">v.2.7</div>
+<div id="ver">v.2.11</div>
 <div id="guide"><div class="gbox"><h2>Guía del juego</h2><div class="gbody">
 <h3>Cómo se juega</h3>
 <p>Sos el jabón del centro. Tocá o arrastrá el dedo para lanzar burbujas hacia ese lugar. Cada burbuja hace 1 de daño base.</p>
@@ -229,75 +235,75 @@ button:active{filter:brightness(.97)}
 <p>Los virus normales aparecen con entre 1 y 5 de vida al comienzo. Su vida máxima aumenta 1 cada 25 s. Cuanta más vida tienen al aparecer, más lentos se mueven.</p>
 <p>Al vencer un jefe que da recompensa, todos los virus que ya están en pantalla ganan +1 de vida máxima y actual. Desde el segundo jefe recompensado, la vida mínima sube +1, la máxima sube +2 y la velocidad de los virus normales aumenta un 8% por jefe. También aparece +1 virus por tanda por cada jefe posterior al primero.</p>
 <p>Las tandas aparecen cada vez más seguido con el tiempo. Después de los primeros 60 s, algunas tandas pueden traer un virus adicional.</p>
-<p>🟡 <b>Veloz:</b> aparece desde el inicio, tiene 1 de vida y se mueve un 50% más rápido que un virus normal.</p>
+<p>🏎️ <b>Veloz:</b> aparece desde el inicio, tiene 1 de vida y se mueve un 50% más rápido que un virus normal.</p>
 <h3>Virus especiales</h3>
 <p>Empiezan a poder aparecer después de vencer al primer jefe recompensado. Su frecuencia aumenta con el tiempo y con los jefes vencidos. El Todo Divisor recién puede aparecer desde el segundo jefe recompensado.</p>
-<p>🔵 <b>Divisor:</b> al morir se divide en 2 virus normales.</p>
-<p>🟦 <b>Padre Divisor:</b> al morir da 2 Divisores, que luego se dividen en 4 normales.</p>
-<p>🟣 <b>Todo Divisor:</b> al morir da 3 Padres Divisores; toda la cadena genera 21 virus en total.</p>
-<p>💚 <b>Médico:</b> huye de vos y cura 1 de vida cada 1,2 s al virus herido más necesitado dentro de su alcance. No cura jefes ni a sí mismo y no te ataca.</p>
-<p>😋 <b>Glotón:</b> cada burbuja tiene un 33% de probabilidad independiente de ser absorbida. Si la absorbe, no recibe daño y se cura esa misma cantidad.</p>
+<p>🧫 <b>Divisor:</b> al morir se divide en 2 virus normales.</p>
+<p>🪺 <b>Padre Divisor:</b> al morir da 2 Divisores, que luego se dividen en 4 normales.</p>
+<p>🪆 <b>Todo Divisor:</b> al morir da 3 Padres Divisores; toda la cadena genera 21 virus en total.</p>
+<p>🩺 <b>Médico:</b> huye de vos y cura 1 de vida cada 1,2 s al virus herido más necesitado dentro de su alcance. No cura jefes ni a sí mismo y no te ataca.</p>
+<p>🐷 <b>Glotón:</b> cada burbuja tiene un 33% de probabilidad independiente de ser absorbida. Si la absorbe, no recibe daño y se cura esa misma cantidad.</p>
 <p>💣 <b>Bombardero:</b> puede aparecer como virus especial y también lo invoca el jefe Bombardero. Al morir explota: elimina virus normales cercanos y te daña si estás cerca. El escudo te protege; la explosión no elimina jefes.</p>
 <h3>Jefes</h3>
-<p>Aparece un jefe cada 60 s. El primero siempre es normal. Desde el segundo, se sortea: Normal 45%, Rey Divisor 15%, Glotón Supremo 15%, Tanque 15% y Bombardero 10%.</p>
+<p>En Fácil aparece un jefe cada 60 s, en Medio cada 45 s y en Difícil y Hardcore cada 30 s. El primero siempre es normal. Desde el segundo, se sortea: Normal 45%, Rey Divisor 15%, Glotón Supremo 15%, Tanque 15% y Bombardero 10%.</p>
 <p>La vida del jefe depende de la vida máxima de los virus normales: Normal, Rey Divisor y Glotón Supremo tienen ×2,5; Tanque ×4; Bombardero ×2.</p>
-<p>👑 <b>Rey Divisor:</b> al morir deja 2 Todo Divisores.</p>
-<p>😋 <b>Glotón Supremo:</b> se mantiene lejos, esquiva burbujas, invoca Glotones cada cierto tiempo y tiene un 50% de probabilidad independiente de absorber cada burbuja, curándose el daño que habría recibido.</p>
-<p>🛡️ <b>Tanque:</b> es lento y recibe un 50% menos de daño de cualquier fuente.</p>
+<p>🦁 <b>Rey Divisor:</b> al morir deja 2 Todo Divisores.</p>
+<p>🐲 <b>Glotón Supremo:</b> se mantiene lejos, esquiva burbujas, invoca Glotones cada cierto tiempo y tiene un 50% de probabilidad independiente de absorber cada burbuja, curándose el daño que habría recibido.</p>
+<p>🦏 <b>Tanque:</b> es lento y recibe un 50% menos de daño de cualquier fuente.</p>
 <p>💣 <b>Bombardero:</b> invoca virus Bombarderos cada cierto tiempo.</p>
 <p>Si un jefe te toca, perdés la partida al instante. El escudo lo repele. Solo recibe daño de tus burbujas y de ciertos powers o poderes exclusivos.</p>
 <p>Al vencer a un jefe que da recompensa, todos los virus no jefes ganan +1 de vida y elegís 1 mejora entre 3. El power Jefe salvaje invoca un jefe normal que no da esta recompensa; Jefe invocado sí la da.</p>
 <h3>Powers comunes</h3>
-<p>💥 <b>Daño:</b> +1 de daño durante 15 s.</p>
-<p>⚡ <b>Disparo rápido:</b> disparás más rápido durante 10 s.</p>
-<p>✌️ <b>Doble tiro:</b> lanzás 2 burbujas por disparo durante 15 s.</p>
+<p>🥊 <b>Daño:</b> +1 de daño durante 15 s.</p>
+<p>🏃 <b>Disparo rápido:</b> disparás más rápido durante 10 s.</p>
+<p>👯 <b>Doble tiro:</b> lanzás 2 burbujas por disparo durante 15 s.</p>
 <h3>Powers dorados</h3>
-<p>❤️ <b>Vida extra:</b> +1 corazón, hasta tu máximo (8 por defecto; Jabón resistente lo aumenta). También cura 1 vida a cada aliado. En Hardcore se reemplaza por Escudo dorado.</p>
-<p>🔻 <b>Virus −1:</b> quita 1 de vida a todos los virus; los jefes no pueden bajar de 1 por este efecto.</p>
+<p>❤️ <b>Vida extra:</b> +1 corazón, hasta tu máximo (8 por defecto; Jabón resistente lo aumenta). También cura 1 vida a cada aliado. En Hardcore se reemplaza por 🪖 Escudo dorado.</p>
+<p>🧽 <b>Virus −1:</b> quita 1 de vida a todos los virus; los jefes no pueden bajar de 1 por este efecto.</p>
 <p>🌟 <b>Daño eterno:</b> +1 de daño permanente por nivel.</p>
 <p>🚀 <b>Cadencia eterna:</b> disparás más rápido permanentemente; tiene hasta 4 niveles.</p>
-<p>🔱 <b>Multidisparo:</b> suma burbujas a cada disparo: 2 en el nivel 1 y 3 en el nivel 2.</p>
+<p>🎆 <b>Multidisparo:</b> suma burbujas a cada disparo: 2 en el nivel 1 y 3 en el nivel 2.</p>
 <p>👑 <b>Jefe invocado:</b> aparece un jefe normal. Si lo vencés, da la recompensa habitual.</p>
 <h3>Powers malos dorados</h3>
-<p>⚠️ <b>Jefe salvaje:</b> aparece un jefe normal que no da recompensa al morir.</p>
-<p>💔 <b>Pérdida de vida:</b> −1 corazón, sin bajar de 1.</p>
-<p>🕳️ <b>Robo:</b> elimina un power temporal activo o quita un nivel de Daño eterno, Cadencia eterna o Multidisparo.</p>
-<p>💢 <b>Daño debilitado:</b> −1 de daño permanente por nivel. El daño no puede bajar de 0.</p>
-<p>🐢 <b>Cadencia invertida:</b> aumenta un 18% el tiempo entre disparos por nivel, permanentemente.</p>
+<p>👹 <b>Jefe salvaje:</b> aparece un jefe normal que no da recompensa al morir.</p>
+<p>🪦 <b>Pérdida de vida:</b> −1 corazón, sin bajar de 1.</p>
+<p>🦹 <b>Robo:</b> elimina un power temporal activo o quita un nivel de Daño eterno, Cadencia eterna o Multidisparo.</p>
+<p>🪫 <b>Daño debilitado:</b> −1 de daño permanente por nivel. El daño no puede bajar de 0.</p>
+<p>🪨 <b>Cadencia invertida:</b> aumenta un 18% el tiempo entre disparos por nivel, permanentemente.</p>
 <h3>Powers especiales</h3>
-<p>💣 <b>Explosiones (12 s):</b> tus burbujas explotan al impactar y dañan a los virus cercanos, jefes incluidos.</p>
-<p>❄️ <b>Congelar (5 s):</b> los virus se mueven al 8% de su velocidad. Se pausan las tandas normales y la aparición programada de jefes; los jefes Glotón Supremo y Bombardero todavía pueden invocar sus propios virus.</p>
+<p>💥 <b>Explosiones (12 s):</b> tus burbujas explotan al impactar y dañan a los virus cercanos, jefes incluidos.</p>
+<p>🧊 <b>Congelar (5 s):</b> los virus se mueven al 8% de su velocidad. Se pausan las tandas normales y la aparición programada de jefes; los jefes Glotón Supremo y Bombardero todavía pueden invocar sus propios virus.</p>
 <p>🛡️ <b>Escudo (8 s):</b> vos y tus aliados no reciben daño. Si un jefe te toca, rebota.</p>
-<p>☢️ <b>Limpieza:</b> elimina a los virus que no son jefes en pantalla y le quita 5 de vida al jefe (el Tanque recibe la mitad).</p>
+<p>🌋 <b>Limpieza:</b> elimina a los virus que no son jefes en pantalla y le quita 5 de vida al jefe (el Tanque recibe la mitad).</p>
 <h3>Powers malos (rojos)</h3>
 <p>💨 <b>Furia:</b> los virus se mueven un 60% más rápido durante 8 s.</p>
 <p>🧬 <b>Mutación:</b> todos los virus en pantalla, incluidos los jefes, ganan +1 de vida actual y máxima.</p>
-<p>☣️ <b>Plaga:</b> aparecen 5 virus de golpe.</p>
+<p>🐜 <b>Plaga:</b> aparecen 5 virus de golpe.</p>
 <p>🐌 <b>Lentitud:</b> disparás 2,5 veces más lento durante 8 s.</p>
 <h3>Mejoras de jefe</h3>
 <p>Se elige 1 entre 3 al vencer un jefe que da recompensa. Son permanentes y acumulables; algunas tienen un nivel máximo.</p>
-<p>🔄 <b>Disparo trasero:</b> junto con tus disparos normales, agrega más burbujas y distribuye todos los disparos uniformemente en los 360°. La separación es 360° dividido por la cantidad total de burbujas.</p>
-<p>🔀 <b>Burbuja triple:</b> las burbujas se dividen en 3 mientras vuelan (hasta nivel 3).</p>
+<p>🪃 <b>Disparo trasero:</b> junto con tus disparos normales, agrega más burbujas y distribuye todos los disparos uniformemente en los 360°. La separación es 360° dividido por la cantidad total de burbujas.</p>
+<p>🎇 <b>Burbuja triple:</b> las burbujas se dividen en 3 mientras vuelan (hasta nivel 3).</p>
 <p>🎯 <b>Teledirigidas:</b> las burbujas persiguen al virus más cercano.</p>
 <p>🔥 <b>Mantener apretado:</b> si dejás el dedo apretado, disparás sin parar; cada nivel aumenta la velocidad de disparo (hasta nivel 4).</p>
-<p>🪡 <b>Perforantes:</b> cada nivel permite que una burbuja atraviese 1 virus adicional.</p>
+<p>🏹 <b>Perforantes:</b> cada nivel permite que una burbuja atraviese 1 virus adicional.</p>
 <p>🫧 <b>Burbujas grandes:</b> aumenta su tamaño y suma +1 de daño por nivel (hasta nivel 5).</p>
-<p>💫 <b>Onda expansiva:</b> cada nivel aumenta un 35% el radio de las explosiones.</p>
-<p>💗 <b>Jabón resistente:</b> suma +2 corazones y aumenta en 2 el máximo de vidas. No aparece en Hardcore.</p>
-<p>🟢 <b>Jabón aliado:</b> un jabón que dispara solo y prioriza a los jefes. Tiene 3 vidas; podés tener hasta 3 aliados en una partida normal y hasta 30 en Creativo.</p>
+<p>🌊 <b>Onda expansiva:</b> cada nivel aumenta un 35% el radio de las explosiones.</p>
+<p>🧱 <b>Jabón resistente:</b> suma +2 corazones y aumenta en 2 el máximo de vidas. No aparece en Hardcore.</p>
+<p>🧴 <b>Jabón aliado:</b> un jabón que dispara solo y prioriza a los jefes. Tiene 3 vidas; podés tener hasta 3 aliados en una partida normal y hasta 30 en Creativo.</p>
 <h3>Poderes exclusivos de jefes (muy raros)</h3>
 <p>Al vencer un jefe que da recompensa, hay un 5% de probabilidad de que una de las 3 cartas sea uno de estos poderes. Son permanentes y se acumulan por niveles.</p>
-<p>☄️ <b>Bombardeo eterno:</b> todas tus burbujas explotan al impactar. Cada nivel aumenta el radio y el daño.</p>
-<p>🌩️ <b>Tormenta eléctrica:</b> cada impacto lanza un rayo que rebota entre virus cercanos: 5 rebotes en el nivel 1 y +3 por nivel. Con Perforantes, cada virus atravesado también puede activar rayos.</p>
-<p>⏳ <b>Tiempo absoluto:</b> cada cierto tiempo congela a todos los virus mientras vos seguís disparando. Cada nivel aumenta la duración y reduce la espera.</p>
-<p>🪐 <b>Órbita destructiva:</b> 5 bombas orbitan tu jabón y explotan al tocar un virus; cada bomba se regenera a los 4 s. Cada nivel aumenta el daño y el radio. Onda expansiva agranda la explosión.</p>
-<p>🌀 <b>Aura aniquiladora:</b> cada 30 s sale un anillo desde el centro que daña una vez a cada virus que toca, jefes incluidos. En el nivel 1 hace 3× tu daño; cada nivel aumenta el daño y la velocidad.</p>
+<p>🧨 <b>Bombardeo eterno:</b> todas tus burbujas explotan al impactar. Cada nivel aumenta el radio y el daño.</p>
+<p>⛈️ <b>Tormenta eléctrica:</b> cada impacto lanza un rayo que rebota entre virus cercanos: 5 rebotes en el nivel 1 y +3 por nivel. Con Perforantes, cada virus atravesado también puede activar rayos.</p>
+<p>🕰️ <b>Tiempo absoluto:</b> cada cierto tiempo congela a todos los virus mientras vos seguís disparando. Cada nivel aumenta la duración y reduce la espera.</p>
+<p>🪐 <b>Órbita destructiva:</b> 5 bombas orbitan tu jabón y explotan al tocar un virus; cada bomba se regenera a los 4 s. Hacen 2× el daño de tus burbujas y explotan en el mismo radio que las burbujas con Explosiones. Onda expansiva agranda el área.</p>
+<p>🌞 <b>Aura aniquiladora:</b> cada 15 s sale un anillo desde el centro que daña una vez a cada virus que toca, jefes incluidos. En el nivel 1 hace 5× tu daño; cada nivel suma 1 al multiplicador y reduce el intervalo un 33%.</p>
 <h3>Dificultades</h3>
 <p><b>Fácil:</b> más powers y dorados, menos virus y más lentos, 2 menos de vida máxima y menos virus especiales.</p>
 <p><b>Medio:</b> menos virus y especiales, y 2 menos de vida máxima.</p>
 <p><b>Difícil:</b> la experiencia completa.</p>
 <p><b>Hardcore:</b> como Difícil, pero con 1 sola vida. Vida extra se reemplaza por Escudo dorado de 15 s y no aparece Jabón resistente.</p>
-<h3>Configuración (⚙ arriba a la derecha)</h3>
+<h3>Configuración (⚙️ arriba a la derecha)</h3>
 <p><b>Personalizar:</b> forma y color del jabón, color libre, forma de las burbujas, fondo o imagen propia, texto del jabón (hasta 6 caracteres) y resolución.</p>
 <p><b>Controles de PC:</b> las flechas disparan hacia arriba, abajo, izquierda y derecha; Espacio dispara hacia el puntero. Podés cambiar las teclas (no se pueden repetir) y restablecerlas. Esc cancela el cambio de tecla.</p>
 <p><b>Modo Rendimiento:</b> reduce a la mitad las partículas y muestra avisos al invocar demasiados virus o aliados en Creativo. Los avisos no bloquean la acción.</p>
@@ -310,11 +316,11 @@ button:active{filter:brightness(.97)}
 <p>El aliado dispara con tus modificadores de daño, multidisparo, disparo trasero, burbuja triple, perforantes, teledirigidas, burbujas grandes y explosiones. También le afectan Cadencia eterna, Cadencia invertida, Daño debilitado, Disparo rápido, Lentitud, Escudo y Vida extra.</p>
 </div><button class="bk" onclick="document.getElementById('guide').style.display='none'">Volver</button></div></div>
 <button id="cbtn" aria-label="Modo creativo" title="Modo creativo">🛠️</button>
-<div id="cpanel"><div class="gbox"><h2>⌘ Modo creativo</h2><div class="gbody" id="cbody"></div><button class="bk" id="cClose">Cerrar</button></div></div>
+<div id="cpanel"><div class="gbox"><h2>🎮 Modo creativo</h2><div class="gbody" id="cbody"></div><button class="bk" id="cClose">Cerrar</button></div></div>
 <div id="custom"><div class="gbox"><h2>Personalizar</h2><div class="gbody" id="cusbody"></div><button class="bk" id="cusClose">Listo</button></div></div>
-<button id="gear" aria-label="Configuración" title="Configuración">⚙</button>
-<div id="settings"><div class="gbox"><h2>⚙ Configuración</h2><div class="gbody" id="setbody"></div><button class="bk" id="setClose">Cerrar</button></div></div>
-<div id="warn"><div class="gbox"><h2>⚠ Aviso</h2><p id="warnTxt"></p><div class="mbtns"><button id="warnOk">Continuar</button><button id="warnNo">Cancelar</button></div></div></div>
+<button id="gear" aria-label="Configuración" title="Configuración">⚙️</button>
+<div id="settings"><div class="gbox"><h2>⚙️ Configuración</h2><div class="gbody" id="setbody"></div><button class="bk" id="setClose">Cerrar</button></div></div>
+<div id="warn"><div class="gbox"><h2>🚧 Aviso</h2><p id="warnTxt"></p><div class="mbtns"><button id="warnOk">Continuar</button><button id="warnNo">Cancelar</button></div></div></div>
 <div id="dbg"></div><div id="pick"></div>
 <div id="msg"><div id="box"></div></div>
 <script>
@@ -329,23 +335,24 @@ const COLORS={1:['#3fb5a6','#1a7468'],2:['#a9c43f','#5f7f1c'],3:['#f0852f','#b45
 function colorFor(hp){return COLORS[((Math.max(1,Math.floor(hp))-1)%5)+1]}
 const sc='#8a1f43';
 let g;
-function reset(){g={t:0,over:false,started:false,score:0,lives:(window.D?D.lives:5),inv:0,viruses:[],bubbles:[],parts:[],spawn:1,boss:0,bossKills:0,nextBoss:60,cool:0,aim:-Math.PI/2,shake:0,id:0,powers:[],nextPow:5,fx:{dmg:0,fast:0,freeze:0,bomb:0,shield:0,haste:0,slow:0,double:0,tfreeze:0},gold:{dmg:0,rate:0,multi:0,badDmg:0,badRate:0},perk:{back:0,split:0,homing:0,hold:0,pierce:0,big:0,wave:0,heart:0,ally:0},rewards:0,bonusPicks:0,rot:-Math.PI/2,allies:[],pick:null,holding:false,hx:0,hy:0,got:{life:0,minus:0},rings:[],plus:[],xp:{bomb:0,storm:0,time:0,orbit:0,aura:0},xt:{time:20,aura:30},orb:[0,0,0,0,0],orbA:0,auras:[],bolts:[],chainB:60}}
+function reset(){g={t:0,over:false,started:false,score:0,lives:(window.D?D.lives:5),inv:0,viruses:[],bubbles:[],parts:[],spawn:1,boss:0,bossKills:0,nextBoss:(D&&D.bossInterval)||60,cool:0,aim:-Math.PI/2,shake:0,id:0,powers:[],nextPow:5,fx:{dmg:0,fast:0,freeze:0,bomb:0,shield:0,haste:0,slow:0,double:0,tfreeze:0},gold:{dmg:0,rate:0,multi:0,badDmg:0,badRate:0},perk:{back:0,split:0,homing:0,hold:0,pierce:0,big:0,wave:0,heart:0,ally:0},rewards:0,bonusPicks:0,rot:-Math.PI/2,allies:[],pick:null,holding:false,hx:0,hy:0,got:{life:0,minus:0},rings:[],plus:[],xp:{bomb:0,storm:0,time:0,orbit:0,aura:0},xt:{time:20,aura:15},orb:[0,0,0,0,0],orbA:0,auras:[],bolts:[],chainB:60}}
 reset();
 function startGame(){g.started=true;msg.style.display='none';document.getElementById('ver').style.display='none';document.getElementById('guide').style.display='none'}
 function showStart(){box.innerHTML='<h1>🧼 Soap Adventures</h1><p>Tocá para lanzar burbujas y defendé tu jabón</p><div class="mbtns"><button id="bPlay">Jugar</button><button id="bCre">Creativo</button><button id="bGuide">Guía</button></div>';msg.style.display='flex';document.getElementById('bPlay').onclick=showDiff;document.getElementById('bCre').onclick=startCreative;document.getElementById('bGuide').onclick=()=>{document.getElementById('guide').style.display='flex'};}
 const CPW=[['Comunes',['dmg','fast','double']],['Dorados',['life','minus','gdmg','grate','gmulti','bossgood']],['Especiales',['bomb','freeze','shield','nuke']],['Malos',['haste','hpup','swarm','slow']],['Malos dorados',['bossbad','lifeloss','steal','gdmgdown','grateslow']]];
-function cb(a,keys,src){return keys.map(k=>'<button data-a="'+a+'" data-k="'+k+'">'+src[k].e+' '+src[k].n+'</button>').join('')}
+function cb(a,keys,src){return keys.map(k=>'<button data-a="'+a+'" data-k="'+k+'"><span class="emoji">'+src[k].e+'</span> '+src[k].n+'</button>').join('')}
 let cTab='virus';
 function buildC(){
   const on=k=>g.cAuto[k]?' class="on"':'',yn=k=>g.cAuto[k]?'SÍ':'NO';
-  let h='<div class="cbs ctabs"><button data-a="tab" data-k="virus"'+(cTab==='virus'?' class="on"':'')+'>🦠 Virus</button><button data-a="tab" data-k="powers"'+(cTab==='powers'?' class="on"':'')+'>⚡ Powers</button><button data-a="tab" data-k="settings"'+(cTab==='settings'?' class="on"':'')+'>⚙ Ajustes</button></div>';
+  let h='<div class="cbs ctabs"><button data-a="tab" data-k="virus"'+(cTab==='virus'?' class="on"':'')+'>🔬 Virus</button><button data-a="tab" data-k="powers"'+(cTab==='powers'?' class="on"':'')+'>🧪 Powers</button><button data-a="tab" data-k="settings"'+(cTab==='settings'?' class="on"':'')+'>⚙️ Ajustes</button></div>';
   if(cTab==='virus'){
+    h+='<h3>Dificultad</h3><div class="cbs">'+[['easy','Fácil'],['mid','Medio'],['hard','Difícil'],['core','Hardcore']].map(([k,n])=>'<button data-a="difficulty" data-k="'+k+'"'+(D===DIFFS[k]?' class="on"':'')+'>'+n+'</button>').join('')+'</div>';
     h+='<h3>Automático</h3><div class="cbs"><button data-a="tog" data-k="virus"'+on('virus')+'>Virus: '+yn('virus')+'</button><button data-a="tog" data-k="boss"'+on('boss')+'>Jefes: '+yn('boss')+'</button></div>';
     h+='<h3>Invocar virus</h3><div class="cbs"><button data-a="hp" data-k="-5">−5</button><button data-a="hp" data-k="-1">−1</button><button disabled>Vida: '+fmtNum(g.cHp)+'</button><button data-a="hp" data-k="1">+1</button><button data-a="hp" data-k="5">+5</button></div><div class="cbs"><input class="cnum" id="cHpInput" value="'+String(g.cHp)+'" placeholder="Vida personalizada"><button data-a="sethp">Aplicar vida</button></div>';
-    h+='<div class="cbs" style="margin-top:6px"><button data-a="sp" data-k="1">Invocar 1</button><button data-a="sp" data-k="5">Invocar 5</button><button data-a="boss">Invocar jefe</button><button data-a="clear">Borrar todos los virus</button><button data-a="lvl">+1 jefe vencido</button></div>';
-    h+='<h3>Jefes</h3><div class="cbs">'+['normal','rey','glot','tank','bomb'].map(k=>'<button data-a="boss" data-k="'+k+'">'+BNAME[k]+'</button>').join('')+'</div>';
+    h+='<div class="cbs" style="margin-top:6px"><button data-a="sp" data-k="1">🦠 Invocar 1</button><button data-a="sp" data-k="5">🦠 Invocar 5</button><button data-a="boss">👾 Invocar jefe</button><button data-a="clear">🧹 Borrar todos los virus</button><button data-a="lvl">+1 jefe vencido</button></div>';
+    h+='<h3>Jefes</h3><div class="cbs">'+['normal','rey','glot','tank','bomb'].map(k=>'<button data-a="boss" data-k="'+k+'"><span class="emoji">'+BICON[k]+'</span> '+BNAME[k]+'</button>').join('')+'</div>';
     h+='<h3>Virus especiales</h3><div class="cbs">'+cb('ty',['div','pad','todo','med','glot','fast','bmb'],TYN)+'</div>';
-    h+='<h3>Todos los virus</h3><div class="cbs"><button data-a="vh" data-k="full">Curar todos</button><button data-a="vh" data-k="5">+5 vida</button><button data-a="vh" data-k="-5">−5 vida</button></div>';
+    h+='<h3>Todos los virus</h3><div class="cbs"><button data-a="vh" data-k="full">🩹 Curar todos</button><button data-a="vh" data-k="5">+5 vida</button><button data-a="vh" data-k="-5">−5 vida</button></div>';
   }else if(cTab==='powers'){
     h+='<h3>Automático</h3><div class="cbs"><button data-a="tog" data-k="power"'+on('power')+'>Powers: '+yn('power')+'</button></div>';
     for(const [t,ks] of CPW)h+='<h3>Powers '+t.toLowerCase()+'</h3><div class="cbs">'+cb('pw',ks,PW)+'</div>';
@@ -359,7 +366,7 @@ function buildC(){
       h+='<div class="cstat"><label>'+CSTAT[k].n+'</label><div class="cbs"><button data-a="step" data-k="'+k+':-1">−</button><input class="cnum" data-stat="'+k+'" id="stat_'+k+'" value="'+String(cval(k))+'" inputmode="text"><button data-a="step" data-k="'+k+':1">+</button><button data-a="setstat" data-k="'+k+'">Aplicar</button>'+quick+'</div></div>';
     }
     h+='<h3>Configuración aleatoria</h3><div class="cbs"><button data-a="random" data-k="progress">Basada en jefes vencidos</button><button data-a="random" data-k="chaos">100% azar</button></div><div class="cbs"><label>Jefes de referencia <input class="cnum" id="randBosses" value="'+Math.max(0,g.bossKills)+'" inputmode="numeric"></label></div><p>La opción basada en progreso genera valores coherentes con esa etapa. El azar total puede producir valores extremos.</p>';
-    h+='<h3>Configuración</h3><div class="cbs"><button data-a="resetask">⟲ Restablecer modificadores</button><button data-a="perf">ϟ Rendimiento: '+(CUST.perf?'SÍ':'NO')+'</button><button data-a="cust">◈ Personalizar jabón</button></div>';
+    h+='<h3>Configuración</h3><div class="cbs"><button data-a="resetask">🔄 Restablecer modificadores</button><button data-a="perf">📊 Rendimiento: '+(CUST.perf?'SÍ':'NO')+'</button><button data-a="cust">🖌️ Personalizar jabón</button></div>';
   }
   document.getElementById('cbody').innerHTML=h;
 }
@@ -401,12 +408,13 @@ function cAct(a,k,allowOver=false,forceLimit=false){
   const virusCount=()=>g.viruses.filter(v=>!v.dead).length;
   const virusRoom=()=>g.creative&&(CUST.perf||forceLimit)&&!allowOver?Math.max(0,60-virusCount()):Infinity;
   const allyRoom=()=>g.creative&&(CUST.perf||forceLimit)&&!allowOver?Math.max(0,30-g.allies.length):Infinity;
-  if(a=='tog')g.cAuto[k]=!g.cAuto[k];
+  if(a=='difficulty'){D=DIFFS[k];g.nextBoss=Math.max(g.t+1,Math.min(g.nextBoss,g.t+(D.bossInterval||60)));}
+  else if(a=='tog')g.cAuto[k]=!g.cAuto[k];
   else if(a=='hp')g.cHp=Math.max(1,g.cHp+(+k)*cval('mul'));
   else if(a=='sp'){const n=Math.min(5000,(+k)*cval('mul'),virusRoom());for(let i=0;i<n;i++)spawnVirus(false,g.cHp,'norm')}
   else if(a=='ty'){const n=Math.min(5000,cval('mul'),virusRoom());for(let i=0;i<n;i++)spawnVirus(false,g.cHp,k)}
   else if(a=='boss'){const n=Math.min(5000,cval('mul'),virusRoom());for(let i=0;i<n;i++)spawnVirus(true,undefined,k)}
-  else if(a=='clear'){g.viruses.forEach(v=>{v.dead=true;v.nosplit=true})}
+  else if(a=='clear'){g.viruses.forEach(v=>{v.dead=true;v.nosplit=true;v.noDeathEffect=true})}
   else if(a=='pw'){for(let i=0;i<Math.min(5000,cval('mul'));i++)collect({k,x:W/2,y:H/2})}
   else if(a=='perk'){const n=k=='ally'?Math.min(5000,cval('mul'),allyRoom()):Math.min(5000,cval('mul'));for(let i=0;i<n;i++)applyPerk(k,allowOver,forceLimit)}
   else if(a=='lvl'){for(let i=0;i<Math.min(5000,cval('mul'));i++){g.bossKills++;g.rewards++;g.viruses.forEach(v=>{if(!v.dead&&!v.boss){v.hp++;v.max++}})}}
@@ -485,13 +493,13 @@ cv.addEventListener('pointerdown',e=>{
   g.holding=true;g.hx=px;g.hy=py;if(g.cool<=0){shoot(px,py);g.cool=(g.fx.fast>0?.05:.12)*Math.pow(.85,g.gold.rate)*Math.pow(1.18,g.gold.badRate)*(g.fx.slow>0?2.5:1)}
 });
 
-const PW={dmg:{e:'💥',n:'Daño +1'},life:{e:'❤️',n:'Vida'},minus:{e:'➖',n:'Virus -1'},fast:{e:'⚡',n:'Rápido'},freeze:{e:'❄️',n:'Congelar'}};
-Object.assign(PW,{bomb:{e:'💣',n:'Explosiones',t:'s'},shield:{e:'🛡️',n:'Escudo',t:'s'},nuke:{e:'☢️',n:'Limpieza',t:'s'},gdmg:{e:'🌟',n:'Daño eterno',t:'g'},grate:{e:'🚀',n:'Cadencia eterna',t:'g'},gmulti:{e:'🔱',n:'Multidisparo',t:'g'}});
-PW.freeze.t='s';PW.life.t='g';PW.minus.t='g';PW.double={e:'✌️',n:'Doble tiro'};PW.shieldg={e:'🛡️',n:'Escudo dorado',t:'g'};
-Object.assign(PW,{haste:{e:'💨',n:'Furia',t:'b'},hpup:{e:'🧬',n:'Mutación',t:'b'},steal:{e:'🕳️',n:'Robo',t:'gb'},swarm:{e:'☣️',n:'Plaga',t:'b'},slow:{e:'🐌',n:'Lentitud',t:'b'},gdmgdown:{e:'💢',n:'Daño debilitado',t:'gb'},grateslow:{e:'🐢',n:'Cadencia invertida',t:'gb'}});
+const PW={dmg:{e:'🥊',n:'Daño +1'},life:{e:'❤️',n:'Vida'},minus:{e:'🧽',n:'Virus -1'},fast:{e:'🏃',n:'Rápido'},freeze:{e:'🧊',n:'Congelar'}};
+Object.assign(PW,{bomb:{e:'💥',n:'Explosiones',t:'s'},shield:{e:'🛡️',n:'Escudo',t:'s'},nuke:{e:'🌋',n:'Limpieza',t:'s'},gdmg:{e:'🌟',n:'Daño eterno',t:'g'},grate:{e:'🚀',n:'Cadencia eterna',t:'g'},gmulti:{e:'🎆',n:'Multidisparo',t:'g'}});
+PW.freeze.t='s';PW.life.t='g';PW.minus.t='g';PW.double={e:'👯',n:'Doble tiro'};PW.shieldg={e:'🪖',n:'Escudo dorado',t:'g'};
+Object.assign(PW,{haste:{e:'💨',n:'Furia',t:'b'},hpup:{e:'🧬',n:'Mutación',t:'b'},steal:{e:'🦹',n:'Robo',t:'gb'},swarm:{e:'🐜',n:'Plaga',t:'b'},slow:{e:'🐌',n:'Lentitud',t:'b'},gdmgdown:{e:'🪫',n:'Daño debilitado',t:'gb'},grateslow:{e:'🪨',n:'Cadencia invertida',t:'gb'}});
 function pickW(ks){const w=ks.map(k=>k=='life'?1.05:1);let r=Math.random()*w.reduce((a,b)=>a+b,0);for(let i=0;i<ks.length;i++){if(r<w[i])return ks[i];r-=w[i]}return ks[ks.length-1]}
 function spawnBoss(noReward){const n0=g.viruses.length;spawnVirus(true,undefined,'normal');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];if(b.boss){b.noReward=noReward;b.rewardOnly=!noReward}}}
-PW.bossgood={e:'👑',n:'Jefe invocado',t:'g'};PW.bossbad={e:'⚠️',n:'Jefe salvaje',t:'gb'};PW.lifeloss={e:'💔',n:'Pérdida de vida',t:'gb'};
+PW.bossgood={e:'👑',n:'Jefe invocado',t:'g'};PW.bossbad={e:'👹',n:'Jefe salvaje',t:'gb'};PW.lifeloss={e:'🪦',n:'Pérdida de vida',t:'gb'};
 function spawnPower(){
   const ok=k=>k=='life'?!D.core:k=='shieldg'?!!D.core:k=='steal'?stealPool().length>0:k=='grate'?g.gold.rate<4:k=='gmulti'?g.gold.multi<2:true;
   const r=Math.random(),tier=pickTier(r);
@@ -502,26 +510,27 @@ function _oldSpawn(){
   const ks=Object.keys(PW),k=pickW(ks),m=50*S;
   g.powers.push({k,x:m+Math.random()*(W-2*m),y:m+60+Math.random()*Math.max(10,H-2*m-60),r:24*S,life:3,max:3});
 }
+function extendFx(key,seconds){g.fx[key]=Math.max(0,g.fx[key]||0)+seconds}
 function collect(p){
   pop(p.x,p.y,'#ffffff',14);
-  if(p.k=='dmg')g.fx.dmg=15;
-  else if(p.k=='fast')g.fx.fast=10;
-  else if(p.k=='freeze')g.fx.freeze=5;
+  if(p.k=='dmg')extendFx('dmg',15);
+  else if(p.k=='fast')extendFx('fast',10);
+  else if(p.k=='freeze')extendFx('freeze',5);
   else if(p.k=='life'){g.lives=Math.min(8+2*g.perk.heart,g.lives+1);g.got.life++;g.allies.forEach(a=>a.hp=Math.min(3,a.hp+1))}
   else if(p.k=='bossgood')spawnBoss(false);
   else if(p.k=='bossbad')spawnBoss(true);
   else if(p.k=='lifeloss')g.lives=Math.max(1,g.lives-1);
   else if(p.k=='gdmgdown')g.gold.badDmg++;
   else if(p.k=='grateslow')g.gold.badRate++;
-  else if(p.k=='double')g.fx.double=15;
-  else if(p.k=='shieldg')g.fx.shield=15;
-  else if(p.k=='haste')g.fx.haste=8;
-  else if(p.k=='slow')g.fx.slow=8;
+  else if(p.k=='double')extendFx('double',15);
+  else if(p.k=='shieldg')extendFx('shield',15);
+  else if(p.k=='haste')extendFx('haste',8);
+  else if(p.k=='slow')extendFx('slow',8);
   else if(p.k=='hpup'){for(const v of g.viruses)if(!v.dead){v.hp++;v.max++}}
   else if(p.k=='swarm'){if(!(g.fx.freeze>0))for(let i=0;i<5;i++)spawnVirus(false)}
   else if(p.k=='steal'){const a=stealPool();if(a.length)a[Math.floor(Math.random()*a.length)]()}
-  else if(p.k=='bomb')g.fx.bomb=12;
-  else if(p.k=='shield')g.fx.shield=8;
+  else if(p.k=='bomb')extendFx('bomb',12);
+  else if(p.k=='shield')extendFx('shield',8);
   else if(p.k=='nuke'){g.shake=.6;g.rings.push({x:W/2,y:H/2,l:.4,R:Math.hypot(W,H)/2});for(const v of g.viruses){if(v.boss)hurt(v,5);else if(!v.dead){v.dead=true;v.nosplit=true;g.score+=v.max*10;pop(v.x,v.y,colorFor(v.max)[0],14)}}}
   else if(p.k=='gdmg')g.gold.dmg++;
   else if(p.k=='grate')g.gold.rate=Math.min(g.creative&&!CUST.perf?Infinity:(g.creative?99:4),g.gold.rate+1);
@@ -543,7 +552,7 @@ function drawPowers(){
     else if(p.k=='nuke'){ctx.shadowColor='#ffe100';ctx.shadowBlur=16*S;ctx.fillStyle=grad(x,y,R,'#6a6a2a','#1d1d10');ctx.strokeStyle='#ffd23a';ctx.lineWidth=3*S;star(x,y,R*1.4,R*1.1,8,-g.t);ctx.fill();ctx.stroke();rc='#ffd23a'}
     else{ctx.fillStyle='rgba(255,244,247,.95)';ctx.strokeStyle='#c9405f';ctx.lineWidth=3*S;ctx.beginPath();ctx.arc(x,y,R,0,6.28);ctx.fill();ctx.stroke()}
     ctx.shadowBlur=0;ctx.strokeStyle=rc;ctx.lineWidth=4*S;ctx.beginPath();ctx.arc(x,y,R*1.45+6*S,-Math.PI/2,-Math.PI/2+6.28*f);ctx.stroke();
-    ctx.font=Math.round(p.r*1.1)+'px Arial';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='#000';ctx.fillText(PW[p.k].e,x,y+1);
+    ctx.font=Math.round(p.r*1.1)+'px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",system-ui,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='#000';ctx.fillText(PW[p.k].e,x,y+1);
     ctx.restore();
   }
 }
@@ -553,32 +562,41 @@ function _oldDraw(){
     ctx.fillStyle='rgba(255,244,247,.95)';ctx.strokeStyle='#c9405f';ctx.lineWidth=3*S;
     ctx.beginPath();ctx.arc(p.x,p.y,p.r*pulse,0,6.28);ctx.fill();ctx.stroke();
     ctx.strokeStyle='#e8426d';ctx.lineWidth=4*S;ctx.beginPath();ctx.arc(p.x,p.y,p.r*pulse+6*S,-Math.PI/2,-Math.PI/2+6.28*f);ctx.stroke();
-    ctx.font=Math.round(p.r*1.1)+'px Arial';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='#000';ctx.fillText(PW[p.k].e,p.x,p.y+1);
+    ctx.font=Math.round(p.r*1.1)+'px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",system-ui,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='#000';ctx.fillText(PW[p.k].e,p.x,p.y+1);
   }
 }
 function hurt(v,dm){if(v.dead)return;v.hp-=dm*(v.btype=='tank'?.5:1);v.flash=.1;if(v.hp<=0){v.dead=true;g.score+=v.boss?100*(g.bossKills+1):v.max*10;pop(v.x,v.y,colorFor(v.max)[0],v.boss?60:18);if(v.boss&&!v.noReward){g.shake=.4;if(v.rewardOnly)g.bonusPicks++;else{g.bossKills++;g.viruses.forEach(o=>{if(!o.dead&&!o.boss){o.hp++;o.max++}})}}}}
 addEventListener('pointerup',()=>{g.holding=false});addEventListener('pointercancel',()=>{g.holding=false});
 cv.addEventListener('pointermove',e=>{if(g.holding){const r=cv.getBoundingClientRect();g.hx=toL(e).x;g.hy=toL(e).y}});
 const PERKS={
-  ally:{e:'🧼',n:'Jabón aliado',d:'Un jabón verde dispara solo y prioriza a los jefes. Tiene 3 vidas (máx. 3 aliados)'},
-  back:{e:'⟲',n:'Disparo trasero',d:'Cada disparo lanza otra burbuja hacia atrás'},
-  split:{e:'⑂',n:'Burbuja triple',d:'Tus burbujas se dividen en 3 en el aire'},
-  homing:{e:'◎',n:'Teledirigidas',d:'Las burbujas persiguen al virus más cercano'},
-  hold:{e:'▲',n:'Mantener apretado',d:'Si dejás el dedo apretado disparas sin parar, más rápido que tocando'},
-  pierce:{e:'╱',n:'Perforantes',d:'Cada burbuja atraviesa 1 virus más'},
-  big:{e:'◌',n:'Burbujas grandes',d:'Burbujas más grandes y +1 de daño por nivel (máx. 5)'},
-  wave:{e:'✧',n:'Onda expansiva',d:'La explosión al chocar es un 35% más grande'},
-  heart:{e:'♥',n:'Jabón resistente',d:'+2 vidas ahora y tu máximo de vidas sube 2'}
+  ally:{e:'🧴',n:'Jabón aliado',d:'Un jabón verde dispara solo y prioriza a los jefes. Tiene 3 vidas (máx. 3 aliados)'},
+  back:{e:'🪃',n:'Disparo trasero',d:'Cada disparo lanza otra burbuja hacia atrás'},
+  split:{e:'🎇',n:'Burbuja triple',d:'Tus burbujas se dividen en 3 en el aire'},
+  homing:{e:'🎯',n:'Teledirigidas',d:'Las burbujas persiguen al virus más cercano'},
+  hold:{e:'🔥',n:'Mantener apretado',d:'Si dejás el dedo apretado disparas sin parar, más rápido que tocando'},
+  pierce:{e:'🏹',n:'Perforantes',d:'Cada burbuja atraviesa 1 virus más'},
+  big:{e:'🫧',n:'Burbujas grandes',d:'Burbujas más grandes y +1 de daño por nivel (máx. 5)'},
+  wave:{e:'🌊',n:'Onda expansiva',d:'La explosión al chocar es un 35% más grande'},
+  heart:{e:'🧱',n:'Jabón resistente',d:'+2 vidas ahora y tu máximo de vidas sube 2'}
 };
 function openPick(){
   g.holding=false;
   const ks=Object.keys(PERKS).filter(k=>!(k=='heart'&&D.core)&&!(k=='hold'&&g.perk.hold>=4)&&!(k=='split'&&g.perk.split>=3)&&!(k=='big'&&g.perk.big>=5)&&!(k=='ally'&&g.allies.length>=3)).sort(()=>Math.random()-.5).slice(0,3);
   if(Math.random()<XCHANCE){const xk=Object.keys(XP);ks[Math.floor(Math.random()*ks.length)]=xk[Math.floor(Math.random()*xk.length)]}
-  g.pick=ks;
+  g.pick=ks;g.pickSkippedXP=ks.filter(k=>XP[k]);
   const el=document.getElementById('pick'),inf=k=>PERKS[k]||XP[k],lv=k=>PERKS[k]?g.perk[k]:g.xp[k];
-  el.innerHTML='<h2>¡Jefe vencido! Elegí una mejora</h2><div class="cards">'+ks.map(k=>'<button data-k="'+k+'"'+(XP[k]?' class="gold"':'')+'><span class="e">'+inf(k).e+'</span><b>'+inf(k).n+(lv(k)?' (nv. '+(lv(k)+1)+')':'')+'</b><small>'+inf(k).d+'</small></button>').join('')+'</div>';
+  const cards=ks.map(k=>'<button data-k="'+k+'"'+(XP[k]?' class="gold"':'')+'><span class="e">'+inf(k).e+'</span><b>'+inf(k).n+(lv(k)?' (nv. '+(lv(k)+1)+')':'')+'</b><small>'+inf(k).d+'</small></button>').join('');
+  el.innerHTML='<h2>¡Jefe vencido! Elegí una mejora</h2><div class="cards">'+cards+'<button data-k="__rerollXP"><span class="e">🏅</span><b>Otra oportunidad: poderes de jefe</b><small>Elegí obligatoriamente 1 entre 2 poderes exclusivos distintos de los que aparecieron acá</small></button></div>';
   el.style.display='flex';g.pickAt=performance.now()+1200;const cd=el.querySelector('.cards');cd.classList.add('lock');setTimeout(()=>cd.classList.remove('lock'),1200);
-  el.querySelectorAll('button').forEach(b=>b.onclick=ev=>{ev.stopPropagation();if(performance.now()<g.pickAt)return;const k=b.dataset.k;if(XP[k])g.xp[k]++;else applyPerk(k);g.pick=null;g.holding=false;el.style.display='none'});
+  el.querySelectorAll('button').forEach(b=>b.onclick=ev=>{ev.stopPropagation();if(performance.now()<g.pickAt)return;const k=b.dataset.k;if(k==='__rerollXP'){openXPSecondPick();return}if(XP[k])g.xp[k]++;else applyPerk(k);g.pick=null;g.holding=false;el.style.display='none'});
+}
+function openXPSecondPick(){
+  const available=Object.keys(XP).filter(k=>!g.pickSkippedXP.includes(k));
+  const pool=available.length>=2?available:available.concat(Object.keys(XP).filter(k=>!available.includes(k)));
+  const ks=pool.sort(()=>Math.random()-.5).slice(0,2);const el=document.getElementById('pick');g.pick=ks;g.pickStage2=true;
+  el.innerHTML='<h2>Elegí 1 poder exclusivo de jefe</h2><p style="color:white;text-align:center">Esta elección es obligatoria</p><div class="cards">'+ks.map(k=>'<button class="gold" data-k="'+k+'"><span class="e">'+XP[k].e+'</span><b>'+XP[k].n+(g.xp[k]?' (nv. '+(g.xp[k]+1)+')':'')+'</b><small>'+XP[k].d+'</small></button>').join('')+'</div>';
+  g.pickAt=performance.now()+1200;const cd=el.querySelector('.cards');cd.classList.add('lock');setTimeout(()=>cd.classList.remove('lock'),1200);
+  el.querySelectorAll('button').forEach(b=>b.onclick=ev=>{ev.stopPropagation();if(performance.now()<g.pickAt)return;g.xp[b.dataset.k]++;g.pick=null;g.pickStage2=false;g.holding=false;el.style.display='none'});
 }
 function _oldPick(){
   g.holding=false;
@@ -624,11 +642,11 @@ function drawAllies(){
     const C=SOAPC[a.col||'green'];ctx.fillStyle=C[0];ctx.strokeStyle=C[1];ctx.lineWidth=3*S;ctx.beginPath();soapShape(a.shape,w,h,1);ctx.fill();ctx.stroke();
     ctx.fillStyle=C[2];ctx.strokeStyle=C[1];ctx.lineWidth=1.5*S;ctx.beginPath();soapShape(a.shape,w*.62,h*.58,.6);ctx.fill();ctx.stroke();
     ctx.restore();
-    ctx.fillStyle='#e8426d';ctx.font=Math.round(11*S+3)+'px Arial';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('♥'.repeat(a.hp),a.x,a.y-h-12*S);if(g.fx.shield>0){ctx.strokeStyle='rgba(84,112,232,.85)';ctx.lineWidth=3*S;ctx.beginPath();ctx.arc(a.x,a.y,34*S,0,6.28);ctx.stroke()}
+    ctx.fillStyle='#e8426d';ctx.font=Math.round(11*S+3)+'px Arial,"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('❤️'.repeat(a.hp),a.x,a.y-h-12*S);if(g.fx.shield>0){ctx.strokeStyle='rgba(84,112,232,.85)';ctx.lineWidth=3*S;ctx.beginPath();ctx.arc(a.x,a.y,34*S,0,6.28);ctx.stroke()}
   }
 }
 const TYPEC={div:['#5aa9ff','#1e5fb8'],pad:['#3a6ae0','#18308a'],todo:['#7a45d8','#2a1470'],med:['#58d27a','#1f8a42'],glot:['#f4a63c','#a8641a']};
-const TYN={div:{e:'🦠',n:'Divisor'},pad:{e:'🧫',n:'Padre Divisor'},todo:{e:'☣️',n:'Todo Divisor'},med:{e:'🩺',n:'Médico'},glot:{e:'😋',n:'Glotón'}};
+const TYN={div:{e:'🧫',n:'Divisor'},pad:{e:'🪺',n:'Padre Divisor'},todo:{e:'🪆',n:'Todo Divisor'},med:{e:'🩺',n:'Médico'},glot:{e:'🐷',n:'Glotón'}};
 const SPLIT={div:['norm',2],pad:['div',2],todo:['pad',3]};
 const HPM={div:1,pad:1.5,todo:2.5,med:.8,glot:1.5},RM={div:1.1,pad:1.4,todo:1.9,med:1,glot:1.25};
 const MED={radius:170,interval:1.2,amount:1,dist:260};
@@ -664,7 +682,7 @@ function processDeaths(){
     let any=false;
     for(const v of g.viruses){
       if(!v.dead||v.done)continue;v.done=true;any=true;
-      if(v.type=='bmb')bombBoom(v);
+      if(v.type=='bmb'&&!v.noDeathEffect)bombBoom(v);
       const s=v.btype=='rey'?['todo',2]:SPLIT[v.type];if(!s||v.nosplit||(CUST.perf&&g.viruses.length+born.length>=160))continue;
       for(let i=0;i<s[1];i++){if(CUST.perf&&g.viruses.length+born.length>=160)break;const a=Math.random()*6.28+i*6.283/s[1],c=newVirus(v.x+Math.cos(a)*v.r*.8,v.y+Math.sin(a)*v.r*.8,rollHp(),s[0]);c.r*=cval('vsize');c.grace=.5;born.push(c)}
     }
@@ -718,6 +736,7 @@ function medMove(v,dpl,dt){
   if((T&&fy<0)||(B&&fy>0)){fy=0;let s=v.x>cx?1:-1;if((s>0&&Rr)||(s<0&&L))s=-s;fx+=s*1.2}
   const m=Math.hypot(fx,fy);return m>.05?[fx/m,fy/m]:[0,0];
 }
+function drawEmoji(e,x,y,size){ctx.save();ctx.font=Math.max(8,Math.round(size))+'px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",system-ui,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(e,x,y);ctx.restore()}
 function decor(v){
   if(v.boss){bossDecor(v);return}const t=v.type;if(!t||t=='norm')return;const r=v.r;
   ctx.save();ctx.translate(v.x,v.y);ctx.lineCap='round';
@@ -726,18 +745,18 @@ function decor(v){
     ctx.beginPath();ctx.moveTo(0,-r);ctx.lineTo(0,-r*.55);ctx.moveTo(0,r);ctx.lineTo(0,r*.55);ctx.stroke();
     if(t!='div'){ctx.setLineDash([r*.15,r*.1]);ctx.beginPath();ctx.arc(0,0,r*.93,0,6.28);ctx.stroke();ctx.setLineDash([])}
     if(t=='todo'){ctx.strokeStyle='#ffd23a';ctx.lineWidth=Math.max(2,r*.07);ctx.beginPath();ctx.arc(0,0,r*1.03,0,6.28);ctx.stroke();ctx.fillStyle='#ffd23a';ctx.beginPath();for(let i=-1;i<=1;i++){ctx.moveTo(i*r*.3-r*.12,-r);ctx.lineTo(i*r*.3,-r*1.28+Math.abs(i)*r*.1);ctx.lineTo(i*r*.3+r*.12,-r)}ctx.fill()}
-    const lb=t=='todo'?'\u00f73':'\u00f72';ctx.fillStyle='#fff';ctx.strokeStyle='#1d1d4a';ctx.lineWidth=3;ctx.font='bold '+Math.round(r*.32)+'px Arial';ctx.textAlign='center';ctx.textBaseline='middle';ctx.strokeText(lb,0,r*.72);ctx.fillText(lb,0,r*.72);
+    ctx.save();ctx.fillStyle='#fff';ctx.font='900 '+Math.max(10,Math.round(r*(t=='todo'?.66:.72)))+'px Arial,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(t=='todo'?'÷3':'÷2',0,r*.62);ctx.restore();
   }else if(t=='fast'){
-    ctx.fillStyle='#fff';ctx.strokeStyle='#8a6a00';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(r*.1,-r*.75);ctx.lineTo(-r*.2,-r*.38);ctx.lineTo(0,-r*.38);ctx.lineTo(-r*.1,-r*.1);ctx.lineTo(r*.22,-r*.5);ctx.lineTo(r*.03,-r*.5);ctx.closePath();ctx.fill();ctx.stroke();
+    drawEmoji(TYN.fast.e,0,-r*.48,r*.82);
   }else if(t=='bmb'){
     ctx.strokeStyle='#ff9d2e';ctx.lineWidth=3*S;ctx.beginPath();ctx.moveTo(0,-r);ctx.quadraticCurveTo(r*.15,-r*1.25,r*.35,-r*1.25);ctx.stroke();ctx.fillStyle='#ff5a2a';ctx.beginPath();ctx.arc(r*.35,-r*1.25,r*.12+Math.abs(Math.sin(g.t*10))*r*.05,0,6.28);ctx.fill();
-    ctx.fillStyle='#ffb02e';ctx.font='bold '+Math.round(r*.4)+'px Arial';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('!',0,-r*.58);
+    drawEmoji(TYN.bmb.e,0,-r*.55,r*.72);
   }else if(t=='med'){
-    ctx.fillStyle='#fff';ctx.strokeStyle='#1f8a42';ctx.lineWidth=2;const w=r*.1,l=r*.26,y=-r*.58;ctx.beginPath();ctx.rect(-w,y-l,2*w,2*l);ctx.rect(-l,y-w,2*l,2*w);ctx.fill();ctx.stroke();
+    drawEmoji(TYN.med.e,0,-r*.55,r*.8);
   }else if(t=='glot'){
     const o=v.absorb>0?v.absorb/.4:0;ctx.fillStyle='#3b1500';ctx.beginPath();ctx.ellipse(0,r*.38,r*.52,r*(.2+.16*o),0,0,6.28);ctx.fill();
     ctx.fillStyle='#fff';for(let i=-1;i<=1;i+=2){ctx.beginPath();ctx.moveTo(i*r*.3-r*.07,r*.2);ctx.lineTo(i*r*.3+r*.07,r*.2);ctx.lineTo(i*r*.3,r*.34);ctx.fill()}
-    if(o>0){ctx.strokeStyle='rgba(255,166,40,'+o+')';ctx.lineWidth=4*S;ctx.beginPath();ctx.arc(0,0,r*(1.5-.4*o),0,6.28);ctx.stroke()}
+    ctx.save();ctx.fillStyle='#fff';ctx.font='900 '+Math.max(12,Math.round(r*.9))+'px Arial,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('!',0,-r*.55);ctx.restore();if(o>0){ctx.strokeStyle='rgba(255,166,40,'+o+')';ctx.lineWidth=4*S;ctx.beginPath();ctx.arc(0,0,r*(1.5-.4*o),0,6.28);ctx.stroke()}
   }
   ctx.restore();
 }
@@ -757,7 +776,7 @@ function soapShape(s,w,h,k){
   else if(s=='round'){const r=Math.min(w,h*1.4);ctx.ellipse(0,0,r,r*.95,0,0,6.28)}
   else ctx.roundRect(-w,-h,w*2,h*2,h*.8);
 }
-TYPEC.fast=['#ffd84a','#b88a00'];TYN.fast={e:'🟡',n:'Veloz'};RM.fast=.85;HPM.fast=1;
+TYPEC.fast=['#ffd84a','#b88a00'];TYN.fast={e:'🏎️',n:'Veloz'};RM.fast=.85;HPM.fast=1;
 const SPEC={base:.08,rate:.09,maxShare:.97},VELOZ={share:.2};
 SOAPC.pink=['#f8879f','#c9405f','#fbb4c3'];
 const CUST={shape:'pill',col:'pink',bg:0,hex:'#ff8fb0',txt:'SOAP',bshape:'circle',acc:false,perf:false,res:null,bgImage:null};
@@ -828,10 +847,10 @@ function stepC(s){
 }
 var D;
 const DIFFS={
-  easy:{pow:.6,powBoost:1.05,vir:1.7,gold:2,speed:.8,hp:-2,spec:.6,shiftSpawn:true,lives:5},
-  mid:{pow:1,powBoost:1.05,vir:1.6,gold:1,speed:1,hp:-2,spec:.7,shiftSpawn:true,lives:5},
-  hard:{pow:1,powBoost:1,vir:1,gold:1,speed:1,hp:0,spec:1,shiftSpawn:false,lives:5},
-  core:{core:true,pow:1,powBoost:1,vir:1,gold:1,speed:1,hp:0,spec:1,shiftSpawn:false,lives:1}
+  easy:{pow:.6,powBoost:1.05,vir:1.7,gold:2,speed:.8,hp:-2,spec:.6,shiftSpawn:true,bossInterval:60,lives:5},
+  mid:{pow:1,powBoost:1.05,vir:1.6,gold:1,speed:1,hp:-2,spec:.7,shiftSpawn:true,bossInterval:45,lives:5},
+  hard:{pow:1,powBoost:1,vir:1,gold:1,speed:1,hp:0,spec:1,shiftSpawn:false,bossInterval:30,lives:5},
+  core:{core:true,pow:1,powBoost:1,vir:1,gold:1,speed:1,hp:0,spec:1,shiftSpawn:false,bossInterval:30,lives:1}
 };
 D=DIFFS.hard;
 function pickTier(r){const gw=.138125*D.gold,k=(1-gw)/.861875;return r<.425*k?'n':r<.711875*k?'s':r<.861875*k?'b':'g'}
@@ -843,17 +862,18 @@ function showDiff(){
 }
 const BR={normal:68,rey:72,glot:62,tank:86,bomb:66},BSP={normal:34,rey:34,glot:70,tank:22,bomb:34};
 const BNAME={normal:'Jefe',rey:'Rey Divisor',glot:'Glotón Supremo',tank:'Tanque',bomb:'Bombardero'};
+const BICON={normal:'👾',rey:'🦁',glot:'🐲',tank:'🦏',bomb:'🚨'};
 const BTYPEC={normal:['#7a3fb0','#3b1760','#e0773a'],rey:['#c0398f','#5e1048','#ffd23a'],glot:['#e89a2b','#7a4a0a','#fff0b8'],tank:['#5a6a78','#222c36','#9aa8b4'],bomb:['#d6402f','#5a0f08','#2b2b2b']};
 const BOSSP=[['normal',.45],['rey',.15],['glot',.15],['tank',.15],['bomb',.10]];
 function pickBoss(){if(g.boss==0)return 'normal';let r=Math.random();for(const [k,p] of BOSSP){if(r<p)return k;r-=p}return 'normal'}
-TYPEC.bmb=['#4a4a55','#1d1d26'];TYN.bmb={e:'◆',n:'Bombardero (virus)'};HPM.bmb=1;RM.bmb=1.1;
+TYPEC.bmb=['#4a4a55','#1d1d26'];TYN.bmb={e:'💣',n:'Bombardero (virus)'};HPM.bmb=1;RM.bmb=1.1;
 const XCHANCE=.05;
 const XP={
-  bomb:{e:'✦',n:'Bombardeo eterno',d:'Todas tus burbujas explotan al impactar. Más niveles: más radio y daño.'},
-  storm:{e:'ϟ',n:'Tormenta eléctrica',d:'Cada impacto lanza un rayo que rebota entre virus (5 rebotes, +3 por nivel).'},
-  time:{e:'◷',n:'Tiempo absoluto',d:'Congela a todos los virus cada cierto tiempo. Más niveles: más duración y menos espera.'},
-  orbit:{e:'◎',n:'Órbita destructiva',d:'5 bombas orbitan tu jabón y explotan al tocar un virus. Más niveles: más daño y radio.'},
-  aura:{e:'◉',n:'Aura aniquiladora',d:'Cada 30 s sale un anillo que daña a todo (3× tu daño). Más niveles: más daño y velocidad.'}
+  bomb:{e:'🧨',n:'Bombardeo eterno',d:'Todas tus burbujas explotan al impactar. Más niveles: más radio y daño.'},
+  storm:{e:'⛈️',n:'Tormenta eléctrica',d:'Cada impacto lanza un rayo que rebota entre virus (5 rebotes, +3 por nivel).'},
+  time:{e:'🕰️',n:'Tiempo absoluto',d:'Congela a todos los virus cada cierto tiempo. Más niveles: más duración y menos espera.'},
+  orbit:{e:'🪐',n:'Órbita destructiva',d:'5 bombas orbitan tu jabón y explotan al tocar un virus. Hacen 2× el daño de tus burbujas y usan el radio de Explosiones.'},
+  aura:{e:'🌞',n:'Aura aniquiladora',d:'Cada 15 s sale un anillo que daña a todo (5× tu daño). Cada nivel suma 1× de daño y reduce el intervalo un 33%.'}
 };
 function bubDmg(){return Math.max(0,1+g.gold.dmg-g.gold.badDmg+(g.fx.dmg>0?1:0)+g.perk.big+cval('bdmg'))}
 function checkOver(){if(g.lives<=0&&!g.creative&&!g.over){g.over=true;g.t0=performance.now();box.innerHTML='<h1>¡Te ensuciaron!</h1><p>Puntos: <b>'+g.score+'</b></p><p>Jefes vencidos: <b>'+g.bossKills+'</b></p><p>Tiempo: <b>'+Math.floor(g.t)+' s</b></p><p>Tocá para reintentar</p>';msg.style.display='flex'}}
@@ -893,7 +913,7 @@ function bossDecor(v){
   else if(t=='glot'){const o=v.absorb>0?v.absorb/.4:0;ctx.fillStyle='#3b1500';ctx.beginPath();ctx.ellipse(0,r*.5,r*.52,r*(.2+.14*o),0,0,6.28);ctx.fill();if(o>0){ctx.strokeStyle='rgba(255,166,40,'+o+')';ctx.lineWidth=5*S;ctx.beginPath();ctx.arc(0,0,r*(1.5-.4*o),0,6.28);ctx.stroke()}}
   else if(t=='tank'){ctx.strokeStyle='#cfd8e0';ctx.lineWidth=r*.1;ctx.beginPath();ctx.arc(0,0,r*.92,0,6.28);ctx.stroke();ctx.fillStyle='#e6edf2';for(let i=0;i<8;i++){const a=i*Math.PI/4;ctx.beginPath();ctx.arc(Math.cos(a)*r*.92,Math.sin(a)*r*.92,r*.07,0,6.28);ctx.fill()}}
   else if(t=='bomb'){ctx.strokeStyle='#222';ctx.lineWidth=4*S;ctx.beginPath();ctx.moveTo(0,-r);ctx.quadraticCurveTo(r*.2,-r*1.3,r*.45,-r*1.3);ctx.stroke();ctx.fillStyle='#ffb02e';ctx.beginPath();ctx.arc(r*.45,-r*1.3,r*.1+Math.abs(Math.sin(g.t*10))*r*.05,0,6.28);ctx.fill()}
-  ctx.fillStyle=sc;ctx.font='bold '+Math.round(13*S)+'px Trebuchet MS,Arial';ctx.textAlign='center';ctx.textBaseline='alphabetic';ctx.fillText(BNAME[t],0,-r*1.75);
+  ctx.fillStyle=sc;ctx.font='bold '+Math.round(14*S)+'px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji","Trebuchet MS",Arial,sans-serif';ctx.textAlign='center';ctx.textBaseline='alphabetic';ctx.fillText(BICON[t]+' '+BNAME[t],0,-r*1.75);
   ctx.restore();
 }
 function chain(from,dm,lv){
@@ -906,8 +926,8 @@ function chain(from,dm,lv){
   if(pts.length>1&&g.bolts.length<40)g.bolts.push({pts,l:.25});
 }
 function orbBoom(x,y,lv){
-  const R=110*S*(1+.2*(lv-1))*(1+.35*g.perk.wave);g.rings.push({x,y,l:.4,R});pop(x,y,'#ffb347',24);g.shake=Math.max(g.shake,.2);
-  for(const o of g.viruses){if(o.dead||Math.hypot(o.x-x,o.y-y)>=R+o.r)continue;if(o.boss)hurt(o,4*lv);else{o.dead=true;g.score+=o.max*10;pop(o.x,o.y,colorFor(o.max)[0],10)}}
+  const R=170*S*(1+.35*g.perk.wave);g.rings.push({x,y,l:.4,R});pop(x,y,'#ffb347',24);g.shake=Math.max(g.shake,.2);
+  const dm=2*bubDmg();for(const o of g.viruses){if(o.dead||Math.hypot(o.x-x,o.y-y)>=R+o.r)continue;hurt(o,dm)}
 }
 function updateOrbit(dt){
   if(!(g.xp.orbit>0))return;
@@ -922,7 +942,7 @@ function updateX(dt){
   for(const b of g.bolts)b.l-=dt;g.bolts=g.bolts.filter(b=>b.l>0);
   const X=g.xp,cx=W/2,cy=H/2;
   if(X.time>0){g.xt.time-=dt;if(g.xt.time<=0){g.fx.tfreeze=2+2*X.time;g.xt.time=Math.max(6,28-4*X.time)+g.fx.tfreeze;pop(cx,cy,'#bfe9ff',20)}}
-  if(X.aura>0){g.xt.aura-=dt;if(g.xt.aura<=0){g.xt.aura=30;g.auras.push({r:0,hit:new Set(),sp:300*S*(1+.25*(X.aura-1)),dmg:3*bubDmg()*(1+.5*(X.aura-1))});g.shake=.25}}
+  if(X.aura>0){g.xt.aura-=dt;if(g.xt.aura<=0){g.xt.aura=Math.max(.25,15*Math.pow(.67,X.aura-1));g.auras.push({r:0,hit:new Set(),sp:300*S*(1+.25*(X.aura-1)),dmg:(4+X.aura)*bubDmg()});g.shake=.25}}
   const maxR=Math.hypot(W,H)/2+60*S;
   for(const a of g.auras){a.r+=a.sp*dt;for(const v of g.viruses){if(v.dead||a.hit.has(v))continue;if(Math.abs(Math.hypot(v.x-cx,v.y-cy)-a.r)<v.r+12*S){a.hit.add(v);hurt(v,a.dmg)}}}
   g.auras=g.auras.filter(a=>a.r<maxR);
@@ -937,7 +957,7 @@ function drawX(){
     b.pts.forEach((p,i)=>{if(!i){ctx.moveTo(p.x,p.y);return}const q=b.pts[i-1],n=5;for(let k=1;k<=n;k++){const t=k/n,j=k<n?18*S:0;ctx.lineTo(q.x+(p.x-q.x)*t+(Math.random()-.5)*j,q.y+(p.y-q.y)*t+(Math.random()-.5)*j)}});
     ctx.stroke();ctx.restore();
   }
-  if(g.fx.tfreeze>0){ctx.save();ctx.fillStyle='rgba(200,235,255,.28)';ctx.fillRect(0,0,W,H);ctx.fillStyle='#2a6a9a';ctx.font='bold '+Math.round(16*S+4)+'px Trebuchet MS,Arial';ctx.textAlign='center';ctx.textBaseline='alphabetic';ctx.fillText('⏳ TIEMPO DETENIDO ('+Math.ceil(g.fx.tfreeze)+'s)',W/2,H-30*S);ctx.restore()}
+  if(g.fx.tfreeze>0){ctx.save();ctx.fillStyle='rgba(200,235,255,.28)';ctx.fillRect(0,0,W,H);ctx.fillStyle='#2a6a9a';ctx.font='bold '+Math.round(16*S+4)+'px "Trebuchet MS",Arial,"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';ctx.textAlign='center';ctx.textBaseline='alphabetic';ctx.fillText('🕰️ TIEMPO DETENIDO ('+Math.ceil(g.fx.tfreeze)+'s)',W/2,H-30*S);ctx.restore()}
 }
 function stealPool(){
   const a=[];for(const k of ['dmg','fast','double','bomb','shield','freeze'])if(g.fx[k]>0)a.push(()=>{g.fx[k]=0});
@@ -961,8 +981,8 @@ function update(dt){
   for(const p of g.powers)p.life-=dt;
   g.powers=g.powers.filter(p=>p.life>0);
   g.spawn-=dt;
-  if(g.spawn<=0&&!(g.fx.freeze>0)&&(!g.creative||g.cAuto.virus)){const n=Math.min(6,1+(g.t>60&&Math.random()<Math.min(.6,(g.t-60)/200)?1:0)+spawnStage());for(let i=0;i<n;i++)spawnVirus(false);g.spawn=Math.max(.3,1.2-g.t*.01)*(.7+Math.random()*.6)*D.vir}
-  if(g.t>=g.nextBoss&&!(g.fx.freeze>0)){if(!g.creative||g.cAuto.boss)spawnVirus(true);g.nextBoss+=60}
+  if(g.spawn<=0&&g.fx.freeze<=0&&(!g.creative||g.cAuto.virus)){const n=Math.min(6,1+(g.t>60&&Math.random()<Math.min(.6,(g.t-60)/200)?1:0)+spawnStage());for(let i=0;i<n;i++)spawnVirus(false);g.spawn=Math.max(.3,1.2-g.t*.01)*(.7+Math.random()*.6)*D.vir}
+  if(g.t>=g.nextBoss&&g.fx.freeze<=0){if(!g.creative||g.cAuto.boss)spawnVirus(true);g.nextBoss+=(D.bossInterval||60)}
   const cx=W/2,cy=H/2,sr=24*S*cval('ssize');
   for(const b of g.bubbles){
     if(b.home>0){let best=null,bd=1e9;for(const v of g.viruses){if(v.dead)continue;const dd=Math.hypot(v.x-b.x,v.y-b.y);if(dd<bd){bd=dd;best=v}}
@@ -1045,7 +1065,7 @@ function drawVirus(v){
   ctx.fillStyle=v.boss?'#fff':'rgba(255,255,255,.9)';ctx.strokeStyle=sc;ctx.lineWidth=2;
   const bw=r*1.5,bx=v.x-bw/2,by=v.y-r*(v.boss?1.3:1.5)-4;
   ctx.fillRect(bx,by,bw,7*S);ctx.fillStyle='#e8426d';ctx.fillRect(bx,by,bw*Math.max(0,v.hp/v.max),7*S);ctx.strokeRect(bx,by,bw,7*S);
-  ctx.fillStyle=sc;ctx.font='bold '+Math.round(13*S)+'px Trebuchet MS,Arial';ctx.textAlign='center';ctx.fillText(Math.round(v.hp*10)/10,v.x,by-3);
+  ctx.fillStyle=sc;ctx.font='bold '+Math.round(13*S)+'px "Trebuchet MS",Arial,"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';ctx.textAlign='center';ctx.fillText(Math.round(v.hp*10)/10,v.x,by-3);
 }
 function drawSoap(){
   const cx=W/2,cy=H/2,w=50*S*cval('ssize'),h=32*S*cval('ssize');
@@ -1055,7 +1075,7 @@ function drawSoap(){
   ctx.beginPath();soapShape(CUST.shape,w,h,1);ctx.fill();ctx.stroke();
   ctx.fillStyle=C[2];ctx.strokeStyle=C[1];ctx.lineWidth=2*S;ctx.beginPath();soapShape(CUST.shape,w*.65,h*.6,.6);ctx.fill();ctx.stroke();
   ctx.restore();
-  ctx.save();ctx.translate(cx,cy);ctx.rotate(g.rot);ctx.fillStyle=SOAPC[CUST.col][1];ctx.font='900 '+Math.round(20*S*cval('ssize'))+'px Trebuchet MS,Arial Black,Arial';ctx.textAlign='center';ctx.textBaseline='middle';{const tx=SOAPTXT();let fz=Math.round(20*S*cval('ssize'));while(fz>7&&ctx.measureText(tx).width>w*1.5){fz--;ctx.font='900 '+fz+'px Trebuchet MS,Arial Black,Arial'}ctx.fillText(tx,0,2*S)}ctx.restore();
+  ctx.save();ctx.translate(cx,cy);ctx.rotate(g.rot);ctx.fillStyle=SOAPC[CUST.col][1];ctx.font='900 '+Math.round(20*S*cval('ssize'))+'px "Trebuchet MS","Arial Black",Arial,"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';{const tx=SOAPTXT();let fz=Math.round(20*S*cval('ssize'));while(fz>7&&ctx.measureText(tx).width>w*1.5){fz--;ctx.font='900 '+fz+'px "Trebuchet MS","Arial Black",Arial,"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif'}ctx.fillText(tx,0,2*S)}ctx.restore();
   ctx.globalAlpha=1;
 }
 function bshapePath(x,y,r,s){const c=ctx;c.beginPath();if(s=='oval')c.ellipse(x,y,r*1.15,r*.85,0,0,6.28);else if(s=='square')c.roundRect(x-r*.9,y-r*.9,r*1.8,r*1.8,r*.35);else if(s=='diamond'){c.moveTo(x,y-r*1.1);c.lineTo(x+r*1.1,y);c.lineTo(x,y+r*1.1);c.lineTo(x-r*1.1,y);c.closePath()}else c.arc(x,y,r,0,6.28)}
@@ -1074,37 +1094,47 @@ function draw(){
   drawX();drawPowers();
   for(const p of g.parts){ctx.globalAlpha=Math.min(1,p.l*2);ctx.fillStyle=p.c;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.28);ctx.fill()}
   for(const r of g.rings){const k=1-r.l/.4;ctx.globalAlpha=r.l/.4;ctx.strokeStyle='#ffa53a';ctx.lineWidth=7*S;ctx.beginPath();ctx.arc(r.x,r.y,r.R*k,0,6.28);ctx.stroke();ctx.fillStyle='rgba(255,200,90,.25)';ctx.fill()}
-  ctx.font='bold '+Math.round(20*S)+'px Arial';ctx.textAlign='center';for(const p of g.plus){ctx.globalAlpha=Math.min(1,p.l*2);ctx.fillStyle='#22b04f';ctx.fillText('+',p.x,p.y)}
+  ctx.font='bold '+Math.round(20*S)+'px Arial,"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';ctx.textAlign='center';for(const p of g.plus){ctx.globalAlpha=Math.min(1,p.l*2);ctx.fillStyle='#22b04f';ctx.fillText('➕',p.x,p.y)}
   ctx.globalAlpha=1;ctx.restore();
   // HUD
-  const fs=Math.round(18*S+4);ctx.font='bold '+fs+'px Trebuchet MS,Arial';ctx.textBaseline='top';ctx.fillStyle=sc;
+  const fs=Math.round(18*S+4);ctx.font='bold '+fs+'px "Trebuchet MS",Arial,"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';ctx.textBaseline='top';ctx.fillStyle=sc;
   ctx.textAlign='left';ctx.fillText('Puntos: '+g.score,14,12);
   ctx.fillText('Vida virus: '+maxHp()+' máx',14,12+fs+4);
-  const it=[];
-  if(g.fx.dmg>0)it.push('💥 Daño +1 ('+Math.ceil(g.fx.dmg)+'s)');
-  if(g.fx.double>0)it.push('✌️ Doble tiro ('+Math.ceil(g.fx.double)+'s)');
-  if(g.fx.fast>0)it.push('⚡ Rápido ('+Math.ceil(g.fx.fast)+'s)');
-  if(g.fx.freeze>0)it.push('❄️ Congelar ('+Math.ceil(g.fx.freeze)+'s)');
-  if(g.got.life)it.push('❤️ ×'+g.got.life);
-  if(g.got.minus)it.push('🔻 ×'+g.got.minus);
-  if(g.fx.bomb>0)it.push('💣 Explosiones ('+Math.ceil(g.fx.bomb)+'s)');
-  if(g.fx.haste>0)it.push('💨 Furia ('+Math.ceil(g.fx.haste)+'s)');if(g.fx.slow>0)it.push('🐌 Lentitud ('+Math.ceil(g.fx.slow)+'s)');
-  if(g.fx.shield>0)it.push('🛡️ Escudo ('+Math.ceil(g.fx.shield)+'s)');
-  ctx.font=Math.round(14*S+3)+'px Trebuchet MS,Arial';ctx.fillText(it.length?it.join('   '):'Powers: ninguno',14,12+2*(fs+4));
+  const iconFs=Math.round(14*S+3),rowGap=iconFs+6,firstY=12+2*(fs+4);
+  const addIcon=(arr,e,n)=>{if(n>0)arr.push(e+'×'+n)};
+  const active=[];
+  if(g.fx.dmg>0)addIcon(active,PW.dmg.e,1);
+  if(g.fx.double>0)addIcon(active,PW.double.e,1);
+  if(g.fx.fast>0)addIcon(active,PW.fast.e,1);
+  if(g.fx.freeze>0)addIcon(active,PW.freeze.e,1);
+  if(g.got.life)addIcon(active,PW.life.e,g.got.life);
+  if(g.got.minus)addIcon(active,PW.minus.e,g.got.minus);
+  if(g.fx.bomb>0)addIcon(active,PW.bomb.e,1);
+  if(g.fx.haste>0)addIcon(active,PW.haste.e,1);
+  if(g.fx.slow>0)addIcon(active,PW.slow.e,1);
+  if(g.fx.shield>0)addIcon(active,PW.shield.e,1);
+  ctx.font=iconFs+'px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",system-ui,sans-serif';
+  if(active.length)ctx.fillText(active.join('   '),14,firstY);
   const pk=Object.keys(PERKS).filter(k=>g.perk[k]).map(k=>PERKS[k].e+'×'+g.perk[k]);
-  if(pk.length){ctx.fillStyle='#6a2fa0';ctx.fillText(pk.join('  '),14,12+2*(fs+4)+2*(Math.round(14*S+3)+6));ctx.fillStyle=sc}
-  const gi=[];if(g.gold.dmg)gi.push('🌟 Daño +'+g.gold.dmg);if(g.gold.rate)gi.push('🚀 Cadencia ×'+g.gold.rate);if(g.gold.multi)gi.push('🔱 '+(g.gold.multi+1)+' tiros');if(g.gold.badDmg)gi.push('💢 Daño −'+g.gold.badDmg);if(g.gold.badRate)gi.push('🐢 Cadencia −'+g.gold.badRate);
-  if(gi.length){ctx.fillStyle='#b07a00';ctx.fillText(gi.join('   '),14,12+2*(fs+4)+Math.round(14*S+3)+6);ctx.fillStyle=sc}ctx.font='bold '+fs+'px Trebuchet MS,Arial';
-  const xi=[];for(const k in g.xp)if(g.xp[k])xi.push(XP[k].e+' nv.'+g.xp[k]+(k=='aura'?' ('+Math.ceil(g.xt.aura)+'s)':k=='time'?(g.fx.tfreeze>0?' ¡activo!':' ('+Math.ceil(g.xt.time)+'s)'):''));
-  ctx.font=Math.round(14*S+3)+'px Trebuchet MS,Arial';if(xi.length){ctx.fillStyle='#b8860b';ctx.fillText(xi.join('   '),14,12+2*(fs+4)+3*(Math.round(14*S+3)+6));ctx.fillStyle=sc}ctx.font='bold '+fs+'px Trebuchet MS,Arial';
-  ctx.textAlign='right';ctx.fillText(g.creative?'♥ ∞':'♥'.repeat(Math.max(0,g.lives)),W-60,12);
+  if(pk.length){ctx.fillStyle='#6a2fa0';ctx.fillText(pk.join('   '),14,firstY+rowGap);ctx.fillStyle=sc}
+  const gi=[];
+  if(g.gold.dmg)addIcon(gi,PW.gdmg.e,g.gold.dmg);
+  if(g.gold.rate)addIcon(gi,PW.grate.e,g.gold.rate);
+  if(g.gold.multi)addIcon(gi,PW.gmulti.e,g.gold.multi);
+  if(g.gold.badDmg)addIcon(gi,PW.gdmgdown.e,g.gold.badDmg);
+  if(g.gold.badRate)addIcon(gi,PW.grateslow.e,g.gold.badRate);
+  if(gi.length){ctx.fillStyle='#b07a00';ctx.fillText(gi.join('   '),14,firstY+2*rowGap);ctx.fillStyle=sc}
+  const xi=[];for(const k in g.xp)if(g.xp[k])addIcon(xi,XP[k].e,g.xp[k]);
+  if(xi.length){ctx.fillStyle='#b8860b';ctx.fillText(xi.join('   '),14,firstY+3*rowGap);ctx.fillStyle=sc}
+  ctx.font='bold '+fs+'px "Trebuchet MS",Arial,"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';
+  ctx.textAlign='right';ctx.fillText(g.creative?'❤️ ∞':'❤️'.repeat(Math.max(0,g.lives)),W-60,12);
   if(g.creative){ctx.textAlign='center';ctx.fillText('MODO CREATIVO',W/2,H-fs-12);ctx.textAlign='right'}
   if(g.started&&!g.over&&(!g.creative||g.cAuto.boss)){const left=Math.max(0,Math.ceil(g.nextBoss-g.t));ctx.fillText('Jefe en '+left+' s',W-60,12+fs+4)}
 }
 var KACT=[['up','Disparar arriba'],['down','Disparar abajo'],['left','Disparar izquierda'],['right','Disparar derecha'],['shoot','Disparar al puntero']];var KEYS={up:'ArrowUp',down:'ArrowDown',left:'ArrowLeft',right:'ArrowRight',shoot:'Space'};try{const s=JSON.parse(localStorage.getItem('soapKeys')||'null');if(s)KEYS=Object.assign(KEYS,s)}catch(e){}var KWAIT=null;
-function keyLabel(c){const m={ArrowUp:'↑',ArrowDown:'↓',ArrowLeft:'←',ArrowRight:'→',Space:'Espacio'};return m[c]||String(c).replace(/^Key/,'').replace(/^Digit/,'')}function saveKeys(){try{localStorage.setItem('soapKeys',JSON.stringify(KEYS))}catch(e){}}
+function keyLabel(c){const m={ArrowUp:'⬆️',ArrowDown:'⬇️',ArrowLeft:'⬅️',ArrowRight:'➡️',Space:'Espacio'};return m[c]||String(c).replace(/^Key/,'').replace(/^Digit/,'')}function saveKeys(){try{localStorage.setItem('soapKeys',JSON.stringify(KEYS))}catch(e){}}
 function openSettings(){g.cmenu=true;g.holding=false;document.getElementById('settings').style.display='flex';renderSettings()}function closeSettings(){document.getElementById('settings').style.display='none';g.cmenu=false;KWAIT=null}
-function renderSettings(){document.getElementById('setbody').innerHTML='<button data-s="cust">🎨 Personalizar</button><button data-s="keys">🖥️ Controles de PC</button><button data-s="perf">⚡ Modo Rendimiento: '+(CUST.perf?'SÍ':'NO')+'</button><button data-s="acc">👁 Distinción visual: '+(CUST.acc?'SÍ':'NO')+'</button><p style="font-size:14px">F3 (en PC) muestra un panel técnico.</p><button data-s="exit" class="danger-action">↩️ Salir al menú principal</button>'}
+function renderSettings(){document.getElementById('setbody').innerHTML='<button data-s="cust">🎨 Personalizar</button><button data-s="keys">🖥️ Controles de PC</button><button data-s="perf">📊 Modo Rendimiento: '+(CUST.perf?'SÍ':'NO')+'</button><button data-s="acc">👁️ Distinción visual: '+(CUST.acc?'SÍ':'NO')+'</button><p style="font-size:14px">F3 (en PC) muestra un panel técnico.</p><button data-s="exit" class="danger-action">🏠 Salir al menú principal</button>'}
 function renderKeys(msg){let h='<p style="font-size:14px">Las flechas disparan hacia su lado y la tecla de puntero dispara hacia donde toques. Tocá Cambiar y después la tecla. Esc cancela.</p>';for(const [a,l] of KACT)h+='<p>'+l+': <b>'+keyLabel(KEYS[a])+'</b> <button data-kc="'+a+'">Cambiar</button></p>';h+='<p id="kmsg" style="font-size:14px;min-height:20px">'+(msg||(KWAIT?'Presioná una tecla…':''))+'</p><button data-kr="1">Restablecer</button> <button data-kb="1">Volver</button>';document.getElementById('setbody').innerHTML=h}
 document.getElementById('setbody').onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.s){const s=b.dataset.s;if(s=='cust'){document.getElementById('settings').style.display='none';openCust(true)}else if(s=='exit'){exitToMenu()}else if(s=='keys')renderKeys();else if(s=='perf'){CUST.perf=!CUST.perf;saveCust();renderSettings()}else if(s=='acc'){CUST.acc=!CUST.acc;saveCust();renderSettings()}}else if(b.dataset.kc){KWAIT=b.dataset.kc;renderKeys()}else if(b.dataset.kr){KEYS={up:'ArrowUp',down:'ArrowDown',left:'ArrowLeft',right:'ArrowRight',shoot:'Space'};saveKeys();renderKeys('Teclas restablecidas.')}else if(b.dataset.kb){KWAIT=null;renderSettings()}};
 document.getElementById('setClose').onclick=closeSettings;document.getElementById('gear').onclick=openSettings;
