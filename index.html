@@ -232,8 +232,8 @@ html,body{font-family:"Trebuchet MS","Arial Rounded MT Bold",Arial,"Apple Color 
 <p>Empezás con 5 corazones (1 en Hardcore). Si un virus normal te toca, perdés 1 corazón y ese virus desaparece. La explosión elimina virus normales cercanos, pero no daña a los jefes. Después de recibir daño tenés 1,3 s de invulnerabilidad.</p>
 <p>Los powers aparecen aproximadamente cada 5–8 s en Difícil y permanecen 3 s en pantalla: tocá uno antes de que desaparezca.</p>
 <h3>Virus normales y dificultad creciente</h3>
-<p>Los virus normales aparecen con entre 1 y 5 de vida al comienzo. Su vida máxima aumenta 1 cada 25 s. Cuanta más vida tienen al aparecer, más lentos se mueven.</p>
-<p>Al vencer un jefe que da recompensa, todos los virus que ya están en pantalla ganan +1 de vida máxima y actual. Desde el segundo jefe recompensado, la vida mínima sube +1, la máxima sube +2 y la velocidad de los virus normales aumenta un 8% por jefe. También aparece +1 virus por tanda por cada jefe posterior al primero.</p>
+<p>Los virus normales aparecen con una cantidad aleatoria de vida entre un tercio de la vida máxima (redondeado hacia abajo) y la vida máxima. Esta escala aumenta con el tiempo y más rápidamente después del tercer jefe. Cuanta más vida tienen al aparecer, más lentos se mueven.</p>
+<p>Al vencer un jefe que da recompensa, los virus que ya están en pantalla aumentan su vida actual y máxima. Desde el cuarto jefe recompensado, ese aumento pasa a ser mucho mayor. La velocidad de los virus normales aumenta un 8% por jefe. También aparece +1 virus por tanda por cada jefe posterior al primero.</p>
 <p>Las tandas aparecen cada vez más seguido con el tiempo. Después de los primeros 60 s, algunas tandas pueden traer un virus adicional. Desde el tercer jefe programado, los virus comunes y especiales aparecen un poco más rápido; los jefes invocados por powers no cuentan para este avance.</p>
 <p>🏎️ <b>Veloz:</b> aparece desde el inicio, tiene 1 de vida y se mueve un 50% más rápido que un virus normal.</p>
 <h3>Virus especiales</h3>
@@ -457,7 +457,7 @@ document.getElementById('cbody').onclick=e=>{
 function _oldStart(){box.innerHTML='<h1>🧼 SOUP ADVENTURE</h1><p>Tocá la pantalla para lanzar burbujas</p><p>Cada burbuja hace 1 de daño</p><p><b>Tocá para empezar</b></p>';msg.style.display='flex'}
 showStart();
 
-function maxHp(){return 5+g.bossKills+Math.max(0,g.bossKills-1)+Math.floor(g.t/25)+D.hp}
+function maxHp(){return 5+g.bossKills+Math.max(0,g.bossKills-1)+2*Math.max(0,g.bossKills-3)+Math.floor(g.t/25)+D.hp}
 function spawnVirus(boss,hpOv,type){
   const n0=g.viruses.length;_spawnVirus(boss,hpOv,type);
   if(!boss&&g.viruses.length>n0){const o=g.viruses[g.viruses.length-1],t=type||rollType();const nv=newVirus(o.x,o.y,Math.max(1,o.hp),t,o.face);nv.r*=cval('vsize');g.viruses[g.viruses.length-1]=nv}else if(boss&&g.viruses.length>n0)g.viruses[g.viruses.length-1].r*=cval('vsize');
@@ -466,7 +466,7 @@ function _spawnVirus(boss,hpOv,bt0){
   const side=Math.floor(Math.random()*4),m=90*S;let x,y;
   if(side==0){x=Math.random()*W;y=-m}else if(side==1){x=W+m;y=Math.random()*H}else if(side==2){x=Math.random()*W;y=H+m}else{x=-m;y=Math.random()*H}
   if(boss){const bt=bt0||pickBoss(),mu={normal:2.5,rey:2.5,glot:2.5,tank:4,bomb:2}[bt]||2.5,hp=hpOv||Math.max(1,Math.round(maxHp()*mu));g.boss++;g.viruses.push({x,y,hp,max:hp,r:BR[bt]*S,sp:BSP[bt]*S,boss:1,btype:bt,ph:0,id:g.id++,flash:0})}
-  else{const mn=1+Math.max(0,g.bossKills-1),hp=hpOv||mn+Math.floor(Math.random()*(maxHp()-mn+1));g.viruses.push({x,y,hp,max:hp,r:(20+Math.min(hp,12)*2.2)*S,sp:Math.max(20*S,(82+Math.random()*18-hp*5.5)*S)*(1+.08*Math.max(0,g.bossKills-1)),boss:0,ph:Math.random()*6,id:g.id++,flash:0,face:Math.floor(Math.random()*4)})}
+  else{const mx=maxHp(),mn=Math.max(1,Math.floor(mx/3)),hp=hpOv||mn+Math.floor(Math.random()*(mx-mn+1));g.viruses.push({x,y,hp,max:hp,r:(20+Math.min(hp,12)*2.2)*S,sp:Math.max(20*S,(82+Math.random()*18-hp*5.5)*S)*(1+.08*Math.max(0,g.bossKills-1)),boss:0,ph:Math.random()*6,id:g.id++,flash:0,face:Math.floor(Math.random()*4)})}
 }
 function safeAt(x,y,r){const cx=W/2,cy=H/2,Z=125*S*cval('ssize')+r;let dx=x-cx,dy=y-cy,d=Math.hypot(dx,dy);if(d<Z){if(d<1){dx=0;dy=-1;d=1}const k=Z/d;x=cx+dx*k;y=cy+dy*k}x=Math.max(r,Math.min(W-r,x));y=Math.max(r,Math.min(H-r,y));return [x,y]}
 function patOff(L){if(L<=1)return [0];const o=[];const spread=.12;for(let i=0;i<L;i++)o.push((i-(L-1)/2)*spread);return o}
@@ -474,11 +474,9 @@ function shoot(x,y,ox,oy,ally,col){
   const cx=ox??W/2,cy=oy??H/2,a=Math.atan2(y-cy,x-cx);if(!ally)g.aim=a;
   const dm=Math.max(0,1+g.gold.dmg-g.gold.badDmg+(g.fx.dmg>0?1:0)+g.perk.big+cval('bdmg')),n=Math.min(g.creative&&!CUST.perf?Infinity:40,1+g.gold.multi+(g.fx.double>0?1:0)),P=g.perk;
   const mk=ang=>({x:cx+Math.cos(ang)*30*S,y:cy+Math.sin(ang)*30*S,vx:Math.cos(ang)*560*S*cval('bspd'),vy:Math.sin(ang)*560*S*cval('bspd'),r:(dm>1?14:10)*(1+.3*P.big)*S*cval('bsize'),d:dm,bomb:g.fx.bomb>0||g.xp.bomb>0,xb:g.xp.bomb,pierce:P.pierce,sp:P.split,dist:0,home:P.homing,ally:!!ally,col:col||CUST.col});
-  if(P.back>0){
-    const total=n*(P.back+1);
-    for(let i=0;i<total;i++)g.bubbles.push(mk(a+i*Math.PI*2/total));
-  }else{
-    for(const o of patOff(n))g.bubbles.push(mk(a+o));
+  for(const o of patOff(n)){
+    g.bubbles.push(mk(a+o));
+    for(let i=0;i<P.back;i++)g.bubbles.push(mk(a+o+Math.PI));
   }
 }
 function pop(x,y,col,n){if(CUST.perf)n=Math.ceil(n/2);for(let i=0;i<n;i++){const a=Math.random()*6.28,s=60+Math.random()*160;g.parts.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,l:.5+Math.random()*.4,c:col,r:(2+Math.random()*4)*S})}}
@@ -515,7 +513,8 @@ function registerBossDefeat(v){
   if(v.rewardOnly){g.bonusPicks++;return}
   if(v.pairId!=null&&g.viruses.some(o=>o.boss&&o.pairId===v.pairId&&!o.dead))return;
   g.shake=.4;g.bossKills++;
-  g.viruses.forEach(o=>{if(!o.dead&&!o.boss){o.hp++;o.max++}});
+  const hpGain=1+(g.bossKills>3?3:0);
+  g.viruses.forEach(o=>{if(!o.dead&&!o.boss){o.hp+=hpGain;o.max+=hpGain}});
 }
 PW.bossgood={e:'👑',n:'Jefe invocado',t:'g'};PW.bossbad={e:'👹',n:'Jefe salvaje',t:'gb'};PW.lifeloss={e:'💔',n:'Pérdida de vida',t:'gb'};
 function spawnPower(){
@@ -684,7 +683,7 @@ function newVirus(x,y,hp0,type,face){
   if(type=='fast')hp0=1;const hp=Math.max(1,Math.round(hp0*(HPM[type]||1)));
   return {x,y,hp,max:hp,r:(20+Math.min(hp0,12)*2.2)*S*(RM[type]||1),sp:(type=='fast'?1.5:1)*Math.max(20*S,(82+Math.random()*18-hp*5.5)*S)*(1+.08*Math.max(0,g.bossKills-1)),boss:0,ph:Math.random()*6,id:g.id++,flash:0,face:face??Math.floor(Math.random()*4),type,absorb:0};
 }
-function rollHp(){const mn=1+Math.max(0,g.bossKills-1);return mn+Math.floor(Math.random()*(maxHp()-mn+1))}
+function rollHp(){const mx=maxHp(),mn=Math.max(1,Math.floor(mx/3));return mn+Math.floor(Math.random()*(mx-mn+1))}
 function glotHit(v,b){if(Math.random()<(v.boss?.5:.33)){v.hp=Math.min(v.max,v.hp+b.d);v.absorb=.4;pop(v.x+(b.x-v.x)*.5,v.y+(b.y-v.y)*.5,'#ffb347',6)}else v.hp-=b.d}
 function processDeaths(){
   const born=[];
@@ -1151,7 +1150,13 @@ function draw(){
   if(g.gold.badDmg)gi.push(make(PW.gdmgdown.e,g.gold.badDmg,true));
   if(g.gold.badRate)gi.push(make(PW.grateslow.e,g.gold.badRate,true));
   powerY=drawRow(gi,powerY,'#b07a00');
-  const xi=[];for(const k in g.xp)if(g.xp[k])xi.push(make(XP[k].e,g.xp[k],true));
+  const xi=[];
+  for(const k in g.xp)if(g.xp[k]){
+    let suffix='×'+g.xp[k];
+    if(k==='aura')suffix+=' ('+Math.ceil(Math.max(0,g.xt.aura))+'s)';
+    else if(k==='time')suffix+=' ('+Math.ceil(Math.max(0,g.xt.time))+'s)';
+    xi.push({icon:XP[k].e,suffix,gold:true});
+  }
   powerY=drawRow(xi,powerY,'#b8860b');
   ctx.font='bold '+fs+'px "Trebuchet MS",Arial,"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';
   ctx.textAlign='right';ctx.font='bold '+Math.round(15*S+2)+'px Arial,sans-serif';
