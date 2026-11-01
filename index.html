@@ -10,6 +10,8 @@ html,body{height:100%;margin:0;background:var(--bg);overflow:hidden;touch-action
 canvas{display:block;width:100%;height:100%}
 #msg{position:fixed;inset:0;display:none;align-items:center;justify-content:center;text-align:center;pointer-events:none}
 #msg div{background:var(--panel);border:4px solid #c9405f;border-radius:28px;padding:22px 30px;box-shadow:0 6px 0 #c9405f}
+/* El panel completo debe recibir toques; el fondo sigue dejando pasar eventos. */
+#msg>div{pointer-events:auto}
 .dopt{margin:8px 0}.dopt small{display:block;font-size:13px;margin-top:3px}
 #box{max-width:min(440px,92vw)}
 #msg .mbtns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:14px}
@@ -1247,17 +1249,22 @@ function lanScreen(mode){
   document.getElementById('lScan').onclick=netScan;
   document.getElementById('lJoinIp').onclick=()=>{const ip=document.getElementById('lIp').value.trim();if(ip)netJoin(ip,null)};
   document.getElementById('lBack').onclick=showModes;
-  netScan();
 }
+let NET_SCAN_ID=0;
 async function netScan(){
   const list=document.getElementById('lList');if(!list)return;
+  const scanId=++NET_SCAN_ID;
   const m=/^(\d+\.\d+\.\d+)\.\d+$/.exec(location.hostname);
   if(!m){list.innerHTML='<p style="font-size:14px">Para buscar servidores abrí el juego desde http://IP_DEL_HOST:8787 (o escribí la IP del host abajo).</p>';return}
-  list.innerHTML='<p style="font-size:14px">Buscando en '+m[1]+'.x …</p>';
-  const found=[];
-  await Promise.all(Array.from({length:254},(_,i)=>{const ip=m[1]+'.'+(i+1);
-    return fetch('http://'+ip+':8787/info',{signal:AbortSignal.timeout(900)}).then(r=>r.json()).then(j=>{if(j&&j.app==='soap-adventures')for(const r of j.rooms)found.push({ip,r})}).catch(()=>{})}));
-  if(!found.length){list.innerHTML='<p style="font-size:14px">No encontré servidores en '+m[1]+'.x. ¿El host corrió node server.js?</p>';return}
+  list.innerHTML='<p style="font-size:14px">Buscando servidores… (podés seguir usando los botones)</p>';
+  const found=[];let next=1;
+  // Limita la concurrencia para no saturar Safari ni bloquear la interfaz.
+  const worker=async()=>{while(next<=254&&scanId===NET_SCAN_ID){const n=next++,ip=m[1]+'.'+n;
+    try{const r=await fetch('http://'+ip+':8787/info',{signal:AbortSignal.timeout(450)});if(!r.ok)continue;const j=await r.json();if(j&&j.app==='soap-adventures')for(const room of j.rooms||[])found.push({ip,r:room})}catch(e){}
+  }};
+  await Promise.all(Array.from({length:10},worker));
+  if(scanId!==NET_SCAN_ID||document.getElementById('lList')!==list)return;
+  if(!found.length){list.innerHTML='<p style="font-size:14px">No encontré servidores en '+m[1]+'.x. Podés ingresar la IP manualmente.</p>';return}
   list.innerHTML=found.map(f=>'<div style="margin:4px 0"><button data-ip="'+f.ip+'" data-room="'+f.r.id+'" style="width:auto;display:inline-block;font-size:15px;padding:6px 10px">Unirse</button> '+esc(f.r.name)+' · '+f.r.players+'/'+f.r.max+(f.r.started?' · en juego':'')+' · '+f.ip+'</div>').join('');
   list.querySelectorAll('button[data-ip]').forEach(b=>b.onclick=()=>netJoin(b.dataset.ip,b.dataset.room));
 }
