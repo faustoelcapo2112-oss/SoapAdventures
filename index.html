@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Soap Adventures v4.2</title>
+<title>Soap Adventures v4.3</title>
+<meta name="theme-color" content="#e879a0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Soap Adventures">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" sizes="1024x1024" href="icon-1024.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="manifest" href="manifest.json">
+
 <style>
 :root{--bg:#fcc1d1;--ink:#8a1f43;--panel:#fff4f7}
 @media (prefers-color-scheme: dark){:root{--bg:#fcc1d1;--ink:#8a1f43;--panel:#fff4f7}}
@@ -230,9 +239,14 @@ html,body{font-family:"Trebuchet MS","Arial Rounded MT Bold",Arial,"Apple Color 
 #msg h1,#msg p,.gbox h2,.gbody,#setbody button,#msg .mbtns button,#msg .dopt button,.cbs button,.cards button,#cbtn,#gear{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
 .emoji,.cards .e{font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;font-variant-emoji:emoji}
 
+
+#fullscreenBtn{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:66px;z-index:4;width:44px;height:44px;border-radius:14px;border:0;background:rgba(250,252,255,.96);font:800 27px system-ui,-apple-system,sans-serif;color:#8a1f43;cursor:pointer;padding:0;box-shadow:0 5px 18px rgba(28,35,58,.16);pointer-events:auto;touch-action:manipulation}
+:fullscreen{background:var(--bg)}
+:fullscreen body{height:100dvh}
+@media (display-mode: standalone){#fullscreenBtn{display:none}}
 </style></head><body>
 <canvas id="c"></canvas>
-<div id="ver">v.4.2</div>
+<div id="ver">v.4.3</div>
 <div id="guide"><div class="gbox"><h2>Guía del juego</h2><div class="gbody">
 <h3>Cómo se juega</h3>
 <p>Sos el jabón del centro. Tocá o arrastrá el dedo para lanzar burbujas hacia ese lugar. Cada burbuja hace 1 de daño base.</p>
@@ -333,6 +347,7 @@ html,body{font-family:"Trebuchet MS","Arial Rounded MT Bold",Arial,"Apple Color 
 <button id="cbtn" aria-label="Modo creativo" title="Modo creativo">🛠️</button>
 <div id="cpanel"><div class="gbox"><h2>🎮 Modo creativo</h2><div class="gbody" id="cbody"></div><button class="bk" id="cClose">Cerrar</button></div></div>
 <div id="custom"><div class="gbox"><h2>Personalizar</h2><div class="gbody" id="cusbody"></div><button class="bk" id="cusClose">Listo</button></div></div>
+<button id="fullscreenBtn" aria-label="Pantalla completa" title="Pantalla completa">⛶</button>
 <button id="gear" aria-label="Configuración" title="Configuración">⚙️</button>
 <div id="settings"><div class="gbox"><h2>⚙️ Configuración</h2><div class="gbody" id="setbody"></div><button class="bk" id="setClose">Cerrar</button></div></div>
 <div id="warn"><div class="gbox"><h2>🚧 Aviso</h2><p id="warnTxt"></p><div class="mbtns"><button id="warnOk">Continuar</button><button id="warnNo">Cancelar</button></div></div></div>
@@ -1884,4 +1899,13 @@ function loop(now){
   requestAnimationFrame(loop);
 }
 requestAnimationFrame(loop);
+
+if('serviceWorker' in navigator && (location.protocol==='https:'||location.hostname==='localhost')) navigator.serviceWorker.register('./sw.js').catch(()=>{});
+// Pantalla completa: funciona en navegadores compatibles; en iPhone se usa la app instalada.
+(()=>{const b=document.getElementById('fullscreenBtn');if(!b)return;
+ const ios=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+ const standalone=()=>window.navigator.standalone===true||window.matchMedia('(display-mode: standalone)').matches;
+ const refresh=()=>{const on=!!document.fullscreenElement;b.textContent=on?'⛶':'⛶';b.title=on?'Salir de pantalla completa':'Pantalla completa';};
+ b.addEventListener('click',async()=>{try{if(document.fullscreenElement){await document.exitFullscreen();return;}if(document.documentElement.requestFullscreen){await document.documentElement.requestFullscreen();}else if(ios&&!standalone()){alert('En iPhone: tocá Compartir en Safari y elegí “Añadir a pantalla de inicio”. Abrí Soap Adventures desde el nuevo icono para jugar sin la barra del navegador.');}else{alert('Este navegador no permite activar pantalla completa desde esta página.');}}catch(e){if(ios&&!standalone())alert('Para ocultar la barra en iPhone, añadí el juego a la pantalla de inicio desde el menú Compartir de Safari.');}refresh();});
+ document.addEventListener('fullscreenchange',refresh);})();
 </script></body></html>
