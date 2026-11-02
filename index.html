@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Soap Adventures">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="apple-touch-icon" sizes="180x180" href="./icon-180.png">
+<link rel="apple-touch-icon" sizes="1024x1024" href="icon-1024.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="manifest" href="manifest.json">
 
@@ -317,7 +317,7 @@ body.adv-creative #cbtn{left:auto;right:14px}
 <p>🫧 <b>Burbujas grandes:</b> aumenta su tamaño y suma +1 de daño por nivel (hasta nivel 5).</p>
 <p>⭕️ <b>Onda expansiva:</b> cada nivel aumenta un 35% el radio de las explosiones.</p>
 <p>🧽 <b>Jabón resistente:</b> suma +2 corazones y aumenta en 2 el máximo de vidas. No aparece en Hardcore.</p>
-<p>🧼 <b>Jabón aliado:</b> un jabón que dispara solo y prioriza a los jefes. Tiene 3 vidas; podés tener hasta 3 aliados en una partida normal y hasta 30 en Creativo.</p>
+<p>🧼 <b>Jabón aliado:</b> un jabón que dispara solo y prioriza a los jefes. Tiene 3 vidas; podés tener hasta 3 aliados en partidas normales. En Creativo no hay un límite fijo, pero cantidades enormes pueden trabar o cerrar el juego.</p>
 <h3>Poderes exclusivos de jefes (muy raros)</h3>
 <p>Al vencer un jefe que da recompensa, hay un 5% de probabilidad de que una de las 3 cartas sea uno de estos poderes. En Aventura, cada jefe tiene un 15% de probabilidad de soltar directamente un exclusivo en vez de una mejora de jefe. Son permanentes y se acumulan por niveles.</p>
 <p>🧨 <b>Bombardeo eterno:</b> todas tus burbujas explotan al impactar. Cada nivel aumenta el radio y el daño.</p>
@@ -342,12 +342,12 @@ body.adv-creative #cbtn{left:auto;right:14px}
 <h3>Configuración (⚙️ arriba a la derecha)</h3>
 <p><b>Personalizar:</b> forma y color del jabón, color libre, forma de las burbujas, fondo o imagen propia, texto del jabón (hasta 6 caracteres) y resolución.</p>
 <p><b>Movimiento:</b> la palanquita aparece únicamente en celulares y solo cuando está seleccionado Movimiento con palanca. Si activás Movimiento con el dedo, la palanquita desaparece y arrastrás el jabón directamente. En PC no se muestra la palanquita; se usa teclado o mando, o podés elegir Movimiento con el dedo.</p><p><b>Controles:</b> las flechas disparan hacia arriba, abajo, izquierda y derecha; Espacio dispara hacia el puntero. En Aventura, WASD y las flechas mueven el jabón; E dispara. Podés cambiar las teclas (no se pueden repetir) y restablecerlas. Esc cancela el cambio de tecla.</p>
-<p><b>Modo Rendimiento:</b> reduce a la mitad las partículas y muestra avisos al invocar demasiados virus o aliados en Creativo. Los avisos no bloquean la acción.</p><p><b>Velocidad del jabón:</b> en Creativo, pestaña Ajustes, podés cambiar la velocidad de movimiento del jabón en Aventura creativa.</p><p><b>Audio:</b> en Ajustes podés activar o desactivar los efectos, ajustar su volumen, activar o quitar la música original de fondo y regular su volumen por separado.</p>
+<p><b>Modo Rendimiento:</b> reduce a la mitad las partículas y muestra avisos al invocar demasiados virus o aliados en Creativo. Los avisos te preguntan si querés continuar y advierten que el juego puede trabarse o cerrarse.</p><p><b>Velocidad del jabón:</b> en Creativo, pestaña Ajustes, podés cambiar la velocidad de movimiento del jabón en Aventura creativa.</p><p><b>Audio:</b> en Ajustes podés activar o desactivar los efectos, ajustar su volumen, activar o quitar la música original de fondo y regular su volumen por separado.</p>
 <p><b>Distinción visual:</b> agrega contornos más marcados a virus y burbujas.</p>
 <p><b>F3 (en PC):</b> muestra FPS, virus activos, burbujas/proyectiles, aliados, partículas, resolución del área de juego y estado del Modo Rendimiento.</p>
 <h3>Modo creativo</h3>
 <p>Desde el menú principal elegís Aventura creativa o Defensa creativa. Tenés vidas infinitas y un panel 🛠️ para activar la aparición automática de virus, jefes y powers; invocar virus, virus especiales o jefes; sumar powers, mejoras y poderes exclusivos; y ajustar tamaños, velocidades, daño, cadencia y multiplicador de clics (×1, ×5, ×10, ×50, ×100 o ×500). En los ajustes de Creativo también podés modificar la velocidad del jabón. Los sorteos aleatorios cambian las estadísticas y otorgan entre 3 y 8 modificadores aleatorios en cantidades aleatorias.</p>
-<p>Podés tener hasta 30 aliados. Algunas mejoras tienen máximos de nivel. El juego se pausa mientras el panel está abierto; desde el panel podés administrar virus, powers y ajustes.</p>
+<p>En Creativo no hay un límite fijo de aliados, virus ni cantidades de modificadores. Al superar valores recomendados, el juego te advierte antes de continuar; cantidades enormes pueden provocar lag o cerrar la pestaña. El juego se pausa mientras el panel está abierto; desde el panel podés administrar virus, powers y ajustes.</p>
 <h3>Qué hereda tu aliado</h3>
 <p>El aliado dispara con tus modificadores de daño, multidisparo, disparo trasero, burbuja triple, perforantes, teledirigidas, burbujas grandes y explosiones. También le afectan Cadencia eterna, Cadencia invertida, Daño debilitado, Disparo rápido, Lentitud, Escudo y Vida extra.</p>
 </div><button class="bk" onclick="document.getElementById('guide').style.display='none'">Volver</button></div></div>
@@ -435,6 +435,7 @@ function buildC(){
   }
   document.getElementById('cbody').innerHTML=h;
 }
+// Los valores creativos aceptan notación científica y potencias (por ejemplo 10^100). JavaScript usa Number: no representa enteros arbitrariamente grandes con precisión.
 function parseCreativeNumber(raw){
   const src=String(raw).replace(/,/g,'.').replace(/\s+/g,'');if(!src||src.length>120)return NaN;let i=0;
   function expr(){let v=term();while(src[i]==='+'||src[i]==='-'){const op=src[i++],r=term();v=op==='+'?v+r:v-r}return v}
@@ -488,9 +489,8 @@ function applyRandom(mode,bosses){
 }
 function applyPerk(k,allowOver=false,forceLimit=false){
   if(k=='ally'){
-    const lim=g.creative?30:3;
+    const lim=3;
     if(!g.creative&&g.allies.length>=lim)return;
-    if(g.creative&&(CUST.perf||forceLimit)&&!allowOver&&g.allies.length>=lim)return;
     g.allies.push({x:CWX(),y:CWY(),hp:3,inv:0,cool:.5,rot:-Math.PI/2,aim:-Math.PI/2});
   }
   g.perk[k]++;if(k=='heart')g.lives=Math.min(8+2*g.perk.heart,g.lives+2);
@@ -535,21 +535,21 @@ function cAct(a,k,allowOver=false,forceLimit=false){
   if(a=='difficulty'){D=DIFFS[k];g.nextBoss=Math.max(g.t+1,Math.min(g.nextBoss,g.t+(D.bossInterval||60)));}
   else if(a=='tog')g.cAuto[k]=!g.cAuto[k];
   else if(a=='hp')g.cHp=Math.max(1,g.cHp+(+k)*cval('mul'));
-  else if(a=='sp'){const n=Math.min(5000,(+k)*cval('mul'),virusRoom());for(let i=0;i<n;i++)spawnVirus(false,g.cHp,'norm')}
-  else if(a=='ty'){const n=Math.min(5000,cval('mul'),virusRoom());for(let i=0;i<n;i++)spawnVirus(false,g.cHp,k)}
-  else if(a=='boss'){const n=Math.min(5000,cval('mul'),virusRoom());for(let i=0;i<n;i++)spawnVirus(true,undefined,k)}
+  else if(a=='sp'){const n=Math.min(Number.MAX_SAFE_INTEGER,(+k)*cval('mul'),virusRoom());for(let i=0;i<n;i++)spawnVirus(false,g.cHp,'norm')}
+  else if(a=='ty'){const n=Math.min(Number.MAX_SAFE_INTEGER,cval('mul'),virusRoom());for(let i=0;i<n;i++)spawnVirus(false,g.cHp,k)}
+  else if(a=='boss'){const n=Math.min(Number.MAX_SAFE_INTEGER,cval('mul'),virusRoom());for(let i=0;i<n;i++)spawnVirus(true,undefined,k)}
   else if(a=='clear'){g.viruses.forEach(v=>{v.dead=true;v.nosplit=true;v.noDeathEffect=true})}
-  else if(a=='pw'){for(let i=0;i<Math.min(5000,cval('mul'));i++)collect({k,x:CWX(),y:CWY()})}
-  else if(a=='perk'){const n=k=='ally'?Math.min(5000,cval('mul'),allyRoom()):Math.min(5000,cval('mul'));for(let i=0;i<n;i++)applyPerk(k,allowOver,forceLimit)}
-  else if(a=='lvl'){for(let i=0;i<Math.min(5000,cval('mul'));i++){g.bossKills++;g.rewards++;g.viruses.forEach(v=>{if(!v.dead&&!v.boss){v.hp++;v.max++}})}}
+  else if(a=='pw'){for(let i=0;i<Math.min(Number.MAX_SAFE_INTEGER,cval('mul'));i++)collect({k,x:CWX(),y:CWY()})}
+  else if(a=='perk'){const n=k=='ally'?Math.min(Number.MAX_SAFE_INTEGER,cval('mul'),allyRoom()):Math.min(Number.MAX_SAFE_INTEGER,cval('mul'));for(let i=0;i<n;i++)applyPerk(k,allowOver,forceLimit)}
+  else if(a=='lvl'){for(let i=0;i<Math.min(Number.MAX_SAFE_INTEGER,cval('mul'));i++){g.bossKills++;g.rewards++;g.viruses.forEach(v=>{if(!v.dead&&!v.boss){v.hp++;v.max++}})}}
   else if(a=='strip'){for(const q in g.fx)g.fx[q]=0;for(const q in g.gold)g.gold[q]=0;for(const q in g.perk)g.perk[q]=0;for(const q in g.xp)g.xp[q]=0;g.allies=[]}
-  else if(a=='xp'){for(let i=0;i<Math.min(5000,cval('mul'));i++)g.xp[k]++}
+  else if(a=='xp'){for(let i=0;i<Math.min(Number.MAX_SAFE_INTEGER,cval('mul'));i++)g.xp[k]++}
   else if(a=='st')stepC(k);
   else if(a=='vh'){g.viruses.forEach(v=>{if(v.dead)return;if(k=='full')v.hp=v.max;else{v.hp+=(+k);if(v.hp>v.max)v.max=v.hp;if(v.hp<=0)v.dead=true}})}
   else if(a=='exit'){exitCreative();return}
   buildC();
 };
-function gateN(a,k){if(a=='sp')return Math.min(5000,(+k)*cval('mul'));if(a=='ty'||a=='boss')return Math.min(5000,cval('mul'));if(a=='perk'&&k=='ally')return Math.min(5000,cval('mul'));return 0}
+function gateN(a,k){if(a=='sp')return Math.min(Number.MAX_SAFE_INTEGER,(+k)*cval('mul'));if(a=='ty'||a=='boss')return Math.min(Number.MAX_SAFE_INTEGER,cval('mul'));if(a=='perk'&&k=='ally')return Math.min(Number.MAX_SAFE_INTEGER,cval('mul'));return 0}
 function gateWhat(a,k){return (a=='perk'&&k=='ally')?'ally':'virus'}
 var WLIM={virus:60,ally:30};
 function warnShow(what,n,fn){const cur=what=='ally'?g.allies.length:g.viruses.filter(v=>!v.dead).length,lim=WLIM[what];if(cur+n<=lim)return fn();document.getElementById('warnTxt').textContent='Advertencia de rendimiento: tienes '+cur+' '+(what=='ally'?'aliados':'virus')+' activos. Esta acción generará '+n+' más, alcanzando un total de '+(cur+n)+'. El límite recomendado es '+lim+'. ¿Deseas continuar?';document.getElementById('warn').style.display='flex';document.getElementById('warnOk').onclick=()=>{document.getElementById('warn').style.display='none';fn()};document.getElementById('warnNo').onclick=()=>{document.getElementById('warn').style.display='none'}}
@@ -568,9 +568,8 @@ document.getElementById('cbody').onclick=e=>{
   const n=gateN(a,k);
   if(!g.creative||n<=0){cAct(a,k);return}
   const what=gateWhat(a,k),lim=WLIM[what],cur=what=='ally'?g.allies.length:g.viruses.filter(v=>!v.dead).length;
-  if(CUST.perf){cAct(a,k);return}
   if(cur+n>lim){
-    document.getElementById('warnTxt').textContent='Advertencia: superar '+lim+' '+(what=='ally'?'aliados':'virus')+' puede hacer que el juego empiece a andar trabado. ¿Querés continuar sin límite?';
+    document.getElementById('warnTxt').textContent='⚠️ Riesgo de rendimiento: vas a superar el valor recomendado de '+lim+' '+(what=='ally'?'aliados':'virus')+'. Esta cantidad puede causar mucho lag, congelar la pestaña o hacer que el juego se cierre. ¿Estás seguro de que querés continuar?';
     document.getElementById('warn').style.display='flex';
     document.getElementById('warnOk').onclick=()=>{document.getElementById('warn').style.display='none';cAct(a,k,true)};
     document.getElementById('warnNo').onclick=()=>{document.getElementById('warn').style.display='none';cAct(a,k,false,true)};
@@ -763,7 +762,9 @@ const PERKS={
 function openPick(){
   g.holding=false;
   const ks=Object.keys(PERKS).filter(k=>!(k=='heart'&&D.core)&&!(k=='hold'&&g.perk.hold>=4)&&!(k=='split'&&g.perk.split>=3)&&!(k=='big'&&g.perk.big>=5)&&!(k=='ally'&&g.allies.length>=3)).sort(()=>Math.random()-.5).slice(0,3);
-  if(Math.random()<XCHANCE){const xk=Object.keys(XP);ks[Math.floor(Math.random()*ks.length)]=xk[Math.floor(Math.random()*xk.length)]}
+  // Defensa: cada una de las 3 opciones tiene su propio 5% independiente de ser exclusiva.
+  const xk=Object.keys(XP);
+  for(let i=0;i<ks.length;i++){if(Math.random()<XCHANCE)ks[i]=xk[Math.floor(Math.random()*xk.length)]}
   g.pick=ks;
   const el=document.getElementById('pick'),inf=k=>PERKS[k]||XP[k],lv=k=>PERKS[k]?g.perk[k]:g.xp[k];
   const cards=ks.map(k=>'<button data-k="'+k+'"'+(XP[k]?' class="gold"':'')+'><span class="e">'+inf(k).e+'</span><b>'+inf(k).n+(lv(k)?' (nv. '+(lv(k)+1)+')':'')+'</b><small>'+inf(k).d+'</small></button>').join('');
@@ -1373,13 +1374,13 @@ const CSTAT={
   rate:{n:'Cadencia ×',vals:[.5,1,2,3,5,10,30],d:1}
 };
 const CSTAT_BOUNDS={
-  mul:[0,5000],vspd:[0,10],sspd:[.25,5],vsize:[.25,8],ssize:[.25,6],
-  bspd:[.1,10],bsize:[.25,8],bdmg:[-1000,1000],rate:[.1,30]
+  mul:[0,Number.MAX_SAFE_INTEGER],vspd:[0,Number.MAX_SAFE_INTEGER],sspd:[Number.MIN_VALUE,Number.MAX_SAFE_INTEGER],vsize:[Number.MIN_VALUE,Number.MAX_SAFE_INTEGER],ssize:[Number.MIN_VALUE,Number.MAX_SAFE_INTEGER],
+  bspd:[Number.MIN_VALUE,Number.MAX_SAFE_INTEGER],bsize:[Number.MIN_VALUE,Number.MAX_SAFE_INTEGER],bdmg:[-Number.MAX_SAFE_INTEGER,Number.MAX_SAFE_INTEGER],rate:[Number.MIN_VALUE,Number.MAX_SAFE_INTEGER]
 };
 function safeCreativeStat(k,v){
-  const lim=CSTAT_BOUNDS[k],n=Number(v);
-  if(!lim||!Number.isFinite(n))return CSTAT[k].d;
-  return Math.max(lim[0],Math.min(lim[1],n));
+  const n=Number(v);
+  if(!Number.isFinite(n))return CSTAT[k].d;
+  return n;
 }
 function cval(k){return g.c?g.c[k]:CSTAT[k].d}
 function stepC(s){
