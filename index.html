@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Soap Adventures v5.4</title>
+<title>Soap Adventures v5.5</title>
 <meta name="theme-color" content="#e879a0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -227,7 +227,7 @@ button:active{filter:brightness(.97)}
 .gbox{border-radius:26px!important}
 #msg>div:after{width:25px;height:25px;right:15px;bottom:13px}
 #guide .gbox h2,#cpanel .gbox h2,#settings .gbox h2{padding:7px 34px 9px;border-radius:14px;background:linear-gradient(90deg,rgba(255,213,226,.78),rgba(255,240,245,.45));color:#8a3658}
-#msg #box:before{content:'SOAP ADVENTURES  •  BUBBLE SURVIVAL  •  v.5.4';color:#d64c7b;letter-spacing:1.8px}
+#msg #box:before{content:'SOAP ADVENTURES  •  BUBBLE SURVIVAL  •  v.5.5';color:#d64c7b;letter-spacing:1.8px}
 #msg .mbtns button:first-child{background:linear-gradient(135deg,#f77da2,#df4778);box-shadow:0 5px 0 #bd456c,0 9px 17px rgba(205,61,111,.2)}
 #msg .mbtns button:not(:first-child),#setbody button,#msg .dopt button{background:linear-gradient(180deg,#fff 0%,#f7edf2 100%)}
 #pick{background:radial-gradient(circle at 12% 18%,rgba(129,224,243,.25) 0 7px,transparent 9px),radial-gradient(circle at 88% 78%,rgba(129,224,243,.22) 0 10px,transparent 12px),rgba(39,29,49,.66)}
@@ -251,7 +251,7 @@ html.perf #gear,html.perf #cbtn,html.perf #ver,html.perf #msg,html.perf #guide,h
 body.adv-creative #cbtn{left:auto;right:14px}
 </style></head><body>
 <canvas id="c"></canvas><canvas id="fx"></canvas>
-<div id="ver">v.5.4</div>
+<div id="ver">v.5.5</div>
 <div id="guide"><div class="gbox"><h2>Guía del juego</h2><div class="gbody">
 <h3>Cómo se juega</h3>
 <p>Sos el jabón del centro. Tocá o arrastrá el dedo para lanzar burbujas hacia ese lugar. Cada burbuja hace 1 de daño base.</p>
@@ -319,7 +319,7 @@ body.adv-creative #cbtn{left:auto;right:14px}
 <p>🧽 <b>Jabón resistente:</b> suma +2 corazones y aumenta en 2 el máximo de vidas. No aparece en Hardcore.</p>
 <p>🧼 <b>Jabón aliado:</b> un jabón que dispara solo y prioriza a los jefes. Tiene 3 vidas; podés tener hasta 3 aliados en una partida normal y hasta 30 en Creativo.</p>
 <h3>Poderes exclusivos de jefes (muy raros)</h3>
-<p>Al vencer un jefe que da recompensa, hay un 5% de probabilidad de que una de las 3 cartas sea uno de estos poderes. Son permanentes y se acumulan por niveles.</p>
+<p>Al vencer un jefe que da recompensa, hay un 5% de probabilidad de que una de las 3 cartas sea uno de estos poderes. En Aventura, cada jefe tiene un 15% de probabilidad de soltar directamente un exclusivo en vez de una mejora de jefe. Son permanentes y se acumulan por niveles.</p>
 <p>🧨 <b>Bombardeo eterno:</b> todas tus burbujas explotan al impactar. Cada nivel aumenta el radio y el daño.</p>
 <p>⛈️ <b>Tormenta eléctrica:</b> cada impacto lanza un rayo que rebota entre virus cercanos: 5 rebotes en el nivel 1 y +3 por nivel. Con Perforantes, cada virus atravesado también puede activar rayos.</p>
 <p>🕰️ <b>Tiempo absoluto:</b> cada cierto tiempo congela a todos los virus mientras vos seguís disparando. Cada nivel aumenta la duración y reduce la espera.</p>
@@ -330,7 +330,7 @@ body.adv-creative #cbtn{left:auto;right:14px}
 <p>Las oleadas: cada oleada tiene su jefe fijo (1: Tanque, 2: Virus lento, 3: Rey, 4: Glotón, 5: Bombardero, y se repite con más vida). Cada oleada trae una cantidad fija de virus. Al agotarse dejan de aparecer hasta que termine la oleada. Los que sobran al terminar no salen en la siguiente, pero los vivos siguen en el mapa. Al morir el jefe termina la oleada, suelta un poder y se desbloquean nuevos virus. Los powers aparecen de a 10 en el mapa, duran 10 s y los agarrás tocándolos con el jabón. Los virus te persiguen. Después del 2º jefe te movés un poco más rápido que un virus común.</p>
 <p>Tanque gigante: tiene etapas, invoca virus veloces y viene con 3 médicos. Virus lento: enorme, con 10 veces la vida máxima y muy despacio. Cadencia eterna y Escudo te dan más velocidad, y Hielo o Tiempo detenido te frenan.</p>
 <p>Médicos: curan primero a los jefes, con el 5% de la vida máxima de quien curan (mínimo 1). En Medio, Difícil y Hardcore, cada jefe (menos el primero) viene con un médico detrás.</p>
-<p>Al morir un jefe que da recompensa suelta un power común en el lugar donde cayó. En Aventura no aparecen modificadores de jefe ni poderes exclusivos de jefe; tampoco Jefe invocado o Jefe salvaje. El Jefe salvaje no suelta nada. El jefe de la oleada aparece en un momento al azar de la oleada, y los virus siguen saliendo después. Algunos grupos de 5 entran desde los bordes del mapa.</p>
+<p>Al morir un jefe que da recompensa suelta una mejora permanente de jefe en el lugar donde cayó. Hay un 15% de probabilidad de que sea un poder exclusivo de jefe. Los virus normales conservan su 5% de probabilidad de soltar powers comunes. En Aventura no aparecen Jefe invocado ni Jefe salvaje. El jefe de la oleada aparece en un momento al azar de la oleada, y los virus siguen saliendo después. Algunos grupos de 5 entran desde los bordes del mapa.</p>
 <p>Los virus salen del borde del mapa. Cada virus tiene un 5% de soltar un poder al morir. Los jefes aparecen en los círculos rojos grandes. Antes de salir, el círculo late y aparece un aviso con los segundos que faltan. El Glotón Supremo cura la mitad del daño que absorbe.</p>
 <p>Mando: se configura en Ajustes, pestaña Mando (Xbox, PlayStation, Nintendo o no reconocido). Pausa: Escape o el botón de pausa. Menú creativo: la tecla C o su botón. Los jefes 6 en adelante vienen de a dos. Los virus tienen un 5% de soltar un poder al morir (no de jefe). En creativo, los divisores pueden dividirse cerca tuyo.</p>
 <h3>Dificultades de Defensa</h3>
@@ -686,6 +686,7 @@ const FREEZE_TIMER_RATE=.25,FREEZE_NORMAL={freeze:1,tfreeze:1,haste:1,slow:1};
 function extendFx(key,seconds){g.fx[key]=Math.max(0,g.fx[key]||0)+seconds}
 function powerSoundKey(k,t){if(k&&k.indexOf('B_')===0)k=k.slice(2);const m={dmg:'skill-power',fast:'skill-speed',double:'skill-double',life:'skill-life',minus:'skill-minus',bossgood:'boss',bossbad:'skill-badboss',lifeloss:'skill-lifeloss',gdmgdown:'skill-weaken',grateslow:'skill-slow',shieldg:'skill-shield',haste:'skill-haste',hpup:'skill-mutation',steal:'skill-steal',swarm:'skill-swarm',slow:'skill-slow',bomb:'skill-bomb',freeze:'skill-freeze',shield:'skill-shield',nuke:'skill-nuke',gdmg:'skill-power',grate:'skill-speed',gmulti:'skill-double',storm:'skill-electric',time:'skill-freeze',orbit:'skill-bomb',aura:'skill-aura',ally:'skill-ally',back:'skill-double',split:'skill-split',homing:'skill-homing',hold:'skill-speed',pierce:'skill-pierce',big:'skill-big',wave:'skill-blast',heart:'skill-life'};return m[k]||((t==='g'||t==='gb')?'gold':'pickup')}
 function collect(p){sfxPlay(powerSoundKey(p&&p.k,p&&p.t));if(p.k&&p.k.indexOf('B_')===0){const bk=p.k.slice(2);pop(p.x,p.y,'#ffffff',14);if(XP[bk])g.xp[bk]++;else applyPerk(bk);return}
+  if(p.k&&PERKS[p.k]){pop(p.x,p.y,'#ffffff',14);applyPerk(p.k);return}
   pop(p.x,p.y,'#ffffff',14);
   if(p.k=='dmg')extendFx('dmg',15);
   else if(p.k=='fast')extendFx('fast',10);
@@ -721,6 +722,7 @@ function drawPowers(){
     if(p.t=='gb'){ctx.shadowColor='#ff3b3b';ctx.shadowBlur=SB(16*S);ctx.fillStyle=grad(x,y,R,'#ffe0dc','#d9342b');ctx.strokeStyle='#6e0d08';ctx.lineWidth=3*S;ctx.beginPath();ctx.arc(x,y,R*1.12,0,6.28);ctx.fill();ctx.stroke();rc='#d9342b'}
     else if(p.t=='g'){ctx.shadowColor='#ffd700';ctx.shadowBlur=SB(20*S);ctx.fillStyle=grad(x,y,R,'#fff7b8','#e0a000');ctx.strokeStyle='#8a5a00';ctx.lineWidth=3*S;ctx.beginPath();ctx.arc(x,y,R*1.12,0,6.28);ctx.fill();ctx.stroke();rc='#ffc800'}
     else if(p.t=='b'){ctx.shadowColor='#e07068';ctx.shadowBlur=SB(5*S);ctx.fillStyle=grad(x,y,R,'#ffe0dc','#e68a84');ctx.strokeStyle='#a33a36';ctx.lineWidth=3*S;star(x,y,R*1.14,R*1.02,12,g.t);ctx.fill();ctx.stroke();rc='#cf5a55'}
+    else if(p.t=='perk'){ctx.shadowColor='#a66cff';ctx.shadowBlur=SB(18*S);ctx.fillStyle=grad(x,y,R,'#f1dcff','#8b4bd6');ctx.strokeStyle='#55218d';ctx.lineWidth=3*S;star(x,y,R*1.25,R*.9,8,g.t*.7);ctx.fill();ctx.stroke();rc='#a66cff'}
     else if(p.k=='bomb'){ctx.shadowColor='#ff5a00';ctx.shadowBlur=SB(16*S);ctx.fillStyle=grad(x,y,R,'#ffe066','#e63a00');ctx.strokeStyle='#6e1500';ctx.lineWidth=3*S;star(x,y,R*1.45,R*1,10,g.t*2);ctx.fill();ctx.stroke();rc='#ff5a00'}
     else if(p.k=='freeze'){ctx.shadowColor='#6fd0ff';ctx.shadowBlur=SB(16*S);ctx.fillStyle=grad(x,y,R,'#ffffff','#7fcdf5');ctx.strokeStyle='#2a7fb8';ctx.lineWidth=3*S;star(x,y,R*1.4,R*1.05,6,g.t);ctx.fill();ctx.stroke();rc='#2a9fe0'}
     else if(p.k=='shield'){ctx.shadowColor='#6a8cff';ctx.shadowBlur=SB(16*S);ctx.fillStyle=grad(x,y,R,'#d8e2ff','#5470e8');ctx.strokeStyle='#27368f';ctx.lineWidth=3*S;ctx.beginPath();ctx.arc(x,y,R*1.15,0,6.28);ctx.fill();ctx.stroke();ctx.setLineDash([5*S,4*S]);ctx.beginPath();ctx.arc(x,y,R*.95,0,6.28);ctx.stroke();ctx.setLineDash([]);rc='#5470e8'}
@@ -729,7 +731,7 @@ function drawPowers(){
     ctx.shadowBlur=0;ctx.strokeStyle=rc;ctx.lineWidth=4*S;ctx.beginPath();ctx.arc(x,y,R*1.45+6*S,-Math.PI/2,-Math.PI/2+6.28*f);ctx.stroke();
     // Los poderes exclusivos de Aventura usan claves B_*, cuya ficha vive en XP y no en PW.
     // Resolver el icono por categoría evita que el siguiente fotograma falle tras derrotar un jefe.
-    const meta=p.k&&p.k.startsWith('B_')?XP[p.k.slice(2)]:PW[p.k];
+    const meta=p.k&&p.k.startsWith('B_')?XP[p.k.slice(2)]:(PERKS[p.k]||PW[p.k]);
     const icon=meta&&meta.e?meta.e:'❔';
     ctx.font=Math.round(p.r*1.1)+'px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",system-ui,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='#000';ctx.fillText(icon,x,y+1);
     ctx.restore();
@@ -1579,14 +1581,23 @@ function advWaveClear(v){
   if(g.advPhase!='boss'||v.advWave!==g.wave)return;
   g.advPhase='gap';g.advT=5;g.advQuota=0;
 }
+function advBossPerkPool(){
+  return Object.keys(PERKS).filter(k=>
+    !(k==='heart'&&D.core)&&
+    !(k==='hold'&&g.perk.hold>=4)&&
+    !(k==='split'&&g.perk.split>=3)&&
+    !(k==='big'&&g.perk.big>=5)&&
+    !(k==='ally'&&g.allies.length>=3)
+  );
+}
 function advDropAt(x,y){
-  // Siempre suelta una recompensa de categoría jefe. Exclusivos: 3x la referencia de Defensa (5% -> 15%).
-  const exclusiveChance=0.15;
+  // En Aventura los jefes sueltan una mejora permanente; 15% de probabilidad de un exclusivo.
   const exclusive=Object.keys(XP).map(k=>'B_'+k);
-  const bossMods=['bossgood','bossbad'];
-  const pool=Math.random()<exclusiveChance?exclusive:bossMods;
+  const bossMods=advBossPerkPool();
+  const useExclusive=Math.random()<.15||bossMods.length===0;
+  const pool=useExclusive?exclusive:bossMods;
   const k=pickW(pool),m=24*S;
-  g.powers.push({k,t:PW[k]?.t||'g',x:Math.max(m,Math.min(MAP-m,x)),y:Math.max(m,Math.min(MAP-m,y)),r:24*S,life:10,max:10});
+  g.powers.push({k,t:k.startsWith('B_')?'g':'perk',bossReward:true,x:Math.max(m,Math.min(MAP-m,x)),y:Math.max(m,Math.min(MAP-m,y)),r:24*S,life:10,max:10});
 }
 function advDropMany(x,y){advDropAt(x,y)}
 function advHud(){
