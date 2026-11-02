@@ -17,6 +17,9 @@
 html,body{height:100%;margin:0;background:var(--bg);overflow:hidden;touch-action:none;font-family:"Trebuchet MS","Arial Rounded MT Bold",Arial,sans-serif;color:var(--ink);-webkit-user-select:none;user-select:none}
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 canvas{display:block;width:100%;height:100%}
+#c{position:relative;z-index:0}
+#fx{z-index:1}
+#soundBtn{position:fixed;top:calc(8px + env(safe-area-inset-top,0px));left:10px;z-index:5;width:44px;height:44px;border-radius:14px;border:3px solid #8a1f43;background:#fff4f7;font-size:23px;cursor:pointer;padding:0;box-shadow:0 3px 0 #8a1f43;pointer-events:auto}
 #msg{position:fixed;inset:0;display:none;align-items:center;justify-content:center;text-align:center;pointer-events:none}
 #msg div{background:var(--panel);border:4px solid #c9405f;border-radius:28px;padding:22px 30px;box-shadow:0 6px 0 #c9405f}
 /* El panel completo debe recibir toques; el fondo sigue dejando pasar eventos. */
@@ -225,7 +228,7 @@ button:active{filter:brightness(.97)}
 .gbox{border-radius:26px!important}
 #msg>div:after{width:25px;height:25px;right:15px;bottom:13px}
 #guide .gbox h2,#cpanel .gbox h2,#settings .gbox h2{padding:7px 34px 9px;border-radius:14px;background:linear-gradient(90deg,rgba(255,213,226,.78),rgba(255,240,245,.45));color:#8a3658}
-#msg #box:before{content:'SOAP ADVENTURES  •  BUBBLE SURVIVAL';color:#d64c7b;letter-spacing:1.8px}
+#msg #box:before{content:'SOAP ADVENTURES  •  BUBBLE SURVIVAL  •  v.5.4';color:#d64c7b;letter-spacing:1.8px}
 #msg .mbtns button:first-child{background:linear-gradient(135deg,#f77da2,#df4778);box-shadow:0 5px 0 #bd456c,0 9px 17px rgba(205,61,111,.2)}
 #msg .mbtns button:not(:first-child),#setbody button,#msg .dopt button{background:linear-gradient(180deg,#fff 0%,#f7edf2 100%)}
 #pick{background:radial-gradient(circle at 12% 18%,rgba(129,224,243,.25) 0 7px,transparent 9px),radial-gradient(circle at 88% 78%,rgba(129,224,243,.22) 0 10px,transparent 12px),rgba(39,29,49,.66)}
@@ -352,7 +355,7 @@ body.adv-creative #cbtn{left:auto;right:14px}
 <button id="cbtn" aria-label="Modo creativo" title="Modo creativo">🛠️</button>
 <div id="cpanel"><div class="gbox"><h2>🎮 Modo creativo</h2><div class="gbody" id="cbody"></div><button class="bk" id="cClose">Cerrar</button></div></div>
 <div id="custom"><div class="gbox"><h2>Personalizar</h2><div class="gbody" id="cusbody"></div><button class="bk" id="cusClose">Listo</button></div></div>
-<button id="gear" aria-label="Configuración" title="Configuración">⚙️</button>
+<button id="gear" aria-label="Configuración" title="Configuración">⚙️</button><button id="soundBtn" aria-label="Configuración de sonido" title="Sonido">🔊</button>
 <div id="settings"><div class="gbox"><h2>⚙️ Configuración</h2><div class="gbody" id="setbody"></div><button class="bk" id="setClose">Cerrar</button></div></div>
 <div id="warn"><div class="gbox"><h2>🚧 Aviso</h2><p id="warnTxt"></p><div class="mbtns"><button id="warnOk">Continuar</button><button id="warnNo">Cancelar</button></div></div></div>
 <div id="pausemenu"><div class="gbox"><h2>⏸️ Pausa</h2><div class="mbtns"><button id="pResume">Continuar</button><button id="pSet">Ajustes</button><button id="pExit">Salir al menú</button></div></div></div>
@@ -1090,14 +1093,14 @@ function ensureAudioGraph(){
 function applyAudioLevels(){
   if(!SFX_CTX)return;
   const now=SFX_CTX.currentTime;
-  if(SFX_BUS)SFX_BUS.gain.setTargetAtTime(CUST.sfx===false?0:Math.max(0,Math.min(1,+CUST.sfxVolume||0)),now,.035);
-  if(MUSIC_BUS)MUSIC_BUS.gain.setTargetAtTime(CUST.music===false?0:Math.max(0,Math.min(1,+CUST.musicVolume||0)),now,.08);
+  if(SFX_BUS)SFX_BUS.gain.setTargetAtTime(CUST.sfx===false?0:Math.max(0,Math.min(1.35,(+CUST.sfxVolume||0)*1.35)),now,.035);
+  if(MUSIC_BUS)MUSIC_BUS.gain.setTargetAtTime(CUST.music===false?0:Math.max(0,Math.min(1.2,(+CUST.musicVolume||0)*1.2)),now,.08);
 }
 function musicNote(freq,dur,vol,wave='triangle',delay=0){
   if(!SFX_CTX||!MUSIC_BUS)return;
   const t=SFX_CTX.currentTime+delay,o=SFX_CTX.createOscillator(),a=SFX_CTX.createGain();
   o.type=wave;o.frequency.setValueAtTime(freq,t);
-  a.gain.setValueAtTime(.0001,t);a.gain.exponentialRampToValueAtTime(Math.max(.0002,Math.min(.8,vol*2.5)),t+.025);a.gain.exponentialRampToValueAtTime(.0001,t+dur);
+  a.gain.setValueAtTime(.0001,t);a.gain.exponentialRampToValueAtTime(Math.max(.0002,Math.min(.95,vol*3.2)),t+.025);a.gain.exponentialRampToValueAtTime(.0001,t+dur);
   o.connect(a);a.connect(MUSIC_BUS);o.start(t);o.stop(t+dur+.03);
 }
 function musicTick(){
@@ -1144,14 +1147,14 @@ function sfxPlay(kind){
       const o=ac.createOscillator(),gain=ac.createGain();
       o.type=wave;o.frequency.setValueAtTime(Math.max(30,f1),t+delay);
       if(f2)o.frequency.exponentialRampToValueAtTime(Math.max(30,f2),t+delay+dur);
-      gain.gain.setValueAtTime(.0001,t+delay);gain.gain.exponentialRampToValueAtTime(Math.max(.0002,Math.min(.8,vol*2.5)),t+delay+.008);gain.gain.exponentialRampToValueAtTime(.0001,t+delay+dur);
+      gain.gain.setValueAtTime(.0001,t+delay);gain.gain.exponentialRampToValueAtTime(Math.max(.0002,Math.min(.95,vol*3.2)),t+delay+.008);gain.gain.exponentialRampToValueAtTime(.0001,t+delay+dur);
       o.connect(gain);gain.connect(SFX_BUS||ac.destination);o.start(t+delay);o.stop(t+delay+dur+.025);
     };
     const noise=(dur,vol,type='lowpass',f1=1200,f2=180,delay=0)=>{
       const len=Math.max(1,Math.floor(ac.sampleRate*dur)),buf=ac.createBuffer(1,len,ac.sampleRate),data=buf.getChannelData(0);
       for(let i=0;i<len;i++){const fade=1-i/len;data[i]=(Math.random()*2-1)*fade*fade}
       const src=ac.createBufferSource(),filter=ac.createBiquadFilter(),gain=ac.createGain();src.buffer=buf;filter.type=type;filter.frequency.setValueAtTime(Math.max(40,f1),t+delay);if(f2)filter.frequency.exponentialRampToValueAtTime(Math.max(40,f2),t+delay+dur);
-      gain.gain.setValueAtTime(.0001,t+delay);gain.gain.exponentialRampToValueAtTime(Math.max(.0002,Math.min(.8,vol*2.5)),t+delay+.01);gain.gain.exponentialRampToValueAtTime(.0001,t+delay+dur);src.connect(filter);filter.connect(gain);gain.connect(SFX_BUS||ac.destination);src.start(t+delay);src.stop(t+delay+dur+.025);
+      gain.gain.setValueAtTime(.0001,t+delay);gain.gain.exponentialRampToValueAtTime(Math.max(.0002,Math.min(.95,vol*3.2)),t+delay+.01);gain.gain.exponentialRampToValueAtTime(.0001,t+delay+dur);src.connect(filter);filter.connect(gain);gain.connect(SFX_BUS||ac.destination);src.start(t+delay);src.stop(t+delay+dur+.025);
     };
     switch(kind){
       case 'start':
@@ -1753,6 +1756,7 @@ function drawVirus(v){
 }
 function drawSoap(){
   const cx=CWX(),cy=CWY(),w=50*S*cval('ssize'),h=32*S*cval('ssize');
+  ctx.globalAlpha=1;
   if(g.inv>0&&Math.floor(g.inv*12)%2)ctx.globalAlpha=.35;
   ctx.save();ctx.translate(cx,cy);ctx.rotate(g.rot);
   const C=SOAPC[CUST.col];let soapFill=C[0];
@@ -1845,6 +1849,7 @@ function draw(){
   if(realismLevel()>0){drawRealismLighting();drawRealismShadows()}
   for(let i=0;i<g.viruses.length;i++){const v=g.viruses[i];if(!v.boss&&visibleWorld(v.x,v.y,v.r*1.5)){drawVirus(v);if(FRZ)drawIceShell(v)}}
   for(let i=0;i<g.viruses.length;i++){const v=g.viruses[i];if(v.boss&&visibleWorld(v.x,v.y,v.r*1.5)){drawVirus(v);if(FRZ)drawIceShell(v)}}
+  ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';
   drawSoap();drawAllies();
   for(let i=0;i<g.bubbles.length;i++){
     const b=g.bubbles[i];if(!visibleWorld(b.x,b.y,b.r+20*S))continue;
@@ -1938,7 +1943,7 @@ var KACT=[['up','Disparar arriba'],['down','Disparar abajo'],['left','Disparar i
 var KEYS=Object.assign({},DEFKEYS);try{const s=JSON.parse(localStorage.getItem('soapKeys')||'null');if(s)KEYS=Object.assign(KEYS,s)}catch(e){}var KWAIT=null;
 function keyLabel(c){const m={ArrowUp:'⬆️',ArrowDown:'⬇️',ArrowLeft:'⬅️',ArrowRight:'➡️',Space:'Espacio'};return m[c]||String(c).replace(/^Key/,'').replace(/^Digit/,'')}function saveKeys(){try{localStorage.setItem('soapKeys',JSON.stringify(KEYS))}catch(e){}}
 function openSettings(){g.cmenu=true;g.holding=false;document.getElementById('settings').style.display='flex';renderSettings()}function closeSettings(){document.getElementById('settings').style.display='none';g.cmenu=false;KWAIT=null;if(g&&g.paused)document.getElementById('pausemenu').style.display='flex'}
-function renderSettings(){SETVIEW='main';document.getElementById('setbody').innerHTML='<button data-s="keys">🎮 Controles (teclado y mando)</button><button data-s="move">📱 Movimiento móvil: '+(CUST.fmode?'Dedo':'Palanca')+'</button><h3>🔊 Audio</h3><button data-s="sfx">Efectos de sonido: '+(CUST.sfx!==false?'SÍ':'NO')+'</button><label style="display:block;font-size:14px;margin:8px 0">Volumen de efectos: <b id="sfxVolLabel">'+Math.round(CUST.sfxVolume*100)+'%</b><input data-audio="sfxVolume" type="range" min="0" max="100" value="'+Math.round(CUST.sfxVolume*100)+'" style="width:100%;touch-action:pan-x"></label><button data-s="music">🎵 Música de fondo: '+(CUST.music!==false?'SÍ':'NO')+'</button><label style="display:block;font-size:14px;margin:8px 0">Volumen de música: <b id="musicVolLabel">'+Math.round(CUST.musicVolume*100)+'%</b><input data-audio="musicVolume" type="range" min="0" max="100" value="'+Math.round(CUST.musicVolume*100)+'" style="width:100%;touch-action:pan-x"></label><button data-s="perf">📊 Modo Rendimiento: '+(CUST.perf?'SÍ':'NO')+'</button><button data-s="vsync">🖥️ Sincronización vertical (VSync): '+(CUST.vsync?'SÍ':'NO')+'</button>'+(fsStandalone()?'':'<button data-s="fs">⛶ Pantalla completa: '+(fsOn()?'SÍ':'NO')+'</button>')+'<button data-s="shaders">✨ Shaders: '+shLabel()+'</button><button data-s="acc">👁️ Distinción visual: '+(CUST.acc?'SÍ':'NO')+'</button><p style="font-size:14px">Con VSync activado, el juego dibuja al ritmo de actualización de la pantalla. Desactivado, intenta dibujar sin esperar al siguiente refresco; el navegador y la pantalla todavía pueden limitar la presentación.</p><p style="font-size:14px">F3 (en PC) muestra un panel técnico.</p><button data-s="exit" class="danger-action">🏠 Salir al menú principal</button>'}
+function renderSettings(){SETVIEW='main';document.getElementById('setbody').innerHTML='<button data-s="keys">🎮 Controles (teclado y mando)</button><button data-s="move">📱 Movimiento móvil: '+(CUST.fmode?'Dedo':'Palanca')+'</button><h3 id="audioSettingsTitle">🔊 Audio</h3><button data-s="sfx">Efectos de sonido: '+(CUST.sfx!==false?'SÍ':'NO')+'</button><label style="display:block;font-size:14px;margin:8px 0">Volumen de efectos: <b id="sfxVolLabel">'+Math.round(CUST.sfxVolume*100)+'%</b><input data-audio="sfxVolume" type="range" min="0" max="100" value="'+Math.round(CUST.sfxVolume*100)+'" style="width:100%;touch-action:pan-x"></label><button data-s="music">🎵 Música de fondo: '+(CUST.music!==false?'SÍ':'NO')+'</button><label style="display:block;font-size:14px;margin:8px 0">Volumen de música: <b id="musicVolLabel">'+Math.round(CUST.musicVolume*100)+'%</b><input data-audio="musicVolume" type="range" min="0" max="100" value="'+Math.round(CUST.musicVolume*100)+'" style="width:100%;touch-action:pan-x"></label><button data-s="perf">📊 Modo Rendimiento: '+(CUST.perf?'SÍ':'NO')+'</button><button data-s="vsync">🖥️ Sincronización vertical (VSync): '+(CUST.vsync?'SÍ':'NO')+'</button>'+(fsStandalone()?'':'<button data-s="fs">⛶ Pantalla completa: '+(fsOn()?'SÍ':'NO')+'</button>')+'<button data-s="shaders">✨ Shaders: '+shLabel()+'</button><button data-s="acc">👁️ Distinción visual: '+(CUST.acc?'SÍ':'NO')+'</button><p style="font-size:14px">Con VSync activado, el juego dibuja al ritmo de actualización de la pantalla. Desactivado, intenta dibujar sin esperar al siguiente refresco; el navegador y la pantalla todavía pueden limitar la presentación.</p><p style="font-size:14px">F3 (en PC) muestra un panel técnico.</p><button data-s="exit" class="danger-action">🏠 Salir al menú principal</button>'}
 
 function renderKeys(msg){SETVIEW='keys';
   let h='<div class="cbs ctabs"><button data-kt="kb"'+(KTAB=='kb'?' class="on"':'')+'>⌨️ Teclado</button><button data-kt="pad"'+(KTAB=='pad'?' class="on"':'')+'>🎮 Mando</button></div>';
@@ -1983,6 +1988,7 @@ document.getElementById('setbody').onclick=e=>{const b=e.target.closest('button'
 };
 document.getElementById('setbody').addEventListener('input',e=>{const k=e.target.dataset.audio;if(!k)return;const v=Math.max(0,Math.min(100,Number(e.target.value)||0))/100;CUST[k]=v;const out=document.getElementById(k==='sfxVolume'?'sfxVolLabel':'musicVolLabel');if(out)out.textContent=Math.round(v*100)+'%';saveCust();applyAudioLevels()});
 document.getElementById('setClose').onclick=closeSettings;document.getElementById('gear').onclick=openSettings;
+document.getElementById('soundBtn').onclick=()=>{openSettings();requestAnimationFrame(()=>{const h=document.getElementById('audioSettingsTitle');if(h)h.scrollIntoView({block:'start',behavior:'smooth'})})};
 function shSave(){saveCust();resize();fxRender();renderShaders()}
 function shToggle(){const sh=CUST.sh;sh.on=!sh.on;if(sh.on&&!shAnyLevel())Object.assign(sh.v,SH_PRESETS[1][1]);shSave()}
 function shPreset(i){const sh=CUST.sh,p=SH_PRESETS[i];if(!p)return;for(const [k] of SH_FX)sh.v[k]=p[1][k]||0;sh.on=i>0;shSave()}
