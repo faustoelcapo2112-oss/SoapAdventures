@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Soap Adventures v5.2</title>
+<title>Soap Adventures v5.4</title>
 <meta name="theme-color" content="#e879a0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -246,12 +246,14 @@ html,body{font-family:"Trebuchet MS","Arial Rounded MT Bold",Arial,"Apple Color 
 #setbody button[data-shp]{display:inline-block;width:auto}
 /* Modo Rendimiento: sin desenfoques de fondo sobre el canvas que se anima (cada fotograma obliga al navegador a repetirlos). */
 html.perf #gear,html.perf #cbtn,html.perf #ver,html.perf #msg,html.perf #guide,html.perf #custom,html.perf #cpanel,html.perf #settings,html.perf #warn,html.perf #pick,html.perf #pausemenu{-webkit-backdrop-filter:none;backdrop-filter:none}
+body.adv-creative #cbtn{left:auto;right:14px}
 </style></head><body>
 <canvas id="c"></canvas><canvas id="fx"></canvas>
-<div id="ver">v.5.2</div>
+<div id="ver">v.5.4</div>
 <div id="guide"><div class="gbox"><h2>Guía del juego</h2><div class="gbody">
 <h3>Cómo se juega</h3>
 <p>Sos el jabón del centro. Tocá o arrastrá el dedo para lanzar burbujas hacia ese lugar. Cada burbuja hace 1 de daño base.</p>
+<p><b>Jugar</b> abre Aventura, que es el modo principal. <b>Defensa</b> abre el modo clásico de supervivencia. En <b>Creativo</b> podés elegir Aventura creativa o Defensa creativa.</p>
 <p>Empezás con 5 corazones (1 en Hardcore). Si un virus normal te toca, perdés 1 corazón y ese virus desaparece. La explosión elimina virus normales cercanos, pero no daña a los jefes. Después de recibir daño tenés 1,3 s de invulnerabilidad.</p>
 <p>Los powers aparecen aproximadamente cada 5–8 s en Difícil y permanecen 3 s en pantalla: tocá uno antes de que desaparezca.</p>
 <h3>Virus normales y dificultad creciente</h3>
@@ -322,7 +324,7 @@ html.perf #gear,html.perf #cbtn,html.perf #ver,html.perf #msg,html.perf #guide,h
 <p>🪐 <b>Órbita destructiva:</b> 5 bombas orbitan tu jabón y explotan al tocar un virus; cada bomba se regenera a los 4 s. Hacen 5× el daño de tus burbujas y explotan en el mismo radio que las burbujas con Explosiones. Onda expansiva agranda el área.</p>
 <p>🌀 <b>Aura aniquiladora:</b> cada 15 s sale un anillo desde el centro que daña una vez a cada virus que toca, jefes incluidos. En el nivel 1 hace 5× tu daño; cada nivel suma 1 al multiplicador y reduce el intervalo un 33%.</p>
 <h3>Aventura (nuevo)</h3>
-<p>Un mapa enorme. Te movés con la palanquita (celular) o con WASD y las flechas (PC; se cambian en Controles de PC). Disparás tocando la pantalla o con click izquierdo, y con E en PC.</p>
+<p>Un mapa enorme. En celulares aparece la palanquita si elegís ese control; también podés activar Movimiento con el dedo en Ajustes para arrastrar el jabón. En PC se mueve con WASD o las flechas (se cambian en Controles de PC). Disparás tocando la pantalla o con click izquierdo, y con E en PC.</p>
 <p>Las oleadas: cada oleada tiene su jefe fijo (1: Tanque, 2: Virus lento, 3: Rey, 4: Glotón, 5: Bombardero, y se repite con más vida). Cada oleada trae una cantidad fija de virus. Al agotarse dejan de aparecer hasta que termine la oleada. Los que sobran al terminar no salen en la siguiente, pero los vivos siguen en el mapa. Al morir el jefe termina la oleada, suelta un poder y se desbloquean nuevos virus. Los powers aparecen de a 10 en el mapa, duran 10 s y los agarrás tocándolos con el jabón. Los virus te persiguen. Después del 2º jefe te movés un poco más rápido que un virus común.</p>
 <p>Tanque gigante: tiene etapas, invoca virus veloces y viene con 3 médicos. Virus lento: enorme, con 10 veces la vida máxima y muy despacio. Cadencia eterna y Escudo te dan más velocidad, y Hielo o Tiempo detenido te frenan.</p>
 <p>Médicos: curan primero a los jefes, con el 5% de la vida máxima de quien curan (mínimo 1). En Medio, Difícil y Hardcore, cada jefe (menos el primero) viene con un médico detrás.</p>
@@ -337,12 +339,12 @@ html.perf #gear,html.perf #cbtn,html.perf #ver,html.perf #msg,html.perf #guide,h
 <p><b>Aventura — Medio:</b> es la dificultad predeterminada. <b>Fácil</b> reduce los virus por oleada y aumenta los powers dorados. <b>Difícil</b> elimina los dorados positivos, pero conserva los malos dorados. <b>Hardcore</b> usa una sola vida.</p>
 <h3>Configuración (⚙️ arriba a la derecha)</h3>
 <p><b>Personalizar:</b> forma y color del jabón, color libre, forma de las burbujas, fondo o imagen propia, texto del jabón (hasta 6 caracteres) y resolución.</p>
-<p><b>Controles de PC:</b> las flechas disparan hacia arriba, abajo, izquierda y derecha; Espacio dispara hacia el puntero. Podés cambiar las teclas (no se pueden repetir) y restablecerlas. Esc cancela el cambio de tecla.</p>
-<p><b>Modo Rendimiento:</b> reduce a la mitad las partículas y muestra avisos al invocar demasiados virus o aliados en Creativo. Los avisos no bloquean la acción.</p>
+<p><b>Movimiento:</b> la palanquita aparece únicamente en celulares y solo cuando está seleccionado Movimiento con palanca. Si activás Movimiento con el dedo, la palanquita desaparece y arrastrás el jabón directamente. En PC no se muestra la palanquita; se usa teclado o mando, o podés elegir Movimiento con el dedo.</p><p><b>Controles:</b> las flechas disparan hacia arriba, abajo, izquierda y derecha; Espacio dispara hacia el puntero. En Aventura, WASD y las flechas mueven el jabón; E dispara. Podés cambiar las teclas (no se pueden repetir) y restablecerlas. Esc cancela el cambio de tecla.</p>
+<p><b>Modo Rendimiento:</b> reduce a la mitad las partículas y muestra avisos al invocar demasiados virus o aliados en Creativo. Los avisos no bloquean la acción.</p><p><b>Velocidad del jabón:</b> en Creativo, pestaña Ajustes, podés cambiar la velocidad de movimiento del jabón en Aventura creativa.</p><p><b>Audio:</b> en Ajustes podés activar o desactivar los efectos, ajustar su volumen, activar o quitar la música original de fondo y regular su volumen por separado.</p>
 <p><b>Distinción visual:</b> agrega contornos más marcados a virus y burbujas.</p>
 <p><b>F3 (en PC):</b> muestra FPS, virus activos, burbujas/proyectiles, aliados, partículas, resolución del área de juego y estado del Modo Rendimiento.</p>
 <h3>Modo creativo</h3>
-<p>Se inicia desde el menú principal. Tenés vidas infinitas y un panel 🛠️ para activar la aparición automática de virus, jefes y powers; invocar virus, virus especiales o jefes; sumar powers, mejoras y poderes exclusivos; y ajustar tamaños, velocidades, daño, cadencia y multiplicador de clics (×1, ×5, ×10, ×50, ×100 o ×500).</p>
+<p>Desde el menú principal elegís Aventura creativa o Defensa creativa. Tenés vidas infinitas y un panel 🛠️ para activar la aparición automática de virus, jefes y powers; invocar virus, virus especiales o jefes; sumar powers, mejoras y poderes exclusivos; y ajustar tamaños, velocidades, daño, cadencia y multiplicador de clics (×1, ×5, ×10, ×50, ×100 o ×500). En los ajustes de Creativo también podés modificar la velocidad del jabón. Los sorteos aleatorios cambian las estadísticas y otorgan entre 3 y 8 modificadores aleatorios en cantidades aleatorias.</p>
 <p>Podés tener hasta 30 aliados. Algunas mejoras tienen máximos de nivel. El juego se pausa mientras el panel está abierto; desde el panel podés administrar virus, powers y ajustes.</p>
 <h3>Qué hereda tu aliado</h3>
 <p>El aliado dispara con tus modificadores de daño, multidisparo, disparo trasero, burbuja triple, perforantes, teledirigidas, burbujas grandes y explosiones. También le afectan Cadencia eterna, Cadencia invertida, Daño debilitado, Disparo rápido, Lentitud, Escudo y Vida extra.</p>
@@ -382,10 +384,16 @@ const sc='#8a1f43';
 let g;
 function reset(){g={t:0,over:false,started:false,score:0,lives:(window.D?D.lives:5),inv:0,viruses:[],bubbles:[],parts:[],spawn:1,boss:0,bossKills:0,bossWaveCount:0,bossPairSeq:0,nextBoss:(D&&D.bossInterval)||60,cool:0,aim:-Math.PI/2,shake:0,id:0,powers:[],nextPow:5,fx:{dmg:0,fast:0,freeze:0,bomb:0,shield:0,shieldGold:0,haste:0,slow:0,double:0,tfreeze:0},gold:{dmg:0,rate:0,multi:0,badDmg:0,badRate:0},perk:{back:0,split:0,homing:0,hold:0,pierce:0,big:0,wave:0,heart:0,ally:0},rewards:0,bonusPicks:0,rot:-Math.PI/2,allies:[],pick:null,holding:false,hx:0,hy:0,got:{life:0,minus:0},rings:[],plus:[],xp:{bomb:0,storm:0,time:0,orbit:0,aura:0},xt:{time:20,aura:15},orb:[0,0,0,0,0],orbA:0,auras:[],bolts:[],chainB:60}}
 reset();
-function startGame(){sfxPlay('start');g.started=true;msg.style.display='none';document.getElementById('ver').style.display='none';document.getElementById('guide').style.display='none'}
+function startGame(){sfxPlay('start');musicStart();g.started=true;msg.style.display='none';document.getElementById('ver').style.display='none';document.getElementById('guide').style.display='none'}
 function showStart(){box.innerHTML='<h1>🧼 Soap Adventures</h1><p>Tocá para lanzar burbujas y defendé tu jabón</p><div class="mbtns"><button id="bPlay">Jugar</button><button id="bAdv">Defensa</button><button id="bCre">Creativo</button><button id="bGuide">Guía</button><button id="bCust">Personalizar</button></div>';msg.style.display='flex';document.getElementById('bPlay').onclick=showAdventureDifficulty;document.getElementById('bCre').onclick=showCreativeModes;
   document.getElementById('bAdv').onclick=showModes;
   document.getElementById('bCust').onclick=()=>openCust(false);document.getElementById('bGuide').onclick=()=>{document.getElementById('guide').style.display='flex'};}
+function showModes(){
+  box.innerHTML='<h1>🛡️ Defensa</h1><p>Defendé tu jabón en el modo clásico.</p><div class="mbtns"><button id="mSolo">Jugar defensa</button><button id="mBack">Volver</button></div>';
+  msg.style.display='flex';
+  document.getElementById('mSolo').onclick=showDiff;
+  document.getElementById('mBack').onclick=showStart;
+}
 const CPW=[['Comunes',['dmg','fast','double']],['Dorados',['life','minus','gdmg','grate','gmulti','bossgood']],['Especiales',['bomb','freeze','shield','nuke']],['Malos',['haste','hpup','swarm','slow']],['Malos dorados',['bossbad','lifeloss','steal','gdmgdown','grateslow']]];
 function cb(a,keys,src){return keys.map(k=>'<button data-a="'+a+'" data-k="'+k+'"><span class="emoji">'+src[k].e+'</span> '+src[k].n+'</button>').join('')}
 let cTab='virus';
@@ -412,7 +420,7 @@ function buildC(){
       const quick=k==='mul'?'<button data-a="quick" data-k="mul:1000">Click x1000</button><button data-a="quick" data-k="mul:2000">Click x2000</button>':'';
       h+='<div class="cstat"><label>'+CSTAT[k].n+'</label><div class="cbs"><button data-a="step" data-k="'+k+':-1">−</button><input class="cnum" data-stat="'+k+'" id="stat_'+k+'" value="'+String(cval(k))+'" inputmode="text"><button data-a="step" data-k="'+k+':1">+</button><button data-a="setstat" data-k="'+k+'">Aplicar</button>'+quick+'</div></div>';
     }
-    h+='<h3>Configuración aleatoria</h3><div class="cbs"><button data-a="random" data-k="progress">Basada en jefes vencidos</button><button data-a="random" data-k="chaos">100% azar</button></div><div class="cbs"><label>Jefes de referencia <input class="cnum" id="randBosses" value="'+Math.max(0,g.bossKills)+'" inputmode="numeric"></label></div><p>La opción basada en progreso genera valores coherentes con esa etapa. El azar total puede producir valores extremos.</p>';
+    h+='<h3>Configuración aleatoria</h3><div class="cbs"><button data-a="random" data-k="progress">Basada en jefes vencidos</button><button data-a="random" data-k="chaos">100% azar</button></div><div class="cbs"><label>Jefes de referencia <input class="cnum" id="randBosses" value="'+Math.max(0,g.bossKills)+'" inputmode="numeric"></label></div><p>Además de variar las estadísticas, cada sorteo te entrega entre 3 y 8 modificadores aleatorios en cantidades aleatorias: poderes temporales, dorados, mejoras y poderes exclusivos. El azar total puede producir estadísticas extremas.</p>';
     h+='<h3>Configuración</h3><div class="cbs"><button data-a="resetask">🔄 Restablecer modificadores</button><button data-a="perf">📊 Rendimiento: '+(CUST.perf?'SÍ':'NO')+'</button><button data-a="cust">🖌️ Personalizar jabón</button></div>';
   }
   document.getElementById('cbody').innerHTML=h;
@@ -426,10 +434,46 @@ function parseCreativeNumber(raw){
   try{const v=expr();return i===src.length&&Number.isFinite(v)?v:NaN}catch(e){return NaN}
 }
 function fmtNum(v){if(!Number.isFinite(v))return '∞';if(v!==0&&(Math.abs(v)>=1e9||Math.abs(v)<1e-4))return v.toExponential(4).replace('e+','e');return String(Number(v.toPrecision(8)))}
+function randomizeModifiers(){
+  const pool=[
+    ['fx','dmg'],['fx','fast'],['fx','double'],['fx','freeze'],['fx','bomb'],['fx','shield'],['fx','haste'],['fx','slow'],
+    ['gold','dmg'],['gold','rate'],['gold','multi'],['gold','badDmg'],['gold','badRate'],
+    ['got','life'],['got','minus'],
+    ['perk','back'],['perk','split'],['perk','homing'],['perk','hold'],['perk','pierce'],['perk','big'],['perk','wave'],['perk','heart'],['perk','ally'],
+    ['xp','bomb'],['xp','storm'],['xp','time'],['xp','orbit'],['xp','aura']
+  ];
+  for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]]}
+  const count=3+Math.floor(Math.random()*6);
+  for(const [group,key] of pool.slice(0,count)){
+    const amount=1+Math.floor(Math.random()*4);
+    if(group==='fx')g.fx[key]=Math.max(g.fx[key]||0,5+Math.random()*25);
+    else if(group==='gold')g.gold[key]=(g.gold[key]||0)+amount;
+    else if(group==='got'){for(let n=0;n<amount;n++)collect({k:key,t:'g',x:CWX(),y:CWY()})}
+    else if(group==='perk'){
+      if(key==='ally'||key==='heart'){for(let n=0;n<amount;n++)applyPerk(key)}
+      else g.perk[key]=(g.perk[key]||0)+amount;
+    }else{
+      g.xp[key]=(g.xp[key]||0)+amount;
+      if(key==='time')g.xt.time=20;
+      if(key==='aura')g.xt.aura=15;
+    }
+  }
+}
 function applyRandom(mode,bosses){
   const b=Math.max(0,Math.min(100000,Number(bosses)||0));
-  for(const k in CSTAT){if(mode==='chaos'){const ex=Math.random()*24-12;g.c[k]=k==='bdmg'?(Math.random()<.5?-1:1)*Math.pow(10,ex):(Math.random()<.08?0:Math.pow(10,ex))}else{const base=CSTAT[k].d;g.c[k]=k==='bdmg'?Math.round((Math.random()*2-.25)*b/2):Math.max(.000001,base*(.35+Math.random()*(1+b*.12)))}}
-  g.cHp=mode==='chaos'?Math.max(1,Math.pow(10,Math.random()*12-3)):Math.max(1,Math.round(3+b*(.2+Math.random()*.8)));buildC();
+  for(const k in CSTAT){
+    if(mode==='chaos'){
+      const ex=Math.random()*24-12;
+      g.c[k]=k==='bdmg'?(Math.random()<.5?-1:1)*Math.pow(10,ex):(Math.random()<.08?0:Math.pow(10,ex));
+    }else{
+      const base=CSTAT[k].d;
+      g.c[k]=k==='bdmg'?Math.round((Math.random()*2-.25)*b/2):Math.max(.000001,base*(.35+Math.random()*(1+b*.12)));
+    }
+    if(k==='sspd')g.c[k]=Math.max(.25,Math.min(5,Math.abs(g.c[k])));
+  }
+  g.cHp=mode==='chaos'?Math.max(1,Math.pow(10,Math.random()*12-3)):Math.max(1,Math.round(3+b*(.2+Math.random()*.8)));
+  randomizeModifiers();
+  buildC();
 }
 function applyPerk(k,allowOver=false,forceLimit=false){
   if(k=='ally'){
@@ -440,9 +484,9 @@ function applyPerk(k,allowOver=false,forceLimit=false){
   }
   g.perk[k]++;if(k=='heart')g.lives=Math.min(8+2*g.perk.heart,g.lives+2);
 }
-function exitToMenu(){if(NET.role)netLeave();if(typeof JOY!=='undefined'&&JOY)JOY.style.display='none';document.getElementById('cpanel').style.display='none';document.getElementById('settings').style.display='none';document.getElementById('custom').style.display='none';document.getElementById('cbtn').style.display='none';reset();document.getElementById('ver').style.display='block';showStart()}
+function exitToMenu(){JOY.style.display='none';document.getElementById('cpanel').style.display='none';document.getElementById('settings').style.display='none';document.getElementById('custom').style.display='none';document.getElementById('cbtn').style.display='none';document.body.classList.remove('adv-creative');JOY.style.display='none';reset();document.getElementById('ver').style.display='block';showStart()}
 function exitCreative(){
-  document.getElementById('cpanel').style.display='none';document.getElementById('cbtn').style.display='none';
+  document.getElementById('cpanel').style.display='none';document.getElementById('cbtn').style.display='none';document.body.classList.remove('adv-creative');JOY.style.display='none';
   reset();document.getElementById('ver').style.display='block';showStart();
 }
 function showCreativeModes(){
@@ -452,11 +496,11 @@ function showCreativeModes(){
   document.getElementById('cDefMode').onclick=()=>startCreative('defense');
   document.getElementById('cModeBack').onclick=showStart;
 }
-function initCreativeState(){g.creative=true;g.cAuto={virus:false,boss:false,power:false};g.cHp=3;g.c={mul:1,vspd:1,vsize:1,ssize:1,bspd:1,bsize:1,bdmg:0,rate:1};g.cmenu=false}
+function initCreativeState(){g.creative=true;g.cAuto={virus:false,boss:false,power:false};g.cHp=3;g.c={mul:1,vspd:1,sspd:1,vsize:1,ssize:1,bspd:1,bsize:1,bdmg:0,rate:1};g.cmenu=false}
 function startCreative(mode='defense'){
   if(mode==='adventure'){startAdventure(true);return}
   D=DIFFS.hard;reset();initCreativeState();
-  startGame();JOY.style.display='none';document.getElementById('cbtn').style.display='block';
+  startGame();document.body.classList.remove('adv-creative');syncMovementControls();document.getElementById('cbtn').style.display='block';
 }
 document.getElementById('cbtn').onclick=()=>{g.cmenu=true;g.holding=false;document.getElementById('cpanel').style.display='flex';buildC()};
 document.getElementById('cClose').onclick=()=>{g.cmenu=false;document.getElementById('cpanel').style.display='none'};
@@ -521,17 +565,16 @@ function spawnVirus(boss,hpOv,type){
 function _spawnVirus(boss,hpOv,bt0){
   const side=Math.floor(Math.random()*4),m=90*S;let x,y;
   if(side==0){x=Math.random()*W;y=-m}else if(side==1){x=W+m;y=Math.random()*H}else if(side==2){x=Math.random()*W;y=H+m}else{x=-m;y=Math.random()*H}x+=AOX();y+=AOY();
-  if(boss){const bt=bt0||pickBoss(),mu={normal:2.5,rey:2.5,glot:2.5,tank:4,bomb:2}[bt]||2.5,hp=hpOv||Math.max(1,Math.round(maxHp()*mu*NETN()));const firstB=g.boss===0;g.boss++;const bo={x,y,hp,max:hp,r:BR[bt]*S,sp:BSP[bt]*S,boss:1,btype:bt,ph:0,id:g.id++,flash:0};if(D.medicBoss&&!firstB){const md=newVirus(x,y,rollHp(),'med');md.leader=bo;g.viruses.push(md)}g.viruses.push(bo)}
-  else{const mx=maxHp(),mn=Math.max(1,Math.floor(mx/3)),hp=hpOv||(mn+Math.floor(Math.random()*(mx-mn+1)))*NETN();g.viruses.push({x,y,hp,max:hp,r:(20+Math.min(hp,12)*2.2)*S,sp:Math.max(20*S,(82+Math.random()*18-hp*5.5)*S)*(1+.08*Math.max(0,g.bossKills-1)),boss:0,ph:Math.random()*6,id:g.id++,flash:0,face:Math.floor(Math.random()*4)})}
+  if(boss){const bt=bt0||pickBoss(),mu={normal:2.5,rey:2.5,glot:2.5,tank:4,bomb:2}[bt]||2.5,hp=hpOv||Math.max(1,Math.round(maxHp()*mu*1));const firstB=g.boss===0;g.boss++;const bo={x,y,hp,max:hp,r:BR[bt]*S,sp:BSP[bt]*S,boss:1,btype:bt,ph:0,id:g.id++,flash:0};if(D.medicBoss&&!firstB){const md=newVirus(x,y,rollHp(),'med');md.leader=bo;g.viruses.push(md)}g.viruses.push(bo)}
+  else{const mx=maxHp(),mn=Math.max(1,Math.floor(mx/3)),hp=hpOv||(mn+Math.floor(Math.random()*(mx-mn+1)))*1;g.viruses.push({x,y,hp,max:hp,r:(20+Math.min(hp,12)*2.2)*S,sp:Math.max(20*S,(82+Math.random()*18-hp*5.5)*S)*(1+.08*Math.max(0,g.bossKills-1)),boss:0,ph:Math.random()*6,id:g.id++,flash:0,face:Math.floor(Math.random()*4)})}
 }
 function safeAt(x,y,r){const cx=CWX(),cy=CWY(),Z=125*S*cval('ssize')+r;let dx=x-cx,dy=y-cy,d=Math.hypot(dx,dy);if(d<Z){if(d<1){dx=0;dy=-1;d=1}const k=Z/d;x=cx+dx*k;y=cy+dy*k}x=Math.max(r,Math.min(BXMAX()-r,x));y=Math.max(r,Math.min(BYMAX()-r,y));return [x,y]}
 function patOff(L){const o=[];for(let i=0;i<Math.max(1,L);i++)o.push(i*2*Math.PI/Math.max(1,L));return o}
 function shoot(x,y,ox,oy,ally,col){
-  if(NET.role==='client'&&!ally){NET.shotQ.push({x,y});g.shotT=0;return}
   if(!ally)sfxPlay('shoot');
   const cx=ox??CWX(),cy=oy??CWY(),a=Math.atan2(y-cy,x-cx);if(!ally){g.aim=a;g.shotT=0}
   const dm=Math.max(1,1+g.gold.dmg-g.gold.badDmg+(g.fx.dmg>0?1:0)+g.perk.big+cval('bdmg')),n=Math.min(g.creative&&!CUST.perf?Infinity:40,1+g.gold.multi+(g.fx.double>0?1:0)),P=g.perk;
-  const mk=ang=>({x:cx+Math.cos(ang)*30*S,y:cy+Math.sin(ang)*30*S,vx:Math.cos(ang)*560*S*cval('bspd'),vy:Math.sin(ang)*560*S*cval('bspd'),r:(dm>1?14:10)*(1+.3*P.big)*S*cval('bsize'),d:dm,bomb:g.fx.bomb>0||g.xp.bomb>0,xb:g.xp.bomb,pierce:P.pierce,sp:P.split,dist:0,home:P.homing,homeOX:cx,homeOY:cy,homeDX:Math.cos(ang),homeDY:Math.sin(ang),ally:!!ally,col:col||CUST.col,own:CURP});
+  const mk=ang=>({x:cx+Math.cos(ang)*30*S,y:cy+Math.sin(ang)*30*S,vx:Math.cos(ang)*560*S*cval('bspd'),vy:Math.sin(ang)*560*S*cval('bspd'),r:(dm>1?14:10)*(1+.3*P.big)*S*cval('bsize'),d:dm,bomb:g.fx.bomb>0||g.xp.bomb>0,xb:g.xp.bomb,pierce:P.pierce,sp:P.split,dist:0,home:P.homing,homeOX:cx,homeOY:cy,homeDX:Math.cos(ang),homeDY:Math.sin(ang),ally:!!ally,col:col||CUST.col});
   // De frente: n burbujas apenas separadas (multidisparo / doble tiro). Traseras: se reparten a 360/(traseras+1).
   const front=[];for(let i=0;i<n;i++)front.push((i-(n-1)/2)*.14);
   const offs=front.concat(patOff(1+P.back).slice(1));
@@ -554,7 +597,7 @@ cv.addEventListener('pointerdown',e=>{
   e.preventDefault();if(g.pick)return;
   if(!g.started)return;
   if(g.adv&&CUST.fmode&&!g.over){const q0=toL(e);FT={id:e.pointerId,moved:false,t0:performance.now(),x0:q0.x,y0:q0.y,tx:q0.x,ty:q0.y};return}
-  if(g.over){if(g.t0&&performance.now()-g.t0<700)return;if(NET.role){netLeave();showStart();return}if(g.adv){startAdventure();return}reset();g.started=true;msg.style.display='none';return}
+  if(g.over){if(g.t0&&performance.now()-g.t0<700)return;if(g.adv){startAdventure();return}reset();g.started=true;msg.style.display='none';return}
   const r=cv.getBoundingClientRect();
   const pl=toL(e),px=pl.x,py=pl.y;
   for(const p of (g.adv?[]:g.powers)){if(Math.hypot(px-p.x,py-p.y)<p.r*1.4+10*S){collect(p);g.powers=g.powers.filter(q=>q!==p);return}}
@@ -1031,22 +1074,69 @@ function fxRender(){
   gl.uniform4f(u.uD,v.sharp,v.grain,v.temp,v.lens);gl.uniform2f(u.uE,v.focus,v.hdr);gl.uniform1f(u.uTime,Date.now()*.001);
   gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
 }
-const CUST={shape:'pill',col:'pink',bg:0,hex:'#ff8fb0',txt:'SOAP',bshape:'circle',acc:false,perf:false,vsync:true,sfx:true,res:null,bgImage:null};
+const CUST={shape:'pill',col:'pink',bg:0,hex:'#ff8fb0',txt:'SOAP',bshape:'circle',acc:false,perf:false,vsync:true,sfx:true,sfxVolume:.9,music:true,musicVolume:.32,res:null,bgImage:null};
 
-let SFX_CTX=null,SFX_LAST={};
-function sfxUnlock(){if(CUST.sfx===false)return;const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;try{if(!SFX_CTX)SFX_CTX=new AC();if(SFX_CTX.state==='suspended')SFX_CTX.resume().catch(()=>{})}catch(e){}}
+let SFX_CTX=null,SFX_LAST={},SFX_BUS=null,MUSIC_BUS=null,MUSIC_TIMER=null,MUSIC_STEP=0;
+function ensureAudioGraph(){
+  const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return null;
+  try{
+    if(!SFX_CTX)SFX_CTX=new AC();
+    if(!SFX_BUS){SFX_BUS=SFX_CTX.createGain();SFX_BUS.connect(SFX_CTX.destination)}
+    if(!MUSIC_BUS){MUSIC_BUS=SFX_CTX.createGain();MUSIC_BUS.connect(SFX_CTX.destination)}
+    applyAudioLevels();
+    return SFX_CTX;
+  }catch(e){return null}
+}
+function applyAudioLevels(){
+  if(!SFX_CTX)return;
+  const now=SFX_CTX.currentTime;
+  if(SFX_BUS)SFX_BUS.gain.setTargetAtTime(CUST.sfx===false?0:Math.max(0,Math.min(1,+CUST.sfxVolume||0)),now,.035);
+  if(MUSIC_BUS)MUSIC_BUS.gain.setTargetAtTime(CUST.music===false?0:Math.max(0,Math.min(1,+CUST.musicVolume||0)),now,.08);
+}
+function musicNote(freq,dur,vol,wave='triangle',delay=0){
+  if(!SFX_CTX||!MUSIC_BUS)return;
+  const t=SFX_CTX.currentTime+delay,o=SFX_CTX.createOscillator(),a=SFX_CTX.createGain();
+  o.type=wave;o.frequency.setValueAtTime(freq,t);
+  a.gain.setValueAtTime(.0001,t);a.gain.exponentialRampToValueAtTime(Math.max(.0002,Math.min(.8,vol*2.5)),t+.025);a.gain.exponentialRampToValueAtTime(.0001,t+dur);
+  o.connect(a);a.connect(MUSIC_BUS);o.start(t);o.stop(t+dur+.03);
+}
+function musicTick(){
+  if(!CUST.music||document.hidden||!SFX_CTX||SFX_CTX.state!=='running')return;
+  const melody=[523.25,659.25,783.99,659.25,587.33,698.46,880,698.46,493.88,587.33,739.99,587.33,440,523.25,659.25,523.25];
+  const bass=[130.81,146.83,110,123.47];
+  const i=MUSIC_STEP%melody.length;
+  musicNote(melody[i],.25,.095,'triangle');
+  if(i%2===0)musicNote(melody[(i+4)%melody.length]*2,.11,.025,'sine',.06);
+  if(i%4===0)musicNote(bass[(i/4)%bass.length],.48,.075,'sine');
+  MUSIC_STEP++;
+}
+function musicStart(){
+  if(CUST.music===false)return;
+  const ac=ensureAudioGraph();if(!ac)return;
+  if(MUSIC_TIMER!==null)return;
+  if(ac.state==='suspended')ac.resume().then(()=>{if(CUST.music)musicTick()}).catch(()=>{});
+  MUSIC_TIMER=setInterval(musicTick,310);
+  if(ac.state==='running')musicTick();
+}
+function musicStop(){if(MUSIC_TIMER!==null){clearInterval(MUSIC_TIMER);MUSIC_TIMER=null}applyAudioLevels()}
+function sfxUnlock(){
+  if(CUST.sfx===false&&CUST.music===false)return;
+  const ac=ensureAudioGraph();if(!ac)return;
+  if(ac.state==='suspended')ac.resume().then(()=>{if(CUST.music)musicStart()}).catch(()=>{});
+  else if(CUST.music)musicStart();
+}
 document.addEventListener('pointerdown',sfxUnlock,{capture:true,passive:true});
 document.addEventListener('keydown',sfxUnlock,{capture:true});
-document.addEventListener('visibilitychange',()=>{if(!document.hidden&&SFX_CTX&&SFX_CTX.state==='suspended')SFX_CTX.resume().catch(()=>{})});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&SFX_CTX&&SFX_CTX.state==='suspended')SFX_CTX.resume().then(()=>{if(CUST.music)musicStart()}).catch(()=>{})});
 function sfxPlay(kind){
   if(CUST.sfx===false)return;
+  const acReady=ensureAudioGraph();if(!acReady)return;
   const AC=window.AudioContext||window.webkitAudioContext;
   if(!AC)return;
   const ms=performance.now(),gap={shoot:68,hit:85,explosion:145}[kind]||0;
   if(gap&&ms-(SFX_LAST[kind]||0)<gap)return;
   SFX_LAST[kind]=ms;
   try{
-    if(!SFX_CTX)SFX_CTX=new AC();
     const ac=SFX_CTX;
     if(ac.state==='suspended')ac.resume().catch(()=>{});
     const t=ac.currentTime;
@@ -1054,14 +1144,14 @@ function sfxPlay(kind){
       const o=ac.createOscillator(),gain=ac.createGain();
       o.type=wave;o.frequency.setValueAtTime(Math.max(30,f1),t+delay);
       if(f2)o.frequency.exponentialRampToValueAtTime(Math.max(30,f2),t+delay+dur);
-      gain.gain.setValueAtTime(.0001,t+delay);gain.gain.exponentialRampToValueAtTime(Math.max(.0002,vol),t+delay+.008);gain.gain.exponentialRampToValueAtTime(.0001,t+delay+dur);
-      o.connect(gain);gain.connect(ac.destination);o.start(t+delay);o.stop(t+delay+dur+.025);
+      gain.gain.setValueAtTime(.0001,t+delay);gain.gain.exponentialRampToValueAtTime(Math.max(.0002,Math.min(.8,vol*2.5)),t+delay+.008);gain.gain.exponentialRampToValueAtTime(.0001,t+delay+dur);
+      o.connect(gain);gain.connect(SFX_BUS||ac.destination);o.start(t+delay);o.stop(t+delay+dur+.025);
     };
     const noise=(dur,vol,type='lowpass',f1=1200,f2=180,delay=0)=>{
       const len=Math.max(1,Math.floor(ac.sampleRate*dur)),buf=ac.createBuffer(1,len,ac.sampleRate),data=buf.getChannelData(0);
       for(let i=0;i<len;i++){const fade=1-i/len;data[i]=(Math.random()*2-1)*fade*fade}
       const src=ac.createBufferSource(),filter=ac.createBiquadFilter(),gain=ac.createGain();src.buffer=buf;filter.type=type;filter.frequency.setValueAtTime(Math.max(40,f1),t+delay);if(f2)filter.frequency.exponentialRampToValueAtTime(Math.max(40,f2),t+delay+dur);
-      gain.gain.setValueAtTime(.0001,t+delay);gain.gain.exponentialRampToValueAtTime(Math.max(.0002,vol),t+delay+.01);gain.gain.exponentialRampToValueAtTime(.0001,t+delay+dur);src.connect(filter);filter.connect(gain);gain.connect(ac.destination);src.start(t+delay);src.stop(t+delay+dur+.025);
+      gain.gain.setValueAtTime(.0001,t+delay);gain.gain.exponentialRampToValueAtTime(Math.max(.0002,Math.min(.8,vol*2.5)),t+delay+.01);gain.gain.exponentialRampToValueAtTime(.0001,t+delay+dur);src.connect(filter);filter.connect(gain);gain.connect(SFX_BUS||ac.destination);src.start(t+delay);src.stop(t+delay+dur+.025);
     };
     switch(kind){
       case 'start':
@@ -1171,6 +1261,7 @@ const BGS=[['Rosa','#fcc1d1'],['Celeste','#bfe3f7'],['Menta','#c4f0d4'],['Lavand
 function applyBg(){document.documentElement.style.setProperty('--bg',BGS[CUST.bg][1])}
 function saveCust(){try{localStorage.setItem('soapCust',JSON.stringify(CUST))}catch(e){}}
 try{const s=JSON.parse(localStorage.getItem('soapCust')||'null');if(s)Object.assign(CUST,s)}catch(e){}
+if(!Number.isFinite(+CUST.sfxVolume))CUST.sfxVolume=.9;if(!Number.isFinite(+CUST.musicVolume))CUST.musicVolume=.32;CUST.sfxVolume=Math.max(0,Math.min(1,+CUST.sfxVolume));CUST.musicVolume=Math.max(0,Math.min(1,+CUST.musicVolume));if(CUST.music===undefined)CUST.music=true;
 if(CUST.bgImage){BGURL=CUST.bgImage;const savedBg=new Image();savedBg.onload=()=>{BGIMG=savedBg};savedBg.onerror=()=>{BGIMG=null;BGURL='';CUST.bgImage=null;saveCust()};savedBg.src=BGURL}
 if(!BGS[CUST.bg])CUST.bg=0;if(!SOAPC[CUST.col])CUST.col='pink';if(!SHAPES.some(s=>s[0]==CUST.shape))CUST.shape='pill';shNormalize();
 PERF_MODE=!!CUST.perf;document.documentElement.classList.toggle('perf',PERF_MODE);resize();
@@ -1220,6 +1311,7 @@ function openCust(fromSettings=false){custFromSettings=fromSettings;buildCust();
 const CSTAT={
   mul:{n:'Multiplicador de clics ×',vals:[1,5,10,50,100,500],d:1},
   vspd:{n:'Velocidad virus ×',vals:[0,.25,.5,1,1.5,2,3,5],d:1},
+  sspd:{n:'Velocidad del jabón ×',vals:[.25,.5,.75,1,1.25,1.5,2,3,5],d:1},
   vsize:{n:'Tamaño virus ×',vals:[.5,.75,1,1.5,2,3,4],d:1},
   ssize:{n:'Tamaño jabón ×',vals:[.5,.75,1,1.5,2,3,4],d:1},
   bspd:{n:'Velocidad burbujas ×',vals:[.5,1,1.5,2,3],d:1},
@@ -1280,7 +1372,7 @@ function showGameOver(){
   if(g.over)return;sfxPlay('gameover');g.over=true;g.t0=performance.now();
   box.innerHTML='<h1>¡Te ensuciaron!</h1><p>Puntos: <b>'+g.score+'</b></p><p>Jefes vencidos: <b>'+g.bossKills+'</b></p><p>Tiempo: <b>'+Math.floor(g.t)+' s</b></p><div class="mbtns"><button id="retryBtn">Reintentar</button><button id="overMenuBtn">Menú principal</button></div>';
   msg.style.display='flex';
-  document.getElementById('retryBtn').onclick=()=>{if(NET.role){netLeave();showStart();return}if(g.adv){startAdventure(false);return}reset();startGame()};
+  document.getElementById('retryBtn').onclick=()=>{if(g.adv){startAdventure(false);return}reset();startGame()};
   document.getElementById('overMenuBtn').onclick=exitToMenu;
 }
 function checkOver(){if(g.lives<=0&&!g.creative&&!g.over)showGameOver()}
@@ -1300,7 +1392,14 @@ function AOY(){if(!g||!g.adv)return 0;return Math.max(0,Math.min(Math.max(0,MAP-
 function BXMAX(){return g&&g.adv?MAP:W}
 function BYMAX(){return g&&g.adv?MAP:H}
 function ADVMOVE(){return {up:[KEYS.mup,'ArrowUp'],down:[KEYS.mdown,'ArrowDown'],left:[KEYS.mleft,'ArrowLeft'],right:[KEYS.mright,'ArrowRight']}}
+function touchCapable(){const ua=navigator.userAgent||'';const mobileUA=/Android.*Mobile|iPhone|iPod|iPad|Windows Phone|Mobile/i.test(ua)||(navigator.platform==='MacIntel'&&(navigator.maxTouchPoints||0)>1);const coarse=!!(window.matchMedia&&window.matchMedia('(pointer: coarse)').matches);return mobileUA||(coarse&&(navigator.maxTouchPoints||0)>0)}
 var JOY=document.getElementById('joy'),KNOB=document.getElementById('knob'),JID=null;
+function syncMovementControls(){
+  const show=!!(g&&g.started&&g.adv&&touchCapable()&&!CUST.fmode);
+  JOY.style.display=show?'block':'none';
+  if(!show){MOVE.x=0;MOVE.y=0;JID=null;KNOB.style.transform='translate(0px,0px)'}
+  document.body.classList.toggle('adv-creative',!!(g&&g.started&&g.adv&&g.creative));
+}
 function joyMove(e){const r=JOY.getBoundingClientRect(),ox=r.left+r.width/2,oy=r.top+r.height/2;let dx=e.clientX-ox,dy=e.clientY-oy;const R=r.width/2-28,m=Math.hypot(dx,dy),k=m>R?R/m:1;dx*=k;dy*=k;KNOB.style.transform='translate('+dx+'px,'+dy+'px)';MOVE.x=dx/R;MOVE.y=dy/R}
 function joyEnd(e){if(e.pointerId===JID){JID=null;MOVE.x=0;MOVE.y=0;KNOB.style.transform='translate(0px,0px)'}}
 JOY.addEventListener('pointerdown',e=>{JID=e.pointerId;try{JOY.setPointerCapture(e.pointerId)}catch(_){}joyMove(e);e.preventDefault()});
@@ -1328,7 +1427,7 @@ function advUpdate(dt){
   if(g.fx.shield>0)mult*=1.35;
   if(g.fx.freeze>0)mult*=.45;
   if(g.fx.tfreeze>0)mult*=.35;
-  const sp=(g.bossKills>=2?108:76)*S*Math.max(.15,mult);
+  const sp=(g.bossKills>=2?108:76)*S*Math.max(.15,mult)*cval('sspd');
   PX=Math.max(30,Math.min(MAP-30,PX+vx*sp*dt));PY=Math.max(30,Math.min(MAP-30,PY+vy*sp*dt));
   for(const p of g.powers){if(Math.hypot(p.x-PX,p.y-PY)<26*S+p.r*.4){collect(p);p.life=0}}
   if(!g.creative||g.cAuto.boss){
@@ -1336,7 +1435,7 @@ function advUpdate(dt){
     else if(g.advPhase=='warn'){g.advWarnT-=dt;const wsp=ADV_SPOTS[g.advSpot],near=Math.hypot(wsp[0]-PX, wsp[1]-PY)<260*S;if(g.advWarnT<=0&&!near){advWaveBoss();g.advPhase='boss'}}
     else if(g.advPhase=='gap'){g.advT-=dt;if(g.advT<=0){g.wave++;g.advPhase='pre';g.advT=ADV_PRE;g.advQuota=advQuota(g.wave);g.advBossLeft=Math.round(g.advQuota*(.2+Math.random()*.6))}}
   }
-  if(!g.creative||g.cAuto.power){g.advPowT-=dt;if(g.advPowT<=0){for(let i=0;i<10*NETN();i++)spawnAdvPower();g.advPowT=3.6+Math.random()*2.4}}
+  if(!g.creative||g.cAuto.power){g.advPowT-=dt;if(g.advPowT<=0){for(let i=0;i<10*1;i++)spawnAdvPower();g.advPowT=3.6+Math.random()*2.4}}
   // los virus no se atraviesan entre sí (se empujan al superponerse)
   const vs=g.viruses.filter(v=>!v.dead&&!v.boss);
   for(let i=0;i<vs.length;i++){const a=vs[i];for(let j=i+1;j<vs.length;j++){const b=vs[j];
@@ -1354,7 +1453,7 @@ const ADV_ORDER=['norm','fast','div','med','glot','pad','bmb','todo'];
 const ADV_W={norm:4,fast:2,div:1.5,med:1.5,glot:1,pad:1,bmb:1,todo:.7};
 function advRoll(){const un=ADV_ORDER.slice(0,Math.min(ADV_ORDER.length,1+(g.wave||1)));let tot=0;for(const k of un)tot+=ADV_W[k];let r=Math.random()*tot;for(const k of un){r-=ADV_W[k];if(r<0)return k}return 'norm'}
 const ADV_PRE=50;
-function advQuota(w){return Math.max(1,Math.ceil((80+20*(w-1))*NETN()*(D.advQuotaFactor||1)))}
+function advQuota(w){return Math.max(1,Math.ceil((80+20*(w-1))*1*(D.advQuotaFactor||1)))}
 const ADV_SPOTS=[[MAP/2,MAP/2]];
 function advPickSpot(){
   const c=[];ADV_SPOTS.forEach((s,i)=>{const d=Math.hypot(s[0]-PX,s[1]-PY);if(d>300*S)c.push(i)});
@@ -1390,7 +1489,7 @@ function advSpawnTick(){
     const bx=side==0?tt:side==1?MAP-e:side==2?tt:e;
     const by=side==0?e:side==1?tt:side==2?MAP-e:tt;
     const type=advRoll();
-    for(let i=0;i<5*NETN();i++){
+    for(let i=0;i<5*1;i++){
       g.advQuota--;
       const off=(i-2)*30*S;
       advSpawnAt(along?bx+off:bx,along?by:by+off,type);
@@ -1408,7 +1507,7 @@ function advWaveBoss(){
   if(kind=='tank'){bt='tank';hp=Math.round(maxHp()*12*lvl);r=150*S;sp=16*S;adv='tank'}
   else if(kind=='slow'){bt='normal';hp=Math.round(maxHp()*10*lvl);r=118*S;sp=7*S;adv='slow'}
   else{bt=kind;const mu={rey:2.5,glot:2.5,bomb:2}[kind];hp=Math.round(maxHp()*mu*lvl);r=BR[bt]*S;sp=BSP[bt]*S}
-  hp=Math.round(hp*NETN());const b={x,y,hp,max:hp,r,sp,boss:1,btype:bt,ph:0,id:g.id++,flash:0,advWave:w,stage:1,sumT:1,grace:2.5};
+  hp=Math.round(hp*1);const b={x,y,hp,max:hp,r,sp,boss:1,btype:bt,ph:0,id:g.id++,flash:0,advWave:w,stage:1,sumT:1,grace:2.5};
   if(adv)b.adv=adv;
   g.boss++;
   if(kind=='tank'){for(let i=0;i<3;i++){const ang=a+Math.PI+(i-1)*.7,md=newVirus(x+Math.cos(ang)*r*1.5,y+Math.sin(ang)*r*1.5,rollHp(),'med');md.leader=b;g.viruses.push(md)}}
@@ -1421,9 +1520,15 @@ function advWaveClear(v){
   g.advPhase='gap';g.advT=5;g.advQuota=0;
 }
 function advDropAt(x,y){
-  // Los jefes de Aventura sueltan poderes comunes; nunca perks ni poderes exclusivos.
-  advDropPower(x,y);
+  // Siempre suelta una recompensa de categoría jefe. Exclusivos: 3x la referencia de Defensa (5% -> 15%).
+  const exclusiveChance=0.15;
+  const exclusive=Object.keys(XP).map(k=>'B_'+k);
+  const bossMods=['bossgood','bossbad'];
+  const pool=Math.random()<exclusiveChance?exclusive:bossMods;
+  const k=pickW(pool),m=24*S;
+  g.powers.push({k,t:PW[k]?.t||'g',x:Math.max(m,Math.min(MAP-m,x)),y:Math.max(m,Math.min(MAP-m,y)),r:24*S,life:10,max:10});
 }
+function advDropMany(x,y){advDropAt(x,y)}
 function advHud(){
   const w=g.wave||1,s=Math.ceil(Math.max(0,g.advT||0));
   if(g.advPhase=='warn')return '¡JEFE LLEGANDO en '+Math.max(0,Math.ceil(g.advWarnT))+' s!';
@@ -1457,7 +1562,7 @@ function startAdventure(creative=false){
   if(creative){initCreativeState();g.cAuto={virus:true,boss:true,power:true}}
   PX=MAP/2;PY=MAP/2;FACE=-Math.PI/2;MOVE.x=0;MOVE.y=0;DK={};
   startGame();
-  JOY.style.display='block';if(creative)document.getElementById('cbtn').style.display='block';
+  syncMovementControls();if(creative)document.getElementById('cbtn').style.display='block';else document.getElementById('cbtn').style.display='none';
 }
 var FT=null;
 const PADNAME={shoot:'Disparar',pause:'Abrir pausa',creative:'Abrir menú creativo',tabL:'Pestaña izquierda',tabR:'Pestaña derecha'};
@@ -1507,444 +1612,6 @@ cv.addEventListener('pointerup',ftEnd);cv.addEventListener('pointercancel',ftEnd
 document.getElementById('pResume').onclick=()=>togglePause();
 document.getElementById('pSet').onclick=()=>{document.getElementById('pausemenu').style.display='none';openSettings()};
 document.getElementById('pExit').onclick=()=>{if(g)g.paused=false;document.getElementById('pausemenu').style.display='none';exitToMenu()};
-var NET={role:null,room:null,pid:0,n:1,base:'',es:null,others:{},shotQ:[],pickQ:[],picked:{},timers:[],lobby:null,mode:'coop',name:'',drawList:[],pseq:0};
-function NETN(){return NET.role?Math.max(1,NET.n||1):1}
-async function netPost(p,obj){try{const r=await fetch(NET.base+p,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(obj)});return await r.json()}catch(e){return null}}
-function netStopTimers(){NET.timers.forEach(clearInterval);NET.timers=[]}
-function netCloseES(){if(NET.es){NET.es.close();NET.es=null}}
-function netSouls(){if(NET.role!=='host')return [];const now=Date.now();return Object.values(NET.others).filter(o=>now-o.t<4000)}
-function netLeave(){
-  if(NET.role==='client'&&NET.room)netPost('/leave',{room:NET.room,pid:NET.pid});
-  if(NET.role==='host'&&NET.room)netPost('/close',{room:NET.room,pid:1});
-  netStopTimers();netCloseES();
-  NET.role=null;NET.room=null;NET.pid=0;NET.others={};NET.pvpOn=false;NET.pvpP=null;NET.pvpWinner=null;NET.shotQ=[];NET.pickQ=[];NET.picked={};NET.drawList=[];NET.n=1;
-}
-function lanMsg(txt){
-  const e=document.getElementById('lMsg');
-  if(e){e.textContent=txt;return}
-  box.innerHTML='<h1>Aviso</h1><p>'+esc(txt)+'</p><div class="mbtns"><button id="lOk">Volver</button></div>';
-  msg.style.display='flex';document.getElementById('lOk').onclick=showModes;
-}
-function netSnap(){if(NET.pvpOn)return pvpSnap();
-  const col=SOAPC[CUST.col]?SOAPC[CUST.col][0]:'#f8879f';
-  const pl=[{pid:1,name:NET.name||'Host',x:PX,y:PY,fill:col}];
-  for(const k in NET.others){const o=NET.others[k];pl.push({pid:+k,name:o.name,x:o.x,y:o.y,fill:o.fill})}
-  return {over:!!g.over,lives:g.lives,score:g.score,t:g.t,bk:g.bossKills,wave:g.wave,phase:g.advPhase,advT:g.advT,quota:g.advQuota,pl,
-    v:g.viruses.filter(v=>!v.dead).map(v=>({x:v.x,y:v.y,r:v.r,hp:v.hp,max:v.max,type:v.type,btype:v.btype,boss:v.boss,face:v.face,ph:v.ph,flash:v.flash,absorb:v.absorb,stage:v.stage})),
-    b:g.bubbles.map(b=>({x:b.x,y:b.y,vx:b.vx,vy:b.vy,r:b.r,col:b.col,ally:b.ally,bomb:b.bomb,bc:BCOL[b.col]})),
-    p:g.powers.map(p=>({id:p.nid||(p.nid=++NET.pseq),x:p.x,y:p.y,r:p.r,life:p.life,max:p.max,k:p.k,t:p.t,e:PW[p.k]?PW[p.k].e:'?'})),
-    a:g.allies.map(a=>({x:a.x,y:a.y,rot:a.rot,col:a.col,shape:a.shape,hp:a.hp,inv:a.inv,pal:SOAPC[a.col],bc:BCOL[a.col]}))};
-}
-function netApply(s){if(s.pvp){pvpApply(s);return}
-  g.score=s.score;g.lives=s.lives;g.bossKills=s.bk;g.wave=s.wave;g.advPhase=s.phase;g.advT=s.advT;g.advQuota=s.quota;g.t=s.t;
-  g.viruses=s.v;
-  g.bubbles=s.b.map(b=>{if(b.bc&&!BCOL[b.col])BCOL[b.col]=b.bc;return b});
-  g.powers=s.p.map(p=>{if(!PW[p.k])PW[p.k]={e:p.e||'?',n:p.k,t:p.t||'n'};return p});
-  g.allies=s.a.map(a=>{if(a.pal&&!SOAPC[a.col])SOAPC[a.col]=a.pal;if(a.bc&&!BCOL[a.col])BCOL[a.col]=a.bc;return a});
-  NET.drawList=s.pl.filter(q=>q.pid!==NET.pid);
-  if(s.over&&!g.over){g.over=true;box.innerHTML='<h1>Partida terminada</h1><p>Puntos: <b>'+s.score+'</b></p><p>Tocá para volver al menú</p>';msg.style.display='flex'}
-}
-function netOnInput(ev){if(NET.pvpOn){pvpOnInput(ev);return}
-  const m=JSON.parse(ev.data),d=m.data||{},pid=m.pid;
-  const o=NET.others[pid]||(NET.others[pid]={name:'Jugador '+pid,fill:'#f8879f',col:'pink',t:0});
-  o.x=d.x;o.y=d.y;o.t=Date.now();o.name=d.name||o.name;o.fill=d.fill||o.fill;
-  if(d.hex){const key='p'+pid;if(!SOAPC[key]||SOAPC[key][0]!==d.hex){SOAPC[key]=palFromHex(d.hex);BCOL[key]=bcolFromHex(d.hex)}o.col=key;o.fill=SOAPC[key][0]}
-  const sa=g.aim,ss=g.shotT;
-  for(const s of d.shots||[])shoot(s.x,s.y,o.x,o.y,false,o.col);
-  g.aim=sa;g.shotT=ss;
-  for(const id of d.picks||[]){const p=g.powers.find(q=>q.nid===id);if(p){collect(p);p.life=0}}
-  g.powers=g.powers.filter(q=>q.life>0);
-}
-function netClientMove(dt){
-  g.cool-=dt;g.shake=Math.max(0,g.shake-dt);
-  let vx=MOVE.x,vy=MOVE.y;vx+=(DK.right?1:0)-(DK.left?1:0)+PADAX;vy+=(DK.down?1:0)-(DK.up?1:0)+PADAY;
-  if(FT&&FT.moved){const ffx=FT.tx-PX,ffy=FT.ty-PY,ffm=Math.hypot(ffx,ffy);if(ffm>10*S){vx+=ffx/ffm;vy+=ffy/ffm}}
-  const m=Math.hypot(vx,vy);if(m>1){vx/=m;vy/=m}
-  NET.mv={x:vx,y:vy};
-  if(m>0){FACE=Math.atan2(vy,vx);if((g.shotT??9)>.4)g.aim=FACE}
-  g.shotT=(g.shotT??9)+dt;
-  const sp=(g.bossKills>=2?108:76)*S*(g.fx.freeze>0?.45:1);
-  PX=Math.max(30,Math.min(MAP-30,PX+vx*sp*dt));PY=Math.max(30,Math.min(MAP-30,PY+vy*sp*dt));
-  for(const p of g.powers){if(!NET.picked[p.id]&&Math.hypot(p.x-PX,p.y-PY)<26*S+p.r*.4){NET.picked[p.id]=1;NET.pickQ.push(p.id)}}
-}
-function drawRemoteSouls(){
-  const list=NET.role==='client'?NET.drawList:netSouls();
-  for(const o of list){
-    if(!visibleWorld(o.x,o.y,70*S))continue;
-    ctx.save();ctx.translate(o.x,o.y);ctx.fillStyle=o.fill||'#f8879f';ctx.strokeStyle='#8a1f43';ctx.lineWidth=4*S;
-    ctx.beginPath();ctx.roundRect(-50*S,-32*S,100*S,64*S,22*S);ctx.fill();ctx.stroke();
-    ctx.fillStyle='#8a1f43';ctx.font='bold '+Math.round(13*S+2)+'px Trebuchet MS,Arial';ctx.textAlign='center';ctx.fillText(o.name||'',0,-42*S);
-    ctx.restore();
-  }
-}
-function advDropMany(x,y){for(let i=0;i<NETN();i++){const a=i*2.39996,r=i?90*S:0;advDropAt(x+Math.cos(a)*r,y+Math.sin(a)*r)}}
-function netConnect(){
-  netCloseES();
-  const es=new EventSource(NET.base+'/events?room='+encodeURIComponent(NET.room)+'&pid='+NET.pid);
-  NET.es=es;
-  es.addEventListener('lobby',e=>{NET.lobby=JSON.parse(e.data);if(NET.role&&!(g&&g.started))lobbyScreen()});
-  es.addEventListener('start',e=>{const d=JSON.parse(e.data);NET.n=d.n;if(NET.role==='client')netStartGame('client')});
-  es.addEventListener('state',e=>{if(NET.role==='client')netApply(JSON.parse(e.data))});
-  es.addEventListener('input',e=>{if(NET.role==='host')netOnInput(e)});
-  es.addEventListener('closed',()=>{netLeave();lanMsg('El host cerró la sala.')});
-}
-function showModes(){
-  box.innerHTML='<h1>🛡️ Defensa</h1><p>Defendé tu jabón en el modo clásico.</p><div class="mbtns"><button id="mSolo">Jugar defensa</button><button id="mCoop">Online por LAN</button><button id="mPvp">PvP por LAN</button><button id="mBack">Volver</button></div>';
-  msg.style.display='flex';
-  document.getElementById('mSolo').onclick=showDiff;
-  document.getElementById('mCoop').onclick=()=>lanScreen('coop');
-  document.getElementById('mPvp').onclick=()=>lanScreen('pvp');
-  document.getElementById('mBack').onclick=showStart;
-}
-function lanScreen(mode){
-  NET.mode=mode;
-  const local=/^(localhost|127\.)/.test(location.hostname);
-  box.innerHTML='<h1>'+(mode==='pvp'?'PvP por LAN':'Online por LAN')+'</h1>'+
-   ((location.protocol!=='http:'||local)?'<p style="font-size:14px">Para jugar en red: en la PC del host corré <b>node server.js</b> y los demás entran desde <b>http://IP_DEL_HOST:8787</b>. No funciona desde archivo ni desde HTTPS.</p>':'')+
-   '<p style="font-size:14px">Tu nombre: <input id="lName" maxlength="14" style="width:140px;font:inherit"></p>'+
-   '<div class="mbtns"><button id="lCreate">Crear servidor</button><button id="lScan">Buscar servidores</button></div>'+
-   '<div id="lList" style="font-size:15px;max-height:28vh;overflow:auto;text-align:left;margin:6px 0"></div>'+
-   '<p style="font-size:14px">IP del host: <input id="lIp" placeholder="192.168.1.20" style="width:150px;font:inherit"> <button id="lJoinIp">Unirse</button></p>'+
-   '<p id="lMsg" style="font-size:14px;min-height:20px"></p><div class="mbtns"><button id="lBack">Volver</button></div>';
-  msg.style.display='flex';
-  document.getElementById('lCreate').onclick=()=>netCreate(mode);
-  document.getElementById('lScan').onclick=netScan;
-  document.getElementById('lJoinIp').onclick=()=>{const ip=document.getElementById('lIp').value.trim();if(ip)netJoin(ip,null)};
-  document.getElementById('lBack').onclick=showModes;
-}
-let NET_SCAN_ID=0;
-async function netScan(){
-  const list=document.getElementById('lList');if(!list)return;
-  const scanId=++NET_SCAN_ID;
-  const m=/^(\d+\.\d+\.\d+)\.\d+$/.exec(location.hostname);
-  if(!m){list.innerHTML='<p style="font-size:14px">Para buscar servidores abrí el juego desde http://IP_DEL_HOST:8787 (o escribí la IP del host abajo).</p>';return}
-  list.innerHTML='<p style="font-size:14px">Buscando servidores… (podés seguir usando los botones)</p>';
-  const found=[];let next=1;
-  // Limita la concurrencia para no saturar Safari ni bloquear la interfaz.
-  const worker=async()=>{while(next<=254&&scanId===NET_SCAN_ID){const n=next++,ip=m[1]+'.'+n;
-    try{const r=await fetch('http://'+ip+':8787/info',{signal:AbortSignal.timeout(450)});if(!r.ok)continue;const j=await r.json();if(j&&j.app==='soap-adventures')for(const room of j.rooms||[])found.push({ip,r:room})}catch(e){}
-  }};
-  await Promise.all(Array.from({length:10},worker));
-  if(scanId!==NET_SCAN_ID||document.getElementById('lList')!==list)return;
-  if(!found.length){list.innerHTML='<p style="font-size:14px">No encontré servidores en '+m[1]+'.x. Podés ingresar la IP manualmente.</p>';return}
-  list.innerHTML=found.map(f=>'<div style="margin:4px 0"><button data-ip="'+f.ip+'" data-room="'+f.r.id+'" style="width:auto;display:inline-block;font-size:15px;padding:6px 10px">Unirse</button> '+esc(f.r.name)+' · '+f.r.players+'/'+f.r.max+(f.r.started?' · en juego':'')+' · '+f.ip+'</div>').join('');
-  list.querySelectorAll('button[data-ip]').forEach(b=>b.onclick=()=>netJoin(b.dataset.ip,b.dataset.room));
-}
-async function netCreate(mode){
-  NET.base='';NET.name=((document.getElementById('lName')||{}).value||'').trim()||'Host';
-  const r=await netPost('/room',{name:'Sala de '+NET.name,mode,max:4});
-  if(!r||!r.room){lanMsg('No pude crear la sala. ¿Está corriendo node server.js?');return}
-  NET.role='host';NET.room=r.room;NET.pid=1;NET.mode=mode;NET.lobby=null;
-  netConnect();lobbyScreen();
-}
-async function netJoin(ip,room){
-  NET.base=ip?('http://'+ip+':8787'):'';
-  NET.name=((document.getElementById('lName')||{}).value||'').trim()||'Jugador';
-  if(!room){
-    try{const j=await (await fetch(NET.base+'/info')).json();if(!j.rooms||!j.rooms.length){lanMsg('Ese servidor no tiene salas abiertas.');return}room=j.rooms[0].id}
-    catch(e){lanMsg('No encuentro un servidor en '+ip+':8787');return}
-  }
-  const j=await netPost('/join',{room,name:NET.name});
-  if(!j||j.error){lanMsg('No se pudo entrar: '+(j&&j.error?j.error:'sin respuesta'));return}
-  NET.role='client';NET.room=room;NET.pid=j.pid;NET.mode=j.mode;NET.lobby=null;
-  netConnect();lobbyScreen();
-}
-function lobbyScreen(){
-  const L=NET.lobby||{players:[]},isHost=NET.role==='host';
-  box.innerHTML='<h1>Sala de '+(NET.mode==='pvp'?'PvP':'Online')+'</h1><p style="font-size:14px">'+(isHost?'Los demás abren la IP de esta PC (la ves en la consola de node server.js) y buscan tu sala.':'Esperando a que el host empiece…')+'</p>'+
-   '<div style="text-align:left;font-size:16px;margin:8px 0">'+L.players.map(p=>'• '+esc(p.name)+(p.pid===1?' (host)':'')).join('<br>')+'</div>'+
-   '<p id="lMsg" style="font-size:14px;min-height:20px"></p><div class="mbtns">'+(isHost?'<button id="lStart">Empezar</button>':'')+'<button id="lExit">'+(isHost?'Cerrar sala':'Salir')+'</button></div>';
-  msg.style.display='flex';
-  if(isHost)document.getElementById('lStart').onclick=netStart;
-  document.getElementById('lExit').onclick=()=>{netLeave();showModes()};
-}
-async function netStart(){
-  const r=await netPost('/start',{room:NET.room,pid:1});
-  if(!r||r.error){lanMsg(r&&r.error?r.error:'No se pudo empezar');return}
-  NET.n=Math.max(1,(NET.lobby&&NET.lobby.players.length)||1);
-  netStartGame('host');
-}
-function netStartGame(role){
-  NET.role=role;NET.n=Math.max(1,NET.n||1);
-  netStopTimers();NET.picked={};NET.shotQ=[];NET.pickQ=[];NET.others={};
-  startAdventure();
-  if(NET.mode==='pvp')pvpStart(role);
-  if(role==='host'){NET.timers.push(setInterval(()=>{if(g&&g.started)netPost('/state',{room:NET.room,pid:1,data:netSnap()})},100))}
-  else{NET.timers.push(setInterval(()=>{if(g&&g.started&&!g.over)netPost('/input',{room:NET.room,pid:NET.pid,data:{x:PX,y:PY,name:NET.name,fill:SOAPC[CUST.col]?SOAPC[CUST.col][0]:'#f8879f',hex:CUST.hex,mv:NET.mv||{x:0,y:0},shots:NET.shotQ.splice(0),picks:NET.pickQ.splice(0)}})},60))}
-}
-var CURP=1;
-var NET_PVP_KEYS=['fx','gold','perk','xp','xt','allies','lives','score','inv','cool','aim','rot','shotT','shake','holding','hx','hy','over','t0'];
-function pvpFresh(){const save=g;reset();const f=g;g=save;const o={};for(const k of NET_PVP_KEYS)o[k]=f[k];return o}
-function pvpMake(pid,name){
-  const f=pvpFresh();
-  return Object.assign(f,{pid,name:name||('Jugador '+pid),fill:'#f8879f',hex:'#ff8fb0',col:'pink',isRemote:true,
-    PX:MAP/2+(pid%2?-1:1)*180*S,PY:MAP/2+(pid>2?-1:1)*120*S,mv:{x:0,y:0},shotQ:[],pickQ:[],lastT:Date.now()});
-}
-function withCtx(p,fn){
-  const prev={PX,PY,CURP};for(const k of NET_PVP_KEYS)prev[k]=g[k];
-  const rem=!!(p&&p.isRemote);
-  if(rem){for(const k of NET_PVP_KEYS)g[k]=p[k];PX=p.PX;PY=p.PY}
-  CURP=p?p.pid:1;
-  try{fn()}finally{
-    if(rem){for(const k of NET_PVP_KEYS)p[k]=g[k];p.PX=PX;p.PY=PY}
-    for(const k of NET_PVP_KEYS)g[k]=prev[k];
-    PX=prev.PX;PY=prev.PY;CURP=prev.CURP;
-  }
-}
-function pvpStart(role){
-  NET.pvpOn=true;NET.pvpP=new Map();NET.pvpWinner=null;
-  g.advPhase='pvp';g.advQuota=Infinity;g.nextBoss=60;g.wave=1;
-  if(role==='host'){
-    for(const pl of ((NET.lobby&&NET.lobby.players)||[])){if(pl.pid!==1)NET.pvpP.set(pl.pid,pvpMake(pl.pid,pl.name))}
-  }
-}
-function pvpOnInput(ev){
-  const m=JSON.parse(ev.data),d=m.data||{},pid=m.pid;
-  let p=NET.pvpP.get(pid);
-  if(!p){p=pvpMake(pid,d.name);NET.pvpP.set(pid,p)}
-  p.name=d.name||p.name;p.fill=d.fill||p.fill;p.lastT=Date.now();
-  if(d.hex&&d.hex!==p.hex){p.hex=d.hex;const key='p'+pid;SOAPC[key]=palFromHex(d.hex);BCOL[key]=bcolFromHex(d.hex);p.col=key}
-  p.mv=d.mv||{x:0,y:0};
-  for(const s of d.shots||[])p.shotQ.push(s);
-  for(const id of d.picks||[])p.pickQ.push(id);
-}
-function pvpTargets(){
-  const out=[];if(g.lives>0)out.push({x:PX,y:PY});
-  for(const p of NET.pvpP.values())if(p.lives>0)out.push({x:p.PX,y:p.PY});
-  return out;
-}
-function pvpTick(dt){
-  const me=CURP;
-  let df=g.aim-g.rot;while(df>Math.PI)df-=6.283;while(df<-Math.PI)df+=6.283;const mr=12*dt;g.rot+=Math.max(-mr,Math.min(mr,df));
-  g.chainB=60;g.shotT=(g.shotT??9)+dt;g.cool-=dt*cval('rate');g.inv-=dt;g.shake=Math.max(0,g.shake-dt);
-  for(const k in g.fx)g.fx[k]=Math.max(0,g.fx[k]-dt);
-  updateX(dt);
-  if(g.lives<=0)return;
-  let vx,vy;
-  if(me===1){
-    vx=MOVE.x+(DK.right?1:0)-(DK.left?1:0)+PADAX;vy=MOVE.y+(DK.down?1:0)-(DK.up?1:0)+PADAY;
-    if(FT&&FT.moved){const ffx=FT.tx-PX,ffy=FT.ty-PY,ffm=Math.hypot(ffx,ffy);if(ffm>10*S){vx+=ffx/ffm;vy+=ffy/ffm}}
-  }else{const p=NET.pvpP.get(me);vx=p?p.mv.x:0;vy=p?p.mv.y:0}
-  const mm=Math.hypot(vx,vy);if(mm>1){vx/=mm;vy/=mm}
-  if(mm>0&&me===1){FACE=Math.atan2(vy,vx);if((g.shotT??9)>.4)g.aim=FACE}
-  if(mm>0&&me!==1&&(g.shotT??9)>.4)g.aim=Math.atan2(vy,vx);
-  const sp=(g.bossKills>=2?108:76)*S*(g.fx.freeze>0?.45:1)*(g.fx.tfreeze>0?.35:1)*(g.fx.fast>0?1.3:1)*(g.fx.shield>0?1.35:1)*(1+.12*g.gold.rate);
-  PX=Math.max(30,Math.min(MAP-30,PX+vx*sp*dt));PY=Math.max(30,Math.min(MAP-30,PY+vy*sp*dt));
-  if(me!==1){const p=NET.pvpP.get(me);
-    if(p){for(const s of p.shotQ.splice(0))shoot(s.x,s.y,PX,PY);
-      for(const id of p.pickQ.splice(0)){const pw=g.powers.find(q=>q.nid===id);if(pw&&pw.life>0){collect(pw);pw.life=0}}}}
-  if(me===1&&g.holding&&g.perk.hold>0&&g.cool<=0){shoot(g.hx,g.hy);g.cool=(g.fx.fast>0?.05:.12)*Math.pow(.85,g.gold.rate)}
-  for(const pw of g.powers){if(pw.life>0&&Math.hypot(pw.x-PX,pw.y-PY)<26*S+pw.r*.4){collect(pw);pw.life=0}}
-  updateAlly(dt);
-  const sr=24*S;
-  for(const v of g.viruses){
-    if(v.dead||v.type=='med'||v.grace>0||g.fx.tfreeze>0||!(v.boss||g.inv<=0))continue;
-    const dpl=Math.hypot(PX-v.x,PY-v.y)||1;
-    if(dpl>=v.r+sr*.9)continue;
-    if(g.fx.shield>0){g.shake=.15;if(v.boss){v.kx=-(PX-v.x)/dpl*500*S;v.ky=-(PY-v.y)/dpl*500*S}}
-    else if(v.boss){sfxPlay('damage');g.lives=0;g.shake=.5;pop(PX,PY,'#ffffff',30)}
-    else{sfxPlay('damage');g.lives--;g.inv=1.3;g.shake=.3;pop(PX,PY,'#ffffff',14)}
-    if(!v.boss){v.dead=true;v.nosplit=true;explode(PX,PY)}
-    if(g.lives<=0)break;
-  }
-}
-function pvpOwner(pid){
-  if(pid===1||pid==null)return null;
-  return NET.pvpP.get(pid)||null;
-}
-function pvpHit(b,v){
-  const before=g.score;
-  if(b.pierce>0){b.pierce--;(b.hits=b.hits||[]).push(v)}else b.dead=true;
-  if(b.bomb)blast(b.x,b.y,b.d+1+Math.max(0,(b.xb||1)-1),v,b.xb);
-  if(v.type=='glot'||v.btype=='glot')glotHit(v,b);else v.hp-=b.d*(v.btype=='tank'?.5:1);
-  v.flash=.1;pop(b.x,b.y,'#ffffff',5);sfxPlay('hit');
-  if(g.xp.storm>0)chain(v,b.d,g.xp.storm);
-  if(v.hp<=0){v.dead=true;g.score+=v.boss?100*(g.bossKills+1):v.max*10;pop(v.x,v.y,colorFor(v.hp+v.max)[0],v.boss?60:18);if(v.boss)registerBossDefeat(v)}
-  if(b.ally)g.score=before;
-}
-function pvpWorld(dt){
-  g.t+=dt;
-  g.spawn-=dt;
-  if(g.spawn<=0){advSpawnTick();g.spawn=Math.max(.3,1.2-g.t*.01)*(.7+Math.random()*.6)*D.vir*Math.pow(.95,Math.max(0,g.bossKills-2))}
-  if(g.t>=g.nextBoss){advWaveBoss();g.wave++;g.nextBoss+=60}
-  const targets=pvpTargets();
-  for(const v of g.viruses){
-    v.ph+=dt;v.flash-=dt;v.grace-=dt;v.absorb-=dt;if(v.dead)continue;
-    if(!targets.length)continue;
-    let tx=targets[0].x,ty=targets[0].y,bd=1e9;
-    for(const q of targets){const d=Math.hypot(q.x-v.x,q.y-v.y);if(d<bd){bd=d;tx=q.x;ty=q.y}}
-    const dx=tx-v.x,dy=ty-v.y,d=Math.hypot(dx,dy)||1;
-    const fz=(g.fx.freeze>0?.08:1)*(g.fx.haste>0?1.6:1)*cval('vspd')*(v.boss?1:D.speed)*(g.fx.tfreeze>0?0:1);
-    let mx=dx/d,my=dy/d;
-    if(v.btype=='glot'){const m=kite(v,dt);mx=m[0];my=m[1]}
-    if(v.boss)bossSummon(v,dt);
-    if(v.type=='med'){const m=medMove(v,bd,dt);mx=m[0];my=m[1]}
-    v.x+=mx*v.sp*fz*dt+(v.kx||0)*dt;v.y+=my*v.sp*fz*dt+(v.ky||0)*dt;
-    if(v.kx){v.kx*=.9;v.ky*=.9}
-    if(v.type=='med'||v.btype=='glot'){if(v.in){v.x=Math.max(v.r,Math.min(MAP-v.r,v.x));v.y=Math.max(v.r,Math.min(MAP-v.r,v.y))}else if(v.x>v.r&&v.x<MAP-v.r&&v.y>v.r&&v.y<MAP-v.r)v.in=true}
-  }
-  for(const b of g.bubbles){
-    if(b.home>0){const best=homingTarget(b);if(best){const sp=Math.hypot(b.vx,b.vy),ca=Math.atan2(b.vy,b.vx),ta=Math.atan2(best.y-b.y,best.x-b.x);let df=ta-ca;while(df>Math.PI)df-=6.283;while(df<-Math.PI)df+=6.283;const mx=(2.2+b.home*2)*dt,na=ca+Math.max(-mx,Math.min(mx,df));b.vx=Math.cos(na)*sp;b.vy=Math.sin(na)*sp}}
-    b.x+=b.vx*dt;b.y+=b.vy*dt;b.dist+=Math.hypot(b.vx,b.vy)*dt;
-    if(b.sp>0&&b.dist>170*S&&g.bubbles.length<500){b.dead=true;const ca=Math.atan2(b.vy,b.vx),sp=Math.hypot(b.vx,b.vy);for(const o of [-.45,0,.45])g.bubbles.push({...b,vx:Math.cos(ca+o)*sp,vy:Math.sin(ca+o)*sp,sp:b.sp-1,dist:0,r:b.r*.85,dead:false,hits:b.hits?b.hits.slice():undefined})}
-  }
-  for(const b of g.bubbles){
-    if(b.dead)continue;
-    for(const v of g.viruses){
-      if(b.dead)break;
-      if(v.dead)continue;
-      if(!(Math.hypot(b.x-v.x,b.y-v.y)<v.r+b.r)||(b.hits&&b.hits.includes(v)))continue;
-      const owner=pvpOwner(b.own);
-      if(owner)withCtx(owner,()=>pvpHit(b,v));
-      else withCtx(null,()=>pvpHit(b,v));
-    }
-  }
-  let kb=0;for(let i=0;i<g.bubbles.length;i++){const b=g.bubbles[i];if(!b.dead&&b.x>-200&&b.x<MAP+200&&b.y>-200&&b.y<MAP+200)g.bubbles[kb++]=b}
-  g.bubbles.length=kb;
-  processDeaths();
-  let kv=0;for(let i=0;i<g.viruses.length;i++){const v=g.viruses[i];if(!v.dead)g.viruses[kv++]=v}
-  g.viruses.length=kv;
-  for(const pw of g.powers)pw.life-=dt;
-  let kp=0;for(let i=0;i<g.powers.length;i++){const pw=g.powers[i];if(pw.life>0)g.powers[kp++]=pw}
-  g.powers.length=kp;
-  let kpa=0;for(let i=0;i<g.parts.length;i++){const p=g.parts[i];p.x+=p.vx*dt;p.y+=p.vy*dt;p.l-=dt;if(p.l>0)g.parts[kpa++]=p}
-  g.parts.length=kpa;
-  let kr=0;for(let i=0;i<g.rings.length;i++){const r=g.rings[i];r.l-=dt;if(r.l>0)g.rings[kr++]=r}
-  g.rings.length=kr;
-}
-function pvpStep(dt){
-  const now=Date.now();
-  for(const p of NET.pvpP.values()){if(p.lives>0&&now-(p.lastT||now)>4000){p.lives=0;p.mv={x:0,y:0};p.shotQ=[];p.pickQ=[];}}
-  if(g.lives>0)pvpTick(dt);
-  for(const p of NET.pvpP.values()){if(p.lives>0)withCtx(p,()=>pvpTick(dt))}
-  pvpWorld(dt);
-  pvpCheckEnd();
-}
-function pvpBoard(all){
-  return all.slice().sort((a,b)=>b.score-a.score).map(p=>'• '+esc(p.name)+' — '+p.score+' pts'+(p.lives>0?'':' (eliminado)')).join('<br>');
-}
-function pvpCheckEnd(){
-  if(g.over||!NET.pvpP)return;
-  const all=[{pid:1,name:NET.name||'Host',lives:g.lives,score:g.score}].concat([...NET.pvpP.values()].map(p=>({pid:p.pid,name:p.name,lives:p.lives,score:p.score})));
-  if(all.length<2)return;
-  const alive=all.filter(p=>p.lives>0),sorted=all.slice().sort((a,b)=>b.score-a.score);
-  let win=null;
-  if(alive.length===0)win=sorted[0];
-  else if(alive.length===1)win=alive[0];
-  else if(sorted[0].score>0&&sorted[0].score>=2*(sorted[1]?sorted[1].score:0))win=sorted[0];
-  if(win){
-    NET.pvpWinner={pid:win.pid,name:win.name};g.over=true;g.t0=performance.now();
-    box.innerHTML='<h1>¡Ganó '+esc(win.name)+'!</h1><p>'+pvpBoard(all)+'</p><p>Tocá para volver al menú</p>';msg.style.display='flex';
-  }
-}
-function pvpWorldSnap(){
-  return {
-    v:g.viruses.filter(v=>!v.dead).map(v=>({x:v.x,y:v.y,r:v.r,hp:v.hp,max:v.max,type:v.type,btype:v.btype,boss:v.boss,face:v.face,ph:v.ph,flash:v.flash,absorb:v.absorb,stage:v.stage})),
-    b:g.bubbles.map(b=>({x:b.x,y:b.y,vx:b.vx,vy:b.vy,r:b.r,col:b.col,ally:b.ally,bomb:b.bomb,bc:BCOL[b.col]})),
-    p:g.powers.map(p=>({id:p.nid||(p.nid=++NET.pseq),x:p.x,y:p.y,r:p.r,life:p.life,max:p.max,k:p.k,t:p.t,e:PW[p.k]?PW[p.k].e:'?'})),
-    a:g.allies.map(a=>({x:a.x,y:a.y,rot:a.rot,col:a.col,shape:a.shape,hp:a.hp,inv:a.inv,pal:SOAPC[a.col],bc:BCOL[a.col]}))
-  };
-}
-function pvpSnap(){
-  const col=SOAPC[CUST.col]?SOAPC[CUST.col][0]:'#f8879f';
-  const pl=[{pid:1,name:NET.name||'Host',x:PX,y:PY,fill:col,lives:g.lives,score:g.score,hud:{fx:g.fx,gold:g.gold,perk:g.perk,xp:g.xp,xt:g.xt}}];
-  for(const p of NET.pvpP.values())pl.push({pid:p.pid,name:p.name,x:p.PX,y:p.PY,fill:p.fill,lives:p.lives,score:p.score,hud:{fx:p.fx,gold:p.gold,perk:p.perk,xp:p.xp,xt:p.xt}});
-  return Object.assign({pvp:true,over:!!g.over,winner:NET.pvpWinner,t:g.t,bk:g.bossKills,wave:g.wave,phase:g.advPhase,quota:g.advQuota,pl},pvpWorldSnap());
-}
-function pvpApply(s){
-  const me=s.pl.find(q=>q.pid===NET.pid)||{};
-  if(me.lives!=null)g.lives=me.lives;if(me.score!=null)g.score=me.score;
-  if(me.hud){g.fx=me.hud.fx;g.gold=me.hud.gold;g.perk=me.hud.perk;g.xp=me.hud.xp;g.xt=me.hud.xt}
-  g.bossKills=s.bk;g.wave=s.wave;g.advPhase=s.phase;g.advQuota=s.quota;g.t=s.t;
-  g.viruses=s.v;
-  g.bubbles=s.b.map(b=>{if(b.bc&&!BCOL[b.col])BCOL[b.col]=b.bc;return b});
-  g.powers=s.p.map(p=>{if(!PW[p.k])PW[p.k]={e:p.e||'?',n:p.k,t:p.t||'n'};return p});
-  g.allies=s.a.map(a=>{if(a.pal&&!SOAPC[a.col])SOAPC[a.col]=a.pal;if(a.bc&&!BCOL[a.col])BCOL[a.col]=a.bc;return a});
-  NET.drawList=s.pl.filter(q=>q.pid!==NET.pid);
-  if(s.over&&!g.over){
-    g.over=true;const w=s.winner||{name:'?'};
-    box.innerHTML='<h1>¡Ganó '+esc(w.name)+'!</h1><p>'+s.pl.slice().sort((a,b)=>b.score-a.score).map(p=>'• '+esc(p.name)+' — '+p.score+' pts'+(p.lives>0?'':' (eliminado)')).join('<br>')+'</p><p>Tocá para volver al menú</p>';
-    msg.style.display='flex';
-  }
-}
-function bossSummon(v,dt){if(v.adv){advBossAI(v,dt);return}
-  const t=v.btype;if((t!='glot'&&t!='bomb')||g.fx.tfreeze>0)return;
-  v.sumT=(v.sumT??2)-dt;if(v.sumT>0)return;v.sumT=t=='glot'?3.2:3.6;
-  const ty=t=='glot'?'glot':'bmb';if(g.viruses.filter(o=>o.type==ty&&!o.dead).length>=(t=='glot'?10:8))return;
-  const a=Math.random()*6.28,c=newVirus(v.x+Math.cos(a)*v.r,v.y+Math.sin(a)*v.r,rollHp(),ty);
-  c.r*=cval('vsize');c.grace=.5;c.x=Math.max(c.r,Math.min(BXMAX()-c.r,c.x));c.y=Math.max(c.r,Math.min(BYMAX()-c.r,c.y));const spb=safeAt(c.x,c.y,c.r);c.x=spb[0];c.y=spb[1];g.viruses.push(c);pop(c.x,c.y,'#ffd27a',8);
-}
-function kite(v,dt){
-  const cx=CWX(),cy=CWY(),r=v.r;
-  if(!v.in){const dx=Math.max(r,Math.min(BXMAX()-r,v.x))-v.x,dy=Math.max(r,Math.min(BYMAX()-r,v.y))-v.y,m=Math.hypot(dx,dy)||1;return [dx/m,dy/m]}
-  let fx=0,fy=0;const px=v.x-cx,py=v.y-cy,pd=Math.hypot(px,py)||1,want=Math.min(W,H)*.42;
-  if(pd<want){fx+=px/pd*1.4;fy+=py/pd*1.4}else if(pd>want*1.5){fx-=px/pd*.6;fy-=py/pd*.6}
-  v.orient=v.orient||(Math.random()<.5?1:-1);fx+=-py/pd*.8*v.orient;fy+=px/pd*.8*v.orient;
-  for(const b of g.bubbles){
-    const bx=v.x-b.x,by=v.y-b.y,bd=Math.hypot(bx,by)||1;if(bd>260*S)continue;
-    const sp=Math.hypot(b.vx,b.vy)||1,c=(b.vx*bx+b.vy*by)/(sp*bd);
-    if(c>.5){const qx=-b.vy/sp,qy=b.vx/sp,side=(bx*qx+by*qy)>=0?1:-1,k=2.4*(1-bd/(260*S)+.3);fx+=qx*side*k;fy+=qy*side*k}
-  }
-  if((v.x<=r+2&&fx<0)||(v.x>=BXMAX()-r-2&&fx>0)){fx=-fx;v.orient*=-1}
-  if((v.y<=r+2&&fy<0)||(v.y>=BYMAX()-r-2&&fy>0)){fy=-fy;v.orient*=-1}
-  const m=Math.hypot(fx,fy);return m>.05?[fx/m,fy/m]:[0,0];
-}
-function bossDecor(v){
-  const r=v.r,t=v.btype||'normal';ctx.save();ctx.translate(v.x,v.y);ctx.lineJoin='round';
-  if(t=='rey'){ctx.fillStyle='#ffd23a';ctx.strokeStyle='#8a5a00';ctx.lineWidth=3*S;ctx.beginPath();ctx.moveTo(-r*.55,-r*.85);ctx.lineTo(-r*.55,-r*1.25);ctx.lineTo(-r*.28,-r*1.0);ctx.lineTo(0,-r*1.35);ctx.lineTo(r*.28,-r*1.0);ctx.lineTo(r*.55,-r*1.25);ctx.lineTo(r*.55,-r*.85);ctx.closePath();ctx.fill();ctx.stroke()}
-  else if(t=='glot'){const o=v.absorb>0?v.absorb/.4:0;ctx.fillStyle='#3b1500';ctx.beginPath();ctx.ellipse(0,r*.5,r*.52,r*(.2+.14*o),0,0,6.28);ctx.fill();if(o>0){ctx.strokeStyle='rgba(255,166,40,'+o+')';ctx.lineWidth=5*S;ctx.beginPath();ctx.arc(0,0,r*(1.5-.4*o),0,6.28);ctx.stroke()}}
-  else if(t=='tank'){ctx.strokeStyle='#cfd8e0';ctx.lineWidth=r*.1;ctx.beginPath();ctx.arc(0,0,r*.92,0,6.28);ctx.stroke();ctx.fillStyle='#e6edf2';for(let i=0;i<8;i++){const a=i*Math.PI/4;ctx.beginPath();ctx.arc(Math.cos(a)*r*.92,Math.sin(a)*r*.92,r*.07,0,6.28);ctx.fill()}}
-  else if(t=='bomb'){ctx.strokeStyle='#222';ctx.lineWidth=4*S;ctx.beginPath();ctx.moveTo(0,-r);ctx.quadraticCurveTo(r*.2,-r*1.3,r*.45,-r*1.3);ctx.stroke();ctx.fillStyle='#ffb02e';ctx.beginPath();ctx.arc(r*.45,-r*1.3,r*.1+Math.abs(Math.sin(g.t*10))*r*.05,0,6.28);ctx.fill()}
-  ctx.fillStyle=sc;ctx.font='bold '+Math.round(14*S)+'px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji","Trebuchet MS",Arial,sans-serif';ctx.textAlign='center';ctx.textBaseline='alphabetic';ctx.fillText(BICON[t]+' '+BNAME[t],0,-r*1.75);
-  ctx.restore();
-}
-function chain(from,dm,lv){
-  const N=Math.min(40,5+3*(lv-1)),R=230*S,hit=new Set([from]),pts=[{x:from.x,y:from.y}];let cur=from;
-  for(let i=0;i<N&&g.chainB>0;i++){
-    let best=null,bd=1e9;
-    const vx0=AOX(),vy0=AOY(),vx1=vx0+W,vy1=vy0+H;
-    for(const o of g.viruses){if(o.dead||hit.has(o)||o.x+o.r<vx0||o.x-o.r>vx1||o.y+o.r<vy0||o.y-o.r>vy1)continue;const d=Math.hypot(o.x-cur.x,o.y-cur.y);if(d<R&&d<bd){bd=d;best=o}}
-    if(!best)break;g.chainB--;hit.add(best);pts.push({x:best.x,y:best.y});hurt(best,dm);cur=best;
-  }
-  if(pts.length>1&&g.bolts.length<40)g.bolts.push({pts,l:.25});
-}
-function orbBoom(x,y,lv){
-  const R=170*S*(1+.35*g.perk.wave);g.rings.push({x,y,l:.4,R});pop(x,y,'#ffb347',24);g.shake=Math.max(g.shake,.2);
-  const dm=5*bubDmg();for(const o of g.viruses){if(o.dead||Math.hypot(o.x-x,o.y-y)>=R+o.r)continue;hurt(o,dm)}
-}
-function updateOrbit(dt){
-  if(!(g.xp.orbit>0))return;
-  const cx=CWX(),cy=CWY(),lv=g.xp.orbit,rad=88*S*cval('ssize');g.orbA+=dt*2.4;
-  for(let i=0;i<5;i++){
-    if(g.orb[i]>0){g.orb[i]-=dt;continue}
-    const a=g.orbA+i*Math.PI*2/5,x=cx+Math.cos(a)*rad,y=cy+Math.sin(a)*rad;
-    for(const v of g.viruses){if(v.dead)continue;if(Math.hypot(v.x-x,v.y-y)<v.r+11*S){orbBoom(x,y,lv);g.orb[i]=4;break}}
-  }
-}
-function updateX(dt){
-  let kept=0;
-  for(let i=0;i<g.bolts.length;i++){const b=g.bolts[i];b.l-=dt;if(b.l>0)g.bolts[kept++]=b}
-  g.bolts.length=kept;
-  const X=g.xp,cx=CWX(),cy=CWY();
-  if(X.time>0){g.xt.time-=dt;if(g.xt.time<=0){g.fx.tfreeze=2+2*X.time;g.xt.time=Math.max(6,28-4*X.time)+g.fx.tfreeze;pop(cx,cy,'#bfe9ff',20)}}
-  if(X.aura>0){g.xt.aura-=dt;if(g.xt.aura<=0){g.xt.aura=Math.max(.25,15*Math.pow(.67,X.aura-1));g.auras.push({r:0,hit:new Set(),sp:300*S*(1+.25*(X.aura-1)),dmg:(4+X.aura)*bubDmg()});g.shake=.25}}
-  const maxR=Math.hypot(W,H)/2+60*S;
-  for(const a of g.auras){a.r+=a.sp*dt;for(const v of g.viruses){if(v.dead||a.hit.has(v))continue;if(Math.abs(Math.hypot(v.x-cx,v.y-cy)-a.r)<v.r+12*S){a.hit.add(v);hurt(v,a.dmg)}}}
-  kept=0;
-  for(let i=0;i<g.auras.length;i++){const a=g.auras[i];if(a.r<maxR)g.auras[kept++]=a}
-  g.auras.length=kept;
-  updateOrbit(dt);
-}
-function drawX(){
-  const cx=CWX(),cy=CWY();
-  for(const a of g.auras){const f=Math.max(.25,1-a.r/(Math.hypot(W,H)/2));ctx.save();ctx.globalAlpha=f;ctx.shadowColor='#a855f7';ctx.shadowBlur=SB(18*S);ctx.strokeStyle='#d8a8ff';ctx.lineWidth=12*S;ctx.beginPath();ctx.arc(cx,cy,a.r,0,6.28);ctx.stroke();ctx.strokeStyle='#fff';ctx.lineWidth=4*S;ctx.stroke();ctx.restore()}
-  if(g.xp.orbit>0){const rad=88*S*cval('ssize');for(let i=0;i<5;i++){const a=g.orbA+i*Math.PI*2/5,x=cx+Math.cos(a)*rad,y=cy+Math.sin(a)*rad;ctx.save();ctx.globalAlpha=g.orb[i]>0?.25:1;ctx.fillStyle='#2b2b3a';ctx.strokeStyle='#ff9d2e';ctx.lineWidth=3*S;ctx.beginPath();ctx.arc(x,y,11*S,0,6.28);ctx.fill();ctx.stroke();ctx.fillStyle='#ff5a2a';ctx.beginPath();ctx.arc(x+Math.cos(a)*11*S*.6,y+Math.sin(a)*11*S*.6,3.5*S,0,6.28);ctx.fill();ctx.restore()}}
-  for(const b of g.bolts){
-    ctx.save();ctx.globalAlpha=Math.min(1,b.l*5);ctx.strokeStyle='#fff7a8';ctx.shadowColor='#ffd400';ctx.shadowBlur=SB(12*S);ctx.lineWidth=3.5*S;ctx.lineJoin='round';ctx.beginPath();
-    b.pts.forEach((p,i)=>{if(!i){ctx.moveTo(p.x,p.y);return}const q=b.pts[i-1],n=5;for(let k=1;k<=n;k++){const t=k/n,j=k<n?18*S:0;ctx.lineTo(q.x+(p.x-q.x)*t+(Math.random()-.5)*j,q.y+(p.y-q.y)*t+(Math.random()-.5)*j)}});
-    ctx.stroke();ctx.restore();
-  }
-}
 function stealPool(){
   // Un candidato por cada power bueno activo: el sorteo posterior es uniforme, sin prioridades.
   const a=[];for(const k of ['dmg','fast','double','bomb','shield','freeze'])if(g.fx[k]>0)a.push(()=>{g.fx[k]=0});
@@ -1957,7 +1624,6 @@ function explode(x,y){
 }
 function update(dt){
   if(!g.started||g.over||g.pick||g.cmenu)return;
-  if(NET.pvpOn&&NET.role==='host'){pvpStep(dt);return}
   if(g.creative)g.lives=5;
   if(g.bonusPicks>0&&!g.adv){g.bonusPicks--;openPick();return}
   if(g.bossKills>g.rewards){g.rewards++;if(g.t1==null)g.t1=g.t;if(!g.adv){openPick();return}}
@@ -1989,7 +1655,6 @@ function update(dt){
     v.ph+=dt;v.flash-=dt;v.grace-=dt;v.absorb-=dt;if(v.dead)continue;
     const dpl=Math.hypot(cx-v.x,cy-v.y)||1;let tx=cx,ty=cy;
     for(const al of g.allies){if(Math.hypot(al.x-v.x,al.y-v.y)<Math.hypot(tx-v.x,ty-v.y)){tx=al.x;ty=al.y}}
-    for(const o of netSouls()){if(Math.hypot(o.x-v.x,o.y-v.y)<Math.hypot(tx-v.x,ty-v.y)){tx=o.x;ty=o.y}}
     const dx=tx-v.x,dy=ty-v.y,d=Math.hypot(dx,dy)||1;
     const fz=(g.fx.freeze>0?.08:1)*(g.fx.haste>0?1.6:1)*cval('vspd')*(v.boss?1:D.speed)*(g.fx.tfreeze>0?0:1);let mx=dx/d,my=dy/d;if(v.btype=='glot'){const m=kite(v,dt);mx=m[0];my=m[1]}if(v.boss)bossSummon(v,dt);if(v.type=='med'){const m=medMove(v,dpl,dt);mx=m[0];my=m[1]}
     v.x+=mx*v.sp*fz*dt+(v.kx||0)*dt;v.y+=my*v.sp*fz*dt+(v.ky||0)*dt;
@@ -2180,7 +1845,7 @@ function draw(){
   if(realismLevel()>0){drawRealismLighting();drawRealismShadows()}
   for(let i=0;i<g.viruses.length;i++){const v=g.viruses[i];if(!v.boss&&visibleWorld(v.x,v.y,v.r*1.5)){drawVirus(v);if(FRZ)drawIceShell(v)}}
   for(let i=0;i<g.viruses.length;i++){const v=g.viruses[i];if(v.boss&&visibleWorld(v.x,v.y,v.r*1.5)){drawVirus(v);if(FRZ)drawIceShell(v)}}
-  drawSoap();drawAllies();drawRemoteSouls();
+  drawSoap();drawAllies();
   for(let i=0;i<g.bubbles.length;i++){
     const b=g.bubbles[i];if(!visibleWorld(b.x,b.y,b.r+20*S))continue;
     // Small speed streak gives projectiles more depth without blur filters.
@@ -2273,7 +1938,8 @@ var KACT=[['up','Disparar arriba'],['down','Disparar abajo'],['left','Disparar i
 var KEYS=Object.assign({},DEFKEYS);try{const s=JSON.parse(localStorage.getItem('soapKeys')||'null');if(s)KEYS=Object.assign(KEYS,s)}catch(e){}var KWAIT=null;
 function keyLabel(c){const m={ArrowUp:'⬆️',ArrowDown:'⬇️',ArrowLeft:'⬅️',ArrowRight:'➡️',Space:'Espacio'};return m[c]||String(c).replace(/^Key/,'').replace(/^Digit/,'')}function saveKeys(){try{localStorage.setItem('soapKeys',JSON.stringify(KEYS))}catch(e){}}
 function openSettings(){g.cmenu=true;g.holding=false;document.getElementById('settings').style.display='flex';renderSettings()}function closeSettings(){document.getElementById('settings').style.display='none';g.cmenu=false;KWAIT=null;if(g&&g.paused)document.getElementById('pausemenu').style.display='flex'}
-function renderSettings(){SETVIEW='main';document.getElementById('setbody').innerHTML='<button data-s="keys">🎮 Controles (teclado y mando)</button><button data-s="move">📱 Movimiento móvil: '+(CUST.fmode?'Dedo':'Palanca')+'</button><button data-s="perf">📊 Modo Rendimiento: '+(CUST.perf?'SÍ':'NO')+'</button><button data-s="vsync">🖥️ Sincronización vertical (VSync): '+(CUST.vsync?'SÍ':'NO')+'</button><button data-s="sfx">🔊 Efectos de sonido: '+(CUST.sfx!==false?'SÍ':'NO')+'</button>'+(fsStandalone()?'':'<button data-s="fs">⛶ Pantalla completa: '+(fsOn()?'SÍ':'NO')+'</button>')+'<button data-s="shaders">✨ Shaders: '+shLabel()+'</button><button data-s="acc">👁️ Distinción visual: '+(CUST.acc?'SÍ':'NO')+'</button><p style="font-size:14px">Con VSync activado, el juego dibuja al ritmo de actualización de la pantalla. Desactivado, intenta dibujar sin esperar al siguiente refresco; el navegador y la pantalla todavía pueden limitar la presentación.</p><p style="font-size:14px">F3 (en PC) muestra un panel técnico.</p><button data-s="exit" class="danger-action">🏠 Salir al menú principal</button>'}
+function renderSettings(){SETVIEW='main';document.getElementById('setbody').innerHTML='<button data-s="keys">🎮 Controles (teclado y mando)</button><button data-s="move">📱 Movimiento móvil: '+(CUST.fmode?'Dedo':'Palanca')+'</button><h3>🔊 Audio</h3><button data-s="sfx">Efectos de sonido: '+(CUST.sfx!==false?'SÍ':'NO')+'</button><label style="display:block;font-size:14px;margin:8px 0">Volumen de efectos: <b id="sfxVolLabel">'+Math.round(CUST.sfxVolume*100)+'%</b><input data-audio="sfxVolume" type="range" min="0" max="100" value="'+Math.round(CUST.sfxVolume*100)+'" style="width:100%;touch-action:pan-x"></label><button data-s="music">🎵 Música de fondo: '+(CUST.music!==false?'SÍ':'NO')+'</button><label style="display:block;font-size:14px;margin:8px 0">Volumen de música: <b id="musicVolLabel">'+Math.round(CUST.musicVolume*100)+'%</b><input data-audio="musicVolume" type="range" min="0" max="100" value="'+Math.round(CUST.musicVolume*100)+'" style="width:100%;touch-action:pan-x"></label><button data-s="perf">📊 Modo Rendimiento: '+(CUST.perf?'SÍ':'NO')+'</button><button data-s="vsync">🖥️ Sincronización vertical (VSync): '+(CUST.vsync?'SÍ':'NO')+'</button>'+(fsStandalone()?'':'<button data-s="fs">⛶ Pantalla completa: '+(fsOn()?'SÍ':'NO')+'</button>')+'<button data-s="shaders">✨ Shaders: '+shLabel()+'</button><button data-s="acc">👁️ Distinción visual: '+(CUST.acc?'SÍ':'NO')+'</button><p style="font-size:14px">Con VSync activado, el juego dibuja al ritmo de actualización de la pantalla. Desactivado, intenta dibujar sin esperar al siguiente refresco; el navegador y la pantalla todavía pueden limitar la presentación.</p><p style="font-size:14px">F3 (en PC) muestra un panel técnico.</p><button data-s="exit" class="danger-action">🏠 Salir al menú principal</button>'}
+
 function renderKeys(msg){SETVIEW='keys';
   let h='<div class="cbs ctabs"><button data-kt="kb"'+(KTAB=='kb'?' class="on"':'')+'>⌨️ Teclado</button><button data-kt="pad"'+(KTAB=='pad'?' class="on"':'')+'>🎮 Mando</button></div>';
   if(KTAB=='kb'){
@@ -2301,9 +1967,10 @@ document.getElementById('setbody').onclick=e=>{const b=e.target.closest('button'
     else if(s=='shaders'){renderShaders()}
     else if(s=='perf'){CUST.perf=!CUST.perf;syncPerformanceMode();saveCust();renderSettings()}
     else if(s=='vsync'){CUST.vsync=CUST.vsync===false;saveCust();renderSettings()}
-    else if(s=='sfx'){CUST.sfx=CUST.sfx===false;saveCust();renderSettings();if(CUST.sfx)sfxPlay('pickup')}
+    else if(s=='sfx'){CUST.sfx=CUST.sfx===false;saveCust();applyAudioLevels();renderSettings();if(CUST.sfx)sfxPlay('pickup')}
+    else if(s=='music'){CUST.music=CUST.music===false;saveCust();if(CUST.music)musicStart();else musicStop();renderSettings()}
     else if(s=='acc'){CUST.acc=!CUST.acc;saveCust();renderSettings()}
-    else if(s=='move'){CUST.fmode=!CUST.fmode;saveCust();renderSettings()}}
+    else if(s=='move'){CUST.fmode=!CUST.fmode;saveCust();renderSettings();syncMovementControls()}}
   else if(b.dataset.sh){shToggle()}
   else if(b.dataset.shp!==undefined){shPreset(+b.dataset.shp)}
   else if(b.dataset.shf){shCycle(b.dataset.shf)}
@@ -2314,6 +1981,7 @@ document.getElementById('setbody').onclick=e=>{const b=e.target.closest('button'
   else if(b.dataset.pt){PADTYPE=b.dataset.pt;savePad();renderKeys()}
   else if(b.dataset.kb){KWAIT=null;PADWAIT=null;renderSettings()}
 };
+document.getElementById('setbody').addEventListener('input',e=>{const k=e.target.dataset.audio;if(!k)return;const v=Math.max(0,Math.min(100,Number(e.target.value)||0))/100;CUST[k]=v;const out=document.getElementById(k==='sfxVolume'?'sfxVolLabel':'musicVolLabel');if(out)out.textContent=Math.round(v*100)+'%';saveCust();applyAudioLevels()});
 document.getElementById('setClose').onclick=closeSettings;document.getElementById('gear').onclick=openSettings;
 function shSave(){saveCust();resize();fxRender();renderShaders()}
 function shToggle(){const sh=CUST.sh;sh.on=!sh.on;if(sh.on&&!shAnyLevel())Object.assign(sh.v,SH_PRESETS[1][1]);shSave()}
@@ -2357,7 +2025,7 @@ function loop(now){
     const dt=Math.min(.05,elapsed/1000);last=now;
     pollPad();padFire();
     const active=!!(g&&g.started&&!g.paused&&!g.over&&!g.pick&&!g.cmenu);
-    if(active){if(NET.role==='client')netClientMove(dt);else update(dt);draw();fpsN++}
+    if(active){update(dt);draw();fpsN++}
     if(now-fpsStart>=500){fpsV=Math.round(fpsN*1000/(now-fpsStart));fpsN=0;fpsStart=now;if(DBG)dbgUpd()}
   }
   if(CUST.vsync!==false)requestAnimationFrame(loop);
