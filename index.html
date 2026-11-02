@@ -396,7 +396,7 @@ function reset(){g={t:0,over:false,started:false,score:0,lives:(window.D?D.lives
 reset();
 function startGame(){sfxPlay('start');musicStart();g.started=true;msg.style.display='none';document.getElementById('ver').style.display='none';document.getElementById('guide').style.display='none'}
 function showStart(){box.innerHTML='<h1>🧼 Soap Adventures</h1><p>Tocá para lanzar burbujas y defendé tu jabón</p><div class="mbtns"><button id="bPlay">Jugar</button><button id="bAdv">Defensa</button><button id="bCre">Creativo</button><button id="bGuide">Guía</button><button id="bCust">Personalizar</button></div>';msg.style.display='flex';document.getElementById('bPlay').onclick=showAdventureDifficulty;document.getElementById('bCre').onclick=showCreativeModes;
-  document.getElementById('bAdv').onclick=showModes;
+  document.getElementById('bAdv').onclick=showDiff;
   document.getElementById('bCust').onclick=()=>openCust(false);document.getElementById('bGuide').onclick=()=>{document.getElementById('guide').style.display='flex'};}
 function showModes(){
   box.innerHTML='<h1>🛡️ Defensa</h1><p>Defendé tu jabón en el modo clásico.</p><div class="mbtns"><button id="mSolo">Jugar defensa</button><button id="mBack">Volver</button></div>';
