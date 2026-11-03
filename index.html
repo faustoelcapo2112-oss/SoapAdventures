@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Soap Adventures v5.102</title>
+<title>Soap Adventures v.6.0</title>
 <meta name="theme-color" content="#e879a0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -227,7 +227,7 @@ button:active{filter:brightness(.97)}
 .gbox{border-radius:26px!important}
 #msg>div:after{width:25px;height:25px;right:15px;bottom:13px}
 #guide .gbox h2,#cpanel .gbox h2,#settings .gbox h2{padding:7px 34px 9px;border-radius:14px;background:linear-gradient(90deg,rgba(255,213,226,.78),rgba(255,240,245,.45));color:#8a3658}
-#msg #box:before{content:'SOAP ADVENTURES  •  BUBBLE SURVIVAL  •  v.5.97';color:#d64c7b;letter-spacing:1.8px}
+#msg #box:before{content:'SOAP ADVENTURES  •  BUBBLE SURVIVAL  •  v.6.0';color:#d64c7b;letter-spacing:1.8px}
 #msg .mbtns button:first-child{background:linear-gradient(135deg,#f77da2,#df4778);box-shadow:0 5px 0 #bd456c,0 9px 17px rgba(205,61,111,.2)}
 #msg .mbtns button:not(:first-child),#setbody button,#msg .dopt button{background:linear-gradient(180deg,#fff 0%,#f7edf2 100%)}
 #pick{background:radial-gradient(circle at 12% 18%,rgba(129,224,243,.25) 0 7px,transparent 9px),radial-gradient(circle at 88% 78%,rgba(129,224,243,.22) 0 10px,transparent 12px),rgba(39,29,49,.66)}
@@ -475,13 +475,13 @@ body:has(#msg .home-shell) #gear,body:has(#msg .home-shell) #ver{display:none!im
 
 </style></head><body>
 <canvas id="c"></canvas><canvas id="fx"></canvas>
-<div id="ver">v.5.97</div>
+<div id="ver">v.6.0</div>
 <div id="guide"><div class="gbox"><h2>Guía del juego</h2><div class="gbody">
 <h3>Cómo se juega</h3>
 <p>Sos el jabón del centro. Tocá o arrastrá el dedo para lanzar burbujas hacia ese lugar. Cada burbuja hace 1 de daño base.</p>
 <p><b>Jugar</b> abre Aventura, que es el modo principal. <b>Defensa</b> abre el modo clásico de supervivencia. En <b>Creativo</b> podés elegir Aventura creativa o Defensa creativa.</p>
 <p>Empezás con 5 corazones (1 en Hardcore). Si un virus normal te toca, perdés 1 corazón y ese virus desaparece. La explosión elimina virus normales cercanos, pero no daña a los jefes. Después de recibir daño tenés 1,3 s de invulnerabilidad.</p>
-<p>Los powers aparecen aproximadamente cada 5–8 s en Difícil y permanecen 3 s en pantalla: tocá uno antes de que desaparezca.</p>
+<p>Los powers aparecen aproximadamente cada 5–8 s en Difícil y permanecen 3 s en pantalla: tocá uno antes de que desaparezca. La probabilidad de encontrar powers dorados se redujo un 25%.</p>
 <h3>Virus normales y dificultad creciente</h3>
 <p>Los virus normales aparecen con una cantidad aleatoria de vida entre un tercio de la vida máxima (redondeado hacia abajo) y la vida máxima. Esta escala aumenta con el tiempo y más rápidamente después del tercer jefe. Cuanta más vida tienen al aparecer, más lentos se mueven.</p>
 <p>Al vencer un jefe que da recompensa, los virus que ya están en pantalla aumentan su vida actual y máxima. Desde el cuarto jefe recompensado, ese aumento pasa a ser mucho mayor. La velocidad de los virus normales aumenta un 8% por jefe. También aparece +1 virus por tanda por cada jefe posterior al primero.</p>
@@ -509,7 +509,7 @@ body:has(#msg .home-shell) #gear,body:has(#msg .home-shell) #ver{display:none!im
 <p>🏃 <b>Disparo rápido:</b> disparás más rápido durante 10 s.</p>
 <p>✌️ <b>Doble tiro:</b> lanzás 2 burbujas por disparo durante 15 s.</p>
 <h3>Powers dorados</h3>
-<p>❤️ <b>Vida extra:</b> +1 corazón, hasta tu máximo (8 por defecto; Jabón resistente lo aumenta). También cura 1 vida a cada aliado. En Hardcore se reemplaza por 🪖 Escudo dorado.</p>
+<p>❤️ <b>Vida extra:</b> +1 corazón, hasta tu máximo (8 por defecto; Jabón resistente lo aumenta). También cura 1 vida a cada aliado. En Hardcore se reemplaza por 🪖 Escudo: un power normal que activa el escudo durante 15 s.</p>
 <p>🔻 <b>Virus −1:</b> quita 1 de vida a todos los virus; los jefes no pueden bajar de 1 por este efecto.</p>
 <p>🌟 <b>Daño eterno:</b> +1 de daño permanente por nivel.</p>
 <p>🚀 <b>Cadencia eterna:</b> disparás más rápido permanentemente; tiene hasta 4 niveles.</p>
@@ -525,18 +525,21 @@ body:has(#msg .home-shell) #gear,body:has(#msg .home-shell) #ver{display:none!im
 <p>💣 <b>Explosiones (12 s):</b> tus burbujas explotan al impactar y dañan a los virus cercanos, jefes incluidos.</p>
 <p>❄️ <b>Congelar (5 s):</b> los virus se mueven al 8% de su velocidad. Se pausan las tandas normales y la aparición programada de jefes; los jefes Glotón Supremo y Bombardero todavía pueden invocar sus propios virus. Mientras dura, los potenciadores que están en el mapa y los que tenés activos (Daño, Rápido, Doble tiro, Explosiones y Escudo) se consumen 4 veces más lento; Furia y Lentitud siguen a su ritmo normal. En Aventura el hielo cubre todo el mapa, no solo lo que ves en pantalla.</p>
 <p>🛡️ <b>Escudo (8 s):</b> vos y tus aliados no reciben daño. Si un jefe te toca, rebota.</p>
+<p>🪖 <b>Escudo (15 s, Hardcore):</b> versión normal del escudo que aparece en lugar de Vida extra; no es dorado y no aparece en las arenas especiales de jefes.</p>
 <p>☣️ <b>Limpieza:</b> elimina a los virus que no son jefes en pantalla y le quita 5 de vida al jefe (el Tanque recibe la mitad).</p>
 <h3>Powers malos (rojos)</h3>
 <p>💨 <b>Furia:</b> los virus se mueven un 60% más rápido durante 8 s.</p>
 <p>🧬 <b>Mutación:</b> todos los virus en pantalla, incluidos los jefes, ganan +1 de vida actual y máxima.</p>
 <p>🦠 <b>Plaga:</b> aparecen 5 virus de golpe.</p>
 <p>🐌 <b>Lentitud:</b> disparás 2,5 veces más lento durante 8 s.</p>
+<p>🌬️ <b>Tos:</b> power malo que aparece con frecuencia durante la batalla contra Tuberculosis. Al tocarlo, la pantalla queda casi completamente oscura durante 5 s.</p>
 <h3>Mejoras de jefe</h3>
 <p>Se elige 1 entre 3 al vencer un jefe que da recompensa. Son permanentes y acumulables; algunas tienen un nivel máximo.</p>
 <p>↔️ <b>Disparo trasero:</b> junto con tus disparos normales, agrega más burbujas y distribuye todos los disparos uniformemente en los 360°. La separación es 360° dividido por la cantidad total de burbujas.</p>
 <p>🔀 <b>Burbuja triple:</b> las burbujas se dividen en 3 mientras vuelan (hasta nivel 3).</p>
 <p>🎯 <b>Teledirigidas:</b> las burbujas buscan al virus más cercano a la línea de dirección hacia la que apuntaste.</p>
 <p>🔥 <b>Mantener apretado:</b> si dejás el dedo apretado, disparás sin parar; cada nivel aumenta la velocidad de disparo (hasta nivel 4).</p>
+<p>🫁 <b>Dash (8 s):</b> al desbloquearlo tras vencer a Tuberculosis, podés mantener la pantalla apretada para disparar sin parar y te movés un 25% más rápido durante 8 segundos.</p>
 <p>🏹 <b>Perforantes:</b> cada nivel permite que una burbuja atraviese 1 virus adicional.</p>
 <p>🫧 <b>Burbujas grandes:</b> aumenta su tamaño y suma +1 de daño por nivel (hasta nivel 5).</p>
 <p>⭕️ <b>Onda expansiva:</b> cada nivel aumenta un 35% el radio de las explosiones.</p>
@@ -554,7 +557,11 @@ body:has(#msg .home-shell) #gear,body:has(#msg .home-shell) #ver{display:none!im
 <h3>Jefe especial: Dengue</h3>
 <p>El combate ocurre en un mapa propio, algo más pequeño y con una ambientación ligeramente más oscura. El Dengue tiene 750 de vida, es grande y se mueve muy lentamente. No ataca directamente: si te acercás demasiado, te persigue; si te toca, perdés la partida al instante.</p>
 <p>El Dengue invoca larvas lentamente. Estas evolucionan en mosquitos rápidos que buscan acercarse por detrás y luego se lanzan hacia vos. Si te alcanzan, reducen ligeramente tus estadísticas durante unos segundos. Podés eliminar larvas y mosquitos enemigos disparándoles.</p>
-<p>Al derrotarlo, desbloqueás permanentemente el power exclusivo dorado Mosquito aliado para Aventura y Defensa.</p>
+<p>Al derrotarlo, desbloqueás permanentemente el power exclusivo dorado Mosquito aliado para Aventura y Defensa, además del combate contra Tuberculosis.</p>
+<h3>Jefe especial: Tuberculosis</h3>
+<p>El combate usa una arena especial como la del Dengue, pero aparecen dos jefes pequeños de Tuberculosis, cada uno con 500 de vida. Ambos te persiguen lentamente y tenés que derrotar a los dos para ganar.</p>
+<p>Durante la batalla aparecen virus médicos de forma natural; estos pueden curar a los jefes. También aparecen powers malos de Tos 🌬️ con bastante frecuencia: si tocás uno, te quedás casi completamente a oscuras durante 5 segundos.</p>
+<p>Al vencer a los dos jefes desbloqueás 🫁 <b>Dash</b>: un power temporal de 8 segundos que te permite mantener la pantalla apretada para disparar sin parar y aumenta tu velocidad de movimiento un 25% durante ese tiempo.</p>
 <h3>Aventura (nuevo)</h3>
 <p>Un mapa enorme. En celulares aparece la palanquita si elegís ese control; también podés activar Movimiento con el dedo en Ajustes para arrastrar el jabón. En PC se mueve con WASD o las flechas (se cambian en Controles de PC). Disparás tocando la pantalla o con click izquierdo, y con E en PC.</p>
 <p>Las oleadas: cada oleada tiene su jefe fijo (1: Tanque, 2: Virus lento, 3: Rey, 4: Glotón, 5: Bombardero, y se repite con más vida). Cada oleada trae una cantidad fija de virus. Al agotarse dejan de aparecer hasta que termine la oleada. Los que sobran al terminar no salen en la siguiente, pero los vivos siguen en el mapa. Al morir el jefe termina la oleada, suelta un poder y se desbloquean nuevos virus. Los powers aparecen de a 10 en el mapa, duran 10 s y los agarrás tocándolos con el jabón. Los virus te persiguen. Después del 2º jefe te movés un poco más rápido que un virus común.</p>
@@ -567,7 +574,7 @@ body:has(#msg .home-shell) #gear,body:has(#msg .home-shell) #ver{display:none!im
 <p><b>Fácil:</b> más powers y dorados, menos virus y más lentos, 2 menos de vida máxima y menos virus especiales.</p>
 <p><b>Medio:</b> menos virus y especiales, y 2 menos de vida máxima.</p>
 <p><b>Difícil:</b> la experiencia completa.</p>
-<p><b>Hardcore:</b> como Difícil, pero con 1 sola vida. Vida extra se reemplaza por Escudo dorado de 15 s y no aparecen Jabón resistente ni Pérdida de vida.</p>
+<p><b>Hardcore:</b> como Difícil, pero con 1 sola vida. Vida extra se reemplaza por el Escudo 🪖 normal de 15 s y no aparecen Jabón resistente ni Pérdida de vida.</p>
 <p><b>Aventura — Medio:</b> es la dificultad predeterminada. <b>Fácil</b> reduce los virus por oleada y aumenta los powers dorados. <b>Difícil</b> elimina los dorados positivos, pero conserva los malos dorados. <b>Hardcore</b> usa una sola vida.</p>
 <h3>Configuración (⚙️ arriba a la derecha)</h3>
 <p><b>Personalizar:</b> forma y color del jabón, color libre, forma de las burbujas, fondo o imagen propia, texto del jabón (hasta 6 caracteres) y resolución.</p>
@@ -622,11 +629,11 @@ const COLORS={1:['#3fb5a6','#1a7468'],2:['#a9c43f','#5f7f1c'],3:['#f0852f','#b45
 function colorFor(hp){return COLORS[((Math.max(1,Math.floor(hp))-1)%5)+1]}
 const sc='#8a1f43';
 let g;
-let DENGUE_REWARD_UNLOCKED=false;try{DENGUE_REWARD_UNLOCKED=localStorage.getItem('soapDengueReward')==='1'}catch(e){}
-const ADMIN_CODE='FAUSTOISHERE$!';const POWER_CODES={'BUBBLES':'pairshot'};let ADMIN_UNLOCKED=false,ADMIN_GOLDEN_SOAP=false,ADMIN_GOLD_STYLE='gold',UNLOCKED_BOSS_POWERS=[];try{ADMIN_UNLOCKED=localStorage.getItem('soapAdminUnlocked')==='1';ADMIN_GOLDEN_SOAP=localStorage.getItem('soapAdminGold')==='1';ADMIN_GOLD_STYLE=localStorage.getItem('soapAdminGoldStyle')||'gold';UNLOCKED_BOSS_POWERS=JSON.parse(localStorage.getItem('soapUnlockedBossPowers')||'[]');if(!Array.isArray(UNLOCKED_BOSS_POWERS))UNLOCKED_BOSS_POWERS=[]}catch(e){UNLOCKED_BOSS_POWERS=[]}if(ADMIN_UNLOCKED)DENGUE_REWARD_UNLOCKED=true;function saveBossPowerUnlocks(){try{localStorage.setItem('soapUnlockedBossPowers',JSON.stringify([...new Set(UNLOCKED_BOSS_POWERS)]))}catch(e){}}function unlockBossPower(key){if(!UNLOCKED_BOSS_POWERS.includes(key)){UNLOCKED_BOSS_POWERS.push(key);saveBossPowerUnlocks()}if(key==='mosquitoAlly'){DENGUE_REWARD_UNLOCKED=true;try{localStorage.setItem('soapDengueReward','1')}catch(e){}}return true}function unlockAllBossPowers(){unlockBossPower('pairshot');unlockBossPower('mosquitoAlly')}function bossPowerUnlocked(key){return ADMIN_UNLOCKED||UNLOCKED_BOSS_POWERS.includes(key)||(key==='mosquitoAlly'&&DENGUE_REWARD_UNLOCKED)}function redeemPowerCode(raw){const code=String(raw||'').trim().toUpperCase();if(code==='RENACE$!'){if(!window.confirm('¿Reiniciar toda tu cuenta? Se borrarán desbloqueos, poderes, jabón personalizado y progreso guardado.'))return 'cancelled';try{['soapDengueReward','soapAdminUnlocked','soapAdminGold','soapAdminGoldStyle','soapUnlockedBossPowers','soapCust','soapPad','soapKeys'].forEach(k=>localStorage.removeItem(k))}catch(e){}location.reload();return 'reset'}const key=POWER_CODES[code];if(!key)return false;unlockBossPower(key);return true}const ADMIN_GOLD_PALETTES={gold:['#f6c744','#986400','#fff0a0'],rose:['#e8b36a','#9b5a32','#ffe1ad'],champagne:['#efd99a','#a98440','#fff5d6']};
+let DENGUE_REWARD_UNLOCKED=false,TUBERCULOSIS_UNLOCKED=false,TUBERCULOSIS_DASH_UNLOCKED=false;try{DENGUE_REWARD_UNLOCKED=localStorage.getItem('soapDengueReward')==='1';TUBERCULOSIS_UNLOCKED=localStorage.getItem('soapTuberculosisUnlocked')==='1';TUBERCULOSIS_DASH_UNLOCKED=localStorage.getItem('soapTuberculosisDash')==='1'}catch(e){}
+const ADMIN_CODE='FAUSTOISHERE$!';const POWER_CODES={'BUBBLES':'pairshot'};let ADMIN_UNLOCKED=false,ADMIN_GOLDEN_SOAP=false,ADMIN_GOLD_STYLE='gold',UNLOCKED_BOSS_POWERS=[];try{ADMIN_UNLOCKED=localStorage.getItem('soapAdminUnlocked')==='1';ADMIN_GOLDEN_SOAP=localStorage.getItem('soapAdminGold')==='1';ADMIN_GOLD_STYLE=localStorage.getItem('soapAdminGoldStyle')||'gold';UNLOCKED_BOSS_POWERS=JSON.parse(localStorage.getItem('soapUnlockedBossPowers')||'[]');if(!Array.isArray(UNLOCKED_BOSS_POWERS))UNLOCKED_BOSS_POWERS=[]}catch(e){UNLOCKED_BOSS_POWERS=[]}if(ADMIN_UNLOCKED)DENGUE_REWARD_UNLOCKED=true;function saveBossPowerUnlocks(){try{localStorage.setItem('soapUnlockedBossPowers',JSON.stringify([...new Set(UNLOCKED_BOSS_POWERS)]))}catch(e){}}function unlockBossPower(key){if(!UNLOCKED_BOSS_POWERS.includes(key)){UNLOCKED_BOSS_POWERS.push(key);saveBossPowerUnlocks()}if(key==='mosquitoAlly'){DENGUE_REWARD_UNLOCKED=true;try{localStorage.setItem('soapDengueReward','1')}catch(e){}}return true}function unlockAllBossPowers(){unlockBossPower('pairshot');unlockBossPower('mosquitoAlly')}function unlockTuberculosis(){TUBERCULOSIS_UNLOCKED=true;try{localStorage.setItem('soapTuberculosisUnlocked','1')}catch(e){}}function unlockTuberculosisDash(){TUBERCULOSIS_DASH_UNLOCKED=true;unlockTuberculosis();try{localStorage.setItem('soapTuberculosisDash','1')}catch(e){}}function bossPowerUnlocked(key){return ADMIN_UNLOCKED||UNLOCKED_BOSS_POWERS.includes(key)||(key==='mosquitoAlly'&&DENGUE_REWARD_UNLOCKED)||(key==='dash'&&TUBERCULOSIS_DASH_UNLOCKED)}function powerPickupUnlocked(p){if(!p||!p.k)return false;const k=p.k.startsWith('B_')?p.k.slice(2):p.k;if((p.bossExclusive||p.k.startsWith('B_'))&&!bossPowerUnlocked(k))return false;if(k==='mosquitoAlly'&&!bossPowerUnlocked('mosquitoAlly'))return false;if(k==='dash'&&!bossPowerUnlocked('dash'))return false;return true}function redeemPowerCode(raw){const code=String(raw||'').trim().toUpperCase();if(code==='RENACE$!'){if(!window.confirm('¿Reiniciar toda tu cuenta? Se borrarán desbloqueos, poderes, jabón personalizado y progreso guardado.'))return 'cancelled';try{['soapDengueReward','soapTuberculosisUnlocked','soapTuberculosisDash','soapAdminUnlocked','soapAdminGold','soapAdminGoldStyle','soapUnlockedBossPowers','soapCust','soapPad','soapKeys'].forEach(k=>localStorage.removeItem(k))}catch(e){}location.reload();return 'reset'}const key=POWER_CODES[code];if(!key)return false;unlockBossPower(key);return true}const ADMIN_GOLD_PALETTES={gold:['#f6c744','#986400','#fff0a0'],rose:['#e8b36a','#9b5a32','#ffe1ad'],champagne:['#efd99a','#a98440','#fff5d6']};
 function currentSoapPalette(){if(ADMIN_GOLDEN_SOAP)return ADMIN_GOLD_PALETTES[ADMIN_GOLD_STYLE]||ADMIN_GOLD_PALETTES.gold;return (CUST.col==='custom'?SOAPC.custom:SOAPC[CUST.col])||SOAPC.green}
 function saveAdminPrefs(){try{localStorage.setItem('soapAdminUnlocked',ADMIN_UNLOCKED?'1':'0');localStorage.setItem('soapAdminGold',ADMIN_GOLDEN_SOAP?'1':'0');localStorage.setItem('soapAdminGoldStyle',ADMIN_GOLD_STYLE)}catch(e){}}
-function reset(){g={t:0,over:false,started:false,score:0,lives:(window.D?D.lives:5),inv:0,viruses:[],bubbles:[],parts:[],spawn:1,boss:0,bossKills:0,bossWaveCount:0,bossPairSeq:0,nextBoss:(D&&D.bossInterval)||60,cool:0,aim:-Math.PI/2,shake:0,id:0,powers:[],nextPow:5,fx:{dmg:0,fast:0,freeze:0,bomb:0,shield:0,shieldGold:0,haste:0,slow:0,double:0,tfreeze:0},gold:{dmg:0,rate:0,multi:0,badDmg:0,badRate:0},perk:{back:0,split:0,homing:0,hold:0,pierce:0,big:0,wave:0,heart:0,ally:0},rewards:0,bonusPicks:0,rot:-Math.PI/2,allies:[],mosquitoLarvae:[],mosquitoAllies:[],dengueBugs:[],mosquitoShotReady:false,mosquitoShotsReady:0,dengueDebuff:0,dengueBossSwarm:false,dengueMode:false,pick:null,holding:false,hx:0,hy:0,got:{life:0,minus:0},rings:[],plus:[],xp:{bomb:0,storm:0,time:0,orbit:0,aura:0,pairshot:0},xt:{time:20,aura:15},orb:[0,0,0,0,0],orbA:0,auras:[],bolts:[],chainB:60}}
+function reset(){g={t:0,over:false,started:false,score:0,lives:(window.D?D.lives:5),inv:0,viruses:[],bubbles:[],parts:[],spawn:1,boss:0,bossKills:0,bossWaveCount:0,bossPairSeq:0,nextBoss:(D&&D.bossInterval)||60,cool:0,aim:-Math.PI/2,shake:0,id:0,powers:[],nextPow:5,fx:{dmg:0,fast:0,freeze:0,bomb:0,shield:0,shieldGold:0,haste:0,slow:0,double:0,tfreeze:0,dash:0,blind:0},gold:{dmg:0,rate:0,multi:0,badDmg:0,badRate:0},perk:{back:0,split:0,homing:0,hold:0,pierce:0,big:0,wave:0,heart:0,ally:0},rewards:0,bonusPicks:0,rot:-Math.PI/2,allies:[],mosquitoLarvae:[],mosquitoAllies:[],dengueBugs:[],mosquitoShotReady:false,mosquitoShotsReady:0,dengueDebuff:0,dengueBossSwarm:false,dengueMode:false,tuberculosisMode:false,tuberculosisDefeated:0,pick:null,holding:false,hx:0,hy:0,got:{life:0,minus:0},rings:[],plus:[],xp:{bomb:0,storm:0,time:0,orbit:0,aura:0,pairshot:0},xt:{time:20,aura:15},orb:[0,0,0,0,0],orbA:0,auras:[],bolts:[],chainB:60}}
 reset();
 function startGame(){sfxPlay('start');musicStart();g.started=true;msg.style.display='none';document.getElementById('ver').style.display='none';document.getElementById('guide').style.display='none'}
 function homeHueSet(){
@@ -662,7 +669,7 @@ function showStart(){
       '<button id="bSettings" aria-label="Configuración" title="Configuración"><span class="home-icon">⚙️</span></button>'+
       '<button id="bGuide" aria-label="Guía" title="Guía"><span class="home-icon home-guide-icon">!</span></button>'+
       '<button id="bAdmin" aria-label="Códigos" title="Códigos"><span class="home-icon">⌨️</span></button></div>'+
-    '<div class="home-logo"><span class="home-logo-soap">SOAP</span><span class="home-logo-adventures">ADVENTURES</span><span class="home-logo-version">v5.102</span></div><div class="home-shell">'+
+    '<div class="home-logo"><span class="home-logo-soap">SOAP</span><span class="home-logo-adventures">ADVENTURES</span><span class="home-logo-version">v.6.0</span></div><div class="home-shell">'+
     '<div class="home-left"><div class="home-soap-wrap">'+
       '<button class="home-soap" id="homeSoap" aria-label="Personalizar jabón"><span class="soap-inner" id="homeSoapText">SOAP</span></button>'+
       '<div class="home-name" id="homeName" aria-hidden="true">SOAP</div></div>'+
@@ -723,8 +730,8 @@ document.getElementById('adminClose').onclick=()=>{document.getElementById('admi
 function showAdminBossCreative(){box.innerHTML='<h1>🧪 Creativo de jefes</h1><p>Elegí un jefe para probarlo sin perder vidas. Podés abrir el panel creativo durante la partida.</p><div class="boss-list">'+BOSS_ROSTER.map((n,i)=>'<button class="available" data-test-boss="'+i+'">🧪 '+n+'<small>Prueba libre · sin derrota</small></button>').join('')+'</div><div class="mbtns"><button id="adminCreativeBack">Volver al panel admin</button></div>';msg.style.display='flex';box.querySelectorAll('[data-test-boss]').forEach(b=>b.onclick=()=>startDengueBoss(Number(b.dataset.testBoss),true));document.getElementById('adminCreativeBack').onclick=openAdminPanel;}
 function showBosses(){
   const unlocked=ADMIN_UNLOCKED;
-  box.innerHTML='<h1>👑 Jefes</h1><p>Enfrentate a cada jefe y desbloqueá recompensas permanentes.</p><div class="boss-list">'+BOSS_ROSTER.map((n,i)=>'<button '+((i===0||unlocked)?'class="available"':'disabled')+' data-boss="'+i+'">'+((i===0||unlocked)?'🦟 ':'🔒 ')+n+'<small>'+(i===0?(DENGUE_REWARD_UNLOCKED?'Recompensa desbloqueada':'Disponible · 750 de vida'):(unlocked?'Prueba admin · 750 de vida':'Próximamente'))+'</small></button>').join('')+'</div><div class="mbtns"><button id="bossBack">Volver</button></div>';
-  msg.style.display='flex';box.querySelectorAll('[data-boss]').forEach(btn=>{btn.onclick=()=>{const i=Number(btn.dataset.boss);if(i===0||ADMIN_UNLOCKED)startDengueBoss(i)}});document.getElementById('bossBack').onclick=showStart;
+  box.innerHTML='<h1>👑 Jefes</h1><p>Enfrentate a cada jefe y desbloqueá recompensas permanentes.</p><div class="boss-list">'+BOSS_ROSTER.map((n,i)=>{const open=i===0||(i===1&&(unlocked||DENGUE_REWARD_UNLOCKED||TUBERCULOSIS_UNLOCKED))||unlocked;const detail=i===0?(DENGUE_REWARD_UNLOCKED?'Recompensa desbloqueada':'Disponible · 750 de vida'):i===1?(TUBERCULOSIS_DASH_UNLOCKED?'Recompensa desbloqueada':'2 jefes · 500 de vida cada uno'):(unlocked?'Prueba admin':'Próximamente');return '<button '+(open?'class="available"':'disabled')+' data-boss="'+i+'">'+(open?'🧪 ':'🔒 ')+n+'<small>'+detail+'</small></button>'}).join('')+'</div><div class="mbtns"><button id="bossBack">Volver</button></div>';
+  msg.style.display='flex';box.querySelectorAll('[data-boss]').forEach(btn=>{btn.onclick=()=>{const i=Number(btn.dataset.boss);if(i===0||ADMIN_UNLOCKED||(i===1&&(DENGUE_REWARD_UNLOCKED||TUBERCULOSIS_UNLOCKED)))startDengueBoss(i)}});document.getElementById('bossBack').onclick=showStart;
 }
 function showModes(){
   box.innerHTML='<h1>🛡️ Defensa</h1><p>Defendé tu jabón en el modo clásico.</p><div class="mbtns"><button id="mSolo">Jugar defensa</button><button id="mBack">Volver</button></div>';
@@ -732,7 +739,7 @@ function showModes(){
   document.getElementById('mSolo').onclick=showDiff;
   document.getElementById('mBack').onclick=showStart;
 }
-const CPW=[['Comunes',['dmg','fast','double']],['Dorados',['life','minus','gdmg','grate','gmulti','bossgood']],['Especiales',['bomb','freeze','shield','nuke']],['Malos',['haste','hpup','swarm','slow']],['Malos dorados',['bossbad','lifeloss','steal','gdmgdown','grateslow']]];
+const CPW=[['Comunes',['dmg','fast','double','shieldg']],['Dorados',['life','minus','gdmg','grate','gmulti','bossgood']],['Especiales',['bomb','freeze','shield','nuke','dash']],['Malos',['haste','hpup','swarm','slow','cough']],['Malos dorados',['bossbad','lifeloss','steal','gdmgdown','grateslow']]];
 function cb(a,keys,src){return keys.map(k=>'<button data-a="'+a+'" data-k="'+k+'"><span class="emoji">'+src[k].e+'</span> '+src[k].n+'</button>').join('')}
 let cTab='virus';
 function buildC(){
@@ -950,13 +957,13 @@ cv.addEventListener('pointerdown',e=>{
   if(g.over){if(g.t0&&performance.now()-g.t0<700)return;if(g.dengueMode){startDengueBoss(g.adminBossIndex||0,!!g.adminBossCreative);return}if(g.adv){startAdventure();return}reset();g.started=true;msg.style.display='none';return}
   const r=cv.getBoundingClientRect();
   const pl=toL(e),px=pl.x,py=pl.y;
-  for(const p of (g.adv?[]:g.powers)){if(Math.hypot(px-p.x,py-p.y)<p.r*1.4+10*S){collect(p);g.powers=g.powers.filter(q=>q!==p);return}}
+  for(const p of (g.adv?[]:g.powers)){if(Math.hypot(px-p.x,py-p.y)<p.r*1.4+10*S&&collect(p)){g.powers=g.powers.filter(q=>q!==p);return}}
   g.holding=true;g.hx=px;g.hy=py;if(g.cool<=0){shoot(px,py);g.cool=(g.fx.fast>0?.05:.12)*Math.pow(.85,g.gold.rate)*Math.pow(1.18,g.gold.badRate)*(g.fx.slow>0?2.5:1)}
 });
 
 const PW={dmg:{e:'🥊',n:'Daño +1'},life:{e:'❤️',n:'Vida'},minus:{e:'🔻',n:'Virus -1'},fast:{e:'🏃',n:'Rápido'},freeze:{e:'❄️',n:'Congelar'}};
 Object.assign(PW,{bomb:{e:'💣',n:'Explosiones',t:'s'},shield:{e:'🛡️',n:'Escudo',t:'s'},nuke:{e:'☣️',n:'Limpieza',t:'s'},gdmg:{e:'🌟',n:'Daño eterno',t:'g'},grate:{e:'🚀',n:'Cadencia eterna',t:'g'},gmulti:{e:'🔱',n:'Multidisparo',t:'g'}});
-PW.freeze.t='s';PW.life.t='g';PW.minus.t='g';PW.double={e:'✌️',n:'Doble tiro'};PW.shieldg={e:'🪖',n:'Escudo dorado',t:'g'};PW.mosquitoAlly={e:'🦟',n:'Mosquito aliado',d:'Cada power recogido prepara uno de tus próximos disparos para invocar una larva que evoluciona en un mosquito aliado. Tiene 3 vidas y puede eliminar hasta 10 virus.',t:'g'};PW.dengueSwarm={e:'🦟',n:'Enjambre de mosquitos',d:'El Dengue invoca una oleada de mosquitos.',t:'perk'};
+PW.freeze.t='s';PW.life.t='g';PW.minus.t='g';PW.double={e:'✌️',n:'Doble tiro'};PW.cough={e:'🌬️',n:'Tos',d:'Te deja sin visión durante 5 segundos.',t:'b'};PW.dash={e:'🫁',n:'Dash',d:'Durante 8 segundos podés mantener la pantalla apretada para disparar sin parar y te movés un 25% más rápido.',t:'s'};PW.shieldg={e:'🪖',n:'Escudo',t:'n'};PW.mosquitoAlly={e:'🦟',n:'Mosquito aliado',d:'Cada power recogido prepara uno de tus próximos disparos para invocar una larva que evoluciona en un mosquito aliado. Tiene 3 vidas y puede eliminar hasta 10 virus.',t:'g'};PW.dengueSwarm={e:'🦟',n:'Enjambre de mosquitos',d:'El Dengue invoca una oleada de mosquitos.',t:'perk'};
 Object.assign(PW,{haste:{e:'💨',n:'Furia',t:'b'},hpup:{e:'🧬',n:'Mutación',t:'b'},steal:{e:'🕳️',n:'Robo',t:'gb'},swarm:{e:'🦠',n:'Plaga',t:'b'},slow:{e:'🐌',n:'Lentitud',t:'b'},gdmgdown:{e:'🔪',n:'Daño debilitado',t:'gb'},grateslow:{e:'💤',n:'Cadencia invertida',t:'gb'}});
 function pickW(ks){const w=ks.map(k=>k=='life'?1.05:1);let r=Math.random()*w.reduce((a,b)=>a+b,0);for(let i=0;i<ks.length;i++){if(r<w[i])return ks[i];r-=w[i]}return ks[ks.length-1]}
 function spawnBoss(noReward){const n0=g.viruses.length;spawnVirus(true,undefined,'normal');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];if(b.boss){sfxPlay('boss');b.noReward=noReward;b.rewardOnly=!noReward}}}
@@ -974,7 +981,7 @@ function registerBossDefeat(v){
   if(!v.boss||v.noReward||v.rewardRegistered)return;
   sfxPlay('bosskill');
   v.rewardRegistered=true;
-  if(g.dengueMode&&v.btype==='dengue'){g.bossKills++;unlockBossPower('mosquitoAlly');unlockBossPower('pairshot');g.over=true;g.t0=performance.now();showDengueVictory();return}
+  if(g.dengueMode&&v.btype==='dengue'){g.bossKills++;unlockBossPower('mosquitoAlly');unlockBossPower('pairshot');unlockTuberculosis();g.over=true;g.t0=performance.now();showDengueVictory();return}if(g.tuberculosisMode&&v.btype==='tuberculosis'){if(g.viruses.some(o=>o!==v&&o.boss&&o.btype==='tuberculosis'&&!o.dead))return;g.bossKills++;unlockTuberculosisDash();g.over=true;g.t0=performance.now();showTuberculosisVictory();return}
   if(g.adv){if(v.advWave)advWaveClear(v);advDropMany(v.x,v.y)}
   if(v.rewardOnly){g.bonusPicks++;return}
   if(v.pairId!=null&&g.viruses.some(o=>o.boss&&o.pairId===v.pairId&&!o.dead))return;
@@ -984,16 +991,16 @@ function registerBossDefeat(v){
 }
 PW.bossgood={e:'👑',n:'Jefe invocado',t:'g'};PW.bossbad={e:'👹',n:'Jefe salvaje',t:'gb'};PW.lifeloss={e:'💔',n:'Pérdida de vida',t:'gb'};
 function spawnPower(excludeBossPowers=false){
-  const ok=k=>(k=='life'||k=='lifeloss')?!D.core:k=='shieldg'?!!D.core:k=='steal'?stealPool().length>0:k=='grate'?g.gold.rate<4:k=='gmulti'?g.gold.multi<2:k==='mosquitoAlly'?DENGUE_REWARD_UNLOCKED:true;
+  const ok=k=>(k=='life'||k=='lifeloss')?!D.core:k=='shieldg'?!!D.core:k=='steal'?stealPool().length>0:k=='grate'?g.gold.rate<4:k=='gmulti'?g.gold.multi<2:k==='mosquitoAlly'?bossPowerUnlocked('mosquitoAlly'):k==='dash'?bossPowerUnlocked('dash'):k==='cough'?!!g.tuberculosisMode:true;
   let tier;
   if(g.adv){
     // Los malos dorados conservan una probabilidad propia; D.gold solo regula los buenos.
-    const badGoldChance=.045,goodGoldChance=Math.max(0,Math.min(.55,.138125*(D.gold||0))),r=Math.random();
+    const badGoldChance=.045,goodGoldChance=Math.max(0,Math.min(.55,.10359375*(D.gold||0))),r=Math.random();
     if(r<badGoldChance)tier='gb';
     else if(r<badGoldChance+goodGoldChance)tier='g';
     else{const q=(r-badGoldChance-goodGoldChance)/Math.max(.000001,1-badGoldChance-goodGoldChance);tier=q<.493?'n':q<.826?'s':'b'}
   }else tier=pickTier(Math.random());
-  if(DENGUE_REWARD_UNLOCKED&&Math.random()<.055)tier='g';
+  if(DENGUE_REWARD_UNLOCKED&&Math.random()<.04125)tier='g';
   const ks=Object.keys(PW).filter(k=>{
       const pt=PW[k].t||'n';
       if(g.adv){if(k.startsWith('B_')||k==='bossgood'||k==='bossbad')return false;return pt===tier}
@@ -1013,11 +1020,11 @@ function _oldSpawn(){
 const FREEZE_TIMER_RATE=.25,FREEZE_NORMAL={freeze:1,tfreeze:1,haste:1,slow:1};
 function extendFx(key,seconds){g.fx[key]=Math.max(0,g.fx[key]||0)+seconds}
 function powerSoundKey(k,t){if(k&&k.indexOf('B_')===0)k=k.slice(2);const m={dmg:'skill-power',fast:'skill-speed',double:'skill-double',life:'skill-life',minus:'skill-minus',bossgood:'boss',bossbad:'skill-badboss',lifeloss:'skill-lifeloss',gdmgdown:'skill-weaken',grateslow:'skill-slow',shieldg:'skill-shield',haste:'skill-haste',hpup:'skill-mutation',steal:'skill-steal',swarm:'skill-swarm',slow:'skill-slow',bomb:'skill-bomb',freeze:'skill-freeze',shield:'skill-shield',nuke:'skill-nuke',gdmg:'skill-power',grate:'skill-speed',gmulti:'skill-double',storm:'skill-electric',time:'skill-freeze',orbit:'skill-bomb',aura:'skill-aura',ally:'skill-ally',back:'skill-double',split:'skill-split',homing:'skill-homing',hold:'skill-speed',pierce:'skill-pierce',big:'skill-big',wave:'skill-blast',heart:'skill-life'};return m[k]||((t==='g'||t==='gb')?'gold':'pickup')}
-function collect(p){sfxPlay(powerSoundKey(p&&p.k,p&&p.t));if(p.k&&p.k.indexOf('B_')===0){const bk=p.k.slice(2);pop(p.x,p.y,'#ffffff',14);if(XP[bk])g.xp[bk]=bk==='pairshot'?Math.min(5,(g.xp[bk]||0)+1):(g.xp[bk]||0)+1;else applyPerk(bk);return}
-  if(p.k&&PERKS[p.k]){pop(p.x,p.y,'#ffffff',14);applyPerk(p.k);return}
+function collect(p){if(!powerPickupUnlocked(p))return false;sfxPlay(powerSoundKey(p&&p.k,p&&p.t));if(p.k&&p.k.indexOf('B_')===0){const bk=p.k.slice(2);pop(p.x,p.y,'#ffffff',14);if(XP[bk])g.xp[bk]=bk==='pairshot'?Math.min(5,(g.xp[bk]||0)+1):(g.xp[bk]||0)+1;else applyPerk(bk);return true}
+  if(p.k&&PERKS[p.k]){pop(p.x,p.y,'#ffffff',14);applyPerk(p.k);return true}
   pop(p.x,p.y,'#ffffff',14);
-  if(p.k==='mosquitoAlly'){g.mosquitoShotsReady=(g.mosquitoShotsReady||0)+1;g.mosquitoShotReady=true;pop(p.x,p.y,'#ffe36b',20);return}
-  if(p.k==='dengueSwarm'){g.dengueBossSwarm=true;return}
+  if(p.k==='mosquitoAlly'){g.mosquitoShotsReady=(g.mosquitoShotsReady||0)+1;g.mosquitoShotReady=true;pop(p.x,p.y,'#ffe36b',20);return true}
+  if(p.k==='dengueSwarm'){g.dengueBossSwarm=true;return true}
   if(p.k=='dmg')extendFx('dmg',15);
   else if(p.k=='fast')extendFx('fast',10);
   else if(p.k=='freeze')extendFx('freeze',5);
@@ -1041,6 +1048,9 @@ function collect(p){sfxPlay(powerSoundKey(p&&p.k,p&&p.t));if(p.k&&p.k.indexOf('B
   else if(p.k=='grate')g.gold.rate=Math.min(g.creative&&!CUST.perf?Infinity:(g.creative?99:4),g.gold.rate+1);
   else if(p.k=='gmulti')g.gold.multi=Math.min(g.creative&&!CUST.perf?Infinity:(g.creative?30:2),g.gold.multi+1);
   else if(p.k=='minus'){g.got.minus++;for(const v of g.viruses){if(v.boss){v.hp=Math.max(1,v.hp-(v.btype=='tank'?.5:1))}else{v.hp--;v.flash=.1;if(v.hp<=0){v.dead=true;g.score+=v.max*10;pop(v.x,v.y,colorFor(v.max)[0],14)}}}}
+  else if(p.k==='cough')extendFx('blind',5);
+  else if(p.k==='dash')extendFx('dash',8);
+  return true;
 }
 function star(x,y,a,b,n,rot){ctx.beginPath();for(let i=0;i<n*2;i++){const q=rot+i*Math.PI/n,r=i%2?b:a;ctx.lineTo(x+Math.cos(q)*r,y+Math.sin(q)*r)}ctx.closePath()}
 function grad(x,y,R,c1,c2){const q=ctx.createRadialGradient(x-R*.3,y-R*.3,R*.1,x,y,R*1.3);q.addColorStop(0,c1);q.addColorStop(1,c2);return q}
@@ -1095,7 +1105,7 @@ function openPick(){
   g.holding=false;
   const ks=Object.keys(PERKS).filter(k=>!(k=='heart'&&D.core)&&!(k=='hold'&&g.perk.hold>=4)&&!(k=='split'&&g.perk.split>=3)&&!(k=='big'&&g.perk.big>=5)&&!(k=='ally'&&g.allies.length>=3)).sort(()=>Math.random()-.5).slice(0,3);
   // Defensa: cada una de las 3 opciones tiene su propio 5% independiente de ser exclusiva.
-  const xk=Object.keys(XP);
+  const xk=Object.keys(XP).filter(k=>k!=='pairshot'||bossPowerUnlocked('pairshot'));
   for(let i=0;i<ks.length;i++){if(Math.random()<XCHANCE)ks[i]=xk[Math.floor(Math.random()*xk.length)]}
   g.pick=ks;
   const el=document.getElementById('pick'),inf=k=>PERKS[k]||XP[k],lv=k=>PERKS[k]?g.perk[k]:g.xp[k];
@@ -1734,7 +1744,7 @@ const ADV_DIFFS={
   hard:Object.assign({},DIFFS.hard,{gold:0,advQuotaFactor:1}),
   core:Object.assign({},DIFFS.core,{gold:1,advQuotaFactor:1})
 };
-function pickTier(r){const gw=.138125*D.gold,k=(1-gw)/.861875;return r<.425*k?'n':r<.711875*k?'s':r<.861875*k?'b':'g'}
+function pickTier(r){const gw=.10359375*D.gold,k=(1-gw)/.861875;return r<.425*k?'n':r<.711875*k?'s':r<.861875*k?'b':'g'}
 function showAdventureDifficulty(){
   const ops=[['easy','Fácil','Menos virus por oleada y más powers dorados normales.'],['mid','Medio','La experiencia actual de Aventura.'],['hard','Difícil','Sin powers dorados positivos; los malos dorados siguen apareciendo.'],['core','Hardcore','Como Difícil, pero con una sola vida.']];
   box.innerHTML='<h1>🌍 Dificultad de Aventura</h1>'+ops.map(o=>'<p class="dopt"><button data-adiff="'+o[0]+'">'+o[1]+'</button><small>'+o[2]+'</small></p>').join('')+'<p class="dopt"><button id="bAdvBack">Volver</button></p>';
@@ -1747,10 +1757,10 @@ function showDiff(){
   box.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{D=DIFFS[b.dataset.d];reset();startGame()});
   document.getElementById('bBack2').onclick=showStart;
 }
-const BR={normal:68,rey:72,glot:62,tank:86,bomb:66,dengue:82},BSP={normal:34,rey:34,glot:70,tank:22,bomb:34,dengue:20};
-const BNAME={normal:'Jefe',rey:'Rey Divisor',glot:'Glotón Supremo',tank:'Tanque',bomb:'Bombardero',dengue:'Dengue'};
-const BICON={normal:'👾',rey:'🦁',glot:'🐲',tank:'🦏',bomb:'🚨',dengue:'🦟'};
-const BTYPEC={dengue:['#44a84d','#155c28','#83d65c'],normal:['#7a3fb0','#3b1760','#e0773a'],rey:['#c0398f','#5e1048','#ffd23a'],glot:['#e89a2b','#7a4a0a','#fff0b8'],tank:['#5a6a78','#222c36','#9aa8b4'],bomb:['#d6402f','#5a0f08','#2b2b2b']};
+const BR={normal:68,rey:72,glot:62,tank:86,bomb:66,dengue:82,tuberculosis:48},BSP={normal:34,rey:34,glot:70,tank:22,bomb:34,dengue:20,tuberculosis:21};
+const BNAME={normal:'Jefe',rey:'Rey Divisor',glot:'Glotón Supremo',tank:'Tanque',bomb:'Bombardero',dengue:'Dengue',tuberculosis:'Tuberculosis'};
+const BICON={normal:'👾',rey:'🦁',glot:'🐲',tank:'🦏',bomb:'🚨',dengue:'🦟',tuberculosis:'🫁'};
+const BTYPEC={dengue:['#44a84d','#155c28','#83d65c'],tuberculosis:['#927b66','#493b35','#d4b99a'],normal:['#7a3fb0','#3b1760','#e0773a'],rey:['#c0398f','#5e1048','#ffd23a'],glot:['#e89a2b','#7a4a0a','#fff0b8'],tank:['#5a6a78','#222c36','#9aa8b4'],bomb:['#d6402f','#5a0f08','#2b2b2b']};
 const BOSSP=[['normal',.45],['rey',.15],['glot',.15],['tank',.15],['bomb',.10]];
 function pickBoss(){if(g.boss==0)return 'normal';let r=Math.random();for(const [k,p] of BOSSP){if(r<p)return k;r-=p}return 'normal'}
 TYPEC.bmb=['#4a4a55','#1d1d26'];TYN.bmb={e:'💣',n:'Bombardero (virus)'};HPM.bmb=1;RM.bmb=1.1;
@@ -1821,15 +1831,15 @@ function advUpdate(dt){
   if(g.fx.shield>0)mult*=1.35;
   if(g.fx.freeze>0)mult*=.45;
   if(g.fx.tfreeze>0)mult*=.35;
-  if(g.dengueDebuff>0)mult*=.86;const sp=(g.bossKills>=2?108:76)*S*Math.max(.15,mult)*cval('sspd');
+  if(g.dengueDebuff>0)mult*=.86;if(g.fx.dash>0)mult*=1.25;const sp=(g.bossKills>=2?108:76)*S*Math.max(.15,mult)*cval('sspd');
   PX=Math.max(30,Math.min(MAP-30,PX+vx*sp*dt));PY=Math.max(30,Math.min(MAP-30,PY+vy*sp*dt));
-  for(const p of g.powers){if(Math.hypot(p.x-PX,p.y-PY)<26*S+p.r*.4){collect(p);p.life=0}}
+  for(const p of g.powers){if(Math.hypot(p.x-PX,p.y-PY)<26*S+p.r*.4&&collect(p))p.life=0}
   if(!g.dengueMode&&(!g.creative||g.cAuto.boss)){
     if(g.advPhase=='pre'&&g.advQuota<=g.advBossLeft){g.advPhase='warn';g.advWarnT=5;g.advSpot=advPickSpot()}
     else if(g.advPhase=='warn'){g.advWarnT-=dt;const wsp=ADV_SPOTS[g.advSpot],near=Math.hypot(wsp[0]-PX, wsp[1]-PY)<260*S;if(g.advWarnT<=0&&!near){advWaveBoss();g.advPhase='boss'}}
     else if(g.advPhase=='gap'){g.advT-=dt;if(g.advT<=0){g.wave++;g.advPhase='pre';g.advT=ADV_PRE;g.advQuota=advQuota(g.wave);g.advBossLeft=Math.round(g.advQuota*(.2+Math.random()*.6))}}
   }
-  if(!g.creative||g.cAuto.power){g.advPowT-=dt;if(g.advPowT<=0){if(g.dengueMode){for(let i=0;i<8;i++)spawnDenguePower();g.advPowT=5+Math.random()*2}else{for(let i=0;i<10*1;i++)spawnAdvPower();g.advPowT=3.6+Math.random()*2.4}}}
+  if(!g.creative||g.cAuto.power){g.advPowT-=dt;if(g.advPowT<=0){if(g.dengueMode){for(let i=0;i<8;i++)spawnDenguePower(g.tuberculosisMode&&i<3);g.advPowT=5+Math.random()*2}else{for(let i=0;i<10*1;i++)spawnAdvPower();g.advPowT=3.6+Math.random()*2.4}}}
   // los virus no se atraviesan entre sí (se empujan al superponerse)
   const vs=g.viruses.filter(v=>!v.dead&&!v.boss);
   for(let i=0;i<vs.length;i++){const a=vs[i];for(let j=i+1;j<vs.length;j++){const b=vs[j];
@@ -1924,16 +1934,16 @@ function advBossPerkPool(){
 }
 function advDropAt(x,y){
   // En Aventura los jefes sueltan una mejora permanente; 15% de probabilidad de un exclusivo.
-  const exclusive=Object.keys(XP).map(k=>'B_'+k);
+  const exclusive=Object.keys(XP).filter(k=>k!=='pairshot'||bossPowerUnlocked('pairshot')).map(k=>'B_'+k);
   const bossMods=advBossPerkPool();
-  const useExclusive=Math.random()<.15||bossMods.length===0;
+  const useExclusive=exclusive.length>0&&(Math.random()<.15||bossMods.length===0);
   const pool=useExclusive?exclusive:bossMods;
-  const k=pickW(pool),m=24*S;
-  g.powers.push({k,t:k.startsWith('B_')?'perk':'perk',bossExclusive:k.startsWith('B_'),bossReward:true,x:Math.max(m,Math.min(MAP-m,x)),y:Math.max(m,Math.min(MAP-m,y)),r:24*S,life:10,max:10});
+  const k=pickW(pool),m=24*S;if(k.startsWith('B_'))unlockBossPower(k.slice(2));
+  g.powers.push({k,t:'perk',bossExclusive:k.startsWith('B_'),bossReward:true,x:Math.max(m,Math.min(MAP-m,x)),y:Math.max(m,Math.min(MAP-m,y)),r:24*S,life:10,max:10});
 }
 function advDropMany(x,y){advDropAt(x,y)}
 function advHud(){
-  if(g.dengueMode)return 'JEFE DENGUE · Mosquitos: '+((g.dengueBugs&&g.dengueBugs.length)||0);
+  if(g.tuberculosisMode)return 'JEFE TUBERCULOSIS · 2 objetivos';if(g.dengueMode)return 'JEFE DENGUE · Mosquitos: '+((g.dengueBugs&&g.dengueBugs.length)||0);
   const w=g.wave||1,s=Math.ceil(Math.max(0,g.advT||0));
   if(g.advPhase=='warn')return '¡JEFE LLEGANDO en '+Math.max(0,Math.ceil(g.advWarnT))+' s!';
   if(g.advPhase=='pre')return 'Oleada '+w+' · virus por salir: '+Math.max(0,g.advQuota||0);
@@ -1968,15 +1978,14 @@ function drawWorldGrid(){
   }
   ctx.restore();
 }
-function spawnDenguePower(){
-  // Lluvia de powers más frecuente y cerca del jugador para que sean fáciles de encontrar.
-  // Solo normales, especiales (excepto Limpieza) y malos; nunca dorados ni de jefe.
+function spawnDenguePower(forceCough=false){
+  // En las arenas especiales aparecen powers cerca del jugador; el escudo 🪖 queda excluido.
   const pool=Object.keys(PW).filter(k=>{
     const t=PW[k].t||'n';
-    return ['n','s','b','g','gb'].includes(t) && k!=='nuke' && !['mosquitoAlly','dengueSwarm'].includes(k);
+    return ['n','s','b','g','gb'].includes(t) && k!=='nuke' && k!=='shieldg' && (k!=='cough'||g.tuberculosisMode) && !['mosquitoAlly','dengueSwarm'].includes(k) && (k!=='dash'||bossPowerUnlocked('dash'));
   });
   if(!pool.length)return;
-  const k=pool[Math.floor(Math.random()*pool.length)];
+  const k=g.tuberculosisMode&&(forceCough||Math.random()<.5)?'cough':pool[Math.floor(Math.random()*pool.length)];
   const angle=Math.random()*Math.PI*2,dist=(220+Math.random()*520)*S;
   const x=Math.max(45*S,Math.min(MAP-45*S,PX+Math.cos(angle)*dist));
   const y=Math.max(45*S,Math.min(MAP-45*S,PY+Math.sin(angle)*dist));
@@ -1993,6 +2002,11 @@ function dengueBossAI(v,dt){
   v.larvaT=(v.larvaT??6.5)-dt;
   if(g.dengueBossSwarm){g.dengueBossSwarm=false;for(let i=0;i<6;i++){const a=Math.random()*6.283;spawnDengueLarva(v.x+Math.cos(a)*(v.r+30*S),v.y+Math.sin(a)*(v.r+30*S))}pop(v.x,v.y,'#ff8f25',24);v.larvaT=Math.max(v.larvaT,5)}
   if(v.larvaT<=0){v.larvaT=7.5+Math.random()*3;const a=Math.random()*6.283;spawnDengueLarva(v.x+Math.cos(a)*(v.r+24*S),v.y+Math.sin(a)*(v.r+24*S))}
+}
+function tuberculosisBossAI(v,dt){
+  const d=Math.hypot(CWX()-v.x,CWY()-v.y)||1;
+  if(d<315*S)v.chasing=true;else if(d>440*S)v.chasing=false;
+  v.sp=v.chasing?24*S:18*S;
 }
 function updateDengueBugs(dt){
   if(!g.dengueMode)return;
@@ -2040,15 +2054,25 @@ function drawMosquitoUnits(){
 }
 function showDengueVictory(){
   const defeated=g.adminBossName||'Dengue';
-  box.innerHTML='<h1>🏆 ¡'+esc(defeated)+' derrotado!</h1><p>Desbloqueaste dos poderes exclusivos:</p><p><b>🦟 Mosquito aliado</b>: invoca una larva que evoluciona en un mosquito con 3 vidas y hasta 10 ataques.</p><p><b>💫 Doble descarga</b>: +2 burbujas por nivel: con 1 nivel disparás 3 en total, con +15% de velocidad por nivel.</p><p>Ya están disponibles en Creativo.</p><div class="mbtns"><button id="dengueRetry">Repetir jefe</button><button id="dengueBossMenu">Jefes</button><button id="dengueHome">Menú</button></div>';
+  box.innerHTML='<h1>🏆 ¡'+esc(defeated)+' derrotado!</h1><p>Desbloqueaste dos poderes exclusivos:</p><p><b>🦟 Mosquito aliado</b>: invoca una larva que evoluciona en un mosquito con 3 vidas y hasta 10 ataques.</p><p><b>💫 Doble descarga</b>: +2 burbujas por nivel: con 1 nivel disparás 3 en total, con +15% de velocidad por nivel.</p><p>También desbloqueaste el combate contra Tuberculosis.</p><div class="mbtns"><button id="dengueRetry">Repetir jefe</button><button id="dengueBossMenu">Jefes</button><button id="dengueHome">Menú</button></div>';
+  msg.style.display='flex';msg.style.zIndex='20';
+  const defeatedIndex=g.adminBossIndex||0,wasCreative=!!g.adminBossCreative;document.getElementById('dengueRetry').onclick=()=>startDengueBoss(defeatedIndex,wasCreative);document.getElementById('dengueBossMenu').onclick=showBosses;document.getElementById('dengueHome').onclick=exitToMenu;
+}
+function showTuberculosisVictory(){
+  const defeated=g.adminBossName||'Tuberculosis';
+  box.innerHTML='<h1>🏆 ¡'+esc(defeated)+' derrotada!</h1><p>Desbloqueaste el modificador temporal:</p><p><b>🫁 Dash (8 s)</b>: mantené apretada la pantalla para disparar sin parar y movete un 25% más rápido durante esos 8 segundos.</p><p>Ahora puede aparecer como power especial en tus partidas.</p><div class="mbtns"><button id="dengueRetry">Repetir jefe</button><button id="dengueBossMenu">Jefes</button><button id="dengueHome">Menú</button></div>';
   msg.style.display='flex';msg.style.zIndex='20';
   const defeatedIndex=g.adminBossIndex||0,wasCreative=!!g.adminBossCreative;document.getElementById('dengueRetry').onclick=()=>startDengueBoss(defeatedIndex,wasCreative);document.getElementById('dengueBossMenu').onclick=showBosses;document.getElementById('dengueHome').onclick=exitToMenu;
 }
 function startDengueBoss(bossIndex=0,creativeMode=false){
-  const safeIndex=ADMIN_UNLOCKED?Math.max(0,Math.min(BOSS_ROSTER.length-1,Number(bossIndex)||0)):0;
-  MAP=1250;D=DIFFS.hard;reset();if(creativeMode&&ADMIN_UNLOCKED){initCreativeState();g.cAuto={virus:true,boss:false,power:true}}g.adminBossCreative=!!(creativeMode&&ADMIN_UNLOCKED);g.adminBossIndex=safeIndex;g.adminBossName=BOSS_ROSTER[safeIndex]||'Dengue';g.adv=true;g.dengueMode=true;g.wave=1;g.spawn=.5;g.advPowT=4;g.nextBoss=1e9;g.lives=5;
+  const requested=Math.max(0,Math.min(BOSS_ROSTER.length-1,Number(bossIndex)||0));
+  const canTB=requested===1&&(ADMIN_UNLOCKED||DENGUE_REWARD_UNLOCKED||TUBERCULOSIS_UNLOCKED);
+  const safeIndex=(ADMIN_UNLOCKED||requested===0||canTB)?requested:0;
+  MAP=1250;D=DIFFS.hard;reset();if(creativeMode&&ADMIN_UNLOCKED){initCreativeState();g.cAuto={virus:true,boss:false,power:true}}g.adminBossCreative=!!(creativeMode&&ADMIN_UNLOCKED);g.adminBossIndex=safeIndex;g.adminBossName=BOSS_ROSTER[safeIndex]||'Dengue';g.adv=true;g.dengueMode=true;g.tuberculosisMode=safeIndex===1;g.wave=1;g.spawn=.5;g.advPowT=4;g.nextBoss=1e9;g.lives=5;
   PX=MAP/2;PY=MAP/2;FACE=-Math.PI/2;MOVE={x:0,y:0};DK={};
-  const n0=g.viruses.length;spawnVirus(true,750,'dengue');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+560*S;b.y=MAP/2+320*S;b.r*=2.7;b.larvaT=6.5;b.sp=18*S;b.chasing=false}
+  if(g.tuberculosisMode){
+    for(let i=0;i<2;i++){const n0=g.viruses.length;spawnVirus(true,500,'tuberculosis');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+(i===0?460:-460)*S;b.y=MAP/2+(i===0?210:-210)*S;b.r*=1.35;b.sp=18*S;b.chasing=false}}
+  }else{const n0=g.viruses.length;spawnVirus(true,750,'dengue');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+560*S;b.y=MAP/2+320*S;b.r*=2.7;b.larvaT=6.5;b.sp=18*S;b.chasing=false}}
   startGame();syncMovementControls();document.getElementById('cbtn').style.display=g.creative?'block':'none';
 }
 function startAdventure(creative=false){
@@ -2127,13 +2151,13 @@ function update(dt){
   const fzRate=g.fx.freeze>0?FREEZE_TIMER_RATE:1;
   for(const k in g.fx)g.fx[k]=Math.max(0,g.fx[k]-dt*(FREEZE_NORMAL[k]?1:fzRate));
   g.nextPow-=dt;if(g.nextPow<=0&&g.powers.length<2&&!g.adv&&(!g.creative||g.cAuto.power)){spawnPower();g.nextPow=(5+Math.random()*4)*D.pow/(1.1*(D.powBoost||1))}
-  if(g.holding&&g.perk.hold>0&&g.cool<=0){shoot(g.hx,g.hy);g.cool=(g.fx.fast>0?.05:.12)*Math.pow(.85,g.gold.rate)*Math.pow(1.18,g.gold.badRate)*Math.pow(.92,Math.min(g.creative&&!CUST.perf?Infinity:(g.creative?30:4),g.perk.hold))*(g.fx.slow>0?2.5:1)}
+  if(g.holding&&(g.perk.hold>0||g.fx.dash>0)&&g.cool<=0){shoot(g.hx,g.hy);const holdLv=g.perk.hold>0?Math.min(g.creative&&!CUST.perf?Infinity:(g.creative?30:4),g.perk.hold):1;g.cool=(g.fx.fast>0?.05:.12)*Math.pow(.85,g.gold.rate)*Math.pow(1.18,g.gold.badRate)*Math.pow(.92,holdLv)*(g.fx.slow>0?2.5:1)}
   for(const p of g.powers)p.life-=dt*fzRate;
   let keptPowers=0;
   for(let i=0;i<g.powers.length;i++){const p=g.powers[i];if(p.life>0)g.powers[keptPowers++]=p}
   g.powers.length=keptPowers;
   g.spawn-=dt;
-  if(g.spawn<=0&&g.fx.freeze<=0&&(!g.creative||g.cAuto.virus)){const n=Math.min(6,1+(g.t>60&&Math.random()<Math.min(.6,(g.t-60)/200)?1:0)+spawnStage());if(g.dengueMode){if(!g.creative||g.cAuto.virus)for(let i=0;i<n;i++)spawnVirus(false)}else if(g.adv)advSpawnTick();else for(let i=0;i<n;i++)spawnVirus(false);g.spawn=Math.max(.3,1.2-g.t*.01)*(.7+Math.random()*.6)*D.vir*Math.pow(.95,Math.max(0,g.bossKills-2))}
+  if(g.spawn<=0&&g.fx.freeze<=0&&(!g.creative||g.cAuto.virus)){const n=Math.min(6,1+(g.t>60&&Math.random()<Math.min(.6,(g.t-60)/200)?1:0)+spawnStage());if(g.tuberculosisMode){if(!g.creative||g.cAuto.virus){const medCount=g.viruses.filter(v=>v.type==='med'&&!v.dead).length;for(let i=0;i<n;i++){if(medCount+i<6&&Math.random()<.28)spawnVirus(false,undefined,'med');else spawnVirus(false)}}}else if(g.dengueMode){if(!g.creative||g.cAuto.virus)for(let i=0;i<n;i++)spawnVirus(false)}else if(g.adv)advSpawnTick();else for(let i=0;i<n;i++)spawnVirus(false);g.spawn=Math.max(.3,1.2-g.t*.01)*(.7+Math.random()*.6)*D.vir*Math.pow(.95,Math.max(0,g.bossKills-2))}
   if(g.t>=g.nextBoss&&g.fx.freeze<=0){if(!g.adv&&(!g.creative||g.cAuto.boss))spawnScheduledBossWave();g.nextBoss+=(g.adv?60:(D.bossInterval||60))}
   const cx=CWX(),cy=CWY(),sr=24*S*cval('ssize');
   for(const b of g.bubbles){
@@ -2152,7 +2176,7 @@ function update(dt){
     const dpl=Math.hypot(cx-v.x,cy-v.y)||1;let tx=cx,ty=cy;
     for(const al of g.allies){if(Math.hypot(al.x-v.x,al.y-v.y)<Math.hypot(tx-v.x,ty-v.y)){tx=al.x;ty=al.y}}
     const dx=tx-v.x,dy=ty-v.y,d=Math.hypot(dx,dy)||1;
-    const fz=(g.fx.freeze>0?.08:1)*(g.fx.haste>0?1.6:1)*cval('vspd')*(v.boss?1:D.speed)*(g.fx.tfreeze>0?0:1);let mx=dx/d,my=dy/d;if(v.boss&&v.btype==='dengue'&&g.dengueMode){bossSummon(v,dt);if(v.chasing){const bd=Math.hypot(cx-v.x,cy-v.y)||1;mx=(cx-v.x)/bd;my=(cy-v.y)/bd}else{mx=0;my=0}}else{if(v.btype=='glot'){const m=kite(v,dt);mx=m[0];my=m[1]}if(v.boss)bossSummon(v,dt);if(v.type=='med'){const m=medMove(v,dpl,dt);mx=m[0];my=m[1]}}
+    const fz=(g.fx.freeze>0?.08:1)*(g.fx.haste>0?1.6:1)*cval('vspd')*(v.boss?1:D.speed)*(g.fx.tfreeze>0?0:1);let mx=dx/d,my=dy/d;if(v.boss&&g.dengueMode&&(v.btype==='dengue'||v.btype==='tuberculosis')){bossSummon(v,dt);if(v.chasing){const bd=Math.hypot(cx-v.x,cy-v.y)||1;mx=(cx-v.x)/bd;my=(cy-v.y)/bd}else{mx=0;my=0}}else{if(v.btype=='glot'){const m=kite(v,dt);mx=m[0];my=m[1]}if(v.boss)bossSummon(v,dt);if(v.type=='med'){const m=medMove(v,dpl,dt);mx=m[0];my=m[1]}}
     if(!v.boss){
       const nx=v.x+mx*v.sp*fz*dt,ny=v.y+my*v.sp*fz*dt;
       for(const boss of g.viruses){if(!boss.boss||boss.dead||boss===v)continue;const dx=nx-boss.x,dy=ny-boss.y,dd=Math.hypot(dx,dy)||.01,minD=v.r+boss.r+5*S;if(dd<minD){
@@ -2177,7 +2201,7 @@ function update(dt){
       }
     }
     if(!v.dead&&v.type!='med'&&!(v.grace>0)&&!(g.fx.tfreeze>0)&&(v.boss||g.inv<=0)&&dpl<v.r+sr*.9){
-      if(g.dengueMode&&v.boss&&v.btype==='dengue'){if(g.creative){g.shake=.2;g.inv=.8;v.kx=-(cx-v.x)/dpl*500*S;v.ky=-(cy-v.y)/dpl*500*S}else{sfxPlay('damage');g.lives=0;g.shake=.5;pop(cx,cy,'#ffffff',30)}}else if(g.fx.shield>0){g.shake=.15;if(v.boss){v.kx=-(cx-v.x)/dpl*500*S;v.ky=-(cy-v.y)/dpl*500*S}}else if(v.boss){if(g.creative){g.shake=.2;g.inv=.8;v.kx=-(cx-v.x)/dpl*500*S;v.ky=-(cy-v.y)/dpl*500*S}else{sfxPlay('damage');g.lives=0;g.shake=.5;pop(cx,cy,'#ffffff',30)}}else{sfxPlay('damage');g.lives--;g.inv=1.3;g.shake=.3;pop(cx,cy,'#ffffff',14)}
+      if(g.dengueMode&&v.boss&&(v.btype==='dengue'||v.btype==='tuberculosis')){if(g.creative){g.shake=.2;g.inv=.8;v.kx=-(cx-v.x)/dpl*500*S;v.ky=-(cy-v.y)/dpl*500*S}else{sfxPlay('damage');g.lives=0;g.shake=.5;pop(cx,cy,'#ffffff',30)}}else if(g.fx.shield>0){g.shake=.15;if(v.boss){v.kx=-(cx-v.x)/dpl*500*S;v.ky=-(cy-v.y)/dpl*500*S}}else if(v.boss){if(g.creative){g.shake=.2;g.inv=.8;v.kx=-(cx-v.x)/dpl*500*S;v.ky=-(cy-v.y)/dpl*500*S}else{sfxPlay('damage');g.lives=0;g.shake=.5;pop(cx,cy,'#ffffff',30)}}else{sfxPlay('damage');g.lives--;g.inv=1.3;g.shake=.3;pop(cx,cy,'#ffffff',14)}
       if(!v.boss){v.dead=true;v.nosplit=true;explode(cx,cy)}
       if(g.lives<=0&&!g.creative){showGameOver();return}
     }
@@ -2353,7 +2377,7 @@ function drawRealismShadows(){
 
 
 // Rutinas de jefes y poderes restauradas desde la versión funcional.
-function bossSummon(v,dt){if(v.btype==='dengue'&&g.dengueMode){dengueBossAI(v,dt);return}if(v.adv){advBossAI(v,dt);return}
+function bossSummon(v,dt){if(v.btype==='dengue'&&g.dengueMode){dengueBossAI(v,dt);return}if(v.btype==='tuberculosis'&&g.tuberculosisMode){tuberculosisBossAI(v,dt);return}if(v.adv){advBossAI(v,dt);return}
   const t=v.btype;if((t!='glot'&&t!='bomb')||g.fx.tfreeze>0)return;
   v.sumT=(v.sumT??2)-dt;if(v.sumT>0)return;v.sumT=t=='glot'?3.2:3.6;
   const ty=t=='glot'?'glot':'bmb';if(g.viruses.filter(o=>o.type==ty&&!o.dead).length>=(t=='glot'?10:8))return;
@@ -2504,7 +2528,7 @@ function draw(){
   const active=[
     timed(PW.dmg.e,g.fx.dmg),timed(PW.double.e,g.fx.double),timed(PW.fast.e,g.fx.fast),
     timed(PW.freeze.e,g.fx.freeze),timed(PW.bomb.e,g.fx.bomb),timed(PW.haste.e,g.fx.haste),
-    timed(PW.slow.e,g.fx.slow),timed(PW.shieldg.e,g.fx.shieldGold,true),
+    timed(PW.slow.e,g.fx.slow),timed(PW.dash.e,g.fx.dash),timed(PW.cough.e,g.fx.blind),timed(PW.shieldg.e,g.fx.shieldGold),
     timed(PW.shield.e,Math.max(0,g.fx.shield-g.fx.shieldGold)),timed(XP.time.e,g.fx.tfreeze)
   ].filter(Boolean);
   if(g.got.life)active.push(make(PW.life.e,g.got.life,true));
@@ -2539,6 +2563,7 @@ function draw(){
   }
     if(g.creative){ctx.textAlign='center';ctx.font='bold '+fs+'px "Trebuchet MS",Arial,sans-serif';ctx.fillText('MODO CREATIVO',W/2,H-fs-12);ctx.textAlign='right'}
   if(g.started&&!g.over&&!g.adv&&(!g.creative||g.cAuto.boss)){const left=Math.max(0,Math.ceil(g.nextBoss-g.t));ctx.fillText('Jefe en '+left+' s',W-14,powerY)}
+  if(g.fx.blind>0){ctx.save();ctx.fillStyle='rgba(8,10,17,.94)';ctx.fillRect(0,0,W,H);ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='#f4f0e8';ctx.font='bold '+Math.round(24*S+6)+'px \"Trebuchet MS\",Arial,sans-serif';ctx.fillText('🌬️ TOS · VISIÓN BLOQUEADA',W/2,H/2-12*S);ctx.font='bold '+Math.round(18*S+4)+'px Arial,sans-serif';ctx.fillText(Math.ceil(g.fx.blind)+' s',W/2,H/2+24*S);ctx.restore()}
   fxRender();
 }
 var KACT=[['up','Disparar arriba'],['down','Disparar abajo'],['left','Disparar izquierda'],['right','Disparar derecha'],['shoot','Disparar al puntero'],['mup','Aventura: mover arriba'],['mdown','Aventura: mover abajo'],['mleft','Aventura: mover izquierda'],['mright','Aventura: mover derecha'],['ashoot','Aventura: disparar'],['pause','Abrir pausa'],['creat','Abrir menú creativo']];var DEFKEYS={up:'ArrowUp',down:'ArrowDown',left:'ArrowLeft',right:'ArrowRight',shoot:'Space',mup:'KeyW',mdown:'KeyS',mleft:'KeyA',mright:'KeyD',ashoot:'KeyE',pause:'Escape',creat:'KeyC'};
