@@ -227,7 +227,7 @@ button:active{filter:brightness(.97)}
 .gbox{border-radius:26px!important}
 #msg>div:after{width:25px;height:25px;right:15px;bottom:13px}
 #guide .gbox h2,#cpanel .gbox h2,#settings .gbox h2{padding:7px 34px 9px;border-radius:14px;background:linear-gradient(90deg,rgba(255,213,226,.78),rgba(255,240,245,.45));color:#8a3658}
-#msg #box:before{content:'SOAP ADVENTURES  •  BUBBLE SURVIVAL  •  v.5.5';color:#d64c7b;letter-spacing:1.8px}
+#msg #box:before{content:'SOAP ADVENTURES  •  BUBBLE SURVIVAL  •  v.5.9';color:#d64c7b;letter-spacing:1.8px}
 #msg .mbtns button:first-child{background:linear-gradient(135deg,#f77da2,#df4778);box-shadow:0 5px 0 #bd456c,0 9px 17px rgba(205,61,111,.2)}
 #msg .mbtns button:not(:first-child),#setbody button,#msg .dopt button{background:linear-gradient(180deg,#fff 0%,#f7edf2 100%)}
 #pick{background:radial-gradient(circle at 12% 18%,rgba(129,224,243,.25) 0 7px,transparent 9px),radial-gradient(circle at 88% 78%,rgba(129,224,243,.22) 0 10px,transparent 12px),rgba(39,29,49,.66)}
@@ -249,9 +249,127 @@ html,body{font-family:"Trebuchet MS","Arial Rounded MT Bold",Arial,"Apple Color 
 /* Modo Rendimiento: sin desenfoques de fondo sobre el canvas que se anima (cada fotograma obliga al navegador a repetirlos). */
 html.perf #gear,html.perf #cbtn,html.perf #ver,html.perf #msg,html.perf #guide,html.perf #custom,html.perf #cpanel,html.perf #settings,html.perf #warn,html.perf #pick,html.perf #pausemenu{-webkit-backdrop-filter:none;backdrop-filter:none}
 body.adv-creative #cbtn{left:auto;right:14px}
+
+/* Menú principal: replica la composición de referencia, sin percha ni paneles anidados */
+#msg:has(.home-shell){
+  background:radial-gradient(ellipse at 12% 18%,rgba(255,255,255,.64),transparent 34%),
+             radial-gradient(ellipse at 86% 76%,rgba(255,209,225,.45),transparent 38%),
+             linear-gradient(145deg,#fbe3eb 0%,#fdebf0 48%,#ffe4ed 100%);
+  -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+  overflow:auto;padding:calc(16px + env(safe-area-inset-top,0px)) 12px calc(16px + env(safe-area-inset-bottom,0px));
+  box-sizing:border-box;pointer-events:auto;
+}
+#msg:has(.home-shell)>#box{
+  width:min(590px,94vw);max-width:none;min-width:0;box-sizing:border-box;
+  padding:0!important;margin:0!important;background:transparent!important;border:0!important;
+  border-radius:0!important;box-shadow:none!important;overflow:visible!important;
+  color:#53204e;text-align:center;
+}
+/* El selector global #msg div era el que dibujaba cajas dentro de cada columna. */
+#msg:has(.home-shell) div{
+  background:transparent!important;border:0!important;border-radius:0!important;
+  padding:0!important;margin-top:0!important;box-shadow:none!important;
+}
+#msg:has(.home-shell)>#box:before,#msg:has(.home-shell)>#box:after{display:none!important;content:none!important}
+#msg:has(.home-shell) .home-shell{
+  width:100%;display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+  align-items:center;gap:clamp(18px,4vw,42px);text-align:center;
+}
+#msg:has(.home-shell) .home-left{
+  min-width:0;display:grid;grid-template-columns:minmax(0,1fr) 34px;
+  gap:clamp(12px,2.6vw,24px);align-items:center;justify-items:center;
+}
+#msg:has(.home-shell) .home-soap-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(17px,3vh,30px);min-width:0;width:100%}
+#msg:has(.home-shell) .home-soap{
+  position:relative;display:flex;align-items:center;justify-content:center;
+  width:clamp(108px,20vw,156px);height:clamp(188px,30vh,270px);
+  padding:0!important;border:0!important;border-radius:34px!important;
+  background:linear-gradient(145deg,#fffde0 0%,#fff0bd 34%,#e8c4a1 100%)!important;
+  box-shadow:inset 7px 8px 15px rgba(255,255,255,.88),inset -8px -10px 18px rgba(130,83,73,.20),0 15px 22px rgba(130,68,93,.20)!important;
+  color:#55204d!important;cursor:pointer;touch-action:manipulation;overflow:hidden;
+}
+#msg:has(.home-shell) .home-soap:before{
+  content:"";position:absolute;inset:17% 18%;border-radius:28px;
+  background:linear-gradient(145deg,rgba(255,255,245,.98),rgba(247,220,179,.66));
+  box-shadow:inset 4px 5px 12px rgba(255,255,255,.95),inset -4px -6px 12px rgba(155,94,79,.13),0 2px 5px rgba(255,255,255,.55);
+}
+#msg:has(.home-shell) .home-soap .soap-inner{position:relative;z-index:1;display:block;width:58%;height:63%;border-radius:25px;background:linear-gradient(145deg,rgba(255,255,255,.30),rgba(255,255,255,0));}
+#msg:has(.home-shell) .home-name{
+  width:min(100%,178px);min-height:43px;display:flex;align-items:center;justify-content:center;
+  box-sizing:border-box;padding:7px 12px!important;border:1.5px solid #4d3049!important;
+  border-radius:12px!important;background:linear-gradient(180deg,#fff,#fff8fb)!important;
+  box-shadow:0 3px 6px rgba(97,46,78,.08)!important;color:#4d1c49;
+  font:800 clamp(17px,3.4vw,25px)/1.15 system-ui,-apple-system,sans-serif!important;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+#msg:has(.home-shell) .home-hue-wrap{height:clamp(205px,36vh,325px);width:34px;display:flex;align-items:center;justify-content:center}
+#msg:has(.home-shell) .home-hue{
+  appearance:none;-webkit-appearance:none;display:block;width:34px;height:100%;padding:0!important;
+  border:2px solid rgba(97,38,77,.20)!important;border-radius:13px!important;outline:none;
+  background:linear-gradient(to top,#f52a57 0%,#ff8b2f 16%,#ffea38 31%,#58d64d 46%,#20c8c4 61%,#357df5 76%,#9149dc 89%,#f52a57 100%)!important;
+  box-shadow:0 3px 8px rgba(115,48,85,.14)!important;touch-action:pan-y;
+  writing-mode:vertical-lr;direction:rtl;
+}
+#msg:has(.home-shell) .home-hue::-webkit-slider-thumb{-webkit-appearance:none;width:38px;height:18px;border:3px solid #fff;border-radius:9px;background:#773c8b;box-shadow:0 2px 6px #0003}
+#msg:has(.home-shell) .home-hue::-moz-range-thumb{width:31px;height:12px;border:3px solid #fff;border-radius:9px;background:#773c8b;box-shadow:0 2px 6px #0003}
+#msg:has(.home-shell) .home-right{min-width:0;display:flex;flex-direction:column;align-items:stretch;gap:clamp(17px,3vh,29px)}
+#msg:has(.home-shell) .home-top{display:flex;justify-content:flex-end;gap:clamp(12px,2.2vw,20px);margin:0 12px 0 0}
+#msg:has(.home-shell) .home-top button{
+  flex:0 0 clamp(62px,15.5vw,110px);width:clamp(62px,15.5vw,110px);height:clamp(54px,8vh,82px);
+  border:0!important;border-radius:22px!important;background:linear-gradient(180deg,#fff,#fff9fc)!important;
+  color:#592057!important;font:900 clamp(24px,5vw,38px)/1 system-ui,sans-serif!important;
+  box-shadow:0 6px 0 rgba(122,54,100,.13),0 10px 18px rgba(122,54,100,.10)!important;cursor:pointer;
+}
+#msg:has(.home-shell) .home-actions{display:flex;flex-direction:column;gap:clamp(13px,2.7vh,25px);margin:0!important}
+#msg:has(.home-shell) .home-actions button{
+  display:flex;align-items:center;justify-content:center;width:100%;min-width:0;
+  min-height:clamp(61px,8.8vh,91px);padding:10px 12px!important;
+  border:0!important;border-radius:999px!important;
+  background:linear-gradient(180deg,#fff 0%,#fff9fc 100%)!important;
+  color:#54204f!important;font:850 clamp(20px,4.3vw,34px)/1.1 system-ui,-apple-system,sans-serif!important;
+  box-shadow:0 7px 0 rgba(132,69,116,.14),0 12px 18px rgba(137,74,119,.11)!important;cursor:pointer;
+}
+#msg:has(.home-shell) .home-actions #bBosses{background:linear-gradient(180deg,#fff5ff,#f3e5fa)!important;color:#64265e!important}
+#msg:has(.home-shell) .home-actions #bPlay{color:#a42d5c!important;background:linear-gradient(180deg,#fff,#fff0f5)!important}
+#msg:has(.home-shell) .home-actions button:active,#msg:has(.home-shell) .home-top button:active{transform:translateY(2px) scale(.985);filter:brightness(.99)}
+/* Un único engranaje en el menú; el botón flotante original queda para la partida. */
+body:has(#msg .home-shell) #gear,body:has(#msg .home-shell) #ver{display:none!important}
+.boss-list{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0;max-height:min(52vh,380px);overflow-y:auto;padding:2px}
+.boss-list button{border:0;border-radius:13px;padding:11px 10px;text-align:left;background:#f5eff7;color:#633c64;font:700 13px system-ui,sans-serif;box-shadow:inset 0 0 0 1px #e9dce9;cursor:pointer}
+.boss-list button.available{background:linear-gradient(140deg,#fff5e1,#ffe5aa);color:#755010;box-shadow:inset 0 0 0 1px #efce7d}
+.boss-list button:disabled{opacity:.58;cursor:default}
+.boss-list small{display:block;margin-top:4px;font-weight:600;color:#8b7b91}
+@media(max-width:560px){
+ #msg:has(.home-shell)>#box{width:min(590px,94vw)}
+ #msg:has(.home-shell) .home-shell{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(10px,3.5vw,22px)}
+ #msg:has(.home-shell) .home-left{transform:translateY(clamp(20px,3.8vh,40px))}
+ #msg:has(.home-shell) .home-left{grid-template-columns:minmax(0,1fr) 22px;gap:15px;transform:translateY(clamp(20px,3.8vh,32px))}
+ #msg:has(.home-shell) .home-soap{width:clamp(74px,21vw,100px);height:clamp(122px,17vh,160px);border-radius:25px!important}
+ #msg:has(.home-shell) .home-hue-wrap{width:22px;height:clamp(150px,20.5vh,190px)}
+ #msg:has(.home-shell) .home-hue{width:22px}
+ #msg:has(.home-shell) .home-top{gap:10px;margin-right:4px}
+ #msg:has(.home-shell) .home-top button{flex-basis:clamp(48px,14vw,65px);width:clamp(48px,14vw,65px);height:clamp(40px,5.5vh,50px);border-radius:16px!important;font-size:clamp(22px,5.8vw,27px)!important}
+ #msg:has(.home-shell) .home-right{gap:clamp(14px,2.4vh,20px)}
+ #msg:has(.home-shell) .home-actions{gap:clamp(12px,2.0vh,17px)}
+ #msg:has(.home-shell) .home-actions button{min-height:clamp(44px,6.1vh,56px);font-size:clamp(18px,4.5vw,24px)!important;padding:8px 6px!important}
+ #msg:has(.home-shell) .home-name{width:clamp(90px,24vw,125px);min-height:28px;font-size:clamp(14px,3.7vw,17px)!important}
+}
+@media(orientation:landscape) and (max-height:620px){
+ #msg:has(.home-shell)>#box{width:min(820px,94vw)}
+ #msg:has(.home-shell) .home-shell{grid-template-columns:minmax(170px,.8fr) minmax(300px,1.2fr);gap:38px}
+ #msg:has(.home-shell) .home-soap{width:clamp(80px,13vw,112px);height:34vh;min-height:130px}
+ #msg:has(.home-shell) .home-hue-wrap{height:38vh;min-height:145px}
+ #msg:has(.home-shell) .home-right{gap:9px}
+ #msg:has(.home-shell) .home-top button{height:38px;flex-basis:54px;width:54px;border-radius:14px!important}
+ #msg:has(.home-shell) .home-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+ #msg:has(.home-shell) .home-actions button{min-height:42px;font-size:16px!important}
+ #msg:has(.home-shell) .home-actions #bBosses,#msg:has(.home-shell) .home-actions #bCre{grid-column:span 1}
+ #msg:has(.home-shell) .home-name{min-height:32px}
+}
+
 </style></head><body>
 <canvas id="c"></canvas><canvas id="fx"></canvas>
-<div id="ver">v.5.5</div>
+<div id="ver">v.5.9</div>
 <div id="guide"><div class="gbox"><h2>Guía del juego</h2><div class="gbody">
 <h3>Cómo se juega</h3>
 <p>Sos el jabón del centro. Tocá o arrastrá el dedo para lanzar burbujas hacia ese lugar. Cada burbuja hace 1 de daño base.</p>
@@ -354,7 +472,7 @@ body.adv-creative #cbtn{left:auto;right:14px}
 <button id="cbtn" aria-label="Modo creativo" title="Modo creativo">🛠️</button>
 <div id="cpanel"><div class="gbox"><h2>🎮 Modo creativo</h2><div class="gbody" id="cbody"></div><button class="bk" id="cClose">Cerrar</button></div></div>
 <div id="custom"><div class="gbox"><h2>Personalizar</h2><div class="gbody" id="cusbody"></div><button class="bk" id="cusClose">Listo</button></div></div>
-<button id="gear" aria-label="Configuración" title="Configuración">⚙️</button><div id="settings"><div class="gbox"><h2>⚙️ Configuración</h2><div class="gbody" id="setbody"></div><button class="bk" id="setClose">Cerrar</button></div></div>
+<button id="gear" aria-label="Configuración" title="Configuración">⚙</button><div id="settings"><div class="gbox"><h2>⚙️ Configuración</h2><div class="gbody" id="setbody"></div><button class="bk" id="setClose">Cerrar</button></div></div>
 <div id="warn"><div class="gbox"><h2>🚧 Aviso</h2><p id="warnTxt"></p><div class="mbtns"><button id="warnOk">Continuar</button><button id="warnNo">Cancelar</button></div></div></div>
 <div id="pausemenu"><div class="gbox"><h2>⏸️ Pausa</h2><div class="mbtns"><button id="pResume">Continuar</button><button id="pSet">Ajustes</button><button id="pExit">Salir al menú</button></div></div></div>
 <div id="dbg"></div>
@@ -392,18 +510,50 @@ const COLORS={1:['#3fb5a6','#1a7468'],2:['#a9c43f','#5f7f1c'],3:['#f0852f','#b45
 function colorFor(hp){return COLORS[((Math.max(1,Math.floor(hp))-1)%5)+1]}
 const sc='#8a1f43';
 let g;
-function reset(){g={t:0,over:false,started:false,score:0,lives:(window.D?D.lives:5),inv:0,viruses:[],bubbles:[],parts:[],spawn:1,boss:0,bossKills:0,bossWaveCount:0,bossPairSeq:0,nextBoss:(D&&D.bossInterval)||60,cool:0,aim:-Math.PI/2,shake:0,id:0,powers:[],nextPow:5,fx:{dmg:0,fast:0,freeze:0,bomb:0,shield:0,shieldGold:0,haste:0,slow:0,double:0,tfreeze:0},gold:{dmg:0,rate:0,multi:0,badDmg:0,badRate:0},perk:{back:0,split:0,homing:0,hold:0,pierce:0,big:0,wave:0,heart:0,ally:0},rewards:0,bonusPicks:0,rot:-Math.PI/2,allies:[],pick:null,holding:false,hx:0,hy:0,got:{life:0,minus:0},rings:[],plus:[],xp:{bomb:0,storm:0,time:0,orbit:0,aura:0},xt:{time:20,aura:15},orb:[0,0,0,0,0],orbA:0,auras:[],bolts:[],chainB:60}}
+let DENGUE_REWARD_UNLOCKED=false;try{DENGUE_REWARD_UNLOCKED=localStorage.getItem('soapDengueReward')==='1'}catch(e){}
+function reset(){g={t:0,over:false,started:false,score:0,lives:(window.D?D.lives:5),inv:0,viruses:[],bubbles:[],parts:[],spawn:1,boss:0,bossKills:0,bossWaveCount:0,bossPairSeq:0,nextBoss:(D&&D.bossInterval)||60,cool:0,aim:-Math.PI/2,shake:0,id:0,powers:[],nextPow:5,fx:{dmg:0,fast:0,freeze:0,bomb:0,shield:0,shieldGold:0,haste:0,slow:0,double:0,tfreeze:0},gold:{dmg:0,rate:0,multi:0,badDmg:0,badRate:0},perk:{back:0,split:0,homing:0,hold:0,pierce:0,big:0,wave:0,heart:0,ally:0},rewards:0,bonusPicks:0,rot:-Math.PI/2,allies:[],mosquitoLarvae:[],mosquitoAllies:[],dengueBugs:[],mosquitoShotReady:false,dengueDebuff:0,dengueBossSwarm:false,dengueMode:false,pick:null,holding:false,hx:0,hy:0,got:{life:0,minus:0},rings:[],plus:[],xp:{bomb:0,storm:0,time:0,orbit:0,aura:0},xt:{time:20,aura:15},orb:[0,0,0,0,0],orbA:0,auras:[],bolts:[],chainB:60}}
 reset();
 function startGame(){sfxPlay('start');musicStart();g.started=true;msg.style.display='none';document.getElementById('ver').style.display='none';document.getElementById('guide').style.display='none'}
+function homeHueSet(){
+  const el=document.getElementById('menuHue');if(!el)return;
+  const h=+el.value;setCustomHex(rgb2hx(...hsl2rgb(h,.58,.76)));
+  const soap=document.getElementById('homeSoap');if(soap)soap.style.background='linear-gradient(145deg,'+SOAPC.custom[2]+','+SOAPC.custom[0]+' 55%,'+SOAPC.custom[1]+')';
+}
+function homeSoapSync(){
+  const soap=document.getElementById('homeSoap');if(!soap)return;
+  const pal=(CUST.col==='custom'?SOAPC.custom:SOAPC[CUST.col])||SOAPC.green;
+  soap.style.background='linear-gradient(145deg,'+pal[2]+','+pal[0]+' 58%,'+pal[1]+')';
+  const name=document.getElementById('homeName');if(name)name.textContent=(SOAPTXT()==='SOAP'?'Alex':SOAPTXT());
+  const hex=CUST.hex||'#eeb8ca',r=parseInt(hex.slice(1,3),16)/255,g2=parseInt(hex.slice(3,5),16)/255,b=parseInt(hex.slice(5,7),16)/255,mx=Math.max(r,g2,b),mn=Math.min(r,g2,b),d=mx-mn;let h=0;
+  if(d){if(mx===r)h=((g2-b)/d)%6;else if(mx===g2)h=(b-r)/d+2;else h=(r-g2)/d+4;h*=60;if(h<0)h+=360}
+  const hue=document.getElementById('menuHue');if(hue)hue.value=Math.round(h);
+}
 function showStart(){
-box.innerHTML='<h1>🧼 Soap Adventures</h1><p>Tocá para lanzar burbujas y defendé tu jabón</p><div class="mbtns"><button id="bPlay">Jugar</button><button id="bAdv">Defensa</button><button id="bBoss">Jefes</button><button id="bCre">Creativo</button></div><div class="mbtns"><button id="bCust">⚙️ Ajustes</button><button id="bGuide">❗</button></div>';
-msg.style.display='flex';
-document.getElementById('bPlay').onclick=showAdventureDifficulty;
-document.getElementById('bAdv').onclick=showDiff;
-document.getElementById('bCre').onclick=showCreativeModes;
-document.getElementById('bBoss').onclick=showBossMenu;
-document.getElementById('bCust').onclick=()=>openCust(false);
-document.getElementById('bGuide').onclick=()=>{document.getElementById('guide').style.display='flex'};
+  box.innerHTML='<div class="home-shell">'+
+    '<div class="home-left"><div class="home-soap-wrap">'+
+      '<button class="home-soap" id="homeSoap" aria-label="Personalizar jabón"><span class="soap-inner"></span></button>'+
+      '<div class="home-name" id="homeName">SOAP</div></div>'+
+      '<div class="home-hue-wrap"><input class="home-hue" id="menuHue" type="range" min="0" max="359" value="335" orient="vertical" aria-label="Color del jabón"></div></div>'+
+    '<div class="home-right"><div class="home-top">'+
+      '<button id="bSettings" aria-label="Configuración" title="Configuración">⚙</button>'+
+      '<button id="bGuide" aria-label="Guía" title="Guía">!</button></div>'+
+      '<div class="home-actions"><button id="bBosses">Jefes</button><button id="bAdv">Defensa</button><button id="bPlay">Jugar</button><button id="bCre">Creativo</button></div></div></div>';
+  msg.style.display='flex';msg.style.zIndex='';
+  document.getElementById('bPlay').onclick=showAdventureDifficulty;
+  document.getElementById('bAdv').onclick=showDiff;
+  document.getElementById('bCre').onclick=showCreativeModes;
+  document.getElementById('bBosses').onclick=showBosses;
+  document.getElementById('homeSoap').onclick=()=>openCust(false);
+  document.getElementById('menuHue').oninput=homeHueSet;
+  document.getElementById('bSettings').onclick=openSettings;
+  document.getElementById('bGuide').onclick=()=>{document.getElementById('guide').style.display='flex'};
+  /* En la primera carga CUST se declara más adelante: actualizar después de inicializarlo. */
+  requestAnimationFrame(()=>{try{homeSoapSync()}catch(_){}});
+}
+const BOSS_ROSTER=['Dengue','Tuberculosis','Malaria','Gripe Española','Viruela','Ébola','Peste Negra','Rabia','SIDA','COVID-19','Cáncer'];
+function showBosses(){
+  box.innerHTML='<h1>👑 Jefes</h1><p>Enfrentate a cada jefe y desbloqueá recompensas permanentes.</p><div class="boss-list">'+BOSS_ROSTER.map((n,i)=>'<button '+(i===0?'class="available"':'disabled')+' data-boss="'+i+'">'+(i===0?'🦟 ':'🔒 ')+n+'<small>'+(i===0?(DENGUE_REWARD_UNLOCKED?'Recompensa desbloqueada':'Disponible · 500 de vida'):'Próximamente')+'</small></button>').join('')+'</div><div class="mbtns"><button id="bossBack">Volver</button></div>';
+  msg.style.display='flex';box.querySelector('[data-boss="0"]').onclick=startDengueBoss;document.getElementById('bossBack').onclick=showStart;
 }
 function showModes(){
   box.innerHTML='<h1>🛡️ Defensa</h1><p>Defendé tu jabón en el modo clásico.</p><div class="mbtns"><button id="mSolo">Jugar defensa</button><button id="mBack">Volver</button></div>';
@@ -411,14 +561,6 @@ function showModes(){
   document.getElementById('mSolo').onclick=showDiff;
   document.getElementById('mBack').onclick=showStart;
 }
-
-function showBossMenu(){
-box.innerHTML='<h1>👑 Jefes</h1><p>Elegí un jefe.</p><div class="mbtns"><button id="dBoss">🦟 Dengue (Próximamente)</button><button id="backBoss">Volver</button></div>';
-msg.style.display='flex';
-document.getElementById("backBoss").onclick=showStart;
-document.getElementById("dBoss").onclick=()=>{};
-}
-
 const CPW=[['Comunes',['dmg','fast','double']],['Dorados',['life','minus','gdmg','grate','gmulti','bossgood']],['Especiales',['bomb','freeze','shield','nuke']],['Malos',['haste','hpup','swarm','slow']],['Malos dorados',['bossbad','lifeloss','steal','gdmgdown','grateslow']]];
 function cb(a,keys,src){return keys.map(k=>'<button data-a="'+a+'" data-k="'+k+'"><span class="emoji">'+src[k].e+'</span> '+src[k].n+'</button>').join('')}
 let cTab='virus';
@@ -511,6 +653,7 @@ function applyPerk(k,allowOver=false,forceLimit=false){
   g.perk[k]++;if(k=='heart')g.lives=Math.min(8+2*g.perk.heart,g.lives+2);
 }
 function exitToMenu(){
+  MAP=3200;
   // Cerrar todas las capas antes de reconstruir el menú evita overlays atrapados.
   for(const id of ['cpanel','settings','custom','warn','pausemenu','guide','pick'])document.getElementById(id).style.display='none';
   document.getElementById('cbtn').style.display='none';
@@ -617,6 +760,7 @@ function shoot(x,y,ox,oy,ally,col){
   const front=[];for(let i=0;i<n;i++)front.push((i-(n-1)/2)*.14);
   const offs=front.concat(patOff(1+P.back).slice(1));
   for(const o of offs)g.bubbles.push(mk(a+o));
+  if(!ally&&g.mosquitoShotReady){g.mosquitoShotReady=false;g.mosquitoLarvae.push({x:cx,y:cy,t:1.8,ph:0});pop(cx,cy,'#ffe27a',10)}
 }
 function homingTarget(b){
   const ox=b.homeOX??b.x,oy=b.homeOY??b.y,dx=b.homeDX??(b.vx/Math.hypot(b.vx,b.vy||1)),dy=b.homeDY??(b.vy/Math.hypot(b.vx||1,b.vy));
@@ -644,7 +788,7 @@ cv.addEventListener('pointerdown',e=>{
 
 const PW={dmg:{e:'🥊',n:'Daño +1'},life:{e:'❤️',n:'Vida'},minus:{e:'🔻',n:'Virus -1'},fast:{e:'🏃',n:'Rápido'},freeze:{e:'❄️',n:'Congelar'}};
 Object.assign(PW,{bomb:{e:'💣',n:'Explosiones',t:'s'},shield:{e:'🛡️',n:'Escudo',t:'s'},nuke:{e:'☣️',n:'Limpieza',t:'s'},gdmg:{e:'🌟',n:'Daño eterno',t:'g'},grate:{e:'🚀',n:'Cadencia eterna',t:'g'},gmulti:{e:'🔱',n:'Multidisparo',t:'g'}});
-PW.freeze.t='s';PW.life.t='g';PW.minus.t='g';PW.double={e:'✌️',n:'Doble tiro'};PW.shieldg={e:'🪖',n:'Escudo dorado',t:'g'};
+PW.freeze.t='s';PW.life.t='g';PW.minus.t='g';PW.double={e:'✌️',n:'Doble tiro'};PW.shieldg={e:'🪖',n:'Escudo dorado',t:'g'};PW.mosquitoAlly={e:'🦟',n:'Mosquito aliado',d:'Tu próximo disparo invoca una larva que evoluciona en un mosquito aliado. Tiene 3 vidas y puede eliminar hasta 10 virus.',t:'g'};PW.dengueSwarm={e:'🦟',n:'Enjambre de mosquitos',d:'El Dengue invoca una oleada de mosquitos.',t:'perk'};
 Object.assign(PW,{haste:{e:'💨',n:'Furia',t:'b'},hpup:{e:'🧬',n:'Mutación',t:'b'},steal:{e:'🕳️',n:'Robo',t:'gb'},swarm:{e:'🦠',n:'Plaga',t:'b'},slow:{e:'🐌',n:'Lentitud',t:'b'},gdmgdown:{e:'🔪',n:'Daño debilitado',t:'gb'},grateslow:{e:'💤',n:'Cadencia invertida',t:'gb'}});
 function pickW(ks){const w=ks.map(k=>k=='life'?1.05:1);let r=Math.random()*w.reduce((a,b)=>a+b,0);for(let i=0;i<ks.length;i++){if(r<w[i])return ks[i];r-=w[i]}return ks[ks.length-1]}
 function spawnBoss(noReward){const n0=g.viruses.length;spawnVirus(true,undefined,'normal');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];if(b.boss){sfxPlay('boss');b.noReward=noReward;b.rewardOnly=!noReward}}}
@@ -662,6 +806,7 @@ function registerBossDefeat(v){
   if(!v.boss||v.noReward||v.rewardRegistered)return;
   sfxPlay('bosskill');
   v.rewardRegistered=true;
+  if(g.dengueMode&&v.btype==='dengue'){g.bossKills++;DENGUE_REWARD_UNLOCKED=true;try{localStorage.setItem('soapDengueReward','1')}catch(e){};g.over=true;g.t0=performance.now();showDengueVictory();return}
   if(g.adv){if(v.advWave)advWaveClear(v);advDropMany(v.x,v.y)}
   if(v.rewardOnly){g.bonusPicks++;return}
   if(v.pairId!=null&&g.viruses.some(o=>o.boss&&o.pairId===v.pairId&&!o.dead))return;
@@ -671,7 +816,7 @@ function registerBossDefeat(v){
 }
 PW.bossgood={e:'👑',n:'Jefe invocado',t:'g'};PW.bossbad={e:'👹',n:'Jefe salvaje',t:'gb'};PW.lifeloss={e:'💔',n:'Pérdida de vida',t:'gb'};
 function spawnPower(excludeBossPowers=false){
-  const ok=k=>(k=='life'||k=='lifeloss')?!D.core:k=='shieldg'?!!D.core:k=='steal'?stealPool().length>0:k=='grate'?g.gold.rate<4:k=='gmulti'?g.gold.multi<2:true;
+  const ok=k=>(k=='life'||k=='lifeloss')?!D.core:k=='shieldg'?!!D.core:k=='steal'?stealPool().length>0:k=='grate'?g.gold.rate<4:k=='gmulti'?g.gold.multi<2:k==='mosquitoAlly'?DENGUE_REWARD_UNLOCKED:true;
   let tier;
   if(g.adv){
     // Los malos dorados conservan una probabilidad propia; D.gold solo regula los buenos.
@@ -680,6 +825,7 @@ function spawnPower(excludeBossPowers=false){
     else if(r<badGoldChance+goodGoldChance)tier='g';
     else{const q=(r-badGoldChance-goodGoldChance)/Math.max(.000001,1-badGoldChance-goodGoldChance);tier=q<.493?'n':q<.826?'s':'b'}
   }else tier=pickTier(Math.random());
+  if(DENGUE_REWARD_UNLOCKED&&Math.random()<.055)tier='g';
   const ks=Object.keys(PW).filter(k=>{
       const pt=PW[k].t||'n';
       if(g.adv){if(k.startsWith('B_')||k==='bossgood'||k==='bossbad')return false;return pt===tier}
@@ -702,6 +848,8 @@ function powerSoundKey(k,t){if(k&&k.indexOf('B_')===0)k=k.slice(2);const m={dmg:
 function collect(p){sfxPlay(powerSoundKey(p&&p.k,p&&p.t));if(p.k&&p.k.indexOf('B_')===0){const bk=p.k.slice(2);pop(p.x,p.y,'#ffffff',14);if(XP[bk])g.xp[bk]++;else applyPerk(bk);return}
   if(p.k&&PERKS[p.k]){pop(p.x,p.y,'#ffffff',14);applyPerk(p.k);return}
   pop(p.x,p.y,'#ffffff',14);
+  if(p.k==='mosquitoAlly'){g.mosquitoShotReady=true;pop(p.x,p.y,'#ffe36b',20);return}
+  if(p.k==='dengueSwarm'){g.dengueBossSwarm=true;return}
   if(p.k=='dmg')extendFx('dmg',15);
   else if(p.k=='fast')extendFx('fast',10);
   else if(p.k=='freeze')extendFx('freeze',5);
@@ -733,7 +881,8 @@ function drawPowers(){
     if(!visibleWorld(p.x,p.y,p.r*1.6))continue;
     const f=p.life/p.max,R=p.r*(1+Math.sin(g.t*10)*.06),x=p.x,y=p.y;let rc='#e8426d';
     ctx.save();ctx.lineJoin='round';
-    if(p.t=='gb'){ctx.shadowColor='#ff3b3b';ctx.shadowBlur=SB(16*S);ctx.fillStyle=grad(x,y,R,'#ffe0dc','#d9342b');ctx.strokeStyle='#6e0d08';ctx.lineWidth=3*S;ctx.beginPath();ctx.arc(x,y,R*1.12,0,6.28);ctx.fill();ctx.stroke();rc='#d9342b'}
+    if(p.bossExclusive){ctx.shadowColor='#ff00ff';ctx.shadowBlur=SB(20*S);ctx.fillStyle=grad(x,y,R,'#ffe5ff','#ff00ff');ctx.strokeStyle='#990099';ctx.lineWidth=3*S;ctx.beginPath();star(x,y,R*1.25,R*.95,8,g.t*.7);ctx.fill();ctx.stroke();rc='#ff00ff'}
+    else if(p.t=='gb'){ctx.shadowColor='#ff3b3b';ctx.shadowBlur=SB(16*S);ctx.fillStyle=grad(x,y,R,'#ffe0dc','#d9342b');ctx.strokeStyle='#6e0d08';ctx.lineWidth=3*S;ctx.beginPath();ctx.arc(x,y,R*1.12,0,6.28);ctx.fill();ctx.stroke();rc='#d9342b'}
     else if(p.t=='g'){ctx.shadowColor='#ffd700';ctx.shadowBlur=SB(20*S);ctx.fillStyle=grad(x,y,R,'#fff7b8','#e0a000');ctx.strokeStyle='#8a5a00';ctx.lineWidth=3*S;ctx.beginPath();ctx.arc(x,y,R*1.12,0,6.28);ctx.fill();ctx.stroke();rc='#ffc800'}
     else if(p.t=='b'){ctx.shadowColor='#e07068';ctx.shadowBlur=SB(5*S);ctx.fillStyle=grad(x,y,R,'#ffe0dc','#e68a84');ctx.strokeStyle='#a33a36';ctx.lineWidth=3*S;star(x,y,R*1.14,R*1.02,12,g.t);ctx.fill();ctx.stroke();rc='#cf5a55'}
     else if(p.t=='perk'){ctx.shadowColor='#a66cff';ctx.shadowBlur=SB(18*S);ctx.fillStyle=grad(x,y,R,'#f1dcff','#8b4bd6');ctx.strokeStyle='#55218d';ctx.lineWidth=3*S;star(x,y,R*1.25,R*.9,8,g.t*.7);ctx.fill();ctx.stroke();rc='#a66cff'}
@@ -1430,10 +1579,10 @@ function showDiff(){
   box.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{D=DIFFS[b.dataset.d];reset();startGame()});
   document.getElementById('bBack2').onclick=showStart;
 }
-const BR={normal:68,rey:72,glot:62,tank:86,bomb:66},BSP={normal:34,rey:34,glot:70,tank:22,bomb:34};
-const BNAME={normal:'Jefe',rey:'Rey Divisor',glot:'Glotón Supremo',tank:'Tanque',bomb:'Bombardero'};
-const BICON={normal:'👾',rey:'🦁',glot:'🐲',tank:'🦏',bomb:'🚨'};
-const BTYPEC={normal:['#7a3fb0','#3b1760','#e0773a'],rey:['#c0398f','#5e1048','#ffd23a'],glot:['#e89a2b','#7a4a0a','#fff0b8'],tank:['#5a6a78','#222c36','#9aa8b4'],bomb:['#d6402f','#5a0f08','#2b2b2b']};
+const BR={normal:68,rey:72,glot:62,tank:86,bomb:66,dengue:82},BSP={normal:34,rey:34,glot:70,tank:22,bomb:34,dengue:20};
+const BNAME={normal:'Jefe',rey:'Rey Divisor',glot:'Glotón Supremo',tank:'Tanque',bomb:'Bombardero',dengue:'Dengue'};
+const BICON={normal:'👾',rey:'🦁',glot:'🐲',tank:'🦏',bomb:'🚨',dengue:'🦟'};
+const BTYPEC={dengue:['#44a84d','#155c28','#83d65c'],normal:['#7a3fb0','#3b1760','#e0773a'],rey:['#c0398f','#5e1048','#ffd23a'],glot:['#e89a2b','#7a4a0a','#fff0b8'],tank:['#5a6a78','#222c36','#9aa8b4'],bomb:['#d6402f','#5a0f08','#2b2b2b']};
 const BOSSP=[['normal',.45],['rey',.15],['glot',.15],['tank',.15],['bomb',.10]];
 function pickBoss(){if(g.boss==0)return 'normal';let r=Math.random();for(const [k,p] of BOSSP){if(r<p)return k;r-=p}return 'normal'}
 TYPEC.bmb=['#4a4a55','#1d1d26'];TYN.bmb={e:'💣',n:'Bombardero (virus)'};HPM.bmb=1;RM.bmb=1.1;
@@ -1448,9 +1597,9 @@ const XP={
 function bubDmg(){return Math.max(1,1+g.gold.dmg-g.gold.badDmg+(g.fx.dmg>0?1:0)+g.perk.big+cval('bdmg'))}
 function showGameOver(){
   if(g.over)return;sfxPlay('gameover');g.over=true;g.t0=performance.now();
-  box.innerHTML='<h1>¡Te ensuciaron!</h1><p>Puntos: <b>'+g.score+'</b></p><p>Jefes vencidos: <b>'+g.bossKills+'</b></p><p>Tiempo: <b>'+Math.floor(g.t)+' s</b></p><div class="mbtns"><button id="retryBtn">Reintentar</button><button id="overMenuBtn">Menú principal</button></div>';
+  box.innerHTML='<h1>'+(g.dengueMode?'¡El Dengue te venció!':'¡Te ensuciaron!')+'</h1><p>Puntos: <b>'+g.score+'</b></p><p>Jefes vencidos: <b>'+g.bossKills+'</b></p><p>Tiempo: <b>'+Math.floor(g.t)+' s</b></p><div class="mbtns"><button id="retryBtn">Reintentar</button><button id="overMenuBtn">Menú principal</button></div>';
   msg.style.display='flex';
-  document.getElementById('retryBtn').onclick=()=>{if(g.adv){startAdventure(false);return}reset();startGame()};
+  document.getElementById('retryBtn').onclick=()=>{if(g.dengueMode){startDengueBoss();return}if(g.adv){startAdventure(false);return}reset();startGame()};
   document.getElementById('overMenuBtn').onclick=exitToMenu;
 }
 function checkOver(){if(g.lives<=0&&!g.creative&&!g.over)showGameOver()}
@@ -1505,15 +1654,15 @@ function advUpdate(dt){
   if(g.fx.shield>0)mult*=1.35;
   if(g.fx.freeze>0)mult*=.45;
   if(g.fx.tfreeze>0)mult*=.35;
-  const sp=(g.bossKills>=2?108:76)*S*Math.max(.15,mult)*cval('sspd');
+  if(g.dengueDebuff>0)mult*=.86;const sp=(g.bossKills>=2?108:76)*S*Math.max(.15,mult)*cval('sspd');
   PX=Math.max(30,Math.min(MAP-30,PX+vx*sp*dt));PY=Math.max(30,Math.min(MAP-30,PY+vy*sp*dt));
   for(const p of g.powers){if(Math.hypot(p.x-PX,p.y-PY)<26*S+p.r*.4){collect(p);p.life=0}}
-  if(!g.creative||g.cAuto.boss){
+  if(!g.dengueMode&&(!g.creative||g.cAuto.boss)){
     if(g.advPhase=='pre'&&g.advQuota<=g.advBossLeft){g.advPhase='warn';g.advWarnT=5;g.advSpot=advPickSpot()}
     else if(g.advPhase=='warn'){g.advWarnT-=dt;const wsp=ADV_SPOTS[g.advSpot],near=Math.hypot(wsp[0]-PX, wsp[1]-PY)<260*S;if(g.advWarnT<=0&&!near){advWaveBoss();g.advPhase='boss'}}
     else if(g.advPhase=='gap'){g.advT-=dt;if(g.advT<=0){g.wave++;g.advPhase='pre';g.advT=ADV_PRE;g.advQuota=advQuota(g.wave);g.advBossLeft=Math.round(g.advQuota*(.2+Math.random()*.6))}}
   }
-  if(!g.creative||g.cAuto.power){g.advPowT-=dt;if(g.advPowT<=0){for(let i=0;i<10*1;i++)spawnAdvPower();g.advPowT=3.6+Math.random()*2.4}}
+  if(!g.creative||g.cAuto.power){g.advPowT-=dt;if(g.advPowT<=0){if(g.dengueMode){spawnDenguePower();g.advPowT=5+Math.random()*2}else{for(let i=0;i<10*1;i++)spawnAdvPower();g.advPowT=3.6+Math.random()*2.4}}}
   // los virus no se atraviesan entre sí (se empujan al superponerse)
   const vs=g.viruses.filter(v=>!v.dead&&!v.boss);
   for(let i=0;i<vs.length;i++){const a=vs[i];for(let j=i+1;j<vs.length;j++){const b=vs[j];
@@ -1613,10 +1762,11 @@ function advDropAt(x,y){
   const useExclusive=Math.random()<.15||bossMods.length===0;
   const pool=useExclusive?exclusive:bossMods;
   const k=pickW(pool),m=24*S;
-  g.powers.push({k,t:k.startsWith('B_')?'g':'perk',bossReward:true,x:Math.max(m,Math.min(MAP-m,x)),y:Math.max(m,Math.min(MAP-m,y)),r:24*S,life:10,max:10});
+  g.powers.push({k,t:k.startsWith('B_')?'perk':'perk',bossExclusive:k.startsWith('B_'),bossReward:true,x:Math.max(m,Math.min(MAP-m,x)),y:Math.max(m,Math.min(MAP-m,y)),r:24*S,life:10,max:10});
 }
 function advDropMany(x,y){advDropAt(x,y)}
 function advHud(){
+  if(g.dengueMode)return 'JEFE DENGUE · Mosquitos: '+((g.dengueBugs&&g.dengueBugs.length)||0);
   const w=g.wave||1,s=Math.ceil(Math.max(0,g.advT||0));
   if(g.advPhase=='warn')return '¡JEFE LLEGANDO en '+Math.max(0,Math.ceil(g.advWarnT))+' s!';
   if(g.advPhase=='pre')return 'Oleada '+w+' · virus por salir: '+Math.max(0,g.advQuota||0);
@@ -1641,11 +1791,86 @@ function drawWorldGrid(){
   for(let x=Math.floor(x0/step)*step;x<=x0+W+step;x+=step){ctx.moveTo(x,y0);ctx.lineTo(x,y0+H)}
   for(let y=Math.floor(y0/step)*step;y<=y0+H+step;y+=step){ctx.moveTo(x0,y);ctx.lineTo(x0+W,y)}
   ctx.stroke();ctx.strokeStyle='#8a1f43';ctx.lineWidth=4;ctx.strokeRect(0,0,MAP,MAP);
-  ADV_SPOTS.forEach((s,i)=>{const warn=g.advPhase=='warn'&&g.advSpot===i,R=(warn?120:110)*(warn?1+.12*Math.sin(g.t*8):1);ctx.fillStyle=warn?'rgba(220,30,50,.45)':'rgba(220,30,50,.28)';ctx.strokeStyle='#d7263d';ctx.lineWidth=warn?7:4;ctx.beginPath();ctx.arc(s[0],s[1],R,0,6.28);ctx.fill();ctx.stroke()});
+  if(!g.dengueMode)ADV_SPOTS.forEach((s,i)=>{const warn=g.advPhase=='warn'&&g.advSpot===i,R=(warn?120:110)*(warn?1+.12*Math.sin(g.t*8):1);ctx.fillStyle=warn?'rgba(220,30,50,.45)':'rgba(220,30,50,.28)';ctx.strokeStyle='#d7263d';ctx.lineWidth=warn?7:4;ctx.beginPath();ctx.arc(s[0],s[1],R,0,6.28);ctx.fill();ctx.stroke()});
   ctx.restore();
 }
+function spawnDenguePower(){
+  const all=Object.keys(PW).filter(k=>['n','b','s'].includes(PW[k].t||'n')&&!['nuke','bossgood','bossbad','mosquitoAlly','dengueSwarm'].includes(k));
+  if(Math.random()<.085){const k='dengueSwarm',m=28*S;g.powers.push({k,t:'perk',x:m+Math.random()*(MAP-2*m),y:m+Math.random()*(MAP-2*m),r:24*S,life:9,max:9});return}
+  const tier=Math.random()<.48?'n':Math.random()<.5?'b':'s';
+  const pool=all.filter(k=>(PW[k].t||'n')===tier);if(!pool.length)return;
+  const k=pool[Math.floor(Math.random()*pool.length)],m=28*S;
+  g.powers.push({k,t:tier,x:m+Math.random()*(MAP-2*m),y:m+Math.random()*(MAP-2*m),r:24*S,life:9,max:9});
+}
+function spawnDengueLarva(x,y){
+  if(g.dengueBugs.filter(b=>!b.dead).length>=24)return;
+  g.dengueBugs.push({x,y,stage:'larva',life:2.6,ph:Math.random()*6.28,hp:1,dead:false});
+}
+function dengueBossAI(v,dt){
+  const d=Math.hypot(CWX()-v.x,CWY()-v.y)||1;
+  if(d<310*S)v.chasing=true;else if(d>420*S)v.chasing=false;
+  if(v.chasing)v.sp=88*S;
+  v.larvaT=(v.larvaT??6.5)-dt;
+  if(g.dengueBossSwarm){g.dengueBossSwarm=false;for(let i=0;i<6;i++){const a=Math.random()*6.283;spawnDengueLarva(v.x+Math.cos(a)*(v.r+30*S),v.y+Math.sin(a)*(v.r+30*S))}pop(v.x,v.y,'#ff8f25',24);v.larvaT=Math.max(v.larvaT,5)}
+  if(v.larvaT<=0){v.larvaT=7.5+Math.random()*3;const a=Math.random()*6.283;spawnDengueLarva(v.x+Math.cos(a)*(v.r+24*S),v.y+Math.sin(a)*(v.r+24*S))}
+}
+function updateDengueBugs(dt){
+  if(!g.dengueMode)return;
+  const cx=CWX(),cy=CWY();
+  for(const b of g.dengueBugs){if(b.dead)continue;b.ph+=dt*5;
+    if(b.stage==='larva'){b.life-=dt;if(b.life<=0){b.stage='mosquito';b.lunge=false;b.sp=365*S;b.ph=Math.random()*6.28;pop(b.x,b.y,'#b8e66c',8)}else{const d=Math.hypot(cx-b.x,cy-b.y)||1;b.x+=(cx-b.x)/d*24*S*dt;b.y+=(cy-b.y)/d*24*S*dt}continue}
+    const d=Math.hypot(cx-b.x,cy-b.y)||1;
+    const bx=cx-Math.cos(FACE||0)*100*S,by=cy-Math.sin(FACE||0)*100*S;
+    if(!b.lunge&&Math.hypot(bx-b.x,by-b.y)<36*S)b.lunge=true;
+    const tx=b.lunge?cx:bx,ty=b.lunge?cy:by,dd=Math.hypot(tx-b.x,ty-b.y)||1,sp=b.lunge?610*S:390*S;
+    b.x+=(tx-b.x)/dd*sp*dt;b.y+=(ty-b.y)/dd*sp*dt;
+    if(Math.hypot(cx-b.x,cy-b.y)<30*S){g.dengueDebuff=Math.max(g.dengueDebuff,8);pop(cx,cy,'#b9df55',14);b.dead=true}
+  }
+  g.dengueBugs=g.dengueBugs.filter(b=>!b.dead);
+}
+function updateMosquitoAllies(dt){
+  if(!g.mosquitoLarvae&&!g.mosquitoAllies)return;
+  for(const l of g.mosquitoLarvae){l.t-=dt;l.ph+=dt*5;if(l.t<=0){g.mosquitoAllies.push({x:l.x,y:l.y,hp:3,kills:0,inv:0,ph:0,dead:false});l.dead=true;pop(l.x,l.y,'#b8e66c',12)}}
+  g.mosquitoLarvae=g.mosquitoLarvae.filter(l=>!l.dead);
+  for(const m of g.mosquitoAllies){if(m.dead)continue;m.inv=Math.max(0,m.inv-dt);m.ph+=dt*10;
+    let target=null,bd=Infinity;for(const v of g.viruses){if(v.dead||v.boss||v.type==='med')continue;const d=Math.hypot(v.x-m.x,v.y-m.y);if(d<bd){bd=d;target=v}}
+    // Los virus pueden golpear al mosquito antes de que este alcance a tocarlos.
+    if(m.inv<=0){let hit=false;for(const v of g.viruses){if(v.dead||v.boss||v.type==='med')continue;if(Math.hypot(v.x-m.x,v.y-m.y)<v.r+11*S){m.hp--;m.inv=.48;pop(m.x,m.y,'#d7f27d',7);hit=true;break}}if(hit&&m.hp<=0){m.dead=true;continue}}
+    if(!target)continue;
+    const px=CWX(),py=CWY(),toSoap=Math.hypot(target.x-px,target.y-py)||1;
+    // Se aproxima por detrás del virus antes de lanzarse contra él.
+    const tx=target.x+(target.x-px)/toSoap*(target.r+24*S),ty=target.y+(target.y-py)/toSoap*(target.r+24*S);
+    const distBack=Math.hypot(tx-m.x,ty-m.y),distTarget=Math.hypot(target.x-m.x,target.y-m.y);
+    const tx2=distBack>target.r+22*S?tx:target.x,ty2=distBack>target.r+22*S?ty:target.y,dd=Math.hypot(tx2-m.x,ty2-m.y)||1;
+    const speed=distBack>target.r+22*S?430*S:650*S;
+    m.x+=(tx2-m.x)/dd*speed*dt;m.y+=(ty2-m.y)/dd*speed*dt;
+    if(!target.dead&&Math.hypot(target.x-m.x,target.y-m.y)<target.r+12*S){
+      hurt(target,target.hp+0.01);target.flash=.15;m.kills++;pop(target.x,target.y,'#c8ed75',13);sfxPlay('hit');
+      // hurt() permite que processDeaths aplique la división de los virus divisores.
+      if(m.kills>=10)m.dead=true;
+    }
+  }
+  g.mosquitoAllies=g.mosquitoAllies.filter(m=>!m.dead&&m.hp>0);
+}
+function drawMosquitoUnits(){
+  const emoji=(x,y,ch,size,alpha=1)=>{ctx.save();ctx.globalAlpha=alpha;ctx.font=Math.round(size)+'px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(ch,x,y);ctx.restore()};
+  for(const l of (g.mosquitoLarvae||[]))if(visibleWorld(l.x,l.y,18*S)){ctx.save();ctx.fillStyle='#d9e85e';ctx.strokeStyle='#7f8e25';ctx.lineWidth=2*S;ctx.beginPath();ctx.ellipse(l.x,l.y,9*S,5*S,Math.sin(l.ph)*.4,0,6.28);ctx.fill();ctx.stroke();ctx.restore()}
+  for(const m of (g.mosquitoAllies||[]))if(visibleWorld(m.x,m.y,24*S)){emoji(m.x,m.y,'🦟',27*S,m.inv>0?.5:1);ctx.save();ctx.fillStyle='#fff';ctx.strokeStyle='#38502a';ctx.lineWidth=1.5*S;ctx.beginPath();ctx.roundRect(m.x-12*S,m.y+13*S,24*S,5*S,3);ctx.fill();ctx.stroke();ctx.fillStyle='#8dcc45';ctx.fillRect(m.x-11*S,m.y+14*S,22*S*Math.max(0,m.hp/3),3*S);ctx.restore()}
+  for(const b of (g.dengueBugs||[]))if(visibleWorld(b.x,b.y,20*S)){if(b.stage==='larva'){ctx.save();ctx.fillStyle='#d7df58';ctx.strokeStyle='#748326';ctx.lineWidth=2*S;ctx.beginPath();ctx.ellipse(b.x,b.y,10*S,6*S,Math.sin(b.ph)*.3,0,6.28);ctx.fill();ctx.stroke();ctx.restore()}else emoji(b.x,b.y,'🦟',25*S)}
+}
+function showDengueVictory(){
+  box.innerHTML='<h1>🏆 ¡Dengue derrotado!</h1><p>Desbloqueaste para siempre el modificador dorado <b>🦟 Mosquito aliado</b>.</p><p>Cuando lo recojas en Aventura o Defensa, tu próximo disparo invocará una larva que evoluciona en un mosquito con 3 vidas y hasta 10 ataques.</p><div class="mbtns"><button id="dengueRetry">Repetir jefe</button><button id="dengueBossMenu">Jefes</button><button id="dengueHome">Menú</button></div>';
+  msg.style.display='flex';msg.style.zIndex='20';
+  document.getElementById('dengueRetry').onclick=startDengueBoss;document.getElementById('dengueBossMenu').onclick=showBosses;document.getElementById('dengueHome').onclick=exitToMenu;
+}
+function startDengueBoss(){
+  MAP=6400;D=DIFFS.hard;reset();g.adv=true;g.dengueMode=true;g.wave=1;g.spawn=.5;g.advPowT=4;g.nextBoss=1e9;g.lives=5;
+  PX=MAP/2;PY=MAP/2;FACE=-Math.PI/2;MOVE={x:0,y:0};DK={};
+  const n0=g.viruses.length;spawnVirus(true,500,'dengue');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+850*S;b.y=MAP/2+500*S;b.larvaT=6.5;b.sp=88*S;b.chasing=false}
+  startGame();syncMovementControls();document.getElementById('cbtn').style.display='none';
+}
 function startAdventure(creative=false){
-  D=ADV_DIFFS[ADV_DIFF]||ADV_DIFFS.mid;reset();g.adv=true;g.wave=1;g.advPhase='pre';g.advT=ADV_PRE;g.advQuota=advQuota(1);g.advBossLeft=Math.round(g.advQuota*(.2+Math.random()*.6));g.advPowT=0.5;g.nextBoss=1e9;g.bossWaveCount=0;
+  MAP=3200;D=ADV_DIFFS[ADV_DIFF]||ADV_DIFFS.mid;reset();g.adv=true;g.wave=1;g.advPhase='pre';g.advT=ADV_PRE;g.advQuota=advQuota(1);g.advBossLeft=Math.round(g.advQuota*(.2+Math.random()*.6));g.advPowT=0.5;g.nextBoss=1e9;g.bossWaveCount=0;
   if(creative){initCreativeState();g.cAuto={virus:true,boss:true,power:true}}
   PX=MAP/2;PY=MAP/2;FACE=-Math.PI/2;MOVE.x=0;MOVE.y=0;DK={};
   startGame();
@@ -1716,7 +1941,7 @@ function update(dt){
   if(g.bossKills>g.rewards){g.rewards++;if(g.t1==null)g.t1=g.t;if(!g.adv){openPick();return}}
   if(g.adv)advUpdate(dt);
   {let df=g.aim-g.rot;while(df>Math.PI)df-=6.283;while(df<-Math.PI)df+=6.283;const mr=12*dt;g.rot+=Math.max(-mr,Math.min(mr,df))}
-  g.chainB=60;g.shotT=(g.shotT??9)+dt;g.t+=dt;g.cool-=dt*cval('rate');g.inv-=dt;g.shake=Math.max(0,g.shake-dt);
+  g.chainB=60;g.shotT=(g.shotT??9)+dt;g.t+=dt;g.dengueDebuff=Math.max(0,(g.dengueDebuff||0)-dt);g.cool-=dt*cval('rate')*(g.dengueDebuff>0?.84:1);g.inv-=dt;g.shake=Math.max(0,g.shake-dt);
   const fzRate=g.fx.freeze>0?FREEZE_TIMER_RATE:1;
   for(const k in g.fx)g.fx[k]=Math.max(0,g.fx[k]-dt*(FREEZE_NORMAL[k]?1:fzRate));
   g.nextPow-=dt;if(g.nextPow<=0&&g.powers.length<2&&!g.adv&&(!g.creative||g.cAuto.power)){spawnPower();g.nextPow=(5+Math.random()*4)*D.pow/(1.1*(D.powBoost||1))}
@@ -1726,7 +1951,7 @@ function update(dt){
   for(let i=0;i<g.powers.length;i++){const p=g.powers[i];if(p.life>0)g.powers[keptPowers++]=p}
   g.powers.length=keptPowers;
   g.spawn-=dt;
-  if(g.spawn<=0&&g.fx.freeze<=0&&(!g.creative||g.cAuto.virus)){const n=Math.min(6,1+(g.t>60&&Math.random()<Math.min(.6,(g.t-60)/200)?1:0)+spawnStage());if(g.adv)advSpawnTick();else for(let i=0;i<n;i++)spawnVirus(false);g.spawn=Math.max(.3,1.2-g.t*.01)*(.7+Math.random()*.6)*D.vir*Math.pow(.95,Math.max(0,g.bossKills-2))}
+  if(g.spawn<=0&&g.fx.freeze<=0&&(!g.creative||g.cAuto.virus)){const n=Math.min(6,1+(g.t>60&&Math.random()<Math.min(.6,(g.t-60)/200)?1:0)+spawnStage());if(g.dengueMode){for(let i=0;i<n;i++)spawnVirus(false)}else if(g.adv)advSpawnTick();else for(let i=0;i<n;i++)spawnVirus(false);g.spawn=Math.max(.3,1.2-g.t*.01)*(.7+Math.random()*.6)*D.vir*Math.pow(.95,Math.max(0,g.bossKills-2))}
   if(g.t>=g.nextBoss&&g.fx.freeze<=0){if(!g.adv&&(!g.creative||g.cAuto.boss))spawnScheduledBossWave();g.nextBoss+=(g.adv?60:(D.bossInterval||60))}
   const cx=CWX(),cy=CWY(),sr=24*S*cval('ssize');
   for(const b of g.bubbles){
@@ -1743,7 +1968,7 @@ function update(dt){
     const dpl=Math.hypot(cx-v.x,cy-v.y)||1;let tx=cx,ty=cy;
     for(const al of g.allies){if(Math.hypot(al.x-v.x,al.y-v.y)<Math.hypot(tx-v.x,ty-v.y)){tx=al.x;ty=al.y}}
     const dx=tx-v.x,dy=ty-v.y,d=Math.hypot(dx,dy)||1;
-    const fz=(g.fx.freeze>0?.08:1)*(g.fx.haste>0?1.6:1)*cval('vspd')*(v.boss?1:D.speed)*(g.fx.tfreeze>0?0:1);let mx=dx/d,my=dy/d;if(v.btype=='glot'){const m=kite(v,dt);mx=m[0];my=m[1]}if(v.boss)bossSummon(v,dt);if(v.type=='med'){const m=medMove(v,dpl,dt);mx=m[0];my=m[1]}
+    const fz=(g.fx.freeze>0?.08:1)*(g.fx.haste>0?1.6:1)*cval('vspd')*(v.boss?1:D.speed)*(g.fx.tfreeze>0?0:1);let mx=dx/d,my=dy/d;if(v.boss&&v.btype==='dengue'&&g.dengueMode){bossSummon(v,dt);if(v.chasing){const bd=Math.hypot(cx-v.x,cy-v.y)||1;mx=(cx-v.x)/bd;my=(cy-v.y)/bd}else{mx=0;my=0}}else{if(v.btype=='glot'){const m=kite(v,dt);mx=m[0];my=m[1]}if(v.boss)bossSummon(v,dt);if(v.type=='med'){const m=medMove(v,dpl,dt);mx=m[0];my=m[1]}}
     v.x+=mx*v.sp*fz*dt+(v.kx||0)*dt;v.y+=my*v.sp*fz*dt+(v.ky||0)*dt;
     if(v.type=='med'||v.btype=='glot'){if(v.in){v.x=Math.max(v.r,Math.min(BXMAX()-v.r,v.x));v.y=Math.max(v.r,Math.min(BYMAX()-v.r,v.y))}else if(v.x>v.r&&v.x<BXMAX()-v.r&&v.y>v.r&&v.y<BYMAX()-v.r)v.in=true}
     if(v.kx){v.kx*=.9;v.ky*=.9}
@@ -1755,12 +1980,12 @@ function update(dt){
       }
     }
     if(!v.dead&&v.type!='med'&&!(v.grace>0)&&!(g.fx.tfreeze>0)&&(v.boss||g.inv<=0)&&dpl<v.r+sr*.9){
-      if(g.fx.shield>0){g.shake=.15;if(v.boss){v.kx=-(cx-v.x)/dpl*500*S;v.ky=-(cy-v.y)/dpl*500*S}}else if(v.boss){if(g.creative){g.shake=.2;g.inv=.8;v.kx=-(cx-v.x)/dpl*500*S;v.ky=-(cy-v.y)/dpl*500*S}else{sfxPlay('damage');g.lives=0;g.shake=.5;pop(cx,cy,'#ffffff',30)}}else{sfxPlay('damage');g.lives--;g.inv=1.3;g.shake=.3;pop(cx,cy,'#ffffff',14)}
+      if(g.dengueMode&&v.boss&&v.btype==='dengue'){sfxPlay('damage');g.lives=0;g.shake=.5;pop(cx,cy,'#ffffff',30)}else if(g.fx.shield>0){g.shake=.15;if(v.boss){v.kx=-(cx-v.x)/dpl*500*S;v.ky=-(cy-v.y)/dpl*500*S}}else if(v.boss){if(g.creative){g.shake=.2;g.inv=.8;v.kx=-(cx-v.x)/dpl*500*S;v.ky=-(cy-v.y)/dpl*500*S}else{sfxPlay('damage');g.lives=0;g.shake=.5;pop(cx,cy,'#ffffff',30)}}else{sfxPlay('damage');g.lives--;g.inv=1.3;g.shake=.3;pop(cx,cy,'#ffffff',14)}
       if(!v.boss){v.dead=true;v.nosplit=true;explode(cx,cy)}
       if(g.lives<=0&&!g.creative)showGameOver()
     }
   }
-  updateAlly(dt);updateX(dt);processDeaths();
+  updateDengueBugs(dt);updateMosquitoAllies(dt);updateAlly(dt);updateX(dt);processDeaths();
   let keptViruses=0;
   for(let i=0;i<g.viruses.length;i++){const v=g.viruses[i];if(!v.dead)g.viruses[keptViruses++]=v}
   g.viruses.length=keptViruses;
@@ -1815,7 +2040,8 @@ function drawVirus(v){
   }
   if(CUST.acc){ctx.lineWidth=5*S;ctx.strokeStyle='#1a0a14';ctx.beginPath();ctx.arc(0,0,r*1.02,0,6.28);ctx.stroke()}
   if(v.boss){
-    ctx.fillStyle='#e8935a';for(let i=0;i<7;i++){const a=i*.9+.5,q=r*(.35+(i%3)*.2);ctx.beginPath();ctx.arc(Math.cos(a)*q,Math.sin(a)*q*1.1+r*.1,r*.07,0,6.28);ctx.fill()}
+    if(v.btype==='dengue'){ctx.save();ctx.strokeStyle='#153f20';ctx.lineWidth=4*S;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(-r*.65,-r*.3);ctx.lineTo(-r*1.05,-r*.72);ctx.moveTo(r*.65,-r*.3);ctx.lineTo(r*1.05,-r*.72);ctx.moveTo(-r*.75,r*.25);ctx.lineTo(-r*1.1,r*.55);ctx.moveTo(r*.75,r*.25);ctx.lineTo(r*1.1,r*.55);ctx.stroke();ctx.fillStyle='#d9f3a0';ctx.beginPath();ctx.ellipse(-r*.55,-r*.58,r*.37,r*.17,-.5,0,6.28);ctx.ellipse(r*.55,-r*.58,r*.37,r*.17,.5,0,6.28);ctx.fill();ctx.restore()}
+    ctx.fillStyle=v.btype==='dengue'?'#a5d65a':'#e8935a';for(let i=0;i<7;i++){const a=i*.9+.5,q=r*(.35+(i%3)*.2);ctx.beginPath();ctx.arc(Math.cos(a)*q,Math.sin(a)*q*1.1+r*.1,r*.07,0,6.28);ctx.fill()}
     ctx.strokeStyle='#1c0a30';ctx.lineWidth=5*S;ctx.beginPath();ctx.moveTo(-r*.5,-r*.28);ctx.lineTo(-r*.08,-r*.08);ctx.moveTo(r*.5,-r*.28);ctx.lineTo(r*.08,-r*.08);ctx.stroke();
     eye(-r*.27,-r*.02,r*.2,lx,ly,'#d11');eye(r*.27,-r*.02,r*.2,lx,ly,'#d11');
     ctx.fillStyle='#2a0f45';ctx.beginPath();ctx.moveTo(-r*.35,r*.4);ctx.quadraticCurveTo(0,r*.2,r*.35,r*.4);ctx.lineTo(r*.3,r*.5);ctx.quadraticCurveTo(0,r*.38,-r*.3,r*.5);ctx.fill();
@@ -1929,7 +2155,7 @@ function drawRealismShadows(){
 
 
 // Rutinas de jefes y poderes restauradas desde la versión funcional.
-function bossSummon(v,dt){if(v.adv){advBossAI(v,dt);return}
+function bossSummon(v,dt){if(v.btype==='dengue'&&g.dengueMode){dengueBossAI(v,dt);return}if(v.adv){advBossAI(v,dt);return}
   const t=v.btype;if((t!='glot'&&t!='bomb')||g.fx.tfreeze>0)return;
   v.sumT=(v.sumT??2)-dt;if(v.sumT>0)return;v.sumT=t=='glot'?3.2:3.6;
   const ty=t=='glot'?'glot':'bmb';if(g.viruses.filter(o=>o.type==ty&&!o.dead).length>=(t=='glot'?10:8))return;
@@ -2027,7 +2253,7 @@ function draw(){
   for(let i=0;i<g.viruses.length;i++){const v=g.viruses[i];if(!v.boss&&visibleWorld(v.x,v.y,v.r*1.5)){drawVirus(v);if(FRZ)drawIceShell(v)}}
   for(let i=0;i<g.viruses.length;i++){const v=g.viruses[i];if(v.boss&&visibleWorld(v.x,v.y,v.r*1.5)){drawVirus(v);if(FRZ)drawIceShell(v)}}
   ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';
-  drawSoap();drawAllies();
+  drawSoap();drawAllies();drawMosquitoUnits();
   for(let i=0;i<g.bubbles.length;i++){
     const b=g.bubbles[i];if(!visibleWorld(b.x,b.y,b.r+20*S))continue;
     // Small speed streak gives projectiles more depth without blur filters.
@@ -2085,6 +2311,7 @@ function draw(){
   ].filter(Boolean);
   if(g.got.life)active.push(make(PW.life.e,g.got.life,true));
   if(g.got.minus)active.push(make(PW.minus.e,g.got.minus,true));
+  if(g.mosquitoShotReady)active.push(make(PW.mosquitoAlly.e,1,true));
   let powerY=firstY;
   powerY=drawRow(active,powerY,sc);
   const pk=Object.keys(PERKS).filter(k=>g.perk[k]).map(k=>make(PERKS[k].e,g.perk[k]));
