@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Soap Adventures v.6.8</title>
+<title>Soap Adventures v.6.81</title>
 <meta name="theme-color" content="#e879a0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -227,7 +227,7 @@ button:active{filter:brightness(.97)}
 .gbox{border-radius:26px!important}
 #msg>div:after{width:25px;height:25px;right:15px;bottom:13px}
 #guide .gbox h2,#cpanel .gbox h2,#settings .gbox h2{padding:7px 34px 9px;border-radius:14px;background:linear-gradient(90deg,rgba(255,213,226,.78),rgba(255,240,245,.45));color:#8a3658}
-#msg #box:before{content:'SOAP ADVENTURES  •  BUBBLE SURVIVAL  •  v.6.8';color:#d64c7b;letter-spacing:1.8px}
+#msg #box:before{content:'SOAP ADVENTURES  •  BUBBLE SURVIVAL  •  v.6.81';color:#d64c7b;letter-spacing:1.8px}
 #msg .mbtns button:first-child{background:linear-gradient(135deg,#f77da2,#df4778);box-shadow:0 5px 0 #bd456c,0 9px 17px rgba(205,61,111,.2)}
 #msg .mbtns button:not(:first-child),#setbody button,#msg .dopt button{background:linear-gradient(180deg,#fff 0%,#f7edf2 100%)}
 #pick{background:radial-gradient(circle at 12% 18%,rgba(129,224,243,.25) 0 7px,transparent 9px),radial-gradient(circle at 88% 78%,rgba(129,224,243,.22) 0 10px,transparent 12px),rgba(39,29,49,.66)}
@@ -499,9 +499,15 @@ body:has(#msg .home-shell) #gear,body:has(#msg .home-shell) #ver{display:none!im
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.78),transparent)!important;
   filter:blur(1.5px)!important;opacity:.9;
 }
+
+/* v6.81 — logotipo más legible y letras sin amontonarse */
+#msg:has(.home-shell) .home-logo{filter:drop-shadow(0 5px 3px rgba(93,53,78,.18));}
+#msg:has(.home-shell) .home-logo-soap{font-family: system-ui,-apple-system,"Trebuchet MS",sans-serif!important;font-weight:950!important;letter-spacing:-.035em!important;-webkit-text-stroke:1.8px #a87949!important;text-shadow:0 2px 0 #ffe9ae,0 5px 0 #c69b60,0 8px 12px rgba(93,53,48,.2)!important;paint-order:stroke fill;}
+#msg:has(.home-shell) .home-logo-adventures{font-family:system-ui,-apple-system,"Trebuchet MS",sans-serif!important;font-weight:950!important;letter-spacing:.015em!important;-webkit-text-stroke:1.2px #96385f!important;text-shadow:0 2px 0 #ffdce6,0 4px 0 #ba4d78,0 7px 10px rgba(93,53,78,.2)!important;white-space:nowrap;paint-order:stroke fill;}
+
 </style></head><body>
 <canvas id="c"></canvas><canvas id="fx"></canvas>
-<div id="ver">v.6.8</div>
+<div id="ver">v.6.81</div>
 <div id="guide"><div class="gbox"><h2>Guía del juego</h2><div class="gbody"><h3>Índice</h3><p>📌 <b>Modos:</b> Defensa, Aventura y Creativo. <b>Combate:</b> virus, jefes y oleadas. <b>Powers:</b> comunes, dorados, especiales y exclusivos. <b>Personalización:</b> jabón, burbujas, acabados y estelas. <b>Extras:</b> controles, ajustes y rendimiento.</p><h3>1. Modos de juego</h3><p><b>Defensa:</b> sobreviví a oleadas infinitas y jefes programados. <b>Aventura:</b> avanzá por fases con jefes y recompensas. <b>Creativo:</b> probá virus, jefes, powers y modificadores sin límites habituales. Las variantes creativas permiten elegir Aventura o Defensa.</p><h3>2. Virus y jefes</h3><p>Los virus tienen comportamientos y estadísticas diferentes. Los divisores se multiplican al ser derrotados; los médicos curan a otros virus; los jefes tienen reglas y recompensas propias. Los jefes especiales Dengue, Tuberculosis y Gripe Española tienen arenas y mecánicas particulares.</p><h3>3. Powers y mejoras</h3><p>Los powers temporales se activan al recogerlos. Las mejoras permanentes se acumulan durante la partida. Los powers dorados y exclusivos pueden desbloquearse mediante jefes o códigos.</p><h3>4. Personalización y códigos</h3><p>En Personalizar podés cambiar forma, color, texto, forma de burbuja, acabado y estela. Los códigos se canjean desde el panel correspondiente; algunos se descubren al vencer jefes. La estela clásica de burbujas está disponible desde el comienzo y sigue tanto al jabón como a sus disparos.</p><h3>5. Ajustes y controles</h3><p>Configuración permite modificar audio, gráficos, shaders, resolución, controles táctiles y mando. Los shaders afectan a toda la escena, incluidos poderes, escudos, explosiones y efectos visuales.</p>
 <h3>Cómo se juega</h3>
 <p>Sos el jabón del centro. Tocá o arrastrá el dedo para lanzar burbujas hacia ese lugar. Cada burbuja hace 1 de daño base.</p>
@@ -729,8 +735,8 @@ function showStart(){
   box.innerHTML='<div class="home-top">'+
       '<button id="bSettings" aria-label="Configuración" title="Configuración"><span class="home-icon">⚙️</span></button>'+
       '<button id="bGuide" aria-label="Guía" title="Guía"><span class="home-icon home-guide-icon">!</span></button>'+
-      '<button id="bAdmin" aria-label="Códigos" title="Códigos" style="display:'+(CODE_ARCHIVE_UNLOCKED?'':'none')+'"><span class="home-icon">⌨️</span></button></div>'+
-    '<div class="home-logo" title="¿Hay algo oculto?"><span class="home-logo-soap">SOAP</span><span class="home-logo-adventures">ADVENTURES</span><span class="home-logo-version">v.6.8</span></div><div class="home-shell">'+
+      '<button id="bAdmin" aria-label="Códigos" title="Códigos"><span class="home-icon">⌨️</span></button></div>'+
+    '<div class="home-logo" title="¿Hay algo oculto?"><span class="home-logo-soap">SOAP</span><span class="home-logo-adventures">ADVENTURES</span><span class="home-logo-version">v.6.81</span></div><div class="home-shell">'+
     '<div class="home-left"><div class="home-soap-wrap">'+
       '<button class="home-soap" id="homeSoap" aria-label="Personalizar jabón"><span class="soap-inner" id="homeSoapText">SOAP</span></button>'+
       '<div class="home-name" id="homeName" aria-hidden="true">SOAP</div></div>'+
@@ -745,8 +751,8 @@ function showStart(){
   document.getElementById('menuHue').oninput=homeHueSet;
   document.getElementById('bSettings').onclick=openSettings;
   document.getElementById('bGuide').onclick=()=>{document.getElementById('guide').style.display='flex'};
-  document.getElementById('bAdmin').onclick=showAllCodes;
-  let logoTaps=0,logoTapTimer;const logo=document.querySelector('.home-logo');if(logo){logo.style.cursor='default';logo.addEventListener('click',()=>{logoTaps++;clearTimeout(logoTapTimer);logoTapTimer=setTimeout(()=>logoTaps=0,1800);if(logoTaps>=5){logoTaps=0;showCodeArchive()}})}
+  document.getElementById('bAdmin').onclick=openAdminPanel;
+  const logo=document.querySelector('.home-logo');if(logo)logo.style.cursor='default';
   /* En la primera carga CUST se declara más adelante: actualizar después de inicializarlo. */
   requestAnimationFrame(()=>{try{homeSoapSync()}catch(_){}});
 }
@@ -768,7 +774,7 @@ const BOSS_ROSTER=['Dengue','Tuberculosis','Malaria','Gripe Española','Viruela'
 function openAdminPanel(){renderAdminPanel();document.getElementById('adminPanel').style.display='flex'}
 function renderAdminPanel(){
   const body=document.getElementById('adminbody');
-  const codeEntry='<div class="admin-code-row"><input id="powerCodeInput" type="text" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Ingresá un código" aria-label="Código"><button id="powerCodeRedeem" type="button">Canjear</button></div><div class="admin-error" id="powerCodeMsg" aria-live="polite"></div><p class="admin-note">Expansiones: <b>FORMASPLUS</b>, <b>ACABADOS</b>, <b>ESTELAS</b>. Menú de códigos: <b>ALLCODE$!</b>.</p>';
+  const codeEntry='<div class="admin-code-row"><input id="powerCodeInput" type="text" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Ingresá un código" aria-label="Código"><button id="powerCodeRedeem" type="button">Canjear</button></div><div class="admin-error" id="powerCodeMsg" aria-live="polite"></div><p class="admin-note">Ingresá el código que quieras canjear.</p>';
   if(!ADMIN_UNLOCKED){
     body.innerHTML='<p>Ingresá un código para desbloquear contenido o funciones especiales.</p>'+codeEntry;
   }else{
