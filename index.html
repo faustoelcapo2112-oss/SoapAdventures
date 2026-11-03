@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Soap Adventures v5.5</title>
+<title>Soap Adventures v5.8</title>
 <meta name="theme-color" content="#e879a0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -227,7 +227,7 @@ button:active{filter:brightness(.97)}
 .gbox{border-radius:26px!important}
 #msg>div:after{width:25px;height:25px;right:15px;bottom:13px}
 #guide .gbox h2,#cpanel .gbox h2,#settings .gbox h2{padding:7px 34px 9px;border-radius:14px;background:linear-gradient(90deg,rgba(255,213,226,.78),rgba(255,240,245,.45));color:#8a3658}
-#msg #box:before{content:'SOAP ADVENTURES  •  BUBBLE SURVIVAL  •  v.5.5';color:#d64c7b;letter-spacing:1.8px}
+#msg #box:before{content:'SOAP ADVENTURES  •  BUBBLE SURVIVAL  •  v.5.8';color:#d64c7b;letter-spacing:1.8px}
 #msg .mbtns button:first-child{background:linear-gradient(135deg,#f77da2,#df4778);box-shadow:0 5px 0 #bd456c,0 9px 17px rgba(205,61,111,.2)}
 #msg .mbtns button:not(:first-child),#setbody button,#msg .dopt button{background:linear-gradient(180deg,#fff 0%,#f7edf2 100%)}
 #pick{background:radial-gradient(circle at 12% 18%,rgba(129,224,243,.25) 0 7px,transparent 9px),radial-gradient(circle at 88% 78%,rgba(129,224,243,.22) 0 10px,transparent 12px),rgba(39,29,49,.66)}
@@ -249,9 +249,146 @@ html,body{font-family:"Trebuchet MS","Arial Rounded MT Bold",Arial,"Apple Color 
 /* Modo Rendimiento: sin desenfoques de fondo sobre el canvas que se anima (cada fotograma obliga al navegador a repetirlos). */
 html.perf #gear,html.perf #cbtn,html.perf #ver,html.perf #msg,html.perf #guide,html.perf #custom,html.perf #cpanel,html.perf #settings,html.perf #warn,html.perf #pick,html.perf #pausemenu{-webkit-backdrop-filter:none;backdrop-filter:none}
 body.adv-creative #cbtn{left:auto;right:14px}
+
+
+/* ===== Menú principal renovado · v5.8 ===== */
+#homeMenu,#bossMenu{
+  position:fixed;inset:0;display:none;align-items:center;justify-content:center;
+  box-sizing:border-box;padding:max(16px,env(safe-area-inset-top)) 16px max(16px,env(safe-area-inset-bottom));
+  overflow:auto;overscroll-behavior:contain;z-index:3;
+  background:
+    radial-gradient(ellipse at 14% 18%,rgba(255,255,255,.72),transparent 34%),
+    radial-gradient(ellipse at 84% 82%,rgba(255,255,255,.38),transparent 38%),
+    linear-gradient(135deg,#f8dce5 0%,#ffe9ef 48%,#f7d8e3 100%);
+}
+#homeMenu:before,#bossMenu:before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.48;
+  background:radial-gradient(circle at 22% 72%,rgba(255,255,255,.8) 0 3px,transparent 5px),
+    radial-gradient(circle at 72% 23%,rgba(255,255,255,.75) 0 4px,transparent 6px),
+    radial-gradient(circle at 88% 54%,rgba(255,255,255,.68) 0 3px,transparent 5px);
+}
+.home-layout{
+  position:relative;width:min(1120px,100%);height:min(760px,92vh);height:min(760px,92dvh);
+  display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(14px,3vw,48px);
+  align-items:center;box-sizing:border-box;padding:clamp(10px,2.5vw,30px);
+}
+.home-left{min-width:0;display:flex;align-items:center;justify-content:center}
+.home-soap-row{display:flex;align-items:center;justify-content:center;gap:clamp(12px,2.2vw,28px);width:100%}
+.home-soap-column{display:flex;flex-direction:column;align-items:center;gap:16px;min-width:0}
+.home-soap-tap{border:0!important;padding:0!important;background:transparent!important;box-shadow:none!important;display:grid;place-items:center;cursor:pointer;touch-action:manipulation}
+.home-soap-shell{
+  --soap-main:#f8879f;--soap-edge:#c9405f;--soap-light:#fbb4c3;
+  position:relative;display:grid;place-items:center;width:clamp(92px,12vw,158px);height:clamp(150px,25vh,230px);
+  border:4px solid var(--soap-edge);border-radius:38px;
+  background:linear-gradient(135deg,#fff 0%,var(--soap-light) 23%,var(--soap-main) 69%,var(--soap-edge) 100%);
+  box-shadow:inset 5px 6px 12px rgba(255,255,255,.88),inset -6px -8px 14px rgba(100,30,65,.12),0 14px 24px rgba(161,82,112,.24);
+  transition:transform .16s,filter .16s;box-sizing:border-box;
+}
+.home-soap-tap:active .home-soap-shell{transform:scale(.97);filter:brightness(1.03)}
+.home-soap-shell:before{
+  content:"";position:absolute;inset:13%;border-radius:inherit;
+  background:linear-gradient(145deg,rgba(255,255,255,.92),rgba(255,255,255,.2));
+  border:3px solid rgba(255,255,255,.58);box-shadow:inset 0 5px 12px rgba(110,48,72,.10),0 1px 5px rgba(255,255,255,.65);
+}
+.home-soap-shell:after{content:"";position:absolute;left:17%;top:12%;width:28%;height:9%;border-radius:50%;background:rgba(255,255,255,.72);filter:blur(5px);transform:rotate(-28deg)}
+.home-soap-shell[data-shape="oval"]{border-radius:50%}
+.home-soap-shell[data-shape="rect"]{border-radius:18px}
+.home-soap-shell[data-shape="round"]{width:clamp(118px,15vw,180px);height:clamp(118px,20vh,180px);border-radius:50%}
+.home-soap-text{position:relative;z-index:1;max-width:70%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--soap-edge);font:900 clamp(15px,2vw,24px)/1 system-ui,-apple-system,sans-serif;letter-spacing:.2px;text-shadow:0 1px 0 rgba(255,255,255,.8)}
+.home-name-input{
+  width:clamp(112px,16vw,180px);height:45px;box-sizing:border-box;text-align:center;
+  border:1.5px solid #a77a8c;border-radius:13px;background:rgba(255,255,255,.88);color:#54213f;
+  font:800 19px system-ui,-apple-system,sans-serif;padding:5px 10px;outline:none;touch-action:pan-y;
+  box-shadow:0 5px 12px rgba(119,65,90,.10)
+}
+.home-name-input:focus{border-color:#8d3564;box-shadow:0 0 0 3px rgba(141,53,100,.12)}
+.home-color-wrap{display:flex;align-items:center;justify-content:center;width:34px;height:clamp(190px,32vh,270px)}
+.home-hue-slider{
+  appearance:none;-webkit-appearance:none;writing-mode:vertical-lr;direction:rtl;
+  width:22px;height:100%;max-height:270px;min-height:170px;margin:0;padding:0;border:2px solid rgba(112,51,90,.48);border-radius:999px;
+  background:linear-gradient(to bottom,#f04456 0%,#ffb52e 17%,#f6ed36 31%,#52d56a 46%,#35d2ca 60%,#3978e8 75%,#8c48d7 88%,#e84ba2 100%);
+  box-shadow:0 5px 12px rgba(119,65,90,.16);touch-action:pan-y;cursor:pointer
+}
+.home-hue-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:29px;height:29px;border-radius:50%;background:#fff;border:3px solid #6e2859;box-shadow:0 2px 6px rgba(0,0,0,.22)}
+.home-hue-slider::-moz-range-thumb{width:23px;height:23px;border-radius:50%;background:#fff;border:3px solid #6e2859;box-shadow:0 2px 6px rgba(0,0,0,.22)}
+.home-right{min-width:0;display:flex;flex-direction:column;justify-content:center;gap:clamp(14px,2.5vh,26px);padding:18px 0}
+.home-utility{display:flex;justify-content:flex-end;align-items:center;gap:12px;padding-right:clamp(2px,1vw,12px)}
+.home-icon{display:grid;place-items:center;flex:none;width:54px;height:54px;border:1px solid rgba(255,255,255,.95);border-radius:19px;background:#fff;color:#4c174b;font:900 29px system-ui,-apple-system,sans-serif;box-shadow:0 6px 0 rgba(186,117,151,.18),0 10px 22px rgba(137,76,111,.13);cursor:pointer;touch-action:manipulation}
+.home-menu-kicker{margin:0 0 2px;text-align:center;color:#965476;font:800 11px system-ui,-apple-system,sans-serif;letter-spacing:2.5px}
+.home-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(10px,1.5vw,20px)}
+.home-action{
+  min-width:0;min-height:clamp(58px,9vh,82px);padding:12px 10px;border:1px solid rgba(255,255,255,.95)!important;border-radius:999px!important;
+  background:linear-gradient(180deg,#fff 0%,#fffafd 100%)!important;color:#4c174b!important;
+  box-shadow:0 7px 0 rgba(186,117,151,.18),0 12px 24px rgba(137,76,111,.13)!important;
+  font:850 clamp(17px,2.3vw,27px)/1.1 system-ui,-apple-system,sans-serif!important;letter-spacing:-.3px;
+  cursor:pointer;transition:transform .12s,box-shadow .12s,filter .12s;touch-action:manipulation
+}
+.home-action:active{transform:translateY(3px)!important;box-shadow:0 3px 0 rgba(186,117,151,.18),0 6px 13px rgba(137,76,111,.12)!important}
+#homeGuide{font-size:31px}
+#bossMenu{z-index:3}
+.boss-layout{
+  position:relative;width:min(980px,100%);height:min(860px,92vh);height:min(860px,92dvh);box-sizing:border-box;
+  display:flex;flex-direction:column;padding:clamp(14px,2.5vw,28px);border:2px solid #ef9bb7;border-radius:27px;
+  background:linear-gradient(155deg,rgba(255,255,255,.97),rgba(255,244,248,.97));
+  box-shadow:0 0 0 5px rgba(255,190,211,.62),0 18px 48px rgba(87,35,62,.22);overflow:hidden
+}
+.boss-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:13px;border-bottom:1px solid #f1cfdb}
+.boss-title{margin:0;color:#4c174b;font:900 clamp(24px,4vw,34px)/1 system-ui,-apple-system,sans-serif}
+.boss-subtitle{margin:7px 0 0;color:#8a6579;font:600 13px/1.35 system-ui,-apple-system,sans-serif}
+.boss-back,.boss-footer button{flex:none;border:0;border-radius:13px;background:#f5e5ed;color:#63234f;padding:11px 15px;font:800 14px system-ui,-apple-system,sans-serif;box-shadow:0 3px 0 rgba(186,117,151,.18);cursor:pointer;touch-action:manipulation}
+.boss-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;padding:14px 3px;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;min-height:0;flex:1}
+.boss-card{display:grid;grid-template-columns:44px minmax(0,1fr);align-items:center;gap:2px 11px;min-width:0;min-height:72px;padding:10px 12px;border:1px solid #f0dce5;border-radius:17px;background:rgba(255,255,255,.94);box-shadow:0 4px 10px rgba(145,83,113,.08)}
+.boss-icon{grid-row:span 2;display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:#fff0f5;font-size:25px}
+.boss-name{color:#512247;font:850 14px/1.2 system-ui,-apple-system,sans-serif;overflow-wrap:anywhere}
+.boss-desc{color:#806a78;font:500 11px/1.3 system-ui,-apple-system,sans-serif;margin-top:3px}
+.boss-status{grid-column:2;color:#b16b87;font:800 9px system-ui,-apple-system,sans-serif;letter-spacing:1px;margin-top:4px}
+.boss-footer{display:flex;justify-content:center;padding-top:9px;border-top:1px solid #f1cfdb}
+.boss-footer button{background:#e84c82;color:white;padding:12px 26px}
+@media (orientation:portrait){
+  .home-layout{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:8px;height:min(760px,91dvh);padding:8px}
+  .home-right{gap:16px;padding:12px 0}
+  .home-actions{grid-template-columns:1fr;gap:clamp(9px,1.5vh,14px)}
+  .home-action{min-height:clamp(50px,7vh,64px);font-size:clamp(16px,4vw,23px);padding:8px 7px}
+  .home-soap-row{gap:8px}
+  .home-soap-shell{width:clamp(82px,25vw,135px);height:clamp(145px,23vh,205px)}
+  .home-soap-shell[data-shape="round"]{width:clamp(105px,27vw,145px);height:clamp(105px,18vh,145px)}
+  .home-name-input{width:clamp(100px,29vw,145px);height:40px;font-size:17px}
+  .home-color-wrap{height:clamp(170px,28vh,230px);width:23px}
+  .home-hue-slider{width:18px;min-height:155px}
+  .home-icon{width:43px;height:43px;border-radius:15px;font-size:23px}
+  #homeGuide{font-size:27px}
+  .boss-layout{height:91dvh}
+  .boss-grid{grid-template-columns:1fr}
+}
+@media (orientation:landscape){
+  .home-layout{grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr)}
+  .home-actions{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .boss-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:360px) and (orientation:portrait){
+  #homeMenu{padding-left:8px;padding-right:8px}
+  .home-layout{grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:4px}
+  .home-soap-row{gap:5px}
+  .home-soap-shell{width:77px;height:137px}
+  .home-name-input{width:94px;font-size:15px}
+  .home-action{font-size:15px;min-height:47px}
+}
+@media (max-height:500px) and (orientation:landscape){
+  #homeMenu{padding-top:8px;padding-bottom:8px}
+  .home-layout{height:94dvh;padding:4px 12px;gap:18px}
+  .home-right{gap:8px;padding:4px 0}
+  .home-action{min-height:50px;font-size:18px}
+  .home-soap-shell{height:145px;width:92px}
+  .home-soap-shell[data-shape="round"]{height:105px;width:105px}
+  .home-color-wrap{height:160px}
+  .boss-layout{height:94dvh}
+  .boss-grid{gap:6px;padding:8px 3px}
+  .boss-card{min-height:60px;padding:7px 9px}
+}
+
 </style></head><body>
 <canvas id="c"></canvas><canvas id="fx"></canvas>
-<div id="ver">v.5.5</div>
+<div id="ver">v.5.8</div>
 <div id="guide"><div class="gbox"><h2>Guía del juego</h2><div class="gbody">
 <h3>Cómo se juega</h3>
 <p>Sos el jabón del centro. Tocá o arrastrá el dedo para lanzar burbujas hacia ese lugar. Cada burbuja hace 1 de daño base.</p>
@@ -354,6 +491,43 @@ body.adv-creative #cbtn{left:auto;right:14px}
 <button id="cbtn" aria-label="Modo creativo" title="Modo creativo">🛠️</button>
 <div id="cpanel"><div class="gbox"><h2>🎮 Modo creativo</h2><div class="gbody" id="cbody"></div><button class="bk" id="cClose">Cerrar</button></div></div>
 <div id="custom"><div class="gbox"><h2>Personalizar</h2><div class="gbody" id="cusbody"></div><button class="bk" id="cusClose">Listo</button></div></div>
+<div id="homeMenu" aria-label="Menú principal">
+  <div class="home-layout">
+    <section class="home-left" aria-label="Tu jabón">
+      <div class="home-soap-row">
+        <div class="home-soap-column">
+          <button class="home-soap-tap" id="homeSoapTap" aria-label="Personalizar jabón" title="Tocar para personalizar">
+            <span class="home-soap-shell" id="homeSoapVisual" data-shape="pill"><span class="home-soap-text" id="homeSoapText">SOAP</span></span>
+          </button>
+          <input class="home-name-input" id="homeName" type="text" maxlength="6" autocomplete="off" spellcheck="false" aria-label="Nombre del jabón" placeholder="SOAP">
+        </div>
+        <div class="home-color-wrap" aria-label="Color del jabón">
+          <input class="home-hue-slider" id="homeHue" type="range" min="0" max="359" value="340" aria-label="Elegir color del jabón" title="Color del jabón">
+        </div>
+      </div>
+    </section>
+    <section class="home-right" aria-label="Opciones principales">
+      <p class="home-menu-kicker">SOAP ADVENTURES</p>
+      <div class="home-utility"><button class="home-icon" id="homeGear" aria-label="Configuración" title="Configuración">⚙️</button><button class="home-icon" id="homeGuide" aria-label="Guía" title="Guía">!</button></div>
+      <div class="home-actions">
+        <button class="home-action" id="bBosses">Jefes</button>
+        <button class="home-action" id="bAdv">Defensa</button>
+        <button class="home-action" id="bPlay">Jugar</button>
+        <button class="home-action" id="bCre">Creativo</button>
+      </div>
+    </section>
+  </div>
+</div>
+<div id="bossMenu" aria-label="Sección de jefes">
+  <div class="boss-layout">
+    <header class="boss-head">
+      <div><h1 class="boss-title">👑 Jefes</h1><p class="boss-subtitle">Conocé a los 11 jefes que llegarán a Soap Adventures.</p></div>
+      <button class="boss-back" id="bossBackTop">← Volver</button>
+    </header>
+    <div class="boss-grid" id="bossGrid"></div>
+    <footer class="boss-footer"><button id="bossBack">Volver al menú</button></footer>
+  </div>
+</div>
 <button id="gear" aria-label="Configuración" title="Configuración">⚙️</button><div id="settings"><div class="gbox"><h2>⚙️ Configuración</h2><div class="gbody" id="setbody"></div><button class="bk" id="setClose">Cerrar</button></div></div>
 <div id="warn"><div class="gbox"><h2>🚧 Aviso</h2><p id="warnTxt"></p><div class="mbtns"><button id="warnOk">Continuar</button><button id="warnNo">Cancelar</button></div></div></div>
 <div id="pausemenu"><div class="gbox"><h2>⏸️ Pausa</h2><div class="mbtns"><button id="pResume">Continuar</button><button id="pSet">Ajustes</button><button id="pExit">Salir al menú</button></div></div></div>
@@ -394,11 +568,71 @@ const sc='#8a1f43';
 let g;
 function reset(){g={t:0,over:false,started:false,score:0,lives:(window.D?D.lives:5),inv:0,viruses:[],bubbles:[],parts:[],spawn:1,boss:0,bossKills:0,bossWaveCount:0,bossPairSeq:0,nextBoss:(D&&D.bossInterval)||60,cool:0,aim:-Math.PI/2,shake:0,id:0,powers:[],nextPow:5,fx:{dmg:0,fast:0,freeze:0,bomb:0,shield:0,shieldGold:0,haste:0,slow:0,double:0,tfreeze:0},gold:{dmg:0,rate:0,multi:0,badDmg:0,badRate:0},perk:{back:0,split:0,homing:0,hold:0,pierce:0,big:0,wave:0,heart:0,ally:0},rewards:0,bonusPicks:0,rot:-Math.PI/2,allies:[],pick:null,holding:false,hx:0,hy:0,got:{life:0,minus:0},rings:[],plus:[],xp:{bomb:0,storm:0,time:0,orbit:0,aura:0},xt:{time:20,aura:15},orb:[0,0,0,0,0],orbA:0,auras:[],bolts:[],chainB:60}}
 reset();
-function startGame(){sfxPlay('start');musicStart();g.started=true;msg.style.display='none';document.getElementById('ver').style.display='none';document.getElementById('guide').style.display='none'}
-function showStart(){box.innerHTML='<h1>🧼 Soap Adventures</h1><p>Tocá para lanzar burbujas y defendé tu jabón</p><div class="mbtns"><button id="bPlay">Jugar</button><button id="bAdv">Defensa</button><button id="bCre">Creativo</button><button id="bGuide">Guía</button><button id="bCust">Personalizar</button></div>';msg.style.display='flex';document.getElementById('bPlay').onclick=showAdventureDifficulty;document.getElementById('bCre').onclick=showCreativeModes;
-  document.getElementById('bAdv').onclick=showDiff;
-  document.getElementById('bCust').onclick=()=>openCust(false);document.getElementById('bGuide').onclick=()=>{document.getElementById('guide').style.display='flex'};}
+function startGame(){hideHomeMenu();document.getElementById('bossMenu').style.display='none';document.getElementById('gear').classList.remove('home-gear');document.getElementById('gear').style.right='';document.getElementById('gear').style.display='block';sfxPlay('start');musicStart();g.started=true;msg.style.display='none';document.getElementById('ver').style.display='none';document.getElementById('guide').style.display='none'}
+function hideHomeMenu(){
+  document.getElementById('homeMenu').style.display='none';
+  document.getElementById('homeGuide').style.display='none';
+  const gear=document.getElementById('gear');gear.classList.remove('home-gear');gear.style.right='';gear.style.display='block';
+}
+function homeSoapPalette(){return SOAPC[CUST.col]||SOAPC.pink}
+function paintHomeSoap(){
+  const visual=document.getElementById('homeSoapVisual');if(!visual)return;
+  const pal=homeSoapPalette();
+  visual.style.setProperty('--soap-main',pal[0]);visual.style.setProperty('--soap-edge',pal[1]);visual.style.setProperty('--soap-light',pal[2]);
+  visual.dataset.shape=CUST.shape||'pill';
+  const label=document.getElementById('homeSoapText');if(label)label.textContent=SOAPTXT();
+}
+function showBossMenu(){
+  hideHomeMenu();
+  document.getElementById('gear').style.display='none';
+  const bosses=[
+    ['🦟','Dengue','Invoca larvas que crecen y se convierten en mosquitos enemigos.'],
+    ['🫁','Tuberculosis','Un jefe de enorme resistencia y recuperación gradual.'],
+    ['🦟','Malaria','Genera oleadas de enemigos que presionan al jugador.'],
+    ['🌫️','Gripe Española','Aumenta la frecuencia de aparición de grandes oleadas.'],
+    ['⚪','Viruela','Extiende focos de enemigos por distintas zonas del mapa.'],
+    ['🩸','Ébola','Debilita temporalmente las capacidades del jugador.'],
+    ['⚫','Peste Negra','Desata una epidemia: los enemigos se multiplican.'],
+    ['🐕','Rabia','Vuelve a los enemigos más veloces y agresivos.'],
+    ['🧬','SIDA','Debilita progresivamente las defensas del jugador.'],
+    ['🦠','COVID-19','Tiene muchísima vida e invoca a otros jefes.'],
+    ['🎗️','Cáncer','Se divide en objetivos y genera nuevas células enemigas.']
+  ];
+  document.getElementById('bossGrid').innerHTML=bosses.map((b,i)=>'<article class="boss-card"><span class="boss-icon">'+b[0]+'</span><div class="boss-name">'+(i+1)+'. '+b[1]+'</div><div class="boss-desc">'+b[2]+'</div><div class="boss-status">PRÓXIMAMENTE</div></article>').join('');
+  document.getElementById('bossMenu').style.display='flex';
+}
+function showStart(){
+  document.getElementById('bossMenu').style.display='none';
+  document.getElementById('gear').style.display='none';
+  document.getElementById('homeGuide').style.display='grid';
+  document.getElementById('homeGear').style.display='grid';
+  document.getElementById('homeMenu').style.display='flex';
+  msg.style.display='none';
+  const name=document.getElementById('homeName');name.value=SOAPTXT();
+  paintHomeSoap();
+  const [h,s,l]=rgb2hsl(...hx2rgb(CUST.col==='custom'?CUST.hex:homeSoapPalette()[0]));
+  const hue=document.getElementById('homeHue');hue.value=Math.round(h);
+  name.oninput=()=>{
+    const clean=Array.from(name.value).slice(0,6).join('');
+    if(clean!==name.value)name.value=clean;
+    CUST.txt=clean||'SOAP';saveCust();paintHomeSoap();
+  };
+  hue.oninput=()=>{
+    const hex=rgb2hx(...hsl2rgb(+hue.value,Math.max(.68,s),Math.max(.52,Math.min(.78,l))));
+    setCustomHex(hex,true);paintHomeSoap();
+  };
+  document.getElementById('homeSoapTap').onclick=()=>openCust(false);
+  document.getElementById('homeGuide').onclick=()=>{document.getElementById('guide').style.display='flex'};
+  document.getElementById('homeGear').onclick=openSettings;
+  document.getElementById('bBosses').onclick=showBossMenu;
+  document.getElementById('bAdv').onclick=()=>{hideHomeMenu();showDiff()};
+  document.getElementById('bPlay').onclick=()=>{hideHomeMenu();showAdventureDifficulty()};
+  document.getElementById('bCre').onclick=()=>{hideHomeMenu();showCreativeModes()};
+}
+document.getElementById('bossBack').onclick=()=>{document.getElementById('bossMenu').style.display='none';showStart()};
+document.getElementById('bossBackTop').onclick=()=>{document.getElementById('bossMenu').style.display='none';showStart()};
 function showModes(){
+  hideHomeMenu();msg.classList.remove('home-screen','boss-screen');
   box.innerHTML='<h1>🛡️ Defensa</h1><p>Defendé tu jabón en el modo clásico.</p><div class="mbtns"><button id="mSolo">Jugar defensa</button><button id="mBack">Volver</button></div>';
   msg.style.display='flex';
   document.getElementById('mSolo').onclick=showDiff;
@@ -514,6 +748,7 @@ function exitToMenu(){
 }
 function exitCreative(){exitToMenu()}
 function showCreativeModes(){
+  hideHomeMenu();msg.classList.remove('home-screen','boss-screen');
   box.innerHTML='<h1>🎮 Creativo</h1><p>Elegí el tipo de partida creativa.</p><div class="mbtns"><button id="cAdvMode">🌍 Aventura creativa</button><button id="cDefMode">🛡️ Defensa creativa</button><button id="cModeBack">Volver</button></div>';
   msg.style.display='flex';
   document.getElementById('cAdvMode').onclick=()=>startCreative('adventure');
@@ -578,7 +813,6 @@ document.getElementById('cbody').onclick=e=>{
   cAct(a,k);
 };
 function _oldStart(){box.innerHTML='<h1>🧼 SOUP ADVENTURE</h1><p>Tocá la pantalla para lanzar burbujas</p><p>Cada burbuja hace 1 de daño</p><p><b>Tocá para empezar</b></p>';msg.style.display='flex'}
-showStart();
 
 function maxHp(){return 5+g.bossKills+Math.max(0,g.bossKills-1)+2*Math.max(0,g.bossKills-3)+6*Math.max(0,g.bossKills-2)+Math.floor(g.t/25)+D.hp}
 function spawnVirus(boss,hpOv,type){
@@ -1360,7 +1594,7 @@ document.getElementById('cusbody').addEventListener('change',e=>{
 });
 document.getElementById('cusbody').addEventListener('input',e=>{if(['hueIn','satIn','lightIn'].includes(e.target.id)){updateHslPicker(false)}else if(e.target.id=='txtIn'){const arr=Array.from(e.target.value);if(arr.length>6)e.target.value=arr.slice(0,6).join('');CUST.txt=Array.from(e.target.value).join('')||'SOAP';const pt=document.getElementById('prevTxt');if(pt)pt.textContent=SOAPTXT();saveCust()}});
 let custFromSettings=false;
-document.getElementById('cusClose').onclick=()=>{document.getElementById('custom').style.display='none';if(custFromSettings){custFromSettings=false;document.getElementById('settings').style.display='flex';renderSettings();g.cmenu=true}else g.cmenu=false};
+document.getElementById('cusClose').onclick=()=>{document.getElementById('custom').style.display='none';if(custFromSettings){custFromSettings=false;document.getElementById('settings').style.display='flex';renderSettings();g.cmenu=true}else{g.cmenu=false;if(document.getElementById('homeMenu').style.display==='flex')showStart()}};
 function openCust(fromSettings=false){custFromSettings=fromSettings;buildCust();document.getElementById('custom').style.display='flex'}
 const CSTAT={
   mul:{n:'Multiplicador de clics ×',vals:[1,5,10,50,100,500],d:1},
@@ -1404,12 +1638,14 @@ const ADV_DIFFS={
 };
 function pickTier(r){const gw=.138125*D.gold,k=(1-gw)/.861875;return r<.425*k?'n':r<.711875*k?'s':r<.861875*k?'b':'g'}
 function showAdventureDifficulty(){
+  hideHomeMenu();msg.classList.remove('home-screen','boss-screen');
   const ops=[['easy','Fácil','Menos virus por oleada y más powers dorados normales.'],['mid','Medio','La experiencia actual de Aventura.'],['hard','Difícil','Sin powers dorados positivos; los malos dorados siguen apareciendo.'],['core','Hardcore','Como Difícil, pero con una sola vida.']];
   box.innerHTML='<h1>🌍 Dificultad de Aventura</h1>'+ops.map(o=>'<p class="dopt"><button data-adiff="'+o[0]+'">'+o[1]+'</button><small>'+o[2]+'</small></p>').join('')+'<p class="dopt"><button id="bAdvBack">Volver</button></p>';
   box.querySelectorAll('[data-adiff]').forEach(b=>b.onclick=()=>{ADV_DIFF=b.dataset.adiff;D=ADV_DIFFS[ADV_DIFF];startAdventure()});
   document.getElementById('bAdvBack').onclick=showStart;
 }
 function showDiff(){
+  hideHomeMenu();msg.classList.remove('home-screen','boss-screen');
   const ops=[['easy','Fácil','Más powers (y más dorados), menos virus y más lentos, 2 menos de vida máx. y menos especiales.'],['mid','Medio','Un poco menos de virus y especiales, y 2 menos de vida máx.'],['hard','Difícil','La experiencia completa.'],['core','Hardcore','Como Difícil, pero con 1 sola vida. El power de vida es un escudo de 15 s y no hay Jabón resistente.']];
   box.innerHTML='<h1>Dificultad</h1>'+ops.map(o=>'<p class="dopt"><button data-d="'+o[0]+'">'+o[1]+'</button><small>'+o[2]+'</small></p>').join('')+'<p class="dopt"><button id="bBack2">Volver</button></p>';
   box.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{D=DIFFS[b.dataset.d];reset();startGame()});
@@ -2214,6 +2450,7 @@ addEventListener('keyup',e=>{if(g&&g.adv)advKey(e,false)});fpsStart=performance.
 var RUNTIME_FAILURE=false;
 function showRuntimeFailure(err){
   if(RUNTIME_FAILURE)return;
+  hideHomeMenu();msg.classList.remove('home-screen','boss-screen');
   RUNTIME_FAILURE=true;console.error('Soap Adventures detuvo la partida por un error:',err);
   if(g){g.paused=true;g.holding=false;g.pick=null}
   document.getElementById('pick').style.display='none';
@@ -2244,4 +2481,5 @@ function loop(now){
 if(CUST.vsync!==false)requestAnimationFrame(loop);else setTimeout(()=>loop(performance.now()),0);
 
 if('serviceWorker' in navigator && (location.protocol==='https:'||location.hostname==='localhost')) navigator.serviceWorker.register('./sw.js').catch(()=>{});
+showStart();
 </script></body></html>
