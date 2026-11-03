@@ -255,6 +255,9 @@ body.adv-creative #cbtn{left:auto;right:14px}
 #msg:has(.home-shell)>div{width:min(760px,calc(100vw - 28px));max-width:760px;padding:clamp(18px,3vw,34px);overflow:visible}
 #msg:has(.home-shell)>div:before,#msg:has(.home-shell)>div:after{display:none}
 #msg:has(.home-shell) #box:before{display:none}
+/* Evita que los div internos hereden el borde y fondo del panel global. */
+#msg:has(.home-shell) .home-shell,
+#msg:has(.home-shell) .home-shell>div{background:transparent!important;border:0!important;border-radius:0!important;padding:0!important;box-shadow:none!important}
 .home-shell{display:grid;grid-template-columns:minmax(170px,.85fr) minmax(260px,1.15fr);gap:clamp(18px,4vw,38px);align-items:center;text-align:center}
 .home-left{display:flex;justify-content:center;align-items:center;gap:15px;min-width:0}
 .home-soap{width:clamp(96px,17vw,150px);height:clamp(160px,31vw,220px);border:5px solid rgba(93,65,74,.24);border-radius:36% 34% 32% 36% / 22% 25% 22% 27%;background:linear-gradient(145deg,#fff,#f6c6d5);box-shadow:inset 8px 8px 18px rgba(255,255,255,.9),inset -8px -10px 20px rgba(130,63,90,.15),0 16px 24px rgba(135,74,98,.2);display:flex;align-items:center;justify-content:center;color:#6e3454;cursor:pointer;padding:0;touch-action:manipulation;transition:transform .15s}
