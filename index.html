@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Soap Adventures v5.95</title>
+<title>Soap Adventures v5.97</title>
 <meta name="theme-color" content="#e879a0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -227,7 +227,7 @@ button:active{filter:brightness(.97)}
 .gbox{border-radius:26px!important}
 #msg>div:after{width:25px;height:25px;right:15px;bottom:13px}
 #guide .gbox h2,#cpanel .gbox h2,#settings .gbox h2{padding:7px 34px 9px;border-radius:14px;background:linear-gradient(90deg,rgba(255,213,226,.78),rgba(255,240,245,.45));color:#8a3658}
-#msg #box:before{content:'SOAP ADVENTURES  •  BUBBLE SURVIVAL  •  v.5.95';color:#d64c7b;letter-spacing:1.8px}
+#msg #box:before{content:'SOAP ADVENTURES  •  BUBBLE SURVIVAL  •  v.5.97';color:#d64c7b;letter-spacing:1.8px}
 #msg .mbtns button:first-child{background:linear-gradient(135deg,#f77da2,#df4778);box-shadow:0 5px 0 #bd456c,0 9px 17px rgba(205,61,111,.2)}
 #msg .mbtns button:not(:first-child),#setbody button,#msg .dopt button{background:linear-gradient(180deg,#fff 0%,#f7edf2 100%)}
 #pick{background:radial-gradient(circle at 12% 18%,rgba(129,224,243,.25) 0 7px,transparent 9px),radial-gradient(circle at 88% 78%,rgba(129,224,243,.22) 0 10px,transparent 12px),rgba(39,29,49,.66)}
@@ -250,6 +250,11 @@ html,body{font-family:"Trebuchet MS","Arial Rounded MT Bold",Arial,"Apple Color 
 html.perf #gear,html.perf #cbtn,html.perf #ver,html.perf #msg,html.perf #guide,html.perf #custom,html.perf #cpanel,html.perf #settings,html.perf #warn,html.perf #pick,html.perf #pausemenu,html.perf #adminPanel{-webkit-backdrop-filter:none;backdrop-filter:none}
 body.adv-creative #cbtn{left:auto;right:14px}
 
+/* Identidad visual del menú: logotipo superior inspirado en la referencia */
+#msg:has(.home-shell) .home-logo{width:100%;text-align:center;margin:0 auto clamp(12px,2.2vh,22px)!important;position:relative;z-index:1;line-height:.82;filter:drop-shadow(0 5px 2px rgba(128,66,87,.18))}
+#msg:has(.home-shell) .home-logo-soap{display:block;font:1000 clamp(48px,11vw,88px)/.9 system-ui,-apple-system,sans-serif;letter-spacing:-.065em;color:#fff7d9;-webkit-text-stroke:2px #b78b55;text-shadow:0 3px 0 #e4c28b,0 7px 0 #9c744d,0 10px 13px rgba(93,53,48,.28)}
+#msg:has(.home-shell) .home-logo-adventures{display:block;margin-top:5px;font:1000 clamp(25px,6vw,48px)/.95 system-ui,-apple-system,sans-serif;letter-spacing:-.045em;color:#f58caf;-webkit-text-stroke:1.5px #9f3e68;text-shadow:0 2px 0 #ffd2df,0 5px 0 #b94d78,0 8px 10px rgba(93,53,78,.25)}
+#msg:has(.home-shell) .home-logo-version{display:block;text-align:right;padding-right:8%;margin-top:5px;font:900 clamp(10px,2vw,14px)/1 system-ui,sans-serif;letter-spacing:2px;color:#9c5d76;text-shadow:0 1px #fff}
 /* Menú principal: replica la composición de referencia, sin percha ni paneles anidados */
 #msg:has(.home-shell){
   background:radial-gradient(ellipse at 12% 18%,rgba(255,255,255,.64),transparent 34%),
@@ -288,6 +293,13 @@ body.adv-creative #cbtn{left:auto;right:14px}
   box-shadow:inset 7px 8px 15px rgba(255,255,255,.88),inset -8px -10px 18px rgba(130,83,73,.20),0 15px 22px rgba(130,68,93,.20)!important;
   color:#55204d!important;cursor:pointer;touch-action:manipulation;overflow:hidden;
 }
+#msg:has(.home-shell) .home-soap.shape-oval{border-radius:50%!important}
+#msg:has(.home-shell) .home-soap.shape-round{border-radius:50%!important;aspect-ratio:1/1;height:auto;min-height:clamp(108px,20vw,156px)}
+#msg:has(.home-shell) .home-soap.shape-rect{border-radius:12px!important}
+#msg:has(.home-shell) .home-soap.shape-pill{border-radius:34px!important}
+#msg:has(.home-shell) .home-soap .soap-inner{display:flex;align-items:center;justify-content:center;padding:8px;box-sizing:border-box;font:900 clamp(12px,2.5vw,19px)/1.05 system-ui,sans-serif;letter-spacing:.04em;text-align:center;overflow-wrap:anywhere;text-shadow:0 1px 2px rgba(255,255,255,.5);transform:rotate(-8deg)}
+#msg:has(.home-shell) .home-soap.admin-gold-soap .soap-inner{text-shadow:0 1px 0 #fff0a3,0 2px 3px rgba(91,57,0,.25);color:#805400!important}
+#msg:has(.home-shell) .home-name{display:none!important}
 #msg:has(.home-shell) .home-soap:before{
   content:"";position:absolute;inset:17% 18%;border-radius:28px;
   background:linear-gradient(145deg,rgba(255,255,245,.98),rgba(247,220,179,.66));
@@ -379,7 +391,7 @@ body:has(#msg .home-shell) #gear,body:has(#msg .home-shell) #ver{display:none!im
 #msg:has(.home-shell) .home-soap.admin-gold-soap[data-gold-style=champagne]:before{background:linear-gradient(145deg,#fffbe9,#ead79b 48%,#90733d)!important}
 </style></head><body>
 <canvas id="c"></canvas><canvas id="fx"></canvas>
-<div id="ver">v.5.95</div>
+<div id="ver">v.5.97</div>
 <div id="guide"><div class="gbox"><h2>Guía del juego</h2><div class="gbody">
 <h3>Cómo se juega</h3>
 <p>Sos el jabón del centro. Tocá o arrastrá el dedo para lanzar burbujas hacia ese lugar. Cada burbuja hace 1 de daño base.</p>
@@ -488,7 +500,7 @@ body:has(#msg .home-shell) #gear,body:has(#msg .home-shell) #ver{display:none!im
 <button id="cbtn" aria-label="Modo creativo" title="Modo creativo">🛠️</button>
 <div id="cpanel"><div class="gbox"><h2>🎮 Modo creativo</h2><div class="gbody" id="cbody"></div><button class="bk" id="cClose">Cerrar</button></div></div>
 <div id="custom"><div class="gbox"><h2>Personalizar</h2><div class="gbody" id="cusbody"></div><button class="bk" id="cusClose">Listo</button></div></div>
-<button id="gear" aria-label="Configuración" title="Configuración">⚙</button><div id="settings"><div class="gbox"><h2>⚙️ Configuración</h2><div class="gbody" id="setbody"></div><button class="bk" id="setClose">Cerrar</button></div></div><div id="adminPanel"><div class="gbox"><h2>👑 Panel de administración</h2><div class="gbody" id="adminbody"></div><button class="bk" id="adminClose">Cerrar</button></div></div>
+<button id="gear" aria-label="Configuración" title="Configuración">⚙</button><div id="settings"><div class="gbox"><h2>⚙️ Configuración</h2><div class="gbody" id="setbody"></div><button class="bk" id="setClose">Cerrar</button></div></div><div id="adminPanel"><div class="gbox"><h2>🎟️ Códigos</h2><div class="gbody" id="adminbody"></div><button class="bk" id="adminClose">Cerrar</button></div></div>
 <div id="warn"><div class="gbox"><h2>🚧 Aviso</h2><p id="warnTxt"></p><div class="mbtns"><button id="warnOk">Continuar</button><button id="warnNo">Cancelar</button></div></div></div>
 <div id="pausemenu"><div class="gbox"><h2>⏸️ Pausa</h2><div class="mbtns"><button id="pResume">Continuar</button><button id="pSet">Ajustes</button><button id="pExit">Salir al menú</button></div></div></div>
 <div id="dbg"></div>
@@ -527,10 +539,10 @@ function colorFor(hp){return COLORS[((Math.max(1,Math.floor(hp))-1)%5)+1]}
 const sc='#8a1f43';
 let g;
 let DENGUE_REWARD_UNLOCKED=false;try{DENGUE_REWARD_UNLOCKED=localStorage.getItem('soapDengueReward')==='1'}catch(e){}
-const ADMIN_CODE='FAUSTOISHERE$!';const POWER_CODES={'DOBLEBURBUJA$!':'pairshot','MOSQUITOGOLD$!':'mosquitoAlly'};let ADMIN_UNLOCKED=false,ADMIN_GOLDEN_SOAP=false,ADMIN_GOLD_STYLE='gold',UNLOCKED_BOSS_POWERS=[];try{ADMIN_UNLOCKED=localStorage.getItem('soapAdminUnlocked')==='1';ADMIN_GOLDEN_SOAP=localStorage.getItem('soapAdminGold')==='1';ADMIN_GOLD_STYLE=localStorage.getItem('soapAdminGoldStyle')||'gold';UNLOCKED_BOSS_POWERS=JSON.parse(localStorage.getItem('soapUnlockedBossPowers')||'[]');if(!Array.isArray(UNLOCKED_BOSS_POWERS))UNLOCKED_BOSS_POWERS=[]}catch(e){UNLOCKED_BOSS_POWERS=[]}if(ADMIN_UNLOCKED)DENGUE_REWARD_UNLOCKED=true;function saveBossPowerUnlocks(){try{localStorage.setItem('soapUnlockedBossPowers',JSON.stringify([...new Set(UNLOCKED_BOSS_POWERS)]))}catch(e){}}function unlockBossPower(key){if(!UNLOCKED_BOSS_POWERS.includes(key)){UNLOCKED_BOSS_POWERS.push(key);saveBossPowerUnlocks()}if(key==='mosquitoAlly'){DENGUE_REWARD_UNLOCKED=true;try{localStorage.setItem('soapDengueReward','1')}catch(e){}}return true}function unlockAllBossPowers(){unlockBossPower('pairshot');unlockBossPower('mosquitoAlly')}function bossPowerUnlocked(key){return ADMIN_UNLOCKED||UNLOCKED_BOSS_POWERS.includes(key)||(key==='mosquitoAlly'&&DENGUE_REWARD_UNLOCKED)}function redeemPowerCode(raw){const code=String(raw||'').trim().toUpperCase(),key=POWER_CODES[code];if(!key)return false;unlockBossPower(key);return true}const ADMIN_GOLD_PALETTES={gold:['#f6c744','#986400','#fff0a0'],rose:['#e8b36a','#9b5a32','#ffe1ad'],champagne:['#efd99a','#a98440','#fff5d6']};
+const ADMIN_CODE='FAUSTOISHERE$!';const POWER_CODES={'BUBBLES':'pairshot'};let ADMIN_UNLOCKED=false,ADMIN_GOLDEN_SOAP=false,ADMIN_GOLD_STYLE='gold',UNLOCKED_BOSS_POWERS=[];try{ADMIN_UNLOCKED=localStorage.getItem('soapAdminUnlocked')==='1';ADMIN_GOLDEN_SOAP=localStorage.getItem('soapAdminGold')==='1';ADMIN_GOLD_STYLE=localStorage.getItem('soapAdminGoldStyle')||'gold';UNLOCKED_BOSS_POWERS=JSON.parse(localStorage.getItem('soapUnlockedBossPowers')||'[]');if(!Array.isArray(UNLOCKED_BOSS_POWERS))UNLOCKED_BOSS_POWERS=[]}catch(e){UNLOCKED_BOSS_POWERS=[]}if(ADMIN_UNLOCKED)DENGUE_REWARD_UNLOCKED=true;function saveBossPowerUnlocks(){try{localStorage.setItem('soapUnlockedBossPowers',JSON.stringify([...new Set(UNLOCKED_BOSS_POWERS)]))}catch(e){}}function unlockBossPower(key){if(!UNLOCKED_BOSS_POWERS.includes(key)){UNLOCKED_BOSS_POWERS.push(key);saveBossPowerUnlocks()}if(key==='mosquitoAlly'){DENGUE_REWARD_UNLOCKED=true;try{localStorage.setItem('soapDengueReward','1')}catch(e){}}return true}function unlockAllBossPowers(){unlockBossPower('pairshot');unlockBossPower('mosquitoAlly')}function bossPowerUnlocked(key){return ADMIN_UNLOCKED||UNLOCKED_BOSS_POWERS.includes(key)||(key==='mosquitoAlly'&&DENGUE_REWARD_UNLOCKED)}function redeemPowerCode(raw){const code=String(raw||'').trim().toUpperCase();if(code==='RENACE$!'){if(!window.confirm('¿Reiniciar toda tu cuenta? Se borrarán desbloqueos, poderes, jabón personalizado y progreso guardado.'))return 'cancelled';try{['soapDengueReward','soapAdminUnlocked','soapAdminGold','soapAdminGoldStyle','soapUnlockedBossPowers','soapCust','soapPad','soapKeys'].forEach(k=>localStorage.removeItem(k))}catch(e){}location.reload();return 'reset'}const key=POWER_CODES[code];if(!key)return false;unlockBossPower(key);return true}const ADMIN_GOLD_PALETTES={gold:['#f6c744','#986400','#fff0a0'],rose:['#e8b36a','#9b5a32','#ffe1ad'],champagne:['#efd99a','#a98440','#fff5d6']};
 function currentSoapPalette(){if(ADMIN_GOLDEN_SOAP)return ADMIN_GOLD_PALETTES[ADMIN_GOLD_STYLE]||ADMIN_GOLD_PALETTES.gold;return (CUST.col==='custom'?SOAPC.custom:SOAPC[CUST.col])||SOAPC.green}
 function saveAdminPrefs(){try{localStorage.setItem('soapAdminUnlocked',ADMIN_UNLOCKED?'1':'0');localStorage.setItem('soapAdminGold',ADMIN_GOLDEN_SOAP?'1':'0');localStorage.setItem('soapAdminGoldStyle',ADMIN_GOLD_STYLE)}catch(e){}}
-function reset(){g={t:0,over:false,started:false,score:0,lives:(window.D?D.lives:5),inv:0,viruses:[],bubbles:[],parts:[],spawn:1,boss:0,bossKills:0,bossWaveCount:0,bossPairSeq:0,nextBoss:(D&&D.bossInterval)||60,cool:0,aim:-Math.PI/2,shake:0,id:0,powers:[],nextPow:5,fx:{dmg:0,fast:0,freeze:0,bomb:0,shield:0,shieldGold:0,haste:0,slow:0,double:0,tfreeze:0},gold:{dmg:0,rate:0,multi:0,badDmg:0,badRate:0},perk:{back:0,split:0,homing:0,hold:0,pierce:0,big:0,wave:0,heart:0,ally:0},rewards:0,bonusPicks:0,rot:-Math.PI/2,allies:[],mosquitoLarvae:[],mosquitoAllies:[],dengueBugs:[],mosquitoShotReady:false,dengueDebuff:0,dengueBossSwarm:false,dengueMode:false,pick:null,holding:false,hx:0,hy:0,got:{life:0,minus:0},rings:[],plus:[],xp:{bomb:0,storm:0,time:0,orbit:0,aura:0,pairshot:0},xt:{time:20,aura:15},orb:[0,0,0,0,0],orbA:0,auras:[],bolts:[],chainB:60}}
+function reset(){g={t:0,over:false,started:false,score:0,lives:(window.D?D.lives:5),inv:0,viruses:[],bubbles:[],parts:[],spawn:1,boss:0,bossKills:0,bossWaveCount:0,bossPairSeq:0,nextBoss:(D&&D.bossInterval)||60,cool:0,aim:-Math.PI/2,shake:0,id:0,powers:[],nextPow:5,fx:{dmg:0,fast:0,freeze:0,bomb:0,shield:0,shieldGold:0,haste:0,slow:0,double:0,tfreeze:0},gold:{dmg:0,rate:0,multi:0,badDmg:0,badRate:0},perk:{back:0,split:0,homing:0,hold:0,pierce:0,big:0,wave:0,heart:0,ally:0},rewards:0,bonusPicks:0,rot:-Math.PI/2,allies:[],mosquitoLarvae:[],mosquitoAllies:[],dengueBugs:[],mosquitoShotReady:false,mosquitoShotsReady:0,dengueDebuff:0,dengueBossSwarm:false,dengueMode:false,pick:null,holding:false,hx:0,hy:0,got:{life:0,minus:0},rings:[],plus:[],xp:{bomb:0,storm:0,time:0,orbit:0,aura:0,pairshot:0},xt:{time:20,aura:15},orb:[0,0,0,0,0],orbA:0,auras:[],bolts:[],chainB:60}}
 reset();
 function startGame(){sfxPlay('start');musicStart();g.started=true;msg.style.display='none';document.getElementById('ver').style.display='none';document.getElementById('guide').style.display='none'}
 function homeHueSet(){
@@ -541,22 +553,22 @@ function homeHueSet(){
 function homeSoapSync(){
   const soap=document.getElementById('homeSoap');if(!soap)return;
   const pal=currentSoapPalette();
-  soap.style.background='linear-gradient(145deg,'+pal[2]+','+pal[0]+' 58%,'+pal[1]+')';soap.classList.toggle('admin-gold-soap',!!ADMIN_GOLDEN_SOAP);soap.dataset.goldStyle=ADMIN_GOLD_STYLE;
+  soap.style.background='linear-gradient(145deg,'+pal[2]+','+pal[0]+' 58%,'+pal[1]+')';soap.classList.toggle('admin-gold-soap',!!ADMIN_GOLDEN_SOAP);soap.dataset.goldStyle=ADMIN_GOLD_STYLE;soap.classList.remove('shape-pill','shape-oval','shape-rect','shape-round');soap.classList.add('shape-'+(CUST.shape||'pill'));const inner=document.getElementById('homeSoapText');if(inner){inner.textContent=SOAPTXT();inner.style.color=ADMIN_GOLDEN_SOAP?'#805400':(CUST.col==='custom'?CUST.hex:(SOAPC[CUST.col]||SOAPC.pink)[1]);}
   const name=document.getElementById('homeName');if(name){name.textContent=(SOAPTXT()==='SOAP'?'Alex':SOAPTXT());name.classList.toggle('admin-gold',!!ADMIN_GOLDEN_SOAP)}
   const hex=CUST.hex||'#eeb8ca',r=parseInt(hex.slice(1,3),16)/255,g2=parseInt(hex.slice(3,5),16)/255,b=parseInt(hex.slice(5,7),16)/255,mx=Math.max(r,g2,b),mn=Math.min(r,g2,b),d=mx-mn;let h=0;
   if(d){if(mx===r)h=((g2-b)/d)%6;else if(mx===g2)h=(b-r)/d+2;else h=(r-g2)/d+4;h*=60;if(h<0)h+=360}
   const hue=document.getElementById('menuHue');if(hue)hue.value=Math.round(h);
 }
 function showStart(){
-  box.innerHTML='<div class="home-shell">'+
+  box.innerHTML='<div class="home-logo"><span class="home-logo-soap">SOAP</span><span class="home-logo-adventures">ADVENTURES</span><span class="home-logo-version">v5.97</span></div><div class="home-shell">'+
     '<div class="home-left"><div class="home-soap-wrap">'+
-      '<button class="home-soap" id="homeSoap" aria-label="Personalizar jabón"><span class="soap-inner"></span></button>'+
-      '<div class="home-name" id="homeName">SOAP</div></div>'+
+      '<button class="home-soap" id="homeSoap" aria-label="Personalizar jabón"><span class="soap-inner" id="homeSoapText">SOAP</span></button>'+
+      '<div class="home-name" id="homeName" aria-hidden="true">SOAP</div></div>'+
       '<div class="home-hue-wrap"><input class="home-hue" id="menuHue" type="range" min="0" max="359" value="335" orient="vertical" aria-label="Color del jabón"></div></div>'+
     '<div class="home-right"><div class="home-top">'+
       '<button id="bSettings" aria-label="Configuración" title="Configuración">⚙</button>'+
       '<button id="bGuide" aria-label="Guía" title="Guía">!</button>'+
-      '<button id="bAdmin" aria-label="Administración" title="Panel de administración">★</button></div>'+
+      '<button id="bAdmin" aria-label="Códigos" title="Códigos">⌨</button></div>'+
       '<div class="home-actions"><button id="bBosses">Jefes</button><button id="bAdv">Defensa</button><button id="bPlay">Jugar</button><button id="bCre">Creativo</button></div></div></div>';
   msg.style.display='flex';msg.style.zIndex='';
   document.getElementById('bPlay').onclick=showAdventureDifficulty;
@@ -576,17 +588,17 @@ function openAdminPanel(){renderAdminPanel();document.getElementById('adminPanel
 function renderAdminPanel(){
   const body=document.getElementById('adminbody');
   if(!ADMIN_UNLOCKED){
-    body.innerHTML='<p>Ingresá el código de administrador para abrir las funciones especiales.</p><div class="admin-row"><label for="adminCode"><b>Código admin</b></label><input id="adminCode" type="password" autocomplete="off" placeholder="Código de acceso" style="width:min(230px,60%)"></div><div class="admin-error" id="adminError"></div><button id="adminUnlockBtn">Desbloquear panel</button><hr><p><b>🎟️ Canjear código de poder</b></p><div class="admin-row"><input id="powerCodeInput" type="text" placeholder="Código de poder" style="width:min(230px,60%)"><button id="powerCodeRedeem">Canjear</button></div><div class="admin-error" id="powerCodeMsg"></div>';
+    body.innerHTML='<p>Ingresá un código para desbloquear contenido o funciones especiales.</p><div class="admin-row"><label for="adminCode"><b>Código de acceso especial</b></label><input id="adminCode" type="password" autocomplete="off" placeholder="Ingresá un código" style="width:min(230px,60%)"></div><div class="admin-error" id="adminError"></div><button id="adminUnlockBtn">Canjear código</button><hr><p><b>Otros códigos</b></p><div class="admin-row"><input id="powerCodeInput" type="text" placeholder="BUBBLES o RENACE$!" style="width:min(230px,60%)"><button id="powerCodeRedeem">Canjear</button></div><div class="admin-error" id="powerCodeMsg"></div>';
     const unlock=()=>{const input=document.getElementById('adminCode'),err=document.getElementById('adminError');if(!input||input.value!==ADMIN_CODE){if(err)err.textContent='Código incorrecto.';if(input){input.value='';input.focus()}return}ADMIN_UNLOCKED=true;DENGUE_REWARD_UNLOCKED=true;ADMIN_GOLDEN_SOAP=true;ADMIN_GOLD_STYLE='gold';CUST.txt='FAUSTO';unlockAllBossPowers();saveCust();try{localStorage.setItem('soapDengueReward','1')}catch(e){}saveAdminPrefs();renderAdminPanel();homeSoapSync()};
-    document.getElementById('adminUnlockBtn').onclick=unlock;document.getElementById('adminCode').addEventListener('keydown',e=>{if(e.key==='Enter')unlock()});document.getElementById('powerCodeRedeem').onclick=()=>{const i=document.getElementById('powerCodeInput'),m=document.getElementById('powerCodeMsg');if(redeemPowerCode(i.value)){m.textContent='¡Código aceptado! Poder desbloqueado en Creativo.';i.value=''}else m.textContent='Código no válido.'};document.getElementById('powerCodeInput').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('powerCodeRedeem').click()});
+    document.getElementById('adminUnlockBtn').onclick=unlock;document.getElementById('adminCode').addEventListener('keydown',e=>{if(e.key==='Enter')unlock()});document.getElementById('powerCodeRedeem').onclick=()=>{const i=document.getElementById('powerCodeInput'),m=document.getElementById('powerCodeMsg');const result=redeemPowerCode(i.value);if(result===true){m.textContent='¡Código aceptado! Poder desbloqueado en Creativo.';i.value=''}else if(result==='reset'){m.textContent='Reiniciando cuenta…'}else if(result==='cancelled'){m.textContent='Reinicio cancelado.'}else m.textContent='Código no válido.'};document.getElementById('powerCodeInput').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('powerCodeRedeem').click()});
   }else{
-    body.innerHTML='<p><b>Acceso concedido.</b> Los desbloqueos de administrador quedan guardados en este dispositivo.</p>'+
+    body.innerHTML='<p><b>Funciones especiales desbloqueadas.</b> Los códigos y desbloqueos quedan guardados en este dispositivo.</p>'+
       '<div class="admin-row"><label for="adminGoldToggle"><b>Jabón dorado</b><br><small>Activar o desactivar el acabado dorado</small></label><input id="adminGoldToggle" type="checkbox" '+(ADMIN_GOLDEN_SOAP?'checked':'')+'></div>'+
       '<div class="admin-row"><label for="adminGoldStyle"><b>Tono del dorado</b></label><select id="adminGoldStyle"><option value="gold" '+(ADMIN_GOLD_STYLE==='gold'?'selected':'')+'>Oro clásico</option><option value="rose" '+(ADMIN_GOLD_STYLE==='rose'?'selected':'')+'>Oro rosado</option><option value="champagne" '+(ADMIN_GOLD_STYLE==='champagne'?'selected':'')+'>Champán</option></select></div>'+
       '<div class="admin-row"><label for="adminSoapName"><b>Nombre del jabón</b><br><small>Hasta 6 caracteres</small></label><input id="adminSoapName" maxlength="6" value="'+esc(SOAPTXT())+'" style="width:125px;text-transform:uppercase"></div>'+
       '<button id="adminSaveName">Guardar nombre</button><button id="adminBosses">Elegir jefe para combatir</button><button id="adminBossCreative">🧪 Creativo de jefes</button>'+
-      '<hr><p><b>🎟️ Canjear código de poder</b></p><div class="admin-row"><input id="powerCodeInput" type="text" placeholder="Código de poder" style="width:min(230px,60%)"><button id="powerCodeRedeem">Canjear</button></div><div class="admin-error" id="powerCodeMsg"></div><p class="admin-note">Se desbloquean todas las recompensas disponibles y todos los nombres de la lista de jefes. Los jefes que aún no tienen combate propio usan por ahora el combate base de prueba; sus habilidades únicas todavía no están implementadas.</p>';
-    document.getElementById('powerCodeRedeem').onclick=()=>{const i=document.getElementById('powerCodeInput'),m=document.getElementById('powerCodeMsg');if(redeemPowerCode(i.value)){m.textContent='¡Código aceptado! Poder desbloqueado en Creativo.';i.value=''}else m.textContent='Código no válido.'};document.getElementById('powerCodeInput').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('powerCodeRedeem').click()});document.getElementById('adminGoldToggle').onchange=e=>{ADMIN_GOLDEN_SOAP=e.target.checked;saveAdminPrefs();homeSoapSync()};
+      '<hr><p><b>Otros códigos</b></p><div class="admin-row"><input id="powerCodeInput" type="text" placeholder="BUBBLES o RENACE$!" style="width:min(230px,60%)"><button id="powerCodeRedeem">Canjear</button></div><div class="admin-error" id="powerCodeMsg"></div><p class="admin-note">Se desbloquean todas las recompensas disponibles y todos los nombres de la lista de jefes. Los jefes que aún no tienen combate propio usan por ahora el combate base de prueba; sus habilidades únicas todavía no están implementadas.</p>';
+    document.getElementById('powerCodeRedeem').onclick=()=>{const i=document.getElementById('powerCodeInput'),m=document.getElementById('powerCodeMsg');const result=redeemPowerCode(i.value);if(result===true){m.textContent='¡Código aceptado! Poder desbloqueado en Creativo.';i.value=''}else if(result==='reset'){m.textContent='Reiniciando cuenta…'}else if(result==='cancelled'){m.textContent='Reinicio cancelado.'}else m.textContent='Código no válido.'};document.getElementById('powerCodeInput').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('powerCodeRedeem').click()});document.getElementById('adminGoldToggle').onchange=e=>{ADMIN_GOLDEN_SOAP=e.target.checked;saveAdminPrefs();homeSoapSync()};
     document.getElementById('adminGoldStyle').onchange=e=>{ADMIN_GOLD_STYLE=e.target.value;saveAdminPrefs();homeSoapSync()};
     document.getElementById('adminSaveName').onclick=()=>{const v=Array.from(document.getElementById('adminSoapName').value.toUpperCase()).slice(0,6).join('');CUST.txt=v||'FAUSTO';saveCust();homeSoapSync();document.getElementById('adminSoapName').value=CUST.txt};
     document.getElementById('adminBosses').onclick=()=>{document.getElementById('adminPanel').style.display='none';showBosses()};document.getElementById('adminBossCreative').onclick=()=>{document.getElementById('adminPanel').style.display='none';showAdminBossCreative()};
@@ -801,7 +813,7 @@ function shoot(x,y,ox,oy,ally,col){
   const dm=Math.max(1,1+g.gold.dmg-g.gold.badDmg+(g.fx.dmg>0?1:0)+g.perk.big+cval('bdmg')),baseN=Math.min(g.creative&&!CUST.perf?Infinity:40,1+g.gold.multi+(g.fx.double>0?1:0)),P=g.perk,pairLevel=Math.min(5,Math.max(0,Math.floor(g.xp.pairshot||0))),frontCount=baseN+pairLevel,speedBoost=1+.15*pairLevel;
   const mk=ang=>({x:cx+Math.cos(ang)*30*S,y:cy+Math.sin(ang)*30*S,vx:Math.cos(ang)*560*S*cval('bspd')*speedBoost,vy:Math.sin(ang)*560*S*cval('bspd')*speedBoost,r:(dm>1?14:10)*(1+.3*P.big)*S*cval('bsize'),d:dm,bomb:g.fx.bomb>0||g.xp.bomb>0,xb:g.xp.bomb,pierce:P.pierce,sp:P.split,dist:0,home:P.homing,homeOX:cx,homeOY:cy,homeDX:Math.cos(ang),homeDY:Math.sin(ang),ally:!!ally,col:col||CUST.col});
   const front=[];for(let i=0;i<frontCount;i++)front.push((i-(frontCount-1)/2)*.14);const rear=patOff(1+P.back).slice(1);for(const o of front.concat(rear))g.bubbles.push(mk(a+o));
-  if(!ally&&g.mosquitoShotReady){g.mosquitoShotReady=false;g.mosquitoLarvae.push({x:cx,y:cy,t:1.8,ph:0});pop(cx,cy,'#ffe27a',10)}
+  if(!ally&&(g.mosquitoShotsReady||g.mosquitoShotReady)){const ready=Math.max(0,g.mosquitoShotsReady||1);g.mosquitoShotsReady=ready-1;g.mosquitoShotReady=g.mosquitoShotsReady>0;g.mosquitoLarvae.push({x:cx,y:cy,t:1.8,ph:0});pop(cx,cy,'#ffe27a',10)}
 }
 function homingTarget(b){
   const ox=b.homeOX??b.x,oy=b.homeOY??b.y,dx=b.homeDX??(b.vx/Math.hypot(b.vx,b.vy||1)),dy=b.homeDY??(b.vy/Math.hypot(b.vx||1,b.vy));
@@ -829,7 +841,7 @@ cv.addEventListener('pointerdown',e=>{
 
 const PW={dmg:{e:'🥊',n:'Daño +1'},life:{e:'❤️',n:'Vida'},minus:{e:'🔻',n:'Virus -1'},fast:{e:'🏃',n:'Rápido'},freeze:{e:'❄️',n:'Congelar'}};
 Object.assign(PW,{bomb:{e:'💣',n:'Explosiones',t:'s'},shield:{e:'🛡️',n:'Escudo',t:'s'},nuke:{e:'☣️',n:'Limpieza',t:'s'},gdmg:{e:'🌟',n:'Daño eterno',t:'g'},grate:{e:'🚀',n:'Cadencia eterna',t:'g'},gmulti:{e:'🔱',n:'Multidisparo',t:'g'}});
-PW.freeze.t='s';PW.life.t='g';PW.minus.t='g';PW.double={e:'✌️',n:'Doble tiro'};PW.shieldg={e:'🪖',n:'Escudo dorado',t:'g'};PW.mosquitoAlly={e:'🦟',n:'Mosquito aliado',d:'Tu próximo disparo invoca una larva que evoluciona en un mosquito aliado. Tiene 3 vidas y puede eliminar hasta 10 virus.',t:'g'};PW.dengueSwarm={e:'🦟',n:'Enjambre de mosquitos',d:'El Dengue invoca una oleada de mosquitos.',t:'perk'};
+PW.freeze.t='s';PW.life.t='g';PW.minus.t='g';PW.double={e:'✌️',n:'Doble tiro'};PW.shieldg={e:'🪖',n:'Escudo dorado',t:'g'};PW.mosquitoAlly={e:'🦟',n:'Mosquito aliado',d:'Cada power recogido prepara uno de tus próximos disparos para invocar una larva que evoluciona en un mosquito aliado. Tiene 3 vidas y puede eliminar hasta 10 virus.',t:'g'};PW.dengueSwarm={e:'🦟',n:'Enjambre de mosquitos',d:'El Dengue invoca una oleada de mosquitos.',t:'perk'};
 Object.assign(PW,{haste:{e:'💨',n:'Furia',t:'b'},hpup:{e:'🧬',n:'Mutación',t:'b'},steal:{e:'🕳️',n:'Robo',t:'gb'},swarm:{e:'🦠',n:'Plaga',t:'b'},slow:{e:'🐌',n:'Lentitud',t:'b'},gdmgdown:{e:'🔪',n:'Daño debilitado',t:'gb'},grateslow:{e:'💤',n:'Cadencia invertida',t:'gb'}});
 function pickW(ks){const w=ks.map(k=>k=='life'?1.05:1);let r=Math.random()*w.reduce((a,b)=>a+b,0);for(let i=0;i<ks.length;i++){if(r<w[i])return ks[i];r-=w[i]}return ks[ks.length-1]}
 function spawnBoss(noReward){const n0=g.viruses.length;spawnVirus(true,undefined,'normal');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];if(b.boss){sfxPlay('boss');b.noReward=noReward;b.rewardOnly=!noReward}}}
@@ -889,7 +901,7 @@ function powerSoundKey(k,t){if(k&&k.indexOf('B_')===0)k=k.slice(2);const m={dmg:
 function collect(p){sfxPlay(powerSoundKey(p&&p.k,p&&p.t));if(p.k&&p.k.indexOf('B_')===0){const bk=p.k.slice(2);pop(p.x,p.y,'#ffffff',14);if(XP[bk])g.xp[bk]=bk==='pairshot'?Math.min(5,(g.xp[bk]||0)+1):(g.xp[bk]||0)+1;else applyPerk(bk);return}
   if(p.k&&PERKS[p.k]){pop(p.x,p.y,'#ffffff',14);applyPerk(p.k);return}
   pop(p.x,p.y,'#ffffff',14);
-  if(p.k==='mosquitoAlly'){g.mosquitoShotReady=true;pop(p.x,p.y,'#ffe36b',20);return}
+  if(p.k==='mosquitoAlly'){g.mosquitoShotsReady=(g.mosquitoShotsReady||0)+1;g.mosquitoShotReady=true;pop(p.x,p.y,'#ffe36b',20);return}
   if(p.k==='dengueSwarm'){g.dengueBossSwarm=true;return}
   if(p.k=='dmg')extendFx('dmg',15);
   else if(p.k=='fast')extendFx('fast',10);
@@ -1842,17 +1854,15 @@ function drawWorldGrid(){
   ctx.restore();
 }
 function spawnDenguePower(){
-  // En este combate también pueden salir powers temporales, dorados, limpieza nuclear y exclusivos de tiempo.
-  const m=28*S,roll=Math.random();
-  if(roll<.075){const k='dengueSwarm';g.powers.push({k,t:'perk',x:m+Math.random()*(MAP-2*m),y:m+Math.random()*(MAP-2*m),r:24*S,life:9,max:9});return}
-  let pool=[];
-  if(roll<.23){pool=Object.keys(PW).filter(k=>['g','gb'].includes(PW[k].t)&&!['bossgood','bossbad','mosquitoAlly'].includes(k))}
-  else if(roll<.38){pool=['nuke']}
-  else if(roll<.52){pool=Object.keys(XP).map(k=>'B_'+k)}
-  else{pool=Object.keys(PW).filter(k=>['n','s','b'].includes(PW[k].t||'n')&&!['bossgood','bossbad','mosquitoAlly','dengueSwarm'].includes(k))}
+  // En el combate contra jefes aparecen powers normales, especiales (excepto Limpieza) y malos.
+  // No aparecen powers dorados ni poderes exclusivos/de jefe.
+  const m=28*S, pool=Object.keys(PW).filter(k=>{
+    const t=PW[k].t||'n';
+    return ['n','s','b'].includes(t) && k!=='nuke' && !['mosquitoAlly','dengueSwarm'].includes(k);
+  });
   if(!pool.length)return;
   const k=pool[Math.floor(Math.random()*pool.length)];
-  g.powers.push({k,t:k.startsWith('B_')?'perk':(PW[k].t||'n'),x:m+Math.random()*(MAP-2*m),y:m+Math.random()*(MAP-2*m),r:24*S,life:9,max:9});
+  g.powers.push({k,t:PW[k].t||'n',x:m+Math.random()*(MAP-2*m),y:m+Math.random()*(MAP-2*m),r:24*S,life:9,max:9});
 }
 function spawnDengueLarva(x,y){
   if(g.dengueBugs.filter(b=>!b.dead).length>=24)return;
@@ -2381,7 +2391,7 @@ function draw(){
   ].filter(Boolean);
   if(g.got.life)active.push(make(PW.life.e,g.got.life,true));
   if(g.got.minus)active.push(make(PW.minus.e,g.got.minus,true));
-  if(g.mosquitoShotReady)active.push(make(PW.mosquitoAlly.e,1,true));
+  if((g.mosquitoShotsReady||0)>0||g.mosquitoShotReady)active.push(make(PW.mosquitoAlly.e,Math.max(1,g.mosquitoShotsReady||1),true));
   let powerY=firstY;
   powerY=drawRow(active,powerY,sc);
   const pk=Object.keys(PERKS).filter(k=>g.perk[k]).map(k=>make(PERKS[k].e,g.perk[k]));
