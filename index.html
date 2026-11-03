@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Soap Adventures v.6.0</title>
+<title>Soap Adventures v.6.1</title>
 <meta name="theme-color" content="#e879a0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -227,7 +227,7 @@ button:active{filter:brightness(.97)}
 .gbox{border-radius:26px!important}
 #msg>div:after{width:25px;height:25px;right:15px;bottom:13px}
 #guide .gbox h2,#cpanel .gbox h2,#settings .gbox h2{padding:7px 34px 9px;border-radius:14px;background:linear-gradient(90deg,rgba(255,213,226,.78),rgba(255,240,245,.45));color:#8a3658}
-#msg #box:before{content:'SOAP ADVENTURES  •  BUBBLE SURVIVAL  •  v.6.0';color:#d64c7b;letter-spacing:1.8px}
+#msg #box:before{content:'SOAP ADVENTURES  •  BUBBLE SURVIVAL  •  v.6.1';color:#d64c7b;letter-spacing:1.8px}
 #msg .mbtns button:first-child{background:linear-gradient(135deg,#f77da2,#df4778);box-shadow:0 5px 0 #bd456c,0 9px 17px rgba(205,61,111,.2)}
 #msg .mbtns button:not(:first-child),#setbody button,#msg .dopt button{background:linear-gradient(180deg,#fff 0%,#f7edf2 100%)}
 #pick{background:radial-gradient(circle at 12% 18%,rgba(129,224,243,.25) 0 7px,transparent 9px),radial-gradient(circle at 88% 78%,rgba(129,224,243,.22) 0 10px,transparent 12px),rgba(39,29,49,.66)}
@@ -475,7 +475,7 @@ body:has(#msg .home-shell) #gear,body:has(#msg .home-shell) #ver{display:none!im
 
 </style></head><body>
 <canvas id="c"></canvas><canvas id="fx"></canvas>
-<div id="ver">v.6.0</div>
+<div id="ver">v.6.1</div>
 <div id="guide"><div class="gbox"><h2>Guía del juego</h2><div class="gbody">
 <h3>Cómo se juega</h3>
 <p>Sos el jabón del centro. Tocá o arrastrá el dedo para lanzar burbujas hacia ese lugar. Cada burbuja hace 1 de daño base.</p>
@@ -669,7 +669,7 @@ function showStart(){
       '<button id="bSettings" aria-label="Configuración" title="Configuración"><span class="home-icon">⚙️</span></button>'+
       '<button id="bGuide" aria-label="Guía" title="Guía"><span class="home-icon home-guide-icon">!</span></button>'+
       '<button id="bAdmin" aria-label="Códigos" title="Códigos"><span class="home-icon">⌨️</span></button></div>'+
-    '<div class="home-logo"><span class="home-logo-soap">SOAP</span><span class="home-logo-adventures">ADVENTURES</span><span class="home-logo-version">v.6.0</span></div><div class="home-shell">'+
+    '<div class="home-logo"><span class="home-logo-soap">SOAP</span><span class="home-logo-adventures">ADVENTURES</span><span class="home-logo-version">v.6.1</span></div><div class="home-shell">'+
     '<div class="home-left"><div class="home-soap-wrap">'+
       '<button class="home-soap" id="homeSoap" aria-label="Personalizar jabón"><span class="soap-inner" id="homeSoapText">SOAP</span></button>'+
       '<div class="home-name" id="homeName" aria-hidden="true">SOAP</div></div>'+
@@ -916,7 +916,11 @@ document.getElementById('cbody').onclick=e=>{
 function _oldStart(){box.innerHTML='<h1>🧼 SOUP ADVENTURE</h1><p>Tocá la pantalla para lanzar burbujas</p><p>Cada burbuja hace 1 de daño</p><p><b>Tocá para empezar</b></p>';msg.style.display='flex'}
 showStart();
 
-function maxHp(){return 5+g.bossKills+Math.max(0,g.bossKills-1)+2*Math.max(0,g.bossKills-3)+6*Math.max(0,g.bossKills-2)+Math.floor(g.t/25)+D.hp}
+function postFifthBoss(){return Math.max(0,g.bossKills-4)}
+function maxHp(){const p=postFifthBoss();return 5+g.bossKills+Math.max(0,g.bossKills-1)+2*Math.max(0,g.bossKills-3)+6*Math.max(0,g.bossKills-2)+8*p+Math.floor(g.t/25)+D.hp}
+function virusSpeedScale(){const pre=Math.max(0,Math.min(g.bossKills-1,4)),post=postFifthBoss();return 1+.08*pre+.144*post}
+function defenseSpawnScale(){return Math.pow(.95,Math.max(0,Math.min(g.bossKills-2,3)))*Math.pow(.91,Math.max(0,g.bossKills-4))}
+function defenseBossInterval(){return Math.max(15,(D.bossInterval||60)*Math.pow(.94,postFifthBoss()))}
 function spawnVirus(boss,hpOv,type){
   const n0=g.viruses.length;_spawnVirus(boss,hpOv,type);
   if(!boss&&g.viruses.length>n0){const o=g.viruses[g.viruses.length-1],t=type||rollType();const nv=newVirus(o.x,o.y,Math.max(1,o.hp),t,o.face);nv.r*=cval('vsize');g.viruses[g.viruses.length-1]=nv}else if(boss&&g.viruses.length>n0)g.viruses[g.viruses.length-1].r*=cval('vsize');
@@ -925,7 +929,7 @@ function _spawnVirus(boss,hpOv,bt0){
   const side=Math.floor(Math.random()*4),m=90*S;let x,y;
   if(side==0){x=Math.random()*W;y=-m}else if(side==1){x=W+m;y=Math.random()*H}else if(side==2){x=Math.random()*W;y=H+m}else{x=-m;y=Math.random()*H}x+=AOX();y+=AOY();
   if(boss){const bt=bt0||pickBoss(),mu={normal:2.5,rey:2.5,glot:2.5,tank:4,bomb:2}[bt]||2.5,hp=hpOv||Math.max(1,Math.round(maxHp()*mu*1));const firstB=g.boss===0;g.boss++;const bo={x,y,hp,max:hp,r:BR[bt]*S,sp:BSP[bt]*S,boss:1,btype:bt,ph:0,id:g.id++,flash:0};if(D.medicBoss&&!firstB){const md=newVirus(x,y,rollHp(),'med');md.leader=bo;g.viruses.push(md)}g.viruses.push(bo)}
-  else{const mx=maxHp(),mn=Math.max(1,Math.floor(mx/3)),hp=hpOv||(mn+Math.floor(Math.random()*(mx-mn+1)))*1;g.viruses.push({x,y,hp,max:hp,r:(20+Math.min(hp,12)*2.2)*S,sp:Math.max(20*S,(82+Math.random()*18-hp*5.5)*S)*(1+.08*Math.max(0,g.bossKills-1)),boss:0,ph:Math.random()*6,id:g.id++,flash:0,face:Math.floor(Math.random()*4)})}
+  else{const mx=maxHp(),mn=Math.max(1,Math.floor(mx/3)),hp=hpOv||(mn+Math.floor(Math.random()*(mx-mn+1)))*1;g.viruses.push({x,y,hp,max:hp,r:(20+Math.min(hp,12)*2.2)*S,sp:Math.max(20*S,(82+Math.random()*18-hp*5.5)*S)*virusSpeedScale(),boss:0,ph:Math.random()*6,id:g.id++,flash:0,face:Math.floor(Math.random()*4)})}
 }
 function safeAt(x,y,r){const cx=CWX(),cy=CWY(),Z=125*S*cval('ssize')+r;let dx=x-cx,dy=y-cy,d=Math.hypot(dx,dy);if(d<Z){if(d<1){dx=0;dy=-1;d=1}const k=Z/d;x=cx+dx*k;y=cy+dy*k}x=Math.max(r,Math.min(BXMAX()-r,x));y=Math.max(r,Math.min(BYMAX()-r,y));return [x,y]}
 function patOff(L){const o=[];for(let i=0;i<Math.max(1,L);i++)o.push(i*2*Math.PI/Math.max(1,L));return o}
@@ -986,7 +990,7 @@ function registerBossDefeat(v){
   if(v.rewardOnly){g.bonusPicks++;return}
   if(v.pairId!=null&&g.viruses.some(o=>o.boss&&o.pairId===v.pairId&&!o.dead))return;
   g.shake=.4;g.bossKills++;
-  const hpGain=1+(g.bossKills>3?3:0);
+  const hpGain=1+(g.bossKills>3?3:0)+(postFifthBoss()>0?3:0);
   g.viruses.forEach(o=>{if(!o.dead&&!o.boss){o.hp+=hpGain;o.max+=hpGain}});
 }
 PW.bossgood={e:'👑',n:'Jefe invocado',t:'g'};PW.bossbad={e:'👹',n:'Jefe salvaje',t:'gb'};PW.lifeloss={e:'💔',n:'Pérdida de vida',t:'gb'};
@@ -1171,7 +1175,7 @@ const SPLIT={div:['norm',2],pad:['div',2],todo:['pad',3]};
 const HPM={div:1,pad:1.5,todo:2.5,med:.8,glot:1.5},RM={div:1.1,pad:1.4,todo:1.9,med:1,glot:1.25};
 const MED={radius:170,interval:1.2,amount:1,dist:260};
 const SPAWN={div:{base:.05,grow:.0008,cap:.20},pad:{base:.02,grow:.0005,cap:.12},todo:{base:.005,grow:.0002,cap:.05},glot:{base:.03,grow:.0005,cap:.10},med:{base:.03,grow:.0005,cap:.10}};
-function spawnStage(){return Math.max(0,g.bossKills-(D.shiftSpawn?2:1))}
+function spawnStage(){const base=Math.max(0,g.bossKills-(D.shiftSpawn?2:1));return base+Math.floor(.8*postFifthBoss())}
 function specProg(){return spawnStage()+Math.max(0,g.t-(g.t1??g.t))/90+.35*Math.max(0,g.bossKills-2)}
 function rollType(){
   const plain=()=>Math.random()<VELOZ.share?'fast':'norm';
@@ -1192,7 +1196,7 @@ function _oldRoll(){
 }
 function newVirus(x,y,hp0,type,face){
   if(type=='fast')hp0=1;const hp=Math.max(1,Math.round(hp0*(HPM[type]||1)));
-  return {x,y,hp,max:hp,r:(20+Math.min(hp0,12)*2.2)*S*(RM[type]||1),sp:(type=='fast'?1.5:1)*Math.max(20*S,(82+Math.random()*18-hp*5.5)*S)*(1+.08*Math.max(0,g.bossKills-1)),boss:0,ph:Math.random()*6,id:g.id++,flash:0,face:face??Math.floor(Math.random()*4),type,absorb:0};
+  return {x,y,hp,max:hp,r:(20+Math.min(hp0,12)*2.2)*S*(RM[type]||1),sp:(type=='fast'?1.5:1)*Math.max(20*S,(82+Math.random()*18-hp*5.5)*S)*virusSpeedScale(),boss:0,ph:Math.random()*6,id:g.id++,flash:0,face:face??Math.floor(Math.random()*4),type,absorb:0};
 }
 function rollHp(){const mx=maxHp(),mn=Math.max(1,Math.floor(mx/3));return mn+Math.floor(Math.random()*(mx-mn+1))}
 function glotHit(v,b){if(Math.random()<(v.boss?.5:.33)){v.hp=Math.min(v.max,v.hp+(v.boss?b.d*.5:b.d));v.absorb=.4;pop(v.x+(b.x-v.x)*.5,v.y+(b.y-v.y)*.5,'#ffb347',6)}else v.hp-=b.d}
@@ -2157,8 +2161,8 @@ function update(dt){
   for(let i=0;i<g.powers.length;i++){const p=g.powers[i];if(p.life>0)g.powers[keptPowers++]=p}
   g.powers.length=keptPowers;
   g.spawn-=dt;
-  if(g.spawn<=0&&g.fx.freeze<=0&&(!g.creative||g.cAuto.virus)){const n=Math.min(6,1+(g.t>60&&Math.random()<Math.min(.6,(g.t-60)/200)?1:0)+spawnStage());if(g.tuberculosisMode){if(!g.creative||g.cAuto.virus){const medCount=g.viruses.filter(v=>v.type==='med'&&!v.dead).length;for(let i=0;i<n;i++){if(medCount+i<6&&Math.random()<.28)spawnVirus(false,undefined,'med');else spawnVirus(false)}}}else if(g.dengueMode){if(!g.creative||g.cAuto.virus)for(let i=0;i<n;i++)spawnVirus(false)}else if(g.adv)advSpawnTick();else for(let i=0;i<n;i++)spawnVirus(false);g.spawn=Math.max(.3,1.2-g.t*.01)*(.7+Math.random()*.6)*D.vir*Math.pow(.95,Math.max(0,g.bossKills-2))}
-  if(g.t>=g.nextBoss&&g.fx.freeze<=0){if(!g.adv&&(!g.creative||g.cAuto.boss))spawnScheduledBossWave();g.nextBoss+=(g.adv?60:(D.bossInterval||60))}
+  if(g.spawn<=0&&g.fx.freeze<=0&&(!g.creative||g.cAuto.virus)){const n=Math.min(6,1+(g.t>60&&Math.random()<Math.min(.6,(g.t-60)/200)?1:0)+spawnStage());if(g.tuberculosisMode){if(!g.creative||g.cAuto.virus){const medCount=g.viruses.filter(v=>v.type==='med'&&!v.dead).length;for(let i=0;i<n;i++){if(medCount+i<6&&Math.random()<.28)spawnVirus(false,undefined,'med');else spawnVirus(false)}}}else if(g.dengueMode){if(!g.creative||g.cAuto.virus)for(let i=0;i<n;i++)spawnVirus(false)}else if(g.adv)advSpawnTick();else for(let i=0;i<n;i++)spawnVirus(false);g.spawn=Math.max(.3,1.2-g.t*.01)*(.7+Math.random()*.6)*D.vir*defenseSpawnScale()}
+  if(g.t>=g.nextBoss&&g.fx.freeze<=0){if(!g.adv&&(!g.creative||g.cAuto.boss))spawnScheduledBossWave();g.nextBoss+=(g.adv?60:defenseBossInterval())}
   const cx=CWX(),cy=CWY(),sr=24*S*cval('ssize');
   for(const b of g.bubbles){
     if(b.home>0){const best=homingTarget(b);if(best){const sp=Math.hypot(b.vx,b.vy),ca=Math.atan2(b.vy,b.vx),ta=Math.atan2(best.y-b.y,best.x-b.x);let df=ta-ca;while(df>Math.PI)df-=6.283;while(df<-Math.PI)df+=6.283;const mx=(2.2+b.home*2)*dt,na=ca+Math.max(-mx,Math.min(mx,df));b.vx=Math.cos(na)*sp;b.vy=Math.sin(na)*sp}}
