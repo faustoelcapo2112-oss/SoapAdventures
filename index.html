@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Soap Adventures v5.101</title>
+<title>Soap Adventures v5.102</title>
 <meta name="theme-color" content="#e879a0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -390,7 +390,7 @@ body:has(#msg .home-shell) #gear,body:has(#msg .home-shell) #ver{display:none!im
 #msg:has(.home-shell) .home-soap.admin-gold-soap[data-gold-style=rose]:before{background:linear-gradient(145deg,#fff4df,#e7b17e 45%,#95512f)!important}
 #msg:has(.home-shell) .home-soap.admin-gold-soap[data-gold-style=champagne]:before{background:linear-gradient(145deg,#fffbe9,#ead79b 48%,#90733d)!important}
 
-/* v5.101 — menú adaptable: jabón real, controles compactos y composición horizontal/vertical */
+/* v5.102 — menú adaptable: jabón real, controles compactos y composición horizontal/vertical */
 #msg:has(.home-shell){padding:calc(12px + env(safe-area-inset-top,0px)) 14px calc(12px + env(safe-area-inset-bottom,0px));overflow:hidden}
 #msg:has(.home-shell)>#box{position:relative;display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;width:min(1180px,96vw);height:100%;min-height:calc(100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px) - 24px);max-height:100%;padding:0!important;margin:0 auto!important;overflow:visible!important}
 #msg:has(.home-shell) .home-logo{flex:0 0 auto;width:100%;margin:clamp(54px,7vh,78px) auto clamp(12px,2vh,22px)!important;line-height:.86;filter:drop-shadow(0 7px 3px rgba(128,66,87,.2));}
@@ -662,7 +662,7 @@ function showStart(){
       '<button id="bSettings" aria-label="Configuración" title="Configuración"><span class="home-icon">⚙️</span></button>'+
       '<button id="bGuide" aria-label="Guía" title="Guía"><span class="home-icon home-guide-icon">!</span></button>'+
       '<button id="bAdmin" aria-label="Códigos" title="Códigos"><span class="home-icon">⌨️</span></button></div>'+
-    '<div class="home-logo"><span class="home-logo-soap">SOAP</span><span class="home-logo-adventures">ADVENTURES</span><span class="home-logo-version">v5.101</span></div><div class="home-shell">'+
+    '<div class="home-logo"><span class="home-logo-soap">SOAP</span><span class="home-logo-adventures">ADVENTURES</span><span class="home-logo-version">v5.102</span></div><div class="home-shell">'+
     '<div class="home-left"><div class="home-soap-wrap">'+
       '<button class="home-soap" id="homeSoap" aria-label="Personalizar jabón"><span class="soap-inner" id="homeSoapText">SOAP</span></button>'+
       '<div class="home-name" id="homeName" aria-hidden="true">SOAP</div></div>'+
@@ -1829,7 +1829,7 @@ function advUpdate(dt){
     else if(g.advPhase=='warn'){g.advWarnT-=dt;const wsp=ADV_SPOTS[g.advSpot],near=Math.hypot(wsp[0]-PX, wsp[1]-PY)<260*S;if(g.advWarnT<=0&&!near){advWaveBoss();g.advPhase='boss'}}
     else if(g.advPhase=='gap'){g.advT-=dt;if(g.advT<=0){g.wave++;g.advPhase='pre';g.advT=ADV_PRE;g.advQuota=advQuota(g.wave);g.advBossLeft=Math.round(g.advQuota*(.2+Math.random()*.6))}}
   }
-  if(!g.creative||g.cAuto.power){g.advPowT-=dt;if(g.advPowT<=0){if(g.dengueMode){for(let i=0;i<4;i++)spawnDenguePower();g.advPowT=5+Math.random()*2}else{for(let i=0;i<10*1;i++)spawnAdvPower();g.advPowT=3.6+Math.random()*2.4}}}
+  if(!g.creative||g.cAuto.power){g.advPowT-=dt;if(g.advPowT<=0){if(g.dengueMode){for(let i=0;i<8;i++)spawnDenguePower();g.advPowT=2.5+Math.random()*1}else{for(let i=0;i<10*1;i++)spawnAdvPower();g.advPowT=3.6+Math.random()*2.4}}}
   // los virus no se atraviesan entre sí (se empujan al superponerse)
   const vs=g.viruses.filter(v=>!v.dead&&!v.boss);
   for(let i=0;i<vs.length;i++){const a=vs[i];for(let j=i+1;j<vs.length;j++){const b=vs[j];
@@ -1969,15 +1969,18 @@ function drawWorldGrid(){
   ctx.restore();
 }
 function spawnDenguePower(){
-  // En el combate contra jefes aparecen 4 powers por cada aparición: normales, especiales (excepto Limpieza) y malos.
-  // No aparecen powers dorados ni poderes exclusivos/de jefe.
-  const m=28*S, pool=Object.keys(PW).filter(k=>{
+  // Lluvia de powers más frecuente y cerca del jugador para que sean fáciles de encontrar.
+  // Solo normales, especiales (excepto Limpieza) y malos; nunca dorados ni de jefe.
+  const pool=Object.keys(PW).filter(k=>{
     const t=PW[k].t||'n';
     return ['n','s','b'].includes(t) && k!=='nuke' && !['mosquitoAlly','dengueSwarm'].includes(k);
   });
   if(!pool.length)return;
   const k=pool[Math.floor(Math.random()*pool.length)];
-  g.powers.push({k,t:PW[k].t||'n',x:m+Math.random()*(MAP-2*m),y:m+Math.random()*(MAP-2*m),r:24*S,life:9,max:9});
+  const angle=Math.random()*Math.PI*2,dist=(220+Math.random()*520)*S;
+  const x=Math.max(45*S,Math.min(MAP-45*S,PX+Math.cos(angle)*dist));
+  const y=Math.max(45*S,Math.min(MAP-45*S,PY+Math.sin(angle)*dist));
+  g.powers.push({k,t:PW[k].t||'n',x,y,r:24*S,life:18,max:18});
 }
 function spawnDengueLarva(x,y){
   if(g.dengueBugs.filter(b=>!b.dead).length>=24)return;
@@ -2043,7 +2046,7 @@ function showDengueVictory(){
 }
 function startDengueBoss(bossIndex=0,creativeMode=false){
   const safeIndex=ADMIN_UNLOCKED?Math.max(0,Math.min(BOSS_ROSTER.length-1,Number(bossIndex)||0)):0;
-  MAP=2400;D=DIFFS.hard;reset();if(creativeMode&&ADMIN_UNLOCKED){initCreativeState();g.cAuto={virus:true,boss:false,power:true}}g.adminBossCreative=!!(creativeMode&&ADMIN_UNLOCKED);g.adminBossIndex=safeIndex;g.adminBossName=BOSS_ROSTER[safeIndex]||'Dengue';g.adv=true;g.dengueMode=true;g.wave=1;g.spawn=.5;g.advPowT=4;g.nextBoss=1e9;g.lives=5;
+  MAP=3200;D=DIFFS.hard;reset();if(creativeMode&&ADMIN_UNLOCKED){initCreativeState();g.cAuto={virus:true,boss:false,power:true}}g.adminBossCreative=!!(creativeMode&&ADMIN_UNLOCKED);g.adminBossIndex=safeIndex;g.adminBossName=BOSS_ROSTER[safeIndex]||'Dengue';g.adv=true;g.dengueMode=true;g.wave=1;g.spawn=.5;g.advPowT=4;g.nextBoss=1e9;g.lives=5;
   PX=MAP/2;PY=MAP/2;FACE=-Math.PI/2;MOVE={x:0,y:0};DK={};
   const n0=g.viruses.length;spawnVirus(true,250,'dengue');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+560*S;b.y=MAP/2+320*S;b.r*=2.7;b.larvaT=6.5;b.sp=18*S;b.chasing=false}
   startGame();syncMovementControls();document.getElementById('cbtn').style.display=g.creative?'block':'none';
