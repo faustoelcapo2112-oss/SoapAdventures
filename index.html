@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Soap Adventures v5.91</title>
+<title>Soap Adventures v5.93</title>
 <meta name="theme-color" content="#e879a0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -40,7 +40,7 @@ canvas{display:block;width:100%;height:100%}
 .cbs button{font:inherit;font-size:14px;background:#fff;color:var(--ink);border:3px solid #c9405f;border-radius:12px;padding:5px 9px;cursor:pointer}
 .cbs button.on{background:#e8426d;color:#fff}.cnum{font:inherit;font-size:16px;min-width:90px;width:125px;max-width:100%;box-sizing:border-box;padding:6px;border:3px solid #c9405f;border-radius:10px;color:var(--ink);background:#fff;touch-action:pan-y}.cstat{margin:9px 0}.cstat label{display:block;font-weight:bold;margin-bottom:4px}.ctabs{position:sticky;top:0;background:var(--panel);padding:5px 0;z-index:2}.ctabs button{flex:1}
 #gear{position:fixed;top:calc(8px + env(safe-area-inset-top,0px));right:10px;z-index:4;width:44px;height:44px;border-radius:14px;border:3px solid #8a1f43;background:#fff4f7;font-size:24px;cursor:pointer;padding:0;box-shadow:0 3px 0 #8a1f43;pointer-events:auto}
-#settings,#warn{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(138,31,67,.45);z-index:8;padding:12px;box-sizing:border-box}#custom{z-index:9 !important}#settings .gbox,#warn .gbox{max-height:100%}#setbody button,#settings .bk,#warn button{font:inherit;font-weight:bold;font-size:17px;background:#e8426d;color:#fff4f7;border:4px solid #8a1f43;border-radius:16px;padding:8px 14px;margin:5px 0;box-shadow:0 4px 0 #8a1f43;cursor:pointer;display:block;width:100%}#setbody button[data-kc],#setbody button[data-kr],#setbody button[data-kb]{display:inline-block;width:auto}#warn .mbtns{display:flex;gap:10px;justify-content:center;margin-top:12px}#warn .mbtns button{width:auto;display:inline-block}#dbg{position:fixed;left:8px;bottom:70px;display:none;z-index:9;background:rgba(0,0,0,.72);color:#fff;font:12px/1.4 monospace;padding:6px 8px;border-radius:8px;pointer-events:none;white-space:pre}
+#settings,#warn{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(138,31,67,.45);z-index:8;padding:12px;box-sizing:border-box}#adminPanel{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(24,30,49,.72);z-index:12;padding:12px;box-sizing:border-box}#adminPanel .gbox{width:min(500px,100%);max-height:100%;background:linear-gradient(160deg,#fffdf5,#fff4d8);border:2px solid #d2a12d;box-shadow:0 8px 30px rgba(96,62,7,.25);color:#604514}#adminPanel .gbox h2{background:linear-gradient(90deg,#fff0b3,#ffe2a1);color:#77500a;border-radius:14px;padding:9px}#adminPanel button{font:inherit;font-weight:750;font-size:15px;background:linear-gradient(180deg,#ffdf75,#e9ae25);color:#593b08;border:1px solid #bb8511;border-radius:12px;padding:9px 12px;margin:5px 3px;box-shadow:0 3px 0 rgba(111,76,9,.18);cursor:pointer}#adminPanel input,#adminPanel select{font:inherit;color:#563d12;background:#fffdf5;border:2px solid #d8b65f;border-radius:9px;padding:8px;max-width:100%;box-sizing:border-box}#adminPanel .admin-row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:9px 0;padding:9px 10px;background:rgba(255,220,130,.2);border:1px solid rgba(190,145,40,.22);border-radius:12px}#adminPanel .admin-note{font-size:13px;color:#806c45;margin:8px 2px}#adminPanel .admin-error{color:#b32145;font-weight:800;min-height:1.3em}#custom{z-index:9 !important}#settings .gbox,#warn .gbox{max-height:100%}#setbody button,#settings .bk,#warn button{font:inherit;font-weight:bold;font-size:17px;background:#e8426d;color:#fff4f7;border:4px solid #8a1f43;border-radius:16px;padding:8px 14px;margin:5px 0;box-shadow:0 4px 0 #8a1f43;cursor:pointer;display:block;width:100%}#setbody button[data-kc],#setbody button[data-kr],#setbody button[data-kb]{display:inline-block;width:auto}#warn .mbtns{display:flex;gap:10px;justify-content:center;margin-top:12px}#warn .mbtns button{width:auto;display:inline-block}#dbg{position:fixed;left:8px;bottom:70px;display:none;z-index:9;background:rgba(0,0,0,.72);color:#fff;font:12px/1.4 monospace;padding:6px 8px;border-radius:8px;pointer-events:none;white-space:pre}
 #joy{position:fixed;left:16px;bottom:16px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.35);border:3px solid #8a1f43;display:none;z-index:4;touch-action:none;box-sizing:border-box}
 #knob{position:absolute;width:56px;height:56px;border-radius:50%;background:#e8426d;border:3px solid #8a1f43;left:34px;top:34px;box-sizing:border-box;pointer-events:none}
 #pausemenu{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(138,31,67,.45);z-index:8;padding:12px;box-sizing:border-box}
@@ -76,7 +76,7 @@ input[type="range"]{font-size:16px !important;}
   --ui-shadow:0 18px 55px rgba(30,37,65,.22);
 }
 button{ -webkit-tap-highlight-color:transparent; }
-#msg,#guide,#custom,#cpanel,#settings,#warn,#pick{
+#msg,#guide,#custom,#cpanel,#settings,#warn,#pick,#adminPanel{
   background:rgba(24,30,49,.62);
   -webkit-backdrop-filter:blur(10px);
   backdrop-filter:blur(10px);
@@ -247,7 +247,7 @@ html,body{font-family:"Trebuchet MS","Arial Rounded MT Bold",Arial,"Apple Color 
 #fx{position:fixed;left:0;top:0;width:0;height:0;display:none;pointer-events:none;touch-action:none}
 #setbody button[data-shp]{display:inline-block;width:auto}
 /* Modo Rendimiento: sin desenfoques de fondo sobre el canvas que se anima (cada fotograma obliga al navegador a repetirlos). */
-html.perf #gear,html.perf #cbtn,html.perf #ver,html.perf #msg,html.perf #guide,html.perf #custom,html.perf #cpanel,html.perf #settings,html.perf #warn,html.perf #pick,html.perf #pausemenu{-webkit-backdrop-filter:none;backdrop-filter:none}
+html.perf #gear,html.perf #cbtn,html.perf #ver,html.perf #msg,html.perf #guide,html.perf #custom,html.perf #cpanel,html.perf #settings,html.perf #warn,html.perf #pick,html.perf #pausemenu,html.perf #adminPanel{-webkit-backdrop-filter:none;backdrop-filter:none}
 body.adv-creative #cbtn{left:auto;right:14px}
 
 /* Menú principal: replica la composición de referencia, sin percha ni paneles anidados */
@@ -304,6 +304,7 @@ body.adv-creative #cbtn{left:auto;right:14px}
   font:800 clamp(17px,3.4vw,25px)/1.15 system-ui,-apple-system,sans-serif!important;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
+#msg:has(.home-shell) .home-name.admin-gold{border-color:#b8860b!important;background:linear-gradient(180deg,#fff9dd,#ffe9a2)!important;box-shadow:0 3px 8px rgba(183,128,8,.22),0 0 14px rgba(255,205,70,.18)!important;color:#946300!important}
 #msg:has(.home-shell) .home-hue-wrap{height:clamp(205px,36vh,325px);width:34px;display:flex;align-items:center;justify-content:center}
 #msg:has(.home-shell) .home-hue{
   appearance:none;-webkit-appearance:none;display:block;width:34px;height:100%;padding:0!important;
@@ -334,6 +335,7 @@ body.adv-creative #cbtn{left:auto;right:14px}
 #msg:has(.home-shell) .home-actions #bBosses{background:linear-gradient(180deg,#fff5ff,#f3e5fa)!important;color:#64265e!important}
 #msg:has(.home-shell) .home-actions #bPlay{color:#a42d5c!important;background:linear-gradient(180deg,#fff,#fff0f5)!important}
 #msg:has(.home-shell) .home-actions button:active,#msg:has(.home-shell) .home-top button:active{transform:translateY(2px) scale(.985);filter:brightness(.99)}
+#msg:has(.home-shell) .home-top #bAdmin{background:linear-gradient(150deg,#fff2b8,#edbd42)!important;color:#815400!important;box-shadow:0 5px 0 rgba(145,100,12,.16),0 9px 16px rgba(145,100,12,.12)!important}
 /* Un único engranaje en el menú; el botón flotante original queda para la partida. */
 body:has(#msg .home-shell) #gear,body:has(#msg .home-shell) #ver{display:none!important}
 .boss-list{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0;max-height:min(52vh,380px);overflow-y:auto;padding:2px}
@@ -371,7 +373,7 @@ body:has(#msg .home-shell) #gear,body:has(#msg .home-shell) #ver{display:none!im
 
 </style></head><body>
 <canvas id="c"></canvas><canvas id="fx"></canvas>
-<div id="ver">v.5.91</div>
+<div id="ver">v.5.93</div>
 <div id="guide"><div class="gbox"><h2>Guía del juego</h2><div class="gbody">
 <h3>Cómo se juega</h3>
 <p>Sos el jabón del centro. Tocá o arrastrá el dedo para lanzar burbujas hacia ese lugar. Cada burbuja hace 1 de daño base.</p>
@@ -448,8 +450,8 @@ body:has(#msg .home-shell) #gear,body:has(#msg .home-shell) #ver{display:none!im
 <p>🦟 <b>Mosquito aliado (exclusivo dorado):</b> se desbloquea al derrotar al Dengue. Al recogerlo, tu próximo disparo invoca una larva que evoluciona en un mosquito aliado con 3 vidas. Ataca hasta 10 virus normales y los elimina al instante; no ataca jefes. Los virus pueden dañarlo si lo alcanzan antes de que él los ataque. Los virus divisores conservan su división.</p>
 <p>🦟 <b>Enjambre de mosquitos:</b> power exclusivo del combate contra el Dengue. Hace que el jefe invoque un grupo de mosquitos.</p>
 <h3>Jefe especial: Dengue</h3>
-<p>El combate ocurre en un mapa propio, algo más pequeño y con una ambientación ligeramente más oscura. El Dengue tiene 500 de vida, es grande y se mueve muy lentamente. No ataca directamente: si te acercás demasiado, te persigue; si te toca, perdés la partida al instante.</p>
-<p>El Dengue invoca larvas lentamente. Estas evolucionan en mosquitos rápidos que buscan acercarse por detrás y luego se lanzan hacia vos. Si te alcanzan, reducen ligeramente tus estadísticas durante unos segundos.</p>
+<p>El combate ocurre en un mapa propio, algo más pequeño y con una ambientación ligeramente más oscura. El Dengue tiene 250 de vida, es grande y se mueve muy lentamente. No ataca directamente: si te acercás demasiado, te persigue; si te toca, perdés la partida al instante.</p>
+<p>El Dengue invoca larvas lentamente. Estas evolucionan en mosquitos rápidos que buscan acercarse por detrás y luego se lanzan hacia vos. Si te alcanzan, reducen ligeramente tus estadísticas durante unos segundos. Podés eliminar larvas y mosquitos enemigos disparándoles.</p>
 <p>Al derrotarlo, desbloqueás permanentemente el power exclusivo dorado Mosquito aliado para Aventura y Defensa.</p>
 <h3>Aventura (nuevo)</h3>
 <p>Un mapa enorme. En celulares aparece la palanquita si elegís ese control; también podés activar Movimiento con el dedo en Ajustes para arrastrar el jabón. En PC se mueve con WASD o las flechas (se cambian en Controles de PC). Disparás tocando la pantalla o con click izquierdo, y con E en PC.</p>
@@ -480,7 +482,7 @@ body:has(#msg .home-shell) #gear,body:has(#msg .home-shell) #ver{display:none!im
 <button id="cbtn" aria-label="Modo creativo" title="Modo creativo">🛠️</button>
 <div id="cpanel"><div class="gbox"><h2>🎮 Modo creativo</h2><div class="gbody" id="cbody"></div><button class="bk" id="cClose">Cerrar</button></div></div>
 <div id="custom"><div class="gbox"><h2>Personalizar</h2><div class="gbody" id="cusbody"></div><button class="bk" id="cusClose">Listo</button></div></div>
-<button id="gear" aria-label="Configuración" title="Configuración">⚙</button><div id="settings"><div class="gbox"><h2>⚙️ Configuración</h2><div class="gbody" id="setbody"></div><button class="bk" id="setClose">Cerrar</button></div></div>
+<button id="gear" aria-label="Configuración" title="Configuración">⚙</button><div id="settings"><div class="gbox"><h2>⚙️ Configuración</h2><div class="gbody" id="setbody"></div><button class="bk" id="setClose">Cerrar</button></div></div><div id="adminPanel"><div class="gbox"><h2>👑 Panel de administración</h2><div class="gbody" id="adminbody"></div><button class="bk" id="adminClose">Cerrar</button></div></div>
 <div id="warn"><div class="gbox"><h2>🚧 Aviso</h2><p id="warnTxt"></p><div class="mbtns"><button id="warnOk">Continuar</button><button id="warnNo">Cancelar</button></div></div></div>
 <div id="pausemenu"><div class="gbox"><h2>⏸️ Pausa</h2><div class="mbtns"><button id="pResume">Continuar</button><button id="pSet">Ajustes</button><button id="pExit">Salir al menú</button></div></div></div>
 <div id="dbg"></div>
@@ -519,19 +521,26 @@ function colorFor(hp){return COLORS[((Math.max(1,Math.floor(hp))-1)%5)+1]}
 const sc='#8a1f43';
 let g;
 let DENGUE_REWARD_UNLOCKED=false;try{DENGUE_REWARD_UNLOCKED=localStorage.getItem('soapDengueReward')==='1'}catch(e){}
+const ADMIN_CODE='FAUSTOISHERE$!';
+let ADMIN_UNLOCKED=false,ADMIN_GOLDEN_SOAP=false,ADMIN_GOLD_STYLE='gold';
+try{ADMIN_UNLOCKED=localStorage.getItem('soapAdminUnlocked')==='1';ADMIN_GOLDEN_SOAP=localStorage.getItem('soapAdminGold')==='1';ADMIN_GOLD_STYLE=localStorage.getItem('soapAdminGoldStyle')||'gold'}catch(e){}
+if(ADMIN_UNLOCKED)DENGUE_REWARD_UNLOCKED=true;
+const ADMIN_GOLD_PALETTES={gold:['#f6c744','#986400','#fff0a0'],rose:['#e8b36a','#9b5a32','#ffe1ad'],champagne:['#efd99a','#a98440','#fff5d6']};
+function currentSoapPalette(){if(ADMIN_GOLDEN_SOAP)return ADMIN_GOLD_PALETTES[ADMIN_GOLD_STYLE]||ADMIN_GOLD_PALETTES.gold;return (CUST.col==='custom'?SOAPC.custom:SOAPC[CUST.col])||SOAPC.green}
+function saveAdminPrefs(){try{localStorage.setItem('soapAdminUnlocked',ADMIN_UNLOCKED?'1':'0');localStorage.setItem('soapAdminGold',ADMIN_GOLDEN_SOAP?'1':'0');localStorage.setItem('soapAdminGoldStyle',ADMIN_GOLD_STYLE)}catch(e){}}
 function reset(){g={t:0,over:false,started:false,score:0,lives:(window.D?D.lives:5),inv:0,viruses:[],bubbles:[],parts:[],spawn:1,boss:0,bossKills:0,bossWaveCount:0,bossPairSeq:0,nextBoss:(D&&D.bossInterval)||60,cool:0,aim:-Math.PI/2,shake:0,id:0,powers:[],nextPow:5,fx:{dmg:0,fast:0,freeze:0,bomb:0,shield:0,shieldGold:0,haste:0,slow:0,double:0,tfreeze:0},gold:{dmg:0,rate:0,multi:0,badDmg:0,badRate:0},perk:{back:0,split:0,homing:0,hold:0,pierce:0,big:0,wave:0,heart:0,ally:0},rewards:0,bonusPicks:0,rot:-Math.PI/2,allies:[],mosquitoLarvae:[],mosquitoAllies:[],dengueBugs:[],mosquitoShotReady:false,dengueDebuff:0,dengueBossSwarm:false,dengueMode:false,pick:null,holding:false,hx:0,hy:0,got:{life:0,minus:0},rings:[],plus:[],xp:{bomb:0,storm:0,time:0,orbit:0,aura:0},xt:{time:20,aura:15},orb:[0,0,0,0,0],orbA:0,auras:[],bolts:[],chainB:60}}
 reset();
 function startGame(){sfxPlay('start');musicStart();g.started=true;msg.style.display='none';document.getElementById('ver').style.display='none';document.getElementById('guide').style.display='none'}
 function homeHueSet(){
   const el=document.getElementById('menuHue');if(!el)return;
   const h=+el.value;setCustomHex(rgb2hx(...hsl2rgb(h,.58,.76)));
-  const soap=document.getElementById('homeSoap');if(soap)soap.style.background='linear-gradient(145deg,'+SOAPC.custom[2]+','+SOAPC.custom[0]+' 55%,'+SOAPC.custom[1]+')';
+  homeSoapSync();
 }
 function homeSoapSync(){
   const soap=document.getElementById('homeSoap');if(!soap)return;
-  const pal=(CUST.col==='custom'?SOAPC.custom:SOAPC[CUST.col])||SOAPC.green;
+  const pal=currentSoapPalette();
   soap.style.background='linear-gradient(145deg,'+pal[2]+','+pal[0]+' 58%,'+pal[1]+')';
-  const name=document.getElementById('homeName');if(name)name.textContent=(SOAPTXT()==='SOAP'?'Alex':SOAPTXT());
+  const name=document.getElementById('homeName');if(name){name.textContent=(SOAPTXT()==='SOAP'?'Alex':SOAPTXT());name.classList.toggle('admin-gold',!!ADMIN_GOLDEN_SOAP)}
   const hex=CUST.hex||'#eeb8ca',r=parseInt(hex.slice(1,3),16)/255,g2=parseInt(hex.slice(3,5),16)/255,b=parseInt(hex.slice(5,7),16)/255,mx=Math.max(r,g2,b),mn=Math.min(r,g2,b),d=mx-mn;let h=0;
   if(d){if(mx===r)h=((g2-b)/d)%6;else if(mx===g2)h=(b-r)/d+2;else h=(r-g2)/d+4;h*=60;if(h<0)h+=360}
   const hue=document.getElementById('menuHue');if(hue)hue.value=Math.round(h);
@@ -544,7 +553,8 @@ function showStart(){
       '<div class="home-hue-wrap"><input class="home-hue" id="menuHue" type="range" min="0" max="359" value="335" orient="vertical" aria-label="Color del jabón"></div></div>'+
     '<div class="home-right"><div class="home-top">'+
       '<button id="bSettings" aria-label="Configuración" title="Configuración">⚙</button>'+
-      '<button id="bGuide" aria-label="Guía" title="Guía">!</button></div>'+
+      '<button id="bGuide" aria-label="Guía" title="Guía">!</button>'+
+      '<button id="bAdmin" aria-label="Administración" title="Panel de administración">★</button></div>'+
       '<div class="home-actions"><button id="bBosses">Jefes</button><button id="bAdv">Defensa</button><button id="bPlay">Jugar</button><button id="bCre">Creativo</button></div></div></div>';
   msg.style.display='flex';msg.style.zIndex='';
   document.getElementById('bPlay').onclick=showAdventureDifficulty;
@@ -555,13 +565,36 @@ function showStart(){
   document.getElementById('menuHue').oninput=homeHueSet;
   document.getElementById('bSettings').onclick=openSettings;
   document.getElementById('bGuide').onclick=()=>{document.getElementById('guide').style.display='flex'};
+  document.getElementById('bAdmin').onclick=openAdminPanel;
   /* En la primera carga CUST se declara más adelante: actualizar después de inicializarlo. */
   requestAnimationFrame(()=>{try{homeSoapSync()}catch(_){}});
 }
 const BOSS_ROSTER=['Dengue','Tuberculosis','Malaria','Gripe Española','Viruela','Ébola','Peste Negra','Rabia','SIDA','COVID-19','Cáncer'];
+function openAdminPanel(){renderAdminPanel();document.getElementById('adminPanel').style.display='flex'}
+function renderAdminPanel(){
+  const body=document.getElementById('adminbody');
+  if(!ADMIN_UNLOCKED){
+    body.innerHTML='<p>Ingresá el código de administrador para abrir las funciones especiales.</p><div class="admin-row"><label for="adminCode"><b>Código</b></label><input id="adminCode" type="password" autocomplete="off" placeholder="Código de acceso" style="width:min(230px,60%)"></div><div class="admin-error" id="adminError"></div><button id="adminUnlockBtn">Desbloquear panel</button>';
+    const unlock=()=>{const input=document.getElementById('adminCode'),err=document.getElementById('adminError');if(!input||input.value!==ADMIN_CODE){if(err)err.textContent='Código incorrecto.';if(input){input.value='';input.focus()}return}ADMIN_UNLOCKED=true;DENGUE_REWARD_UNLOCKED=true;ADMIN_GOLDEN_SOAP=true;ADMIN_GOLD_STYLE='gold';CUST.txt='FAUSTO';saveCust();try{localStorage.setItem('soapDengueReward','1')}catch(e){}saveAdminPrefs();renderAdminPanel();homeSoapSync()};
+    document.getElementById('adminUnlockBtn').onclick=unlock;document.getElementById('adminCode').addEventListener('keydown',e=>{if(e.key==='Enter')unlock()});
+  }else{
+    body.innerHTML='<p><b>Acceso concedido.</b> Los desbloqueos de administrador quedan guardados en este dispositivo.</p>'+
+      '<div class="admin-row"><label for="adminGoldToggle"><b>Jabón dorado</b><br><small>Activar o desactivar el acabado dorado</small></label><input id="adminGoldToggle" type="checkbox" '+(ADMIN_GOLDEN_SOAP?'checked':'')+'></div>'+
+      '<div class="admin-row"><label for="adminGoldStyle"><b>Tono del dorado</b></label><select id="adminGoldStyle"><option value="gold" '+(ADMIN_GOLD_STYLE==='gold'?'selected':'')+'>Oro clásico</option><option value="rose" '+(ADMIN_GOLD_STYLE==='rose'?'selected':'')+'>Oro rosado</option><option value="champagne" '+(ADMIN_GOLD_STYLE==='champagne'?'selected':'')+'>Champán</option></select></div>'+
+      '<div class="admin-row"><label for="adminSoapName"><b>Nombre del jabón</b><br><small>Hasta 6 caracteres</small></label><input id="adminSoapName" maxlength="6" value="'+esc(SOAPTXT())+'" style="width:125px;text-transform:uppercase"></div>'+
+      '<button id="adminSaveName">Guardar nombre</button><button id="adminBosses">Elegir jefe para combatir</button>'+
+      '<p class="admin-note">Se desbloquean todas las recompensas disponibles y todos los nombres de la lista de jefes. Los jefes que aún no tienen combate propio usan por ahora el combate base de prueba; sus habilidades únicas todavía no están implementadas.</p>';
+    document.getElementById('adminGoldToggle').onchange=e=>{ADMIN_GOLDEN_SOAP=e.target.checked;saveAdminPrefs();homeSoapSync()};
+    document.getElementById('adminGoldStyle').onchange=e=>{ADMIN_GOLD_STYLE=e.target.value;saveAdminPrefs();homeSoapSync()};
+    document.getElementById('adminSaveName').onclick=()=>{const v=Array.from(document.getElementById('adminSoapName').value.toUpperCase()).slice(0,6).join('');CUST.txt=v||'FAUSTO';saveCust();homeSoapSync();document.getElementById('adminSoapName').value=CUST.txt};
+    document.getElementById('adminBosses').onclick=()=>{document.getElementById('adminPanel').style.display='none';showBosses()};
+  }
+}
+document.getElementById('adminClose').onclick=()=>{document.getElementById('adminPanel').style.display='none'};
 function showBosses(){
-  box.innerHTML='<h1>👑 Jefes</h1><p>Enfrentate a cada jefe y desbloqueá recompensas permanentes.</p><div class="boss-list">'+BOSS_ROSTER.map((n,i)=>'<button '+(i===0?'class="available"':'disabled')+' data-boss="'+i+'">'+(i===0?'🦟 ':'🔒 ')+n+'<small>'+(i===0?(DENGUE_REWARD_UNLOCKED?'Recompensa desbloqueada':'Disponible · 500 de vida'):'Próximamente')+'</small></button>').join('')+'</div><div class="mbtns"><button id="bossBack">Volver</button></div>';
-  msg.style.display='flex';box.querySelector('[data-boss="0"]').onclick=startDengueBoss;document.getElementById('bossBack').onclick=showStart;
+  const unlocked=ADMIN_UNLOCKED;
+  box.innerHTML='<h1>👑 Jefes</h1><p>Enfrentate a cada jefe y desbloqueá recompensas permanentes.</p><div class="boss-list">'+BOSS_ROSTER.map((n,i)=>'<button '+((i===0||unlocked)?'class="available"':'disabled')+' data-boss="'+i+'">'+((i===0||unlocked)?'🦟 ':'🔒 ')+n+'<small>'+(i===0?(DENGUE_REWARD_UNLOCKED?'Recompensa desbloqueada':'Disponible · 250 de vida'):(unlocked?'Prueba admin · 250 de vida':'Próximamente'))+'</small></button>').join('')+'</div><div class="mbtns"><button id="bossBack">Volver</button></div>';
+  msg.style.display='flex';box.querySelectorAll('[data-boss]').forEach(btn=>{btn.onclick=()=>{const i=Number(btn.dataset.boss);if(i===0||ADMIN_UNLOCKED)startDengueBoss(i)}});document.getElementById('bossBack').onclick=showStart;
 }
 function showModes(){
   box.innerHTML='<h1>🛡️ Defensa</h1><p>Defendé tu jabón en el modo clásico.</p><div class="mbtns"><button id="mSolo">Jugar defensa</button><button id="mBack">Volver</button></div>';
@@ -663,7 +696,7 @@ function applyPerk(k,allowOver=false,forceLimit=false){
 function exitToMenu(){
   MAP=3200;
   // Cerrar todas las capas antes de reconstruir el menú evita overlays atrapados.
-  for(const id of ['cpanel','settings','custom','warn','pausemenu','guide','pick'])document.getElementById(id).style.display='none';
+  for(const id of ['cpanel','settings','custom','warn','pausemenu','guide','pick','adminPanel'])document.getElementById(id).style.display='none';
   document.getElementById('cbtn').style.display='none';
   if(JOY)JOY.style.display='none';
   document.body.classList.remove('adv-creative');
@@ -1042,7 +1075,7 @@ function processDeaths(){
   for(const c of born){
     for(let k=0;k<8;k++){
       c.x=Math.max(c.r,Math.min(BXMAX()-c.r,c.x));c.y=Math.max(c.r,Math.min(BYMAX()-c.r,c.y));
-      for(const o of g.viruses.concat(born)){if(o===c||o.dead||o.boss)continue;const dx=c.x-o.x,dy=c.y-o.y,dd=Math.hypot(dx,dy)||.01,mn=(c.r+o.r)*.85;if(dd<mn){c.x+=dx/dd*(mn-dd);c.y+=dy/dd*(mn-dd)}}
+      for(const o of g.viruses.concat(born)){if(o===c||o.dead)continue;const dx=c.x-o.x,dy=c.y-o.y,dd=Math.hypot(dx,dy)||.01,mn=(c.r+o.r)*(o.boss?1.08:.85);if(dd<mn){c.x+=dx/dd*(mn-dd);c.y+=dy/dd*(mn-dd)}}
     }
     c.x=Math.max(c.r,Math.min(BXMAX()-c.r,c.x));c.y=Math.max(c.r,Math.min(BYMAX()-c.r,c.y));
     if(!g.creative){const spc=safeAt(c.x,c.y,c.r);c.x=spc[0];c.y=spc[1]}g.viruses.push(c);
@@ -1810,12 +1843,17 @@ function drawWorldGrid(){
   ctx.restore();
 }
 function spawnDenguePower(){
-  const all=Object.keys(PW).filter(k=>['n','b','s'].includes(PW[k].t||'n')&&!['nuke','bossgood','bossbad','mosquitoAlly','dengueSwarm'].includes(k));
-  if(Math.random()<.085){const k='dengueSwarm',m=28*S;g.powers.push({k,t:'perk',x:m+Math.random()*(MAP-2*m),y:m+Math.random()*(MAP-2*m),r:24*S,life:9,max:9});return}
-  const tier=Math.random()<.48?'n':Math.random()<.5?'b':'s';
-  const pool=all.filter(k=>(PW[k].t||'n')===tier);if(!pool.length)return;
-  const k=pool[Math.floor(Math.random()*pool.length)],m=28*S;
-  g.powers.push({k,t:tier,x:m+Math.random()*(MAP-2*m),y:m+Math.random()*(MAP-2*m),r:24*S,life:9,max:9});
+  // En este combate también pueden salir powers temporales, dorados, limpieza nuclear y exclusivos de tiempo.
+  const m=28*S,roll=Math.random();
+  if(roll<.075){const k='dengueSwarm';g.powers.push({k,t:'perk',x:m+Math.random()*(MAP-2*m),y:m+Math.random()*(MAP-2*m),r:24*S,life:9,max:9});return}
+  let pool=[];
+  if(roll<.23){pool=Object.keys(PW).filter(k=>['g','gb'].includes(PW[k].t)&&!['bossgood','bossbad','mosquitoAlly'].includes(k))}
+  else if(roll<.38){pool=['nuke']}
+  else if(roll<.52){pool=Object.keys(XP).map(k=>'B_'+k)}
+  else{pool=Object.keys(PW).filter(k=>['n','s','b'].includes(PW[k].t||'n')&&!['bossgood','bossbad','mosquitoAlly','dengueSwarm'].includes(k))}
+  if(!pool.length)return;
+  const k=pool[Math.floor(Math.random()*pool.length)];
+  g.powers.push({k,t:k.startsWith('B_')?'perk':(PW[k].t||'n'),x:m+Math.random()*(MAP-2*m),y:m+Math.random()*(MAP-2*m),r:24*S,life:9,max:9});
 }
 function spawnDengueLarva(x,y){
   if(g.dengueBugs.filter(b=>!b.dead).length>=24)return;
@@ -1874,14 +1912,16 @@ function drawMosquitoUnits(){
   for(const b of (g.dengueBugs||[]))if(visibleWorld(b.x,b.y,20*S)){if(b.stage==='larva'){ctx.save();ctx.fillStyle='#d7df58';ctx.strokeStyle='#748326';ctx.lineWidth=2*S;ctx.beginPath();ctx.ellipse(b.x,b.y,10*S,6*S,Math.sin(b.ph)*.3,0,6.28);ctx.fill();ctx.stroke();ctx.restore()}else emoji(b.x,b.y,'🦟',25*S)}
 }
 function showDengueVictory(){
-  box.innerHTML='<h1>🏆 ¡Dengue derrotado!</h1><p>Desbloqueaste para siempre el modificador dorado <b>🦟 Mosquito aliado</b>.</p><p>Cuando lo recojas en Aventura o Defensa, tu próximo disparo invocará una larva que evoluciona en un mosquito con 3 vidas y hasta 10 ataques.</p><div class="mbtns"><button id="dengueRetry">Repetir jefe</button><button id="dengueBossMenu">Jefes</button><button id="dengueHome">Menú</button></div>';
+  const defeated=g.adminBossName||'Dengue';
+  box.innerHTML='<h1>🏆 ¡'+esc(defeated)+' derrotado!</h1><p>El combate terminó. La recompensa exclusiva dorada <b>🦟 Mosquito aliado</b> está desbloqueada.</p><p>Cuando lo recojas en Aventura o Defensa, tu próximo disparo invocará una larva que evoluciona en un mosquito con 3 vidas y hasta 10 ataques.</p><div class="mbtns"><button id="dengueRetry">Repetir jefe</button><button id="dengueBossMenu">Jefes</button><button id="dengueHome">Menú</button></div>';
   msg.style.display='flex';msg.style.zIndex='20';
-  document.getElementById('dengueRetry').onclick=startDengueBoss;document.getElementById('dengueBossMenu').onclick=showBosses;document.getElementById('dengueHome').onclick=exitToMenu;
+  document.getElementById('dengueRetry').onclick=()=>startDengueBoss(g.adminBossIndex||0);document.getElementById('dengueBossMenu').onclick=showBosses;document.getElementById('dengueHome').onclick=exitToMenu;
 }
-function startDengueBoss(){
-  MAP=4000;D=DIFFS.hard;reset();g.adv=true;g.dengueMode=true;g.wave=1;g.spawn=.5;g.advPowT=4;g.nextBoss=1e9;g.lives=5;
+function startDengueBoss(bossIndex=0){
+  const safeIndex=ADMIN_UNLOCKED?Math.max(0,Math.min(BOSS_ROSTER.length-1,Number(bossIndex)||0)):0;
+  MAP=4000;D=DIFFS.hard;reset();g.adminBossIndex=safeIndex;g.adminBossName=BOSS_ROSTER[safeIndex]||'Dengue';g.adv=true;g.dengueMode=true;g.wave=1;g.spawn=.5;g.advPowT=4;g.nextBoss=1e9;g.lives=5;
   PX=MAP/2;PY=MAP/2;FACE=-Math.PI/2;MOVE={x:0,y:0};DK={};
-  const n0=g.viruses.length;spawnVirus(true,500,'dengue');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+560*S;b.y=MAP/2+320*S;b.r*=1.65;b.larvaT=6.5;b.sp=18*S;b.chasing=false}
+  const n0=g.viruses.length;spawnVirus(true,250,'dengue');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+560*S;b.y=MAP/2+320*S;b.r*=1.65;b.larvaT=6.5;b.sp=18*S;b.chasing=false}
   startGame();syncMovementControls();document.getElementById('cbtn').style.display='none';
 }
 function startAdventure(creative=false){
@@ -1978,13 +2018,28 @@ function update(dt){
   const minBX=AOX()-50,maxBX=AOX()+W+50,minBY=AOY()-50,maxBY=AOY()+H+50;
   for(let i=0;i<g.bubbles.length;i++){const b=g.bubbles[i];if(!b.dead&&b.x>minBX&&b.x<maxBX&&b.y>minBY&&b.y<maxBY)g.bubbles[keptBubbles++]=b}
   g.bubbles.length=keptBubbles;
+  // Las larvas y mosquitos del jefe son objetivos: las burbujas pueden eliminarlos.
+  if(g.dengueMode){for(const bug of g.dengueBugs){if(bug.dead)continue;for(const b of g.bubbles){if(b.dead)continue;if(Math.hypot(b.x-bug.x,b.y-bug.y)<(bug.stage==='larva'?12:17)*S+b.r){bug.hp-=b.d||1;b.dead=bug.hp<=0;if(b.bomb)blast(b.x,b.y,b.d+1,b);b.dead=b.dead||false; if(bug.dead)pop(bug.x,bug.y,'#d7df58',12);else pop(b.x,b.y,'#ffffff',5);b.dead=true;break}}}}
   for(const v of g.viruses){
     v.ph+=dt;v.flash-=dt;v.grace-=dt;v.absorb-=dt;if(v.dead)continue;
     const dpl=Math.hypot(cx-v.x,cy-v.y)||1;let tx=cx,ty=cy;
     for(const al of g.allies){if(Math.hypot(al.x-v.x,al.y-v.y)<Math.hypot(tx-v.x,ty-v.y)){tx=al.x;ty=al.y}}
     const dx=tx-v.x,dy=ty-v.y,d=Math.hypot(dx,dy)||1;
     const fz=(g.fx.freeze>0?.08:1)*(g.fx.haste>0?1.6:1)*cval('vspd')*(v.boss?1:D.speed)*(g.fx.tfreeze>0?0:1);let mx=dx/d,my=dy/d;if(v.boss&&v.btype==='dengue'&&g.dengueMode){bossSummon(v,dt);if(v.chasing){const bd=Math.hypot(cx-v.x,cy-v.y)||1;mx=(cx-v.x)/bd;my=(cy-v.y)/bd}else{mx=0;my=0}}else{if(v.btype=='glot'){const m=kite(v,dt);mx=m[0];my=m[1]}if(v.boss)bossSummon(v,dt);if(v.type=='med'){const m=medMove(v,dpl,dt);mx=m[0];my=m[1]}}
+    if(!v.boss){
+      const nx=v.x+mx*v.sp*fz*dt,ny=v.y+my*v.sp*fz*dt;
+      for(const boss of g.viruses){if(!boss.boss||boss.dead||boss===v)continue;const dx=nx-boss.x,dy=ny-boss.y,dd=Math.hypot(dx,dy)||.01,minD=v.r+boss.r+5*S;if(dd<minD){
+        // Desvío tangencial: el virus rodea al jefe en vez de atravesarlo.
+        const tx=-dy/dd,ty=dx/dd,tx2=-tx,ty2=-ty;
+        const score1=(tx*(tx-v.x+boss.x)+ty*(ty-v.y+boss.y));
+        const toX=tx*(tx*mx+ty*my>=0?1:-1),toY=ty*(tx*mx+ty*my>=0?1:-1);
+        const altX=-toX,altY=-toY;const dot1=toX*mx+toY*my,dot2=altX*mx+altY*my;
+        if(dot2>dot1){mx=altX;my=altY}else{mx=toX;my=toY}
+      }}
+    }
     v.x+=mx*v.sp*fz*dt+(v.kx||0)*dt;v.y+=my*v.sp*fz*dt+(v.ky||0)*dt;
+    // La separación final impide que un virus común quede dentro del cuerpo de un jefe.
+    if(!v.boss){for(const boss of g.viruses){if(!boss.boss||boss.dead)continue;const dx=v.x-boss.x,dy=v.y-boss.y,dd=Math.hypot(dx,dy)||.01,minD=v.r+boss.r+2*S;if(dd<minD){v.x=boss.x+dx/dd*minD;v.y=boss.y+dy/dd*minD}}}
     if(v.type=='med'||v.btype=='glot'){if(v.in){v.x=Math.max(v.r,Math.min(BXMAX()-v.r,v.x));v.y=Math.max(v.r,Math.min(BYMAX()-v.r,v.y))}else if(v.x>v.r&&v.x<BXMAX()-v.r&&v.y>v.r&&v.y<BYMAX()-v.r)v.in=true}
     if(v.kx){v.kx*=.9;v.ky*=.9}
     for(const b of g.bubbles){
@@ -2084,7 +2139,7 @@ function drawSoap(){
   ctx.globalAlpha=1;
   if(g.inv>0&&Math.floor(g.inv*12)%2)ctx.globalAlpha=.35;
   ctx.save();ctx.translate(cx,cy);ctx.rotate(g.rot);
-  const C=SOAPC[CUST.col];let soapFill=C[0];
+  const C=currentSoapPalette();let soapFill=C[0];
   if(realismLevel()>0){const sg=ctx.createRadialGradient(-w*.32,-h*.47,Math.max(1,w*.025),0,0,w*1.16);sg.addColorStop(0,'rgba(255,255,255,.98)');sg.addColorStop(.2,C[2]);sg.addColorStop(.62,C[0]);sg.addColorStop(1,C[1]);soapFill=sg}
   ctx.fillStyle=soapFill;ctx.strokeStyle=C[1];ctx.lineWidth=4*S;
   ctx.beginPath();soapShape(CUST.shape,w,h,1);ctx.fill();ctx.stroke();
@@ -2093,7 +2148,7 @@ function drawSoap(){
   ctx.beginPath();ctx.ellipse(-w*.28,-h*.43,w*.22,h*.11,-.18,Math.PI,Math.PI*2);ctx.stroke();
   ctx.globalAlpha=.58;ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(w*.34,-h*.3,2.2*S,0,6.28);ctx.fill();ctx.restore();
   ctx.restore();
-  ctx.save();ctx.translate(cx,cy);ctx.rotate(g.rot);ctx.fillStyle=SOAPC[CUST.col][1];ctx.font='900 '+Math.round(20*S*cval('ssize'))+'px "Trebuchet MS","Arial Black",Arial,"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';{const tx=SOAPTXT();let fz=Math.round(20*S*cval('ssize'));while(fz>7&&ctx.measureText(tx).width>w*1.5){fz--;ctx.font='900 '+fz+'px "Trebuchet MS","Arial Black",Arial,"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif'}ctx.fillText(tx,0,2*S)}ctx.restore();
+  ctx.save();ctx.translate(cx,cy);ctx.rotate(g.rot);ctx.fillStyle=C[1];ctx.font='900 '+Math.round(20*S*cval('ssize'))+'px "Trebuchet MS","Arial Black",Arial,"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';{const tx=SOAPTXT();let fz=Math.round(20*S*cval('ssize'));while(fz>7&&ctx.measureText(tx).width>w*1.5){fz--;ctx.font='900 '+fz+'px "Trebuchet MS","Arial Black",Arial,"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif'}ctx.fillText(tx,0,2*S)}ctx.restore();
   ctx.globalAlpha=1;
 }
 function bshapePath(x,y,r,s){const c=ctx;c.beginPath();if(s=='oval')c.ellipse(x,y,r*1.15,r*.85,0,0,6.28);else if(s=='square')c.roundRect(x-r*.9,y-r*.9,r*1.8,r*1.8,r*.35);else if(s=='diamond'){c.moveTo(x,y-r*1.1);c.lineTo(x+r*1.1,y);c.lineTo(x,y+r*1.1);c.lineTo(x-r*1.1,y);c.closePath()}else c.arc(x,y,r,0,6.28)}
