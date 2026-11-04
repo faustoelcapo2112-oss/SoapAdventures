@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Soap Adventures v.7.0</title>
+<title>Soap Adventures v.7.01</title>
 <meta name="theme-color" content="#e879a0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -19,7 +19,7 @@ html,body{height:100%;margin:0;background:var(--bg);overflow:hidden;touch-action
 canvas{display:block;width:100%;height:100%}
 #c{position:relative;z-index:0}
 #fx{z-index:1}
-#msg{position:fixed;inset:0;display:none;align-items:center;justify-content:center;text-align:center;pointer-events:none}
+#msg{position:fixed;inset:0;display:none;align-items:center;justify-content:center;text-align:center;pointer-events:none;z-index:3}
 #msg div{background:var(--panel);border:4px solid #c9405f;border-radius:28px;padding:22px 30px;box-shadow:0 6px 0 #c9405f}
 /* El panel completo debe recibir toques; el fondo sigue dejando pasar eventos. */
 #msg>div{pointer-events:auto}
@@ -39,7 +39,7 @@ canvas{display:block;width:100%;height:100%}
 .cbs{display:flex;flex-wrap:wrap;gap:6px}
 .cbs button{font:inherit;font-size:14px;background:#fff;color:var(--ink);border:3px solid #c9405f;border-radius:12px;padding:5px 9px;cursor:pointer}
 .cbs button.on{background:#e8426d;color:#fff}.cnum{font:inherit;font-size:16px;min-width:90px;width:125px;max-width:100%;box-sizing:border-box;padding:6px;border:3px solid #c9405f;border-radius:10px;color:var(--ink);background:#fff;touch-action:pan-y}.cstat{margin:9px 0}.cstat label{display:block;font-weight:bold;margin-bottom:4px}.ctabs{position:sticky;top:0;background:var(--panel);padding:5px 0;z-index:2}.ctabs button{flex:1}
-#gear{position:fixed;top:calc(8px + env(safe-area-inset-top,0px));right:10px;z-index:4;width:44px;height:44px;border-radius:14px;border:3px solid #8a1f43;background:#fff4f7;font-size:24px;cursor:pointer;padding:0;box-shadow:0 3px 0 #8a1f43;pointer-events:auto}
+#gear{position:fixed;top:calc(8px + env(safe-area-inset-top,0px));right:10px;z-index:6;width:44px;height:44px;border-radius:14px;border:3px solid #8a1f43;background:#fff4f7;font-size:24px;cursor:pointer;padding:0;box-shadow:0 3px 0 #8a1f43;pointer-events:auto}
 #settings,#warn{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(138,31,67,.45);z-index:8;padding:12px;box-sizing:border-box}#adminPanel{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(24,30,49,.72);z-index:12;padding:12px;box-sizing:border-box}#adminPanel .gbox{width:min(500px,100%);max-height:100%;background:linear-gradient(160deg,#fffdf5,#fff4d8);border:2px solid #d2a12d;box-shadow:0 8px 30px rgba(96,62,7,.25);color:#604514}#adminPanel .gbox h2{background:linear-gradient(90deg,#fff0b3,#ffe2a1);color:#77500a;border-radius:14px;padding:9px}#adminPanel button{font:inherit;font-weight:750;font-size:15px;background:linear-gradient(180deg,#ffdf75,#e9ae25);color:#593b08;border:1px solid #bb8511;border-radius:12px;padding:9px 12px;margin:5px 3px;box-shadow:0 3px 0 rgba(111,76,9,.18);cursor:pointer}#adminPanel input,#adminPanel select{font:inherit;color:#563d12;background:#fffdf5;border:2px solid #d8b65f;border-radius:9px;padding:8px;max-width:100%;box-sizing:border-box}#adminPanel .admin-row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:9px 0;padding:9px 10px;background:rgba(255,220,130,.2);border:1px solid rgba(190,145,40,.22);border-radius:12px}#adminPanel .admin-note{font-size:13px;color:#806c45;margin:8px 2px}#adminPanel .unlocked-code-list{margin-top:14px;padding-top:10px;border-top:2px solid rgba(190,145,40,.3)}#adminPanel .unlocked-code-list h3{margin:4px 2px;color:#77500a}#adminPanel .unlocked-code-list>p{margin:4px 2px 10px;font-size:13px;color:#806c45}#adminPanel .admin-error{color:#b32145;font-weight:800;min-height:1.3em}#custom{z-index:9 !important}#settings .gbox,#warn .gbox{max-height:100%}#setbody button,#settings .bk,#warn button{font:inherit;font-weight:bold;font-size:17px;background:#e8426d;color:#fff4f7;border:4px solid #8a1f43;border-radius:16px;padding:8px 14px;margin:5px 0;box-shadow:0 4px 0 #8a1f43;cursor:pointer;display:block;width:100%}#setbody button[data-kc],#setbody button[data-kr],#setbody button[data-kb]{display:inline-block;width:auto}#warn .mbtns{display:flex;gap:10px;justify-content:center;margin-top:12px}#warn .mbtns button{width:auto;display:inline-block}#dbg{position:fixed;left:8px;bottom:70px;display:none;z-index:9;background:rgba(0,0,0,.72);color:#fff;font:12px/1.4 monospace;padding:6px 8px;border-radius:8px;pointer-events:none;white-space:pre}
 #joy{position:fixed;left:16px;bottom:16px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.35);border:3px solid #8a1f43;display:none;z-index:4;touch-action:none;box-sizing:border-box}
 #knob{position:absolute;width:56px;height:56px;border-radius:50%;background:#e8426d;border:3px solid #8a1f43;left:34px;top:34px;box-sizing:border-box;pointer-events:none}
@@ -227,7 +227,7 @@ button:active{filter:brightness(.97)}
 .gbox{border-radius:26px!important}
 #msg>div:after{width:25px;height:25px;right:15px;bottom:13px}
 #guide .gbox h2,#cpanel .gbox h2,#settings .gbox h2{padding:7px 34px 9px;border-radius:14px;background:linear-gradient(90deg,rgba(255,213,226,.78),rgba(255,240,245,.45));color:#8a3658}
-#msg #box:before{content:'SOAP ADVENTURES  •  BUBBLE SURVIVAL  •  v.7.0';color:#d64c7b;letter-spacing:1.8px}
+#msg #box:before{content:'SOAP ADVENTURES  •  BUBBLE SURVIVAL  •  v.7.01';color:#d64c7b;letter-spacing:1.8px}
 #msg .mbtns button:first-child{background:linear-gradient(135deg,#f77da2,#df4778);box-shadow:0 5px 0 #bd456c,0 9px 17px rgba(205,61,111,.2)}
 #msg .mbtns button:not(:first-child),#setbody button,#msg .dopt button{background:linear-gradient(180deg,#fff 0%,#f7edf2 100%)}
 #pick{background:radial-gradient(circle at 12% 18%,rgba(129,224,243,.25) 0 7px,transparent 9px),radial-gradient(circle at 88% 78%,rgba(129,224,243,.22) 0 10px,transparent 12px),rgba(39,29,49,.66)}
@@ -246,6 +246,10 @@ html,body{font-family:"Trebuchet MS","Arial Rounded MT Bold",Arial,"Apple Color 
 :fullscreen body{height:100dvh}
 #fx{position:fixed;left:0;top:0;width:0;height:0;display:none;pointer-events:none;touch-action:none}
 #setbody button[data-shp]{display:inline-block;width:auto}
+
+/* v7.01: los controles HTML quedan por encima del postprocesado WebGL; el engranaje también queda accesible durante la elección de mejoras. */
+#msg{z-index:3}
+#gear{z-index:6}
 /* Modo Rendimiento: sin desenfoques de fondo sobre el canvas que se anima (cada fotograma obliga al navegador a repetirlos). */
 html.perf #gear,html.perf #cbtn,html.perf #ver,html.perf #msg,html.perf #guide,html.perf #custom,html.perf #cpanel,html.perf #settings,html.perf #warn,html.perf #pick,html.perf #pausemenu,html.perf #adminPanel{-webkit-backdrop-filter:none;backdrop-filter:none}
 body.adv-creative #cbtn{left:auto;right:14px}
@@ -510,7 +514,7 @@ body:has(#msg .home-shell) #gear,body:has(#msg .home-shell) #ver{display:none!im
 #msg:has(.home-shell) .home-soap .soap-inner{transform:rotate(90deg)!important;width:58%!important;height:62%!important;white-space:nowrap!important;overflow:visible!important}
 </style></head><body>
 <canvas id="c"></canvas><canvas id="fx"></canvas><div id="gameToast" role="status" aria-live="polite"></div>
-<div id="ver">v.7.0</div>
+<div id="ver">v.7.01</div>
 <div id="guide"><div class="gbox"><h2>Guía del juego</h2><div class="gbody"><h3>Índice</h3><p>📌 <b>Modos:</b> Defensa, Aventura y Creativo. <b>Combate:</b> virus, jefes y oleadas. <b>Powers:</b> comunes, dorados, especiales y exclusivos. <b>Personalización:</b> jabón, burbujas, acabados y estelas. <b>Extras:</b> controles, ajustes y rendimiento.</p><h3>1. Modos de juego</h3><p><b>Defensa:</b> sobreviví a oleadas infinitas y jefes programados. <b>Aventura:</b> avanzá por fases con jefes y recompensas. <b>Creativo:</b> probá virus, jefes, powers y modificadores sin límites habituales. Las variantes creativas permiten elegir Aventura o Defensa.</p><h3>2. Virus y jefes de partida</h3><p>Los virus tienen comportamientos y estadísticas diferentes. Los divisores se multiplican al ser derrotados y los médicos curan a otros virus. Los jefes de partida aparecen durante las partidas. La sección <b>BOSSES</b> reúne combates especiales independientes.</p><h3>3. Powers y mejoras</h3><p>Los powers temporales se activan al recogerlos. Las mejoras permanentes se acumulan durante la partida. Los powers dorados y exclusivos pueden desbloquearse mediante jefes o códigos.</p><h3>4. Personalización y códigos</h3><p>En Personalizar podés cambiar forma, color, texto, forma de burbuja, acabado y estela. Los códigos se canjean desde el panel correspondiente; algunos se descubren al vencer jefes. La estela clásica de burbujas está disponible desde el comienzo y sigue tanto al jabón como a sus disparos.</p><h3>5. Ajustes y controles</h3><p>Configuración permite modificar audio, gráficos, shaders, resolución, controles táctiles y mando. Los shaders afectan a toda la escena, incluidos poderes, escudos, explosiones y efectos visuales.</p>
 <h3>BOSSES</h3><p>Los <b>jefes</b> aparecen durante las partidas. Los <b>BOSSES</b> son combates especiales elegibles desde el menú.</p><h3>Cómo se juega</h3>
 <p>Sos el jabón del centro. Tocá o arrastrá el dedo para lanzar burbujas hacia ese lugar. Cada burbuja hace 1 de daño base.</p>
@@ -761,7 +765,7 @@ function showStart(){
       '<button id="bSettings" aria-label="Configuración" title="Configuración"><span class="home-icon">⚙️</span></button>'+
       '<button id="bGuide" aria-label="Guía" title="Guía"><span class="home-icon home-guide-icon">!</span></button>'+
       '<button id="bAdmin" aria-label="Códigos" title="Códigos"><span class="home-icon">⌨️</span></button></div>'+
-    '<div class="home-logo" title="¿Hay algo oculto?"><span class="home-logo-soap">SOAP</span><span class="home-logo-adventures">ADVENTURES</span><span class="home-logo-version">v.7.0</span></div><div class="home-shell">'+
+    '<div class="home-logo" title="¿Hay algo oculto?"><span class="home-logo-soap">SOAP</span><span class="home-logo-adventures">ADVENTURES</span><span class="home-logo-version">v.7.01</span></div><div class="home-shell">'+
     '<div class="home-left"><div class="home-soap-wrap">'+
       '<button class="home-soap" id="homeSoap" aria-label="Personalizar jabón"><span class="soap-inner" id="homeSoapText">SOAP</span></button>'+
       '<div class="home-name" id="homeName" aria-hidden="true">SOAP</div></div>'+
