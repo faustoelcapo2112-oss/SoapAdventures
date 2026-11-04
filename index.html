@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Soap Adventures v.7.01</title>
+<title>Soap Adventures v.7.02</title>
 <meta name="theme-color" content="#e879a0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -227,7 +227,7 @@ button:active{filter:brightness(.97)}
 .gbox{border-radius:26px!important}
 #msg>div:after{width:25px;height:25px;right:15px;bottom:13px}
 #guide .gbox h2,#cpanel .gbox h2,#settings .gbox h2{padding:7px 34px 9px;border-radius:14px;background:linear-gradient(90deg,rgba(255,213,226,.78),rgba(255,240,245,.45));color:#8a3658}
-#msg #box:before{content:'SOAP ADVENTURES  •  BUBBLE SURVIVAL  •  v.7.01';color:#d64c7b;letter-spacing:1.8px}
+#msg #box:before{content:'SOAP ADVENTURES  •  BUBBLE SURVIVAL  •  v.7.02';color:#d64c7b;letter-spacing:1.8px}
 #msg .mbtns button:first-child{background:linear-gradient(135deg,#f77da2,#df4778);box-shadow:0 5px 0 #bd456c,0 9px 17px rgba(205,61,111,.2)}
 #msg .mbtns button:not(:first-child),#setbody button,#msg .dopt button{background:linear-gradient(180deg,#fff 0%,#f7edf2 100%)}
 #pick{background:radial-gradient(circle at 12% 18%,rgba(129,224,243,.25) 0 7px,transparent 9px),radial-gradient(circle at 88% 78%,rgba(129,224,243,.22) 0 10px,transparent 12px),rgba(39,29,49,.66)}
@@ -247,7 +247,7 @@ html,body{font-family:"Trebuchet MS","Arial Rounded MT Bold",Arial,"Apple Color 
 #fx{position:fixed;left:0;top:0;width:0;height:0;display:none;pointer-events:none;touch-action:none}
 #setbody button[data-shp]{display:inline-block;width:auto}
 
-/* v7.01: los controles HTML quedan por encima del postprocesado WebGL; el engranaje también queda accesible durante la elección de mejoras. */
+/* v7.02: los controles HTML quedan por encima del postprocesado WebGL; el engranaje también queda accesible durante la elección de mejoras. */
 #msg{z-index:3}
 #gear{z-index:6}
 /* Modo Rendimiento: sin desenfoques de fondo sobre el canvas que se anima (cada fotograma obliga al navegador a repetirlos). */
@@ -514,7 +514,7 @@ body:has(#msg .home-shell) #gear,body:has(#msg .home-shell) #ver{display:none!im
 #msg:has(.home-shell) .home-soap .soap-inner{transform:rotate(90deg)!important;width:58%!important;height:62%!important;white-space:nowrap!important;overflow:visible!important}
 </style></head><body>
 <canvas id="c"></canvas><canvas id="fx"></canvas><div id="gameToast" role="status" aria-live="polite"></div>
-<div id="ver">v.7.01</div>
+<div id="ver">v.7.02</div>
 <div id="guide"><div class="gbox"><h2>Guía del juego</h2><div class="gbody"><h3>Índice</h3><p>📌 <b>Modos:</b> Defensa, Aventura y Creativo. <b>Combate:</b> virus, jefes y oleadas. <b>Powers:</b> comunes, dorados, especiales y exclusivos. <b>Personalización:</b> jabón, burbujas, acabados y estelas. <b>Extras:</b> controles, ajustes y rendimiento.</p><h3>1. Modos de juego</h3><p><b>Defensa:</b> sobreviví a oleadas infinitas y jefes programados. <b>Aventura:</b> avanzá por fases con jefes y recompensas. <b>Creativo:</b> probá virus, jefes, powers y modificadores sin límites habituales. Las variantes creativas permiten elegir Aventura o Defensa.</p><h3>2. Virus y jefes de partida</h3><p>Los virus tienen comportamientos y estadísticas diferentes. Los divisores se multiplican al ser derrotados y los médicos curan a otros virus. Los jefes de partida aparecen durante las partidas. La sección <b>BOSSES</b> reúne combates especiales independientes.</p><h3>3. Powers y mejoras</h3><p>Los powers temporales se activan al recogerlos. Las mejoras permanentes se acumulan durante la partida. Los powers dorados y exclusivos pueden desbloquearse mediante jefes o códigos.</p><h3>4. Personalización y códigos</h3><p>En Personalizar podés cambiar forma, color, texto, forma de burbuja, acabado y estela. Los códigos se canjean desde el panel correspondiente; algunos se descubren al vencer jefes. La estela clásica de burbujas está disponible desde el comienzo y sigue tanto al jabón como a sus disparos.</p><h3>5. Ajustes y controles</h3><p>Configuración permite modificar audio, gráficos, shaders, resolución, controles táctiles y mando. Los shaders afectan a toda la escena, incluidos poderes, escudos, explosiones y efectos visuales.</p>
 <h3>BOSSES</h3><p>Los <b>jefes</b> aparecen durante las partidas. Los <b>BOSSES</b> son combates especiales elegibles desde el menú.</p><h3>Cómo se juega</h3>
 <p>Sos el jabón del centro. Tocá o arrastrá el dedo para lanzar burbujas hacia ese lugar. Cada burbuja hace 1 de daño base.</p>
@@ -765,7 +765,7 @@ function showStart(){
       '<button id="bSettings" aria-label="Configuración" title="Configuración"><span class="home-icon">⚙️</span></button>'+
       '<button id="bGuide" aria-label="Guía" title="Guía"><span class="home-icon home-guide-icon">!</span></button>'+
       '<button id="bAdmin" aria-label="Códigos" title="Códigos"><span class="home-icon">⌨️</span></button></div>'+
-    '<div class="home-logo" title="¿Hay algo oculto?"><span class="home-logo-soap">SOAP</span><span class="home-logo-adventures">ADVENTURES</span><span class="home-logo-version">v.7.01</span></div><div class="home-shell">'+
+    '<div class="home-logo" title="¿Hay algo oculto?"><span class="home-logo-soap">SOAP</span><span class="home-logo-adventures">ADVENTURES</span><span class="home-logo-version">v.7.02</span></div><div class="home-shell">'+
     '<div class="home-left"><div class="home-soap-wrap">'+
       '<button class="home-soap" id="homeSoap" aria-label="Personalizar jabón"><span class="soap-inner" id="homeSoapText">SOAP</span></button>'+
       '<div class="home-name" id="homeName" aria-hidden="true">SOAP</div></div>'+
@@ -2537,7 +2537,6 @@ function drawMalariaCell(v){
   if(v.boss){ctx.save();ctx.fillStyle='#6a1736';ctx.font='900 '+Math.max(12,Math.round(15*S))+'px system-ui,Arial,sans-serif';ctx.textAlign='center';ctx.fillText('🦠 MALARIA',v.x,v.y-r*1.42);ctx.restore()}const bw=r*1.5,bx=v.x-bw/2,by=v.y-r*(v.boss?1.22:1.5)-4;ctx.fillStyle=v.boss?'#fff':'rgba(255,255,255,.9)';ctx.strokeStyle=sc;ctx.lineWidth=2;ctx.fillRect(bx,by,bw,7*S);ctx.fillStyle='#e8426d';ctx.fillRect(bx,by,bw*Math.max(0,v.hp/v.max),7*S);ctx.strokeRect(bx,by,bw,7*S);ctx.fillStyle=sc;ctx.font='bold '+Math.round(13*S)+'px system-ui,Arial,sans-serif';ctx.textAlign='center';ctx.fillText(Math.round(v.hp*10)/10,v.x,by-3);
 }
 function drawVirus(v){
-  if(v.boss&&v.btype==='bacterio'){drawBacteriophageBoss(v);return}
   if(v.boss&&v.btype==='ebola'){drawEbolaWorm(v);return}
   if(v.btype==='malaria'||v.miniMalaria){drawMalariaCell(v);return}
   if(v.boss&&['dengue','tuberculosis','influenza','variola'].includes(v.btype)){drawPathogenBoss(v);return}
@@ -2546,6 +2545,19 @@ function drawVirus(v){
   ctx.save();ctx.translate(v.x,v.y);
   const dx=CWX()-v.x,dy=CWY()-v.y,d=Math.hypot(dx,dy)||1,lx=dx/d,ly=dy/d;
   ctx.rotate(v.boss?Math.atan2(Number(v.vy)||0,Number(v.vx)||1):v.ph*.4);
+  // El Bacteriófago conserva la silueta redonda y agresiva de los jefes
+  // comunes; su detalle distintivo es una cola molecular corta, no una corona.
+  if(v.boss&&v.btype==='bacterio'){
+    ctx.save();ctx.lineCap='round';ctx.lineJoin='round';
+    ctx.strokeStyle='#14586c';ctx.lineWidth=Math.max(3*S,r*.085);
+    for(let i=-1;i<=1;i++){
+      ctx.beginPath();ctx.moveTo(i*r*.13,r*.72);ctx.lineTo(i*r*.2,r*1.12);ctx.stroke();
+      ctx.fillStyle='#5dd7cc';ctx.beginPath();ctx.arc(i*r*.2,r*1.12,Math.max(2*S,r*.075),0,6.28);ctx.fill();
+    }
+    ctx.fillStyle='#35aeb0';ctx.strokeStyle='#14586c';ctx.lineWidth=2*S;
+    ctx.beginPath();ctx.roundRect(-r*.22,r*.68,r*.44,r*.22,r*.07);ctx.fill();ctx.stroke();
+    ctx.restore();
+  }
   const bodyBase=v.boss?(BTYPEC[v.btype]||BTYPEC.normal)[2]:c;
   if(v.flash>0)ctx.fillStyle='#fff';
   else if(realismLevel()>0){const vg=ctx.createRadialGradient(-r*.31,-r*.38,Math.max(1,r*.04),r*.05,r*.08,r*1.22);vg.addColorStop(0,'rgba(255,255,255,.98)');vg.addColorStop(.16,bodyBase);vg.addColorStop(.68,c);vg.addColorStop(1,dk);ctx.fillStyle=vg}
