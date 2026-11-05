@@ -665,7 +665,7 @@ if(ctx&&typeof ctx.roundRect!=='function')ctx.roundRect=function(x,y,w,h,radius=
 };
 let W,H,S,dpr;
 var MAP=3200,PX=0,PY=0,FACE=0,MOVE={x:0,y:0},DK={};
-var RESV=null,VIEW={k:1,ox:0,oy:0},mpos={x:-1,y:-1},BGIMG=null,BGURL='',DBG=false,fpsV=0,fpsN=0,fpsStart=0;
+var RESV=null,VIEW={k:1,ox:0,oy:0},mpos={x:-1,y:-1},BGIMG=null,BGURL='',DBG=false,fpsV=0,fpsN=0,fpsStart=0,last=performance.now();
 // Debe existir antes de resize()/startGame(), que pueden programar el bucle durante la inicialización.
 var loopScheduled=false;
 let PERF_MODE=false;
@@ -3382,7 +3382,7 @@ function dbgUpd(){if(!g)return;document.getElementById('dbg').textContent='FPS: 
 addEventListener('keydown',e=>{LASTIN='teclado';if(e.code=='F3'){e.preventDefault();DBG=!DBG;document.getElementById('dbg').style.display=DBG?'block':'none';if(DBG)dbgUpd();return}if(KWAIT){e.preventDefault();if(e.code=='Escape'){KWAIT=null;renderKeys('Cancelado.');return}if(e.code=='Tab'){renderKeys('Esa tecla no se puede usar.');return}const owner=Object.keys(KEYS).find(x=>KEYS[x]==e.code&&x!=KWAIT);if(owner){renderKeys('Esa tecla ya es de "'+KACT.find(q=>q[0]==owner)[1]+'".');return}KEYS[KWAIT]=e.code;saveKeys();KWAIT=null;renderKeys('Guardado: '+keyLabel(e.code));return}if(g&&g.started&&e.code===KEYS.pause){e.preventDefault();togglePause();return}
   if(g&&g.started&&g.creative&&e.code===KEYS.creat){e.preventDefault();toggleCreativePanel();return}
   if(!g||!g.started||g.over||g.pick||g.cmenu)return;if(g.adv){advKey(e,true);return}const act=Object.keys(KEYS).find(k=>KEYS[k]===e.code);if(!act)return;e.preventDefault();if(g.cool>0)return;if(act=='shoot'){if(mpos.x<0)shoot(CWX(),CWY()-200*S);else shoot(mpos.x,mpos.y)}else{const d={up:[0,-1],down:[0,1],left:[-1,0],right:[1,0]}[act];shoot(CWX()+d[0]*200*S,CWY()+d[1]*200*S)}g.cool=(g.fx.fast>0?(g.sidaMode?.085:.05):(g.sidaMode?.12:.12))*Math.pow(.85,g.gold.rate*(g.sidaMode?.5:1))*Math.pow(1.18,g.gold.badRate)*(g.fx.slow>0?2.5:1)});cv.addEventListener('pointermove',e=>{mpos=toL(e)});
-addEventListener('keyup',e=>{if(g&&g.adv)advKey(e,false)});fpsStart=performance.now();let last=performance.now();
+addEventListener('keyup',e=>{if(g&&g.adv)advKey(e,false)});fpsStart=performance.now();last=performance.now();
 var RUNTIME_FAILURE=false;
 function showRuntimeFailure(err){
   
