@@ -513,6 +513,17 @@ body:has(#msg .home-shell) #gear,body:has(#msg .home-shell) #ver{display:none!im
 /* v6.85: el nombre del jabón se lee en vertical tanto en el menú como en partida. */
 #msg:has(.home-shell) .home-soap .soap-inner{transform:rotate(90deg)!important;width:58%!important;height:62%!important;white-space:nowrap!important;overflow:visible!important}
 @keyframes soapRainbow{0%{background-position:0% 50%}100%{background-position:100% 50%}}.rainbow-soap{animation:soapRainbow 3s linear infinite!important}
+
+/* v7.14.1: controles de salida y configuración siempre accesibles */
+#gear{z-index:90!important;pointer-events:auto!important;touch-action:manipulation}
+#settings{z-index:100!important;pointer-events:auto!important}
+#settings .gbox,#settings .gbody,#settings button{pointer-events:auto!important}
+#settings .gbox{max-height:calc(100dvh - 24px);overflow:auto;overscroll-behavior:contain}
+#settings .gbody{max-height:calc(100dvh - 150px);overflow:auto;touch-action:pan-y}
+#msg{z-index:40}
+#pausemenu{z-index:50}
+#pick{z-index:55}
+#adminPanel{z-index:70}
 </style></head><body>
 <canvas id="c"></canvas><canvas id="fx"></canvas><div id="gameToast" role="status" aria-live="polite"></div>
 <div id="ver">v.7.14</div>
@@ -3235,7 +3246,19 @@ function draw(){
 var KACT=[['up','Disparar arriba'],['down','Disparar abajo'],['left','Disparar izquierda'],['right','Disparar derecha'],['shoot','Disparar al puntero'],['mup','Aventura: mover arriba'],['mdown','Aventura: mover abajo'],['mleft','Aventura: mover izquierda'],['mright','Aventura: mover derecha'],['ashoot','Aventura: disparar'],['pause','Abrir pausa'],['creat','Abrir menú creativo']];var DEFKEYS={up:'ArrowUp',down:'ArrowDown',left:'ArrowLeft',right:'ArrowRight',shoot:'Space',mup:'KeyW',mdown:'KeyS',mleft:'KeyA',mright:'KeyD',ashoot:'KeyE',pause:'Escape',creat:'KeyC'};
 var KEYS=Object.assign({},DEFKEYS);try{const s=JSON.parse(localStorage.getItem('soapKeys')||'null');if(s)KEYS=Object.assign(KEYS,s)}catch(e){}var KWAIT=null;
 function keyLabel(c){const m={ArrowUp:'⬆️',ArrowDown:'⬇️',ArrowLeft:'⬅️',ArrowRight:'➡️',Space:'Espacio'};return m[c]||String(c).replace(/^Key/,'').replace(/^Digit/,'')}function saveKeys(){try{localStorage.setItem('soapKeys',JSON.stringify(KEYS))}catch(e){}}
-function openSettings(){g.cmenu=true;g.holding=false;document.getElementById('settings').style.display='flex';renderSettings()}function closeSettings(){document.getElementById('settings').style.display='none';g.cmenu=false;KWAIT=null;if(g&&g.paused)document.getElementById('pausemenu').style.display='flex'}
+function openSettings(){
+  if(g){g.cmenu=true;g.holding=false;g.paused=true}
+  const panel=document.getElementById('settings');
+  panel.style.display='flex';panel.style.zIndex='80';
+  document.getElementById('pausemenu').style.display='none';
+  renderSettings();
+}
+function closeSettings(){
+  document.getElementById('settings').style.display='none';
+  if(g){g.cmenu=false;g.paused=false;g.holding=false}
+  KWAIT=null;
+  if(g&&g.started&&g.paused)document.getElementById('pausemenu').style.display='flex';
+}
 function renderSettings(){
   SETVIEW='main';
   document.getElementById('setbody').innerHTML=
@@ -3365,8 +3388,10 @@ function loop(now){
     // El Modo Rendimiento no limita los FPS: abarata cada fotograma, no reduce cuántos se dibujan.
     const dt=Math.min(.05,elapsed/1000);last=now;
     pollPad();padFire();
-    const active=!!(g&&g.started&&!g.paused&&!g.over&&!g.pick&&!g.cmenu&&!RUNTIME_FAILURE);
-    if(active){update(dt);if(g.started&&!g.over&&!RUNTIME_FAILURE)draw();fpsN++}
+    const active=!!(g&&g.started&&!g.over&&!g.pick&&!g.cmenu&&!RUNTIME_FAILURE);
+    if(active&&!g.paused){update(dt);if(g.started&&!g.over&&!RUNTIME_FAILURE)draw();fpsN++}
+    else if(g&&g.started&&!g.over&&!g.cmenu&&!g.pick&&!RUNTIME_FAILURE){draw()}
+    /* El dibujo se mantiene aun cuando la partida está pausada. */
     if(now-fpsStart>=500){fpsV=Math.round(fpsN*1000/(now-fpsStart));fpsN=0;fpsStart=now;if(DBG)dbgUpd()}
   }catch(err){showRuntimeFailure(err)}
   finally{
