@@ -863,7 +863,7 @@ function startGame(){
   // Reinicia cualquier estado de error/pausa y fuerza el primer fotograma.
   RUNTIME_FAILURE=false;
   if(!g)return;
-  g.paused=false;g.cmenu=false;g.holding=false;g.started=true;
+  g.paused=false;g.cmenu=false;g.holding=false;g.pick=null;g.over=false;g.started=true;
   if(bossPowerUnlocked('malariaStartDash')&&CUST.malariaDashEnabled!==false)g.fx.dash=8;
   sfxPlay('start');musicStart();
   msg.style.display='none';document.getElementById('ver').style.display='none';document.getElementById('guide').style.display='none';
@@ -871,7 +871,7 @@ function startGame(){
   document.getElementById('pick').style.display='none';
   // Recalcula el tamaño del canvas al entrar a la partida; así no depende
   // de que el navegador haya disparado resize después de cerrar el menú.
-  try{resize();draw()}catch(err){showRuntimeFailure(err)}
+  try{resize();draw();scheduleLoop()}catch(err){showRuntimeFailure(err)}
 }
 function homeHueSet(){
   const el=document.getElementById('menuHue');if(!el)return;
@@ -3396,6 +3396,14 @@ function showRuntimeFailure(err){
 // Captura también errores de eventos y promesas, no solo los del fotograma.
 addEventListener('error',e=>{if(g&&g.started&&!g.over)showRuntimeFailure(e.error||e.message||'Error inesperado fuera del bucle de juego')});
 addEventListener('unhandledrejection',e=>{if(g&&g.started&&!g.over)showRuntimeFailure(e.reason||'Fallo inesperado de una operación asíncrona')});
+let loopScheduled=false;
+function scheduleLoop(){
+  if(loopScheduled)return;
+  loopScheduled=true;
+  const run=now=>{loopScheduled=false;loop(typeof now==='number'?now:performance.now())};
+  if(CUST.vsync!==false&&typeof requestAnimationFrame==='function')requestAnimationFrame(run);
+  else setTimeout(()=>run(performance.now()),16);
+}
 function loop(now){
   try{
     const elapsed=Math.max(0,now-last);
@@ -3409,12 +3417,11 @@ function loop(now){
     if(now-fpsStart>=500){fpsV=Math.round(fpsN*1000/(now-fpsStart));fpsN=0;fpsStart=now;if(DBG)dbgUpd()}
   }catch(err){showRuntimeFailure(err)}
   finally{
-    // Un error de un fotograma ya no cancela la programación de los siguientes.
-    if(CUST.vsync!==false)requestAnimationFrame(loop);
-    else setTimeout(()=>loop(performance.now()),0);
+    // Un único programador mantiene vivo el ciclo incluso al volver de menús o pausas.
+    scheduleLoop();
   }
 }
-if(CUST.vsync!==false)requestAnimationFrame(loop);else setTimeout(()=>loop(performance.now()),0);
+scheduleLoop();
 
 if('serviceWorker' in navigator && (location.protocol==='https:'||location.hostname==='localhost')) navigator.serviceWorker.register('./sw.js').catch(()=>{});
 </script></body></html>
