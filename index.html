@@ -666,6 +666,8 @@ if(ctx&&typeof ctx.roundRect!=='function')ctx.roundRect=function(x,y,w,h,radius=
 let W,H,S,dpr;
 var MAP=3200,PX=0,PY=0,FACE=0,MOVE={x:0,y:0},DK={};
 var RESV=null,VIEW={k:1,ox:0,oy:0},mpos={x:-1,y:-1},BGIMG=null,BGURL='',DBG=false,fpsV=0,fpsN=0,fpsStart=0;
+// Debe existir antes de resize()/startGame(), que pueden programar el bucle durante la inicialización.
+var loopScheduled=false;
 let PERF_MODE=false;
 var FX={on:false,gl:null,c:null,tex:null,tw:0,th:0,u:null,bad:false,lost:false,sup:null,listen:false,bgKey:-1,bg0:[1,1,1],bg1:[1,1,1]};
 var BGC={cv:null,src:null,w:0,h:0};
@@ -3396,7 +3398,7 @@ function showRuntimeFailure(err){
 // Captura también errores de eventos y promesas, no solo los del fotograma.
 addEventListener('error',e=>{if(g&&g.started&&!g.over)showRuntimeFailure(e.error||e.message||'Error inesperado fuera del bucle de juego')});
 addEventListener('unhandledrejection',e=>{if(g&&g.started&&!g.over)showRuntimeFailure(e.reason||'Fallo inesperado de una operación asíncrona')});
-let loopScheduled=false;
+
 function scheduleLoop(){
   if(loopScheduled)return;
   loopScheduled=true;
