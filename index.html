@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Soap Adventures v.7.14</title>
+<title>Soap Adventures v.7.2</title>
 <meta name="theme-color" content="#e879a0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -526,7 +526,7 @@ body:has(#msg .home-shell) #gear,body:has(#msg .home-shell) #ver{display:none!im
 #adminPanel{z-index:70}
 </style></head><body>
 <canvas id="c"></canvas><canvas id="fx"></canvas><div id="gameToast" role="status" aria-live="polite"></div>
-<div id="ver">v.7.14</div>
+<div id="ver">v.7.2</div>
 <div id="guide"><div class="gbox"><h2>Guía del juego</h2><div class="gbody"><h3>Índice</h3><p>📌 <b>Modos:</b> Defensa, Aventura y Creativo. <b>Combate:</b> virus, jefes y oleadas. <b>Powers:</b> comunes, dorados, especiales y exclusivos. <b>Personalización:</b> jabón, burbujas, acabados y estelas. <b>Extras:</b> controles, ajustes y rendimiento.</p><h3>1. Modos de juego</h3><p><b>Defensa:</b> sobreviví a oleadas infinitas y jefes programados. <b>Aventura:</b> avanzá por fases con jefes y recompensas. <b>Creativo:</b> probá virus, jefes, powers y modificadores sin límites habituales. Las variantes creativas permiten elegir Aventura o Defensa.</p><h3>2. Virus y jefes de partida</h3><p>Los virus tienen comportamientos y estadísticas diferentes. Los divisores se multiplican al ser derrotados y los médicos curan a otros virus. Desde Ébola en adelante aumenta la aparición de divisores. La Peste Negra tiene 1750 de vida: empieza con 10 virus y cada 30 segundos duplica un porcentaje de los virus vivos igual a 100 menos su porcentaje de vida restante; por ejemplo, con el jefe al 50% de vida, copia el 50% de los virus. Las copias conservan la vida actual y máxima del original. En ese combate aparecen más Divisores, Doble tiro y Multidisparo. Los jefes de partida aparecen durante las partidas. La sección <b>BOSSES</b> reúne combates especiales independientes.</p><h3>3. Powers y mejoras</h3><p>Los powers temporales se activan al recogerlos. Las mejoras permanentes se acumulan durante la partida. Los powers dorados y exclusivos pueden desbloquearse mediante jefes o códigos.</p><p>💎 <b>Regalo:</b> invoca un mini COVID-19 con la vida máxima de un virus; al derrotarlo elegís 1 de 5 poderes de jefe. Cada opción tiene un 5% de probabilidad de ser exclusiva.</p><p>🧫 <b>Epidemia:</b> combina Plaga y Jefe salvaje: aparecen cinco virus normales y un jefe salvaje sin recompensa.</p><p>🪨 <b>Cápsula:</b> escudo dorado de un impacto; al romperse elimina virus normales cercanos y repele jefes.</p><p>🦟 <b>Mosquito aliado:</b> los powers recogidos preparan disparos que invocan larvas; evolucionan a mosquitos aliados con 3 vidas.</p><p>✴️ <b>UP:</b> duplica al azar un power activo o una mejora acumulada.</p><p>💫 <b>Doble carga:</b> poder exclusivo que añade 2 burbujas frontales por nivel y aumenta su velocidad.</p><p>🚫 <b>ANTI-VIRUS:</b> poder especial dorado. Cada burbuja suma 1 de daño extra por cada virus vivo en el mapa; con 15 virus, suma +15.</p><h3>4. Personalización y códigos</h3><p>En Personalizar podés cambiar forma, color, texto, forma de burbuja, acabado y estela. Los códigos se canjean desde el panel correspondiente; algunos se descubren al vencer jefes. La estela clásica de burbujas está disponible desde el comienzo y sigue tanto al jabón como a sus disparos.</p><h3>5. Ajustes y controles</h3><p>Configuración permite modificar audio, gráficos, shaders, resolución, controles táctiles y mando. Los shaders afectan a toda la escena, incluidos poderes, escudos, explosiones y efectos visuales.</p>
 <h3>BOSSES</h3><p>Los <b>jefes</b> aparecen durante las partidas. Los <b>BOSSES</b> son combates especiales elegibles desde el menú.</p><h3>BOSS especial: COVID-19</h3><p>500 de vida y dificultad Difícil. Aumenta la aparición de Plaga y Jefe salvaje. Durante el combate puede aparecer 🧫 Epidemia, que combina ambos efectos. Al vencerlo desbloqueás 💎 Regalo.</p><h3>BOSS especial: SIDA</h3><p>Combate similar a Rabia, con un jefe de 2000 de vida. Los virus no reciben potenciadores. Empezás con 3 vidas y las estadísticas positivas del jugador se reducen a la mitad. Los efectos temporales conservan su duración, pero tienen la mitad de efecto. Multidisparo y Doble tiro no se reducen; Multidisparo tiene un máximo de nivel 2. El daño puede ser de 0,5.</p><h3>Cómo se juega</h3>
 <p>Sos el jabón del centro. Tocá o arrastrá el dedo para lanzar burbujas hacia ese lugar. Cada burbuja hace 1 de daño base.</p>
@@ -859,7 +859,20 @@ function currentSoapPalette(){if(ADMIN_GOLDEN_SOAP)return ADMIN_GOLD_PALETTES[AD
 function saveAdminPrefs(){try{localStorage.setItem('soapAdminUnlocked',ADMIN_UNLOCKED?'1':'0');localStorage.setItem('soapAdminGold',ADMIN_GOLDEN_SOAP?'1':'0');localStorage.setItem('soapAdminGoldStyle',ADMIN_GOLD_STYLE)}catch(e){}}
 function reset(){g={t:0,over:false,started:false,creative:false,customSession:false,customRules:[],customActionBudget:CUSTOM_COMMAND_BUDGET,customLastTap:null,customSuppressSpawnEvents:false,customEventDepth:0,score:0,lives:(window.D?D.lives:5),inv:0,viruses:[],bubbles:[],parts:[],spawn:1,boss:0,bossKills:0,bossWaveCount:0,bossPairSeq:0,nextBoss:(D&&D.bossInterval)||60,cool:0,aim:-Math.PI/2,shake:0,id:0,powers:[],nextPow:5,fx:{dmg:0,fast:0,freeze:0,bomb:0,shield:0,shieldGold:0,haste:0,slow:0,double:0,tfreeze:0,dash:0,blind:0,contagion:0},gold:{dmg:0,rate:0,multi:0,badDmg:0,badRate:0},perk:{back:0,split:0,homing:0,hold:0,pierce:0,big:0,wave:0,heart:0,ally:0},rewards:0,bonusPicks:0,rot:-Math.PI/2,allies:[],mosquitoLarvae:[],mosquitoAllies:[],dengueBugs:[],mosquitoShotReady:false,mosquitoShotsReady:0,dengueDebuff:0,dengueBossSwarm:false,dengueMode:false,tuberculosisMode:false,malariaMode:false,influenzaMode:false,variolaMode:false,ebolaMode:false,blackPlagueMode:false,rabiesMode:false,sidaMode:false,covidMode:false,blackPlagueTimer:30,blackPlagueLastPct:0,bossCodeDrop:null,bacterioSpawnWindow:0,influenzaDebuff:0,influenzaWaves:[],capsuleShield:false,capsuleInvuln:0,tuberculosisDefeated:0,pick:null,holding:false,hx:0,hy:0,got:{life:0,minus:0},rings:[],plus:[],xp:{bomb:0,storm:0,time:0,orbit:0,aura:0,pairshot:0,antiVirus:0,plagueBoost:0},xt:{time:20,aura:15},orb:[0,0,0,0,0],orbA:0,auras:[],bolts:[],chainB:60}}
 reset();
-function startGame(){if(bossPowerUnlocked('malariaStartDash')&&CUST.malariaDashEnabled!==false)g.fx.dash=8;sfxPlay('start');musicStart();g.started=true;msg.style.display='none';document.getElementById('ver').style.display='none';document.getElementById('guide').style.display='none'}
+function startGame(){
+  // Reinicia cualquier estado de error/pausa y fuerza el primer fotograma.
+  RUNTIME_FAILURE=false;
+  if(!g)return;
+  g.paused=false;g.cmenu=false;g.holding=false;g.started=true;
+  if(bossPowerUnlocked('malariaStartDash')&&CUST.malariaDashEnabled!==false)g.fx.dash=8;
+  sfxPlay('start');musicStart();
+  msg.style.display='none';document.getElementById('ver').style.display='none';document.getElementById('guide').style.display='none';
+  document.getElementById('settings').style.display='none';document.getElementById('pausemenu').style.display='none';
+  document.getElementById('pick').style.display='none';
+  // Recalcula el tamaño del canvas al entrar a la partida; así no depende
+  // de que el navegador haya disparado resize después de cerrar el menú.
+  try{resize();draw()}catch(err){showRuntimeFailure(err)}
+}
 function homeHueSet(){
   const el=document.getElementById('menuHue');if(!el)return;
   const h=+el.value;setCustomHex(rgb2hx(...hsl2rgb(h,.58,.76)));
@@ -3257,7 +3270,8 @@ function closeSettings(){
   document.getElementById('settings').style.display='none';
   if(g){g.cmenu=false;g.paused=false;g.holding=false}
   KWAIT=null;
-  if(g&&g.started&&g.paused)document.getElementById('pausemenu').style.display='flex';
+  document.getElementById('pausemenu').style.display='none';
+  if(g&&g.started&&!g.over){try{resize();draw()}catch(err){showRuntimeFailure(err)}}
 }
 function renderSettings(){
   SETVIEW='main';
