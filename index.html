@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<!-- Recuperación de caché: evita que una versión antigua del juego deje la página bloqueada. -->
+<!-- Recuperación de caché: limpia únicamente el service worker de esta aplicación. -->
 <script>
 (()=>{
   if(!('serviceWorker' in navigator))return;
-  const cleanupKey='soap-cache-recovery-v76';
-  const wasControlled=!!navigator.serviceWorker.controller;
+  const cleanupKey='soap-cache-recovery-v762';
+  const appPath=new URL('.',location.href).pathname;
+  const inAppScope=scope=>{
+    try{const path=new URL(scope).pathname;return path===appPath||path.startsWith(appPath.endsWith('/')?appPath:appPath+'/')}
+    catch(e){return false}
+  };
   navigator.serviceWorker.getRegistrations().then(async regs=>{
-    let keys=[];try{if('caches' in window)keys=await caches.keys()}catch(e){}
-    if(regs.length)await Promise.all(regs.map(r=>r.unregister().catch(()=>false)));
-    if(keys.length&&'caches' in window)await Promise.all(keys.map(k=>caches.delete(k).catch(()=>false)));
-    if((wasControlled||regs.length||keys.length)&&!sessionStorage.getItem(cleanupKey)){
+    const ownRegs=regs.filter(r=>inAppScope(r.scope));
+    const ownController=!!(navigator.serviceWorker.controller&&ownRegs.some(r=>r.active&&r.active.scriptURL===navigator.serviceWorker.controller.scriptURL));
+    if(ownRegs.length)await Promise.all(ownRegs.map(r=>r.unregister().catch(()=>false)));
+    // No se vacía CacheStorage: sus cachés pertenecen al origen completo y podrían
+    // ser utilizadas por otras aplicaciones alojadas bajo el mismo dominio.
+    if((ownController||ownRegs.length)&&!sessionStorage.getItem(cleanupKey)){
       sessionStorage.setItem(cleanupKey,'1');location.reload();
-    }else sessionStorage.removeItem(cleanupKey);
+    }else if(!ownRegs.length)sessionStorage.removeItem(cleanupKey);
   }).catch(()=>{});
 })();
 </script>
-<title>Soap Adventures v.7.61</title>
+<title>Soap Adventures v.7.62</title>
 <meta name="theme-color" content="#e879a0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -243,7 +249,7 @@ button:active{filter:brightness(.97)}
 .gbox{border-radius:26px!important}
 #msg>div:after{width:25px;height:25px;right:15px;bottom:13px}
 #guide .gbox h2,#cpanel .gbox h2,#settings .gbox h2{padding:7px 34px 9px;border-radius:14px;background:linear-gradient(90deg,rgba(255,213,226,.78),rgba(255,240,245,.45));color:#8a3658}
-#msg #box:before{content:'SOAP ADVENTURES  •  BUBBLE SURVIVAL  •  v.7.61';color:#d64c7b;letter-spacing:1.8px}
+#msg #box:before{content:'SOAP ADVENTURES  •  BUBBLE SURVIVAL  •  v.7.62';color:#d64c7b;letter-spacing:1.8px}
 #msg .mbtns button:first-child{background:linear-gradient(135deg,#f77da2,#df4778);box-shadow:0 5px 0 #bd456c,0 9px 17px rgba(205,61,111,.2)}
 #msg .mbtns button:not(:first-child),#setbody button,#msg .dopt button{background:linear-gradient(180deg,#fff 0%,#f7edf2 100%)}
 #pick{background:radial-gradient(circle at 12% 18%,rgba(129,224,243,.25) 0 7px,transparent 9px),radial-gradient(circle at 88% 78%,rgba(129,224,243,.22) 0 10px,transparent 12px),rgba(39,29,49,.66)}
@@ -550,9 +556,9 @@ body:has(#msg .home-shell) #gear,body:has(#msg .home-shell) #ver{display:none!im
 #guide button,#adminPanel button,#settings button{touch-action:manipulation}
 </style></head><body>
 <canvas id="c"></canvas><canvas id="fx"></canvas><div id="gameToast" role="status" aria-live="polite"></div>
-<div id="ver">v.7.61</div>
+<div id="ver">v.7.62</div>
 <div id="guide"><div class="gbox"><h2>Guía del juego</h2><div class="gbody"><h3>Índice</h3><p>📌 <b>Modos:</b> Defensa, Aventura y Creativo. <b>Combate:</b> virus, jefes y oleadas. <b>Powers:</b> comunes, dorados, especiales y exclusivos. <b>Personalización:</b> jabón, burbujas, acabados y estelas. <b>Extras:</b> controles, ajustes y rendimiento.</p><h3>1. Modos de juego</h3><p><b>Defensa:</b> sobreviví a oleadas infinitas y jefes programados. <b>Aventura:</b> avanzá por fases con jefes y recompensas. <b>Creativo:</b> probá virus, jefes, powers y modificadores sin límites habituales. Las variantes creativas permiten elegir Aventura o Defensa.</p><h3>2. Virus y jefes de partida</h3><p>Los virus tienen comportamientos y estadísticas diferentes. Los divisores se multiplican al ser derrotados y los médicos curan a otros virus. Desde Ébola en adelante aumenta la aparición de divisores. La Peste Negra tiene 1750 de vida: empieza con 10 virus y cada 30 segundos duplica un porcentaje de los virus vivos igual a 100 menos su porcentaje de vida restante; por ejemplo, con el jefe al 50% de vida, copia el 50% de los virus. Las copias conservan la vida actual y máxima del original. En ese combate aparecen más Divisores, Doble tiro y Multidisparo. Los jefes de partida aparecen durante las partidas. La sección <b>BOSSES</b> reúne combates especiales independientes.</p><h3>3. Powers y mejoras</h3><p>Los powers temporales se activan al recogerlos. Las mejoras permanentes se acumulan durante la partida. Los powers dorados y exclusivos pueden desbloquearse mediante jefes o códigos.</p><p>💎 <b>Regalo:</b> invoca un mini COVID-19 con la vida máxima de un virus. En Aventura, al derrotarlo deja caer directamente un poder exclusivo de jefe desbloqueado; en Defensa, permite elegir entre un poder exclusivo de jefe y un power común.</p><p>🧫 <b>Epidemia:</b> combina Plaga y Jefe salvaje: aparecen cinco virus normales y un jefe salvaje sin recompensa.</p><p>🪨 <b>Cápsula:</b> escudo dorado de un impacto; al romperse elimina virus normales cercanos y repele jefes.</p><p>🦟 <b>Mosquito aliado:</b> los powers recogidos preparan disparos que invocan larvas; evolucionan a mosquitos aliados con 3 vidas.</p><p>✴️ <b>UP:</b> duplica al azar un power activo o una mejora acumulada.</p><p>💫 <b>Doble carga:</b> poder exclusivo que añade 2 burbujas frontales por nivel y aumenta su velocidad.</p><p>🚫 <b>ANTI-VIRUS:</b> poder especial dorado. Cada burbuja suma 1 de daño extra por cada virus vivo en el mapa; con 15 virus, suma +15.</p><h3>4. Personalización y códigos</h3><p>En Personalizar podés cambiar forma, color, texto, forma de burbuja, acabado y estela. Los códigos se canjean desde el panel correspondiente; algunos se descubren al vencer jefes. La estela clásica de burbujas está disponible desde el comienzo y sigue tanto al jabón como a sus disparos.</p><h3>5. Ajustes y controles</h3><p>Configuración permite modificar audio, gráficos, shaders, resolución, controles táctiles y mando. Los shaders afectan a toda la escena, incluidos poderes, escudos, explosiones y efectos visuales.</p>
-<h3>BOSSES</h3><p>Los <b>jefes</b> aparecen durante las partidas. Los <b>BOSSES</b> son combates especiales elegibles desde el menú. Cáncer es el jefe final: tiene tres fases, genera células hijas y se regenera mientras alguna siga viva.</p><h3>BOSS especial: COVID-19</h3><p>500 de vida y dificultad Difícil. Al principio y durante varias fases intenta alejarse del jabón cada vez más. En la semi-final invoca jefes para defenderse; en la fase final, con poca vida, invoca más defensores y puede traer Glotones Supremos, Tanques, Reyes Divisores y Bombarderos. Al vencerlo desbloqueás 💎 Regalo.</p><h3>BOSS especial: SIDA</h3><p>Combate similar a Rabia, con un jefe de 2000 de vida. Los virus no reciben potenciadores. Empezás con 3 vidas y las estadísticas positivas del jugador se reducen a la mitad. Los efectos temporales conservan su duración, pero tienen la mitad de efecto. Multidisparo y Doble tiro no se reducen; Multidisparo tiene un máximo de nivel 2. El daño puede ser de 0,5.</p><h3>BOSSES FINALES · v.7.61</h3><p><b>🧠 Enfermedad de Creutzfeldt-Jakob (ECJ):</b> 3000 HP. Un jefe priónico que lanza fragmentos dañinos. Al llegar al 70% de vida se desorganiza y se divide en tres fragmentos independientes; la vida restante se reparte según el tamaño de cada parte y la suma se conserva.</p><p><b>🟢 Gripe Verde · Left 4 Dead:</b> 2500 HP. Una infección agresiva inspirada en los infectados zombi: persigue al jabón, contagia virus normales cercanos y genera infectados rápidos, resistentes y especiales. Las oleadas tienen un límite simultáneo para que el combate siga siendo posible.</p><p>Ambos se desbloquean al derrotar a los 11 BOSSES anteriores, incluido Cáncer.</p><h3>Cómo se juega</h3>
+<h3>BOSSES</h3><p>Los <b>jefes</b> aparecen durante las partidas. Los <b>BOSSES</b> son combates especiales elegibles desde el menú. Cáncer es el jefe final: tiene tres fases, genera células hijas y se regenera mientras alguna siga viva.</p><h3>BOSS especial: COVID-19</h3><p>500 de vida y dificultad Difícil. Al principio y durante varias fases intenta alejarse del jabón cada vez más. En la semi-final invoca jefes para defenderse; en la fase final, con poca vida, invoca más defensores y puede traer Glotones Supremos, Tanques, Reyes Divisores y Bombarderos. Al vencerlo desbloqueás 💎 Regalo.</p><h3>BOSS especial: SIDA</h3><p>Combate similar a Rabia, con un jefe de 2000 de vida. Los virus no reciben potenciadores. Empezás con 3 vidas y las estadísticas positivas del jugador se reducen a la mitad. Los efectos temporales conservan su duración, pero tienen la mitad de efecto. Multidisparo y Doble tiro no se reducen; Multidisparo tiene un máximo de nivel 2. El daño puede ser de 0,5.</p><h3>BOSSES FINALES · v.7.62</h3><p><b>🧠 Enfermedad de Creutzfeldt-Jakob (ECJ):</b> 3000 HP. Un jefe priónico que lanza fragmentos dañinos. Al llegar al 70% de vida se desorganiza y se divide en tres fragmentos independientes; la vida restante se reparte según el tamaño de cada parte y la suma se conserva.</p><p><b>🟢 Gripe Verde · Left 4 Dead:</b> 2500 HP. Una infección agresiva inspirada en los infectados zombi: persigue al jabón, contagia virus normales cercanos y genera infectados rápidos, resistentes y especiales. Las oleadas tienen un límite simultáneo para que el combate siga siendo posible.</p><p>Ambos se desbloquean al derrotar a los 11 BOSSES anteriores, incluido Cáncer.</p><h3>Cómo se juega</h3>
 <p>Sos el jabón del centro. Tocá o arrastrá el dedo para lanzar burbujas hacia ese lugar. Cada burbuja hace 1 de daño base.</p>
 <p><b>Jugar</b> abre Aventura, que es el modo principal. <b>Defensa</b> abre el modo clásico de supervivencia. En <b>Creativo</b> podés elegir Aventura creativa o Defensa creativa.</p>
 <p>Empezás con 5 corazones (1 en Hardcore). Si un virus normal te toca, perdés 1 corazón y ese virus desaparece. La explosión elimina virus normales cercanos, pero no daña a los jefes. Después de recibir daño tenés 1,3 s de invulnerabilidad.</p>
@@ -950,7 +956,7 @@ function showStart(){
       '<button id="bSettings" aria-label="Configuración" title="Configuración"><span class="home-icon">⚙️</span></button>'+
       '<button id="bGuide" aria-label="Guía" title="Guía"><span class="home-icon home-guide-icon">!</span></button>'+
       '<button id="bAdmin" aria-label="Códigos" title="Códigos"><span class="home-icon">⌨️</span></button></div>'+
-    '<div class="home-logo" title="¿Hay algo oculto?"><span class="home-logo-soap">SOAP</span><span class="home-logo-adventures">ADVENTURES</span><span class="home-logo-version">v.7.61</span></div><div class="home-shell">'+
+    '<div class="home-logo" title="¿Hay algo oculto?"><span class="home-logo-soap">SOAP</span><span class="home-logo-adventures">ADVENTURES</span><span class="home-logo-version">v.7.62</span></div><div class="home-shell">'+
     '<div class="home-left"><div class="home-soap-wrap">'+
       '<button class="home-soap" id="homeSoap" aria-label="Personalizar jabón"><span class="soap-inner" id="homeSoapText">SOAP</span></button>'+
       '<div class="home-name" id="homeName" aria-hidden="true">SOAP</div></div>'+
@@ -2751,7 +2757,7 @@ function showCancerVictory(){
   msg.style.display='flex';msg.style.zIndex='20';const ix=g.adminBossIndex??10,cr=!!g.adminBossCreative;document.getElementById('dengueRetry').onclick=()=>startDengueBoss(ix,cr);document.getElementById('dengueBossMenu').onclick=showBosses;document.getElementById('dengueHome').onclick=exitToMenu;
 }
 function showFinalBossVictory(title,description){
-  box.innerHTML='<h1>🏆 ¡'+title+' derrotado!</h1><p>'+description+'</p><p>Completaste uno de los dos BOSSES FINALES de Soap Adventures v.7.61.</p><div class="mbtns"><button id="finalRetry">Repetir BOSS</button><button id="finalBossMenu">BOSSES</button><button id="finalHome">Menú</button></div>';
+  box.innerHTML='<h1>🏆 ¡'+title+' derrotado!</h1><p>'+description+'</p><p>Completaste uno de los dos BOSSES FINALES de Soap Adventures v.7.62.</p><div class="mbtns"><button id="finalRetry">Repetir BOSS</button><button id="finalBossMenu">BOSSES</button><button id="finalHome">Menú</button></div>';
   msg.style.display='flex';msg.style.zIndex='20';const ix=g.adminBossIndex,cr=!!g.adminBossCreative;
   document.getElementById('finalRetry').onclick=()=>startDengueBoss(ix,cr);
   document.getElementById('finalBossMenu').onclick=showBosses;
@@ -3721,7 +3727,7 @@ function renderSettings(){
 }
 function diagnosticReport(){
   const lines=[
-    'Soap Adventures v.7.61',
+    'Soap Adventures v.7.62',
     'Navegador: '+navigator.userAgent,
     'Pantalla: '+window.innerWidth+'×'+window.innerHeight,
     'Pixel ratio: '+(window.devicePixelRatio||1),
