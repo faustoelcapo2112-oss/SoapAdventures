@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="es"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<html lang="es"><head><meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <!-- Recuperación de caché: limpia únicamente el service worker de esta aplicación. -->
 <script>
 (()=>{
@@ -23,16 +24,15 @@
   }).catch(()=>{});
 })();
 </script>
-<title>Soap Adventures v.7.62</title>
-<meta name="theme-color" content="#e879a0">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Soap Adventures">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="apple-touch-icon" sizes="1024x1024" href="icon-1024.png">
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-<link rel="manifest" href="manifest.json">
-
+<title>Soap Adventures v.7.66</title>
+<meta content="#e879a0" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="yes" name="mobile-web-app-capable"/>
+<meta content="Soap Adventures" name="apple-mobile-web-app-title"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<link href="icon-1024.png" rel="apple-touch-icon" sizes="1024x1024"/>
+<link href="icon-192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="manifest.json" rel="manifest"/>
 <style>
 :root{--bg:#fcc1d1;--ink:#8a1f43;--panel:#fff4f7}
 @media (prefers-color-scheme: dark){:root{--bg:#fcc1d1;--ink:#8a1f43;--panel:#fff4f7}}
@@ -249,7 +249,7 @@ button:active{filter:brightness(.97)}
 .gbox{border-radius:26px!important}
 #msg>div:after{width:25px;height:25px;right:15px;bottom:13px}
 #guide .gbox h2,#cpanel .gbox h2,#settings .gbox h2{padding:7px 34px 9px;border-radius:14px;background:linear-gradient(90deg,rgba(255,213,226,.78),rgba(255,240,245,.45));color:#8a3658}
-#msg #box:before{content:'SOAP ADVENTURES  •  BUBBLE SURVIVAL  •  v.7.62';color:#d64c7b;letter-spacing:1.8px}
+#msg #box:before{content:'SOAP ADVENTURES  •  BUBBLE SURVIVAL  •  v.7.66';color:#d64c7b;letter-spacing:1.8px}
 #msg .mbtns button:first-child{background:linear-gradient(135deg,#f77da2,#df4778);box-shadow:0 5px 0 #bd456c,0 9px 17px rgba(205,61,111,.2)}
 #msg .mbtns button:not(:first-child),#setbody button,#msg .dopt button{background:linear-gradient(180deg,#fff 0%,#f7edf2 100%)}
 #pick{background:radial-gradient(circle at 12% 18%,rgba(129,224,243,.25) 0 7px,transparent 9px),radial-gradient(circle at 88% 78%,rgba(129,224,243,.22) 0 10px,transparent 12px),rgba(39,29,49,.66)}
@@ -554,132 +554,16 @@ body:has(#msg .home-shell) #gear,body:has(#msg .home-shell) #ver{display:none!im
 #gamePauseBtn{position:fixed;display:none;top:calc(62px + env(safe-area-inset-top,0px));right:calc(12px + env(safe-area-inset-right,0px));z-index:38;width:44px;height:44px;border:2px solid #8a1f43;border-radius:14px;background:rgba(255,255,255,.94);color:#8a1f43;font:900 21px/1 system-ui,sans-serif;box-shadow:0 3px 12px #1d193b45;touch-action:manipulation;cursor:pointer}
 #gamePauseBtn:active{transform:scale(.94)}
 #guide button,#adminPanel button,#settings button{touch-action:manipulation}
-</style></head><body>
-<canvas id="c"></canvas><canvas id="fx"></canvas><div id="gameToast" role="status" aria-live="polite"></div>
-<div id="ver">v.7.62</div>
-<div id="guide"><div class="gbox"><h2>Guía del juego</h2><div class="gbody"><h3>Índice</h3><p>📌 <b>Modos:</b> Defensa, Aventura y Creativo. <b>Combate:</b> virus, jefes y oleadas. <b>Powers:</b> comunes, dorados, especiales y exclusivos. <b>Personalización:</b> jabón, burbujas, acabados y estelas. <b>Extras:</b> controles, ajustes y rendimiento.</p><h3>1. Modos de juego</h3><p><b>Defensa:</b> sobreviví a oleadas infinitas y jefes programados. <b>Aventura:</b> avanzá por fases con jefes y recompensas. <b>Creativo:</b> probá virus, jefes, powers y modificadores sin límites habituales. Las variantes creativas permiten elegir Aventura o Defensa.</p><h3>2. Virus y jefes de partida</h3><p>Los virus tienen comportamientos y estadísticas diferentes. Los divisores se multiplican al ser derrotados y los médicos curan a otros virus. Desde Ébola en adelante aumenta la aparición de divisores. La Peste Negra tiene 1750 de vida: empieza con 10 virus y cada 30 segundos duplica un porcentaje de los virus vivos igual a 100 menos su porcentaje de vida restante; por ejemplo, con el jefe al 50% de vida, copia el 50% de los virus. Las copias conservan la vida actual y máxima del original. En ese combate aparecen más Divisores, Doble tiro y Multidisparo. Los jefes de partida aparecen durante las partidas. La sección <b>BOSSES</b> reúne combates especiales independientes.</p><h3>3. Powers y mejoras</h3><p>Los powers temporales se activan al recogerlos. Las mejoras permanentes se acumulan durante la partida. Los powers dorados y exclusivos pueden desbloquearse mediante jefes o códigos.</p><p>💎 <b>Regalo:</b> invoca un mini COVID-19 con la vida máxima de un virus. En Aventura, al derrotarlo deja caer directamente un poder exclusivo de jefe desbloqueado; en Defensa, permite elegir entre un poder exclusivo de jefe y un power común.</p><p>🧫 <b>Epidemia:</b> combina Plaga y Jefe salvaje: aparecen cinco virus normales y un jefe salvaje sin recompensa.</p><p>🪨 <b>Cápsula:</b> escudo dorado de un impacto; al romperse elimina virus normales cercanos y repele jefes.</p><p>🦟 <b>Mosquito aliado:</b> los powers recogidos preparan disparos que invocan larvas; evolucionan a mosquitos aliados con 3 vidas.</p><p>✴️ <b>UP:</b> duplica al azar un power activo o una mejora acumulada.</p><p>💫 <b>Doble carga:</b> poder exclusivo que añade 2 burbujas frontales por nivel y aumenta su velocidad.</p><p>🚫 <b>ANTI-VIRUS:</b> poder especial dorado. Cada burbuja suma 1 de daño extra por cada virus vivo en el mapa; con 15 virus, suma +15.</p><h3>4. Personalización y códigos</h3><p>En Personalizar podés cambiar forma, color, texto, forma de burbuja, acabado y estela. Los códigos se canjean desde el panel correspondiente; algunos se descubren al vencer jefes. La estela clásica de burbujas está disponible desde el comienzo y sigue tanto al jabón como a sus disparos.</p><h3>5. Ajustes y controles</h3><p>Configuración permite modificar audio, gráficos, shaders, resolución, controles táctiles y mando. Los shaders afectan a toda la escena, incluidos poderes, escudos, explosiones y efectos visuales.</p>
-<h3>BOSSES</h3><p>Los <b>jefes</b> aparecen durante las partidas. Los <b>BOSSES</b> son combates especiales elegibles desde el menú. Cáncer es el jefe final: tiene tres fases, genera células hijas y se regenera mientras alguna siga viva.</p><h3>BOSS especial: COVID-19</h3><p>500 de vida y dificultad Difícil. Al principio y durante varias fases intenta alejarse del jabón cada vez más. En la semi-final invoca jefes para defenderse; en la fase final, con poca vida, invoca más defensores y puede traer Glotones Supremos, Tanques, Reyes Divisores y Bombarderos. Al vencerlo desbloqueás 💎 Regalo.</p><h3>BOSS especial: SIDA</h3><p>Combate similar a Rabia, con un jefe de 2000 de vida. Los virus no reciben potenciadores. Empezás con 3 vidas y las estadísticas positivas del jugador se reducen a la mitad. Los efectos temporales conservan su duración, pero tienen la mitad de efecto. Multidisparo y Doble tiro no se reducen; Multidisparo tiene un máximo de nivel 2. El daño puede ser de 0,5.</p><h3>BOSSES FINALES · v.7.62</h3><p><b>🧠 Enfermedad de Creutzfeldt-Jakob (ECJ):</b> 3000 HP. Un jefe priónico que lanza fragmentos dañinos. Al llegar al 70% de vida se desorganiza y se divide en tres fragmentos independientes; la vida restante se reparte según el tamaño de cada parte y la suma se conserva.</p><p><b>🟢 Gripe Verde · Left 4 Dead:</b> 2500 HP. Una infección agresiva inspirada en los infectados zombi: persigue al jabón, contagia virus normales cercanos y genera infectados rápidos, resistentes y especiales. Las oleadas tienen un límite simultáneo para que el combate siga siendo posible.</p><p>Ambos se desbloquean al derrotar a los 11 BOSSES anteriores, incluido Cáncer.</p><h3>Cómo se juega</h3>
-<p>Sos el jabón del centro. Tocá o arrastrá el dedo para lanzar burbujas hacia ese lugar. Cada burbuja hace 1 de daño base.</p>
-<p><b>Jugar</b> abre Aventura, que es el modo principal. <b>Defensa</b> abre el modo clásico de supervivencia. En <b>Creativo</b> podés elegir Aventura creativa o Defensa creativa.</p>
-<p>Empezás con 5 corazones (1 en Hardcore). Si un virus normal te toca, perdés 1 corazón y ese virus desaparece. La explosión elimina virus normales cercanos, pero no daña a los jefes. Después de recibir daño tenés 1,3 s de invulnerabilidad.</p>
-<p>Los powers aparecen aproximadamente cada 5–8 s en Difícil y permanecen 3 s en pantalla: tocá uno antes de que desaparezca. La probabilidad de encontrar powers dorados se redujo un 25%; los exclusivos dorados son todavía más raros y aparecen con una frecuencia reducida adicional del 78%.</p>
-<h3>Virus normales y dificultad creciente</h3>
-<p>Los virus normales aparecen con una cantidad aleatoria de vida entre un tercio de la vida máxima (redondeado hacia abajo) y la vida máxima. Esta escala aumenta con el tiempo y más rápidamente después del tercer jefe. Cuanta más vida tienen al aparecer, más lentos se mueven.</p>
-<p>Al vencer un jefe que da recompensa, los virus que ya están en pantalla aumentan su vida actual y máxima. Desde el cuarto jefe recompensado, ese aumento pasa a ser mucho mayor. La velocidad de los virus normales aumenta un 8% por jefe. También aparece +1 virus por tanda por cada jefe posterior al primero.</p>
-<p>Las tandas aparecen cada vez más seguido con el tiempo. Después de los primeros 60 s, algunas tandas pueden traer un virus adicional. Desde el tercer jefe programado, los virus comunes y especiales aparecen un poco más rápido; los jefes invocados por powers no cuentan para este avance.</p>
-<p>🏎️ <b>Veloz:</b> aparece desde el inicio, tiene 1 de vida y se mueve un 50% más rápido que un virus normal.</p>
-<h3>Virus especiales</h3>
-<p>Empiezan a poder aparecer después de vencer al primer jefe recompensado. Su frecuencia aumenta con el tiempo y con los jefes vencidos. El Todo Divisor recién puede aparecer desde el segundo jefe recompensado.</p>
-<p>🧫 <b>Divisor:</b> al morir se divide en 2 virus normales.</p>
-<p>🪺 <b>Padre Divisor:</b> al morir da 2 Divisores, que luego se dividen en 4 normales.</p>
-<p>🪆 <b>Todo Divisor:</b> al morir da 3 Padres Divisores; toda la cadena genera 21 virus en total.</p>
-<p>🩺 <b>Médico:</b> huye de vos y cura 1 de vida cada 1,2 s al virus herido más necesitado dentro de su alcance. No cura jefes ni a sí mismo y no te ataca.</p>
-<p>🐷 <b>Glotón:</b> cada burbuja tiene un 33% de probabilidad independiente de ser absorbida. Si la absorbe, no recibe daño y se cura esa misma cantidad.</p>
-<p>💣 <b>Bombardero:</b> puede aparecer como virus especial y también lo invoca el jefe Bombardero. Al morir explota: elimina virus normales cercanos y te daña si estás cerca. El escudo te protege; la explosión no elimina jefes.</p>
-<h3>Jefes de partida</h3>
-<p>En Aventura, la secuencia de jefes es Tanque, Bacteriófago, Rey Divisor, Glotón Supremo y Bombardero; luego se repite con más vida. Al derrotar al Bacteriófago, durante 15 s los virus actuales y los que aparezcan ganan +50% de vida, +25% de velocidad y −10% de tamaño. Durante ese intervalo también aumenta un 10% la aparición de virus especiales.</p>
-<p>En Defensa, en Fácil aparece un jefe cada 60 s, en Medio cada 45 s y en Difícil y Hardcore cada 30 s. El primero siempre es normal. Desde el segundo, se sortea: Normal 45%, Rey Divisor 15%, Glotón Supremo 15%, Tanque 15% y Bombardero 10%. Desde el quinto jefe programado aparecen dos juntos; derrotar a ambos cuenta como un solo jefe. Los jefes invocados por powers no cuentan para llegar al quinto.</p>
-<p>La vida del jefe depende de la vida máxima de los virus normales: Normal, Rey Divisor y Glotón Supremo tienen ×2,5; Tanque ×4; Bombardero ×2.</p>
-<p>🦁 <b>Rey Divisor:</b> al morir deja 2 Todo Divisores.</p>
-<p>🐲 <b>Glotón Supremo:</b> se mantiene lejos, esquiva burbujas, invoca Glotones cada cierto tiempo y tiene un 50% de probabilidad independiente de absorber cada burbuja, curándose el daño que habría recibido.</p>
-<p>🦏 <b>Tanque:</b> es lento y recibe un 50% menos de daño de cualquier fuente.</p>
-<p>💣 <b>Bombardero:</b> invoca virus Bombarderos cada cierto tiempo.</p>
-<p>Si un jefe te toca, perdés la partida al instante. El escudo lo repele. Solo recibe daño de tus burbujas y de ciertos powers o poderes exclusivos.</p>
-<p>Al vencer a un jefe que da recompensa, todos los virus no jefes ganan +1 de vida y elegís 1 mejora entre 3. El power Jefe salvaje invoca un jefe normal que no da esta recompensa; Jefe invocado sí la da.</p>
-<p>🫁 <b>Dash:</b> durante 8 s podés mantener la pantalla apretada para disparar continuamente y moverte más rápido.</p><p>☠️ <b>Peste imparable:</b> aumenta 50% la cadencia; en Aventura también mejora velocidad, daño y vidas.</p><h3>Powers comunes</h3>
-<p>🥊 <b>Daño:</b> +1 de daño durante 15 s.</p>
-<p>🏃 <b>Disparo rápido:</b> disparás más rápido durante 10 s.</p>
-<p>✌️ <b>Doble tiro:</b> lanzás 2 burbujas por disparo durante 15 s.</p>
-<h3>Powers dorados</h3>
-<p>❤️ <b>Vida extra:</b> +1 corazón, hasta tu máximo (8 por defecto; Jabón resistente lo aumenta). También cura 1 vida a cada aliado. En Hardcore se reemplaza por 🪖 Escudo: un power normal que activa el escudo durante 15 s.</p>
-<p>🔻 <b>Virus −1:</b> quita 1 de vida a todos los virus; los jefes no pueden bajar de 1 por este efecto.</p>
-<p>🌟 <b>Daño eterno:</b> +1 de daño permanente por nivel.</p>
-<p>🚀 <b>Cadencia eterna:</b> disparás más rápido permanentemente; tiene hasta 4 niveles.</p>
-<p>🔱 <b>Multidisparo:</b> suma burbujas a cada disparo: 2 en el nivel 1 y 3 en el nivel 2.</p>
-<p>👑 <b>Jefe invocado:</b> aparece un jefe normal. Si lo vencés, da la recompensa habitual.</p>
-<h3>Powers malos dorados</h3>
-<p>👹 <b>Jefe salvaje:</b> aparece un jefe normal que no da recompensa al morir.</p>
-<p>💔 <b>Pérdida de vida:</b> −1 corazón, sin bajar de 1.</p>
-<p>🕳️ <b>Robo:</b> elimina un power temporal activo o quita un nivel de Daño eterno, Cadencia eterna o Multidisparo.</p>
-<p>🔪 <b>Daño debilitado:</b> −1 de daño permanente por nivel. El daño nunca baja de 1.</p>
-<p>💤 <b>Cadencia invertida:</b> aumenta un 18% el tiempo entre disparos por nivel, permanentemente.</p>
-<h3>Powers especiales</h3>
-<p>💣 <b>Explosiones (12 s):</b> tus burbujas explotan al impactar y dañan a los virus cercanos, jefes incluidos.</p>
-<p>❄️ <b>Congelar (5 s):</b> los virus se mueven al 8% de su velocidad. Se pausan las tandas normales y la aparición programada de jefes; los jefes Glotón Supremo y Bombardero todavía pueden invocar sus propios virus. Mientras dura, los potenciadores que están en el mapa y los que tenés activos (Daño, Rápido, Doble tiro, Explosiones y Escudo) se consumen 4 veces más lento; Furia y Lentitud siguen a su ritmo normal. En Aventura el hielo cubre todo el mapa, no solo lo que ves en pantalla.</p>
-<p>🛡️ <b>Escudo (8 s):</b> vos y tus aliados no reciben daño. Si un jefe te toca, rebota.</p><p>🦠 <b>Contagio global (8 s):</b> el daño que le hagas a un virus también se aplica a los demás. Es un power especial temporal, no un exclusivo de jefe.</p>
-<p>🪖 <b>Escudo (15 s, Hardcore):</b> versión normal del escudo que aparece en lugar de Vida extra; no es dorado y no aparece en las arenas especiales de jefes.</p>
-<p>☣️ <b>Limpieza:</b> elimina a los virus que no son jefes en pantalla y le quita 5 de vida al jefe (el Tanque recibe la mitad).</p>
-<h3>Powers malos (rojos)</h3>
-<p>💨 <b>Furia:</b> los virus se mueven un 60% más rápido durante 8 s.</p>
-<p>🧬 <b>Mutación:</b> todos los virus en pantalla, incluidos los jefes, ganan +1 de vida actual y máxima.</p>
-<p>🦠 <b>Plaga:</b> aparecen 5 virus de golpe.</p>
-<p>🐌 <b>Lentitud:</b> disparás 2,5 veces más lento durante 8 s.</p>
-<p>🌬️ <b>Tos:</b> power malo que aparece con frecuencia durante la batalla contra Tuberculosis. Al tocarlo, la pantalla queda casi completamente oscura durante 5 s.</p>
-<h3>Mejoras de jefe</h3>
-<p>Se elige 1 entre 3 al vencer un jefe que da recompensa. Son permanentes y acumulables; algunas tienen un nivel máximo.</p>
-<p>↔️ <b>Disparo trasero:</b> junto con tus disparos normales, agrega más burbujas y distribuye todos los disparos uniformemente en los 360°. La separación es 360° dividido por la cantidad total de burbujas.</p>
-<p>🔀 <b>Burbuja triple:</b> las burbujas se dividen en 3 mientras vuelan (hasta nivel 3).</p>
-<p>🎯 <b>Teledirigidas:</b> las burbujas buscan al virus más cercano a la línea de dirección hacia la que apuntaste.</p>
-<p>🔥 <b>Mantener apretado:</b> si dejás el dedo apretado, disparás sin parar; cada nivel aumenta la velocidad de disparo (hasta nivel 4).</p>
-<p>🫁 <b>Dash (8 s):</b> al desbloquearlo tras vencer a Tuberculosis, podés mantener la pantalla apretada para disparar sin parar y te movés un 25% más rápido durante 8 segundos.</p>
-<p>🏹 <b>Perforantes:</b> cada nivel permite que una burbuja atraviese 1 virus adicional.</p>
-<p>🫧 <b>Burbujas grandes:</b> aumenta su tamaño y suma +1 de daño por nivel (hasta nivel 5).</p>
-<p>⭕️ <b>Onda expansiva:</b> cada nivel aumenta un 35% el radio de las explosiones.</p>
-<p>🧽 <b>Jabón resistente:</b> suma +2 corazones y aumenta en 2 el máximo de vidas. No aparece en Hardcore.</p>
-<p>🧼 <b>Jabón aliado:</b> un jabón que dispara solo y prioriza a los jefes. Tiene 3 vidas; podés tener hasta 3 aliados en partidas normales. En Creativo no hay un límite fijo, pero cantidades enormes pueden trabar o cerrar el juego.</p>
-<h3>Powers exclusivos</h3>
-<p>Al vencer un jefe que da recompensa, cada una de las 3 cartas tiene un 2% de probabilidad de ser uno de estos poderes. En Aventura, cada jefe tiene un 5% de probabilidad de soltar directamente un exclusivo en vez de una mejora de jefe. Son permanentes y se acumulan por niveles.</p>
-<p>🧨 <b>Bombardeo eterno:</b> todas tus burbujas explotan al impactar. Cada nivel aumenta el radio y el daño.</p>
-<p>⛈️ <b>Tormenta eléctrica:</b> cada impacto lanza un rayo que rebota entre virus cercanos: 5 rebotes en el nivel 1 y +3 por nivel. Con Perforantes, cada virus atravesado también puede activar rayos.</p>
-<p>🕰️ <b>Tiempo absoluto:</b> cada cierto tiempo congela a todos los virus mientras vos seguís disparando. Cada nivel aumenta la duración y reduce la espera.</p>
-<p>🪐 <b>Órbita destructiva:</b> 5 bombas orbitan tu jabón y explotan al tocar un virus; cada bomba se regenera a los 4 s. Hacen 5× el daño de tus burbujas y explotan en el mismo radio que las burbujas con Explosiones. Onda expansiva agranda el área.</p>
-<p>🌀 <b>Aura aniquiladora:</b> cada 15 s sale un anillo desde el centro que daña una vez a cada virus que toca, jefes incluidos. En el nivel 1 hace 5× tu daño; cada nivel suma 1 al multiplicador y reduce el intervalo un 33%.</p>
-<p>🦟 <b>Mosquito aliado (exclusivo dorado):</b> se desbloquea al derrotar al Dengue. Al recogerlo, tu próximo disparo invoca una larva que evoluciona en un mosquito aliado con 3 vidas. Ataca hasta 10 virus normales y los elimina al instante; no ataca jefes. Los virus pueden dañarlo si lo alcanzan antes de que él los ataque. Los virus divisores conservan su división.</p>
-<p>🦟 <b>Enjambre de mosquitos:</b> power exclusivo del combate contra el Dengue. Hace que el jefe invoque un grupo de mosquitos.</p>
-<h3>BOSS especial: Dengue</h3>
-<p>El combate ocurre en un mapa propio, algo más pequeño y con una ambientación ligeramente más oscura. El Dengue tiene 750 de vida y se ve como una esfera verde y violeta con estrellas naranjas. Se mueve muy lentamente. No ataca directamente: si te acercás demasiado, te persigue; si te toca, perdés la partida al instante.</p>
-<p>El Dengue es una esfera verde y violeta con estrellas naranjas. Permanece en reposo hasta recibir el primer impacto. Invoca larvas que evolucionan en mosquitos muy rápidos; podés eliminar ambos con burbujas, aunque cuesta acertarles a los mosquitos. Si un mosquito te toca, te quita al azar un modificador positivo activo, nunca uno negativo.</p>
-<p>Al derrotarlo, desbloqueás permanentemente el power exclusivo dorado Mosquito aliado para Aventura y Defensa, además del combate contra Tuberculosis.</p>
-<p><b>🦠 Malaria:</b> tiene 1000 de vida y parece una esfera amarilla semitransparente, desgastada, con gránulos rojos y violetas en el interior. Al llegar al 25% de vida, el glóbulo se rompe: Malaria sigue como jefe, escapa del jabón y expulsa 2 o 3 Mini Malarias por impacto, hasta 18 activas.</p>
-<h3>BOSS especial: Ébola</h3><p>Tiene cuerpo segmentado. Al bajar al 50% de vida se enfurece y comienza a preparar ataques de cola con una zona de impacto visible. Podés esquivarlos moviéndote; cada impacto de burbuja acorta su cuerpo y reduce el alcance de esos ataques.</p>
-<h3>BOSS especial: Gripe Española</h3>
-<p>Tiene 750 de vida. Cada 125 puntos de vida que pierde, lanza una onda expansiva; si te alcanza, te ralentiza y reduce tu daño un 10% durante 5 segundos.</p>
-<h3>BOSS especial: Tuberculosis</h3>
-<p>El combate usa una arena especial y aparecen dos bacilos de Tuberculosis, cada uno con 250 de vida. Ambos te persiguen lentamente y tenés que derrotar a los dos para ganar.</p>
-<p>Durante la batalla aparecen virus médicos de forma natural; estos pueden curar a los jefes. También aparecen powers malos de Tos 🌬️ con bastante frecuencia: si tocás uno, te quedás casi completamente a oscuras durante 5 segundos.</p>
-<p>Al vencer a los dos jefes desbloqueás 🫁 <b>Dash</b>: un power temporal de 8 segundos que te permite mantener la pantalla apretada para disparar sin parar y aumenta tu velocidad de movimiento un 25% durante ese tiempo.</p>
-<h3>Aventura (nuevo)</h3>
-<p>Un mapa enorme. En celulares aparece la palanquita si elegís ese control; también podés activar Movimiento con el dedo en Ajustes para arrastrar el jabón. En PC se mueve con WASD o las flechas (se cambian en Controles de PC). Disparás tocando la pantalla o con click izquierdo, y con E en PC.</p>
-<p>Las oleadas: cada oleada tiene su jefe fijo (1: Tanque, 2: Bacteriófago, 3: Rey, 4: Glotón, 5: Bombardero, y se repite con más vida). Cada oleada trae una cantidad fija de virus. Al agotarse dejan de aparecer hasta que termine la oleada. Los que sobran al terminar no salen en la siguiente, pero los vivos siguen en el mapa. Al morir el jefe termina la oleada, suelta un poder y se desbloquean nuevos virus. Los powers aparecen de a 10 en el mapa, duran 10 s y los agarrás tocándolos con el jabón. Los virus te persiguen. Después del 2º jefe te movés un poco más rápido que un virus común.</p>
-<p>Tanque gigante: tiene etapas, invoca virus veloces y viene con 3 médicos. Bacteriófago: jefe de partida que al morir fortalece temporalmente a los demás virus. Cadencia eterna y Escudo te dan más velocidad, y Hielo o Tiempo detenido te frenan.</p>
-<p>Médicos: curan primero a los jefes, con el 5% de la vida máxima de quien curan (mínimo 1). En Medio, Difícil y Hardcore, cada jefe (menos el primero) viene con un médico detrás.</p>
-<p>Al morir un jefe que da recompensa suelta una mejora permanente de jefe en el lugar donde cayó. Hay un 15% de probabilidad de que sea un poder exclusivo de jefe. Los virus normales conservan su 5% de probabilidad de soltar powers comunes. En Aventura no aparecen Jefe invocado ni Jefe salvaje. El jefe de la oleada aparece en un momento al azar de la oleada, y los virus siguen saliendo después. Algunos grupos de 5 entran desde los bordes del mapa.</p>
-<p>Los virus salen del borde del mapa. Cada virus tiene un 5% de soltar un poder al morir. Los jefes aparecen en los círculos rojos grandes. Antes de salir, el círculo late y aparece un aviso con los segundos que faltan. El Glotón Supremo cura la mitad del daño que absorbe.</p>
-<p>Mando: se configura en Ajustes, pestaña Mando (Xbox, PlayStation, Nintendo o no reconocido). Pausa: Escape o el botón de pausa. Menú creativo: la tecla C o su botón. Los jefes 6 en adelante vienen de a dos. Los virus tienen un 5% de soltar un poder al morir (no de jefe). En creativo, los divisores pueden dividirse cerca tuyo.</p>
-<h3>Dificultades de Defensa</h3>
-<p><b>Fácil:</b> más powers y dorados, menos virus y más lentos, 2 menos de vida máxima y menos virus especiales.</p>
-<p><b>Medio:</b> menos virus y especiales, y 2 menos de vida máxima.</p>
-<p><b>Difícil:</b> la experiencia completa.</p>
-<p><b>Hardcore:</b> como Difícil, pero con 1 sola vida. Vida extra se reemplaza por el Escudo 🪖 normal de 15 s y no aparecen Jabón resistente ni Pérdida de vida.</p>
-<p><b>Aventura — Medio:</b> es la dificultad predeterminada. <b>Fácil</b> reduce los virus por oleada y aumenta los powers dorados. <b>Difícil</b> elimina los dorados positivos, pero conserva los malos dorados. <b>Hardcore</b> usa una sola vida.</p>
-<h3>Configuración (⚙️ arriba a la derecha)</h3>
-<p><b>Personalizar:</b> forma y color del jabón, color libre, forma de las burbujas, fondo o imagen propia, texto del jabón (hasta 6 caracteres) y resolución.</p>
-<p><b>Movimiento:</b> la palanquita aparece únicamente en celulares y solo cuando está seleccionado Movimiento con palanca. Si activás Movimiento con el dedo, la palanquita desaparece y arrastrás el jabón directamente. En PC no se muestra la palanquita; se usa teclado o mando, o podés elegir Movimiento con el dedo.</p><p><b>Controles:</b> las flechas disparan hacia arriba, abajo, izquierda y derecha; Espacio dispara hacia el puntero. En Aventura, WASD y las flechas mueven el jabón; E dispara. Podés cambiar las teclas (no se pueden repetir) y restablecerlas. Esc cancela el cambio de tecla.</p>
-<p><b>Modo Rendimiento:</b> reduce a la mitad las partículas y muestra avisos al invocar demasiados virus o aliados en Creativo. Los avisos te preguntan si querés continuar y advierten que el juego puede trabarse o cerrarse.</p><p><b>Velocidad del jabón:</b> en Creativo, pestaña Ajustes, podés cambiar la velocidad de movimiento del jabón en Aventura creativa.</p><p><b>Audio:</b> en Ajustes podés activar o desactivar los efectos, ajustar su volumen, activar o quitar la música original de fondo y regular su volumen por separado.</p>
-<p><b>Distinción visual:</b> agrega contornos más marcados a virus y burbujas.</p>
-<p><b>F3 (en PC):</b> muestra FPS, virus activos, burbujas/proyectiles, aliados, partículas, resolución del área de juego y estado del Modo Rendimiento.</p>
-<h3>Modo creativo</h3>
-<p>Desde el menú principal elegís Aventura creativa o Defensa creativa. Tenés vidas infinitas y un panel 🛠️ para activar la aparición automática de virus, jefes y powers; invocar virus, virus especiales o jefes; sumar powers, mejoras y poderes exclusivos; y ajustar tamaños, velocidades, daño, cadencia y multiplicador de clics (×1, ×5, ×10, ×50, ×100 o ×500). En los ajustes de Creativo también podés modificar la velocidad del jabón. CUSTOM funciona como un programador visual de comandos: elegís un evento (morir, recibir daño, aparecer, cada X segundos o tocar la pantalla), el objeto que lo activa y una acción (spawnear, matar, hacer daño o transformar). Podés elegir virus, jefes, burbujas o powers, ajustar cantidades y decidir dónde aparecen. Por ejemplo: al morir un virus, spawnear 2 burbujas; o cada 10 segundos, spawnear 1000 burbujas. Los comandos solo existen durante esa partida creativa y se borran al empezar otra. Los sorteos aleatorios cambian las estadísticas y otorgan entre 3 y 8 modificadores aleatorios en cantidades aleatorias.</p>
-<p>En Creativo no hay un límite fijo de aliados, virus ni cantidades de modificadores. Al superar valores recomendados, el juego te advierte antes de continuar; cantidades enormes pueden provocar lag o cerrar la pestaña. El juego se pausa mientras el panel está abierto; desde el panel podés administrar virus, powers y ajustes.</p>
-<h3>Qué hereda tu aliado</h3>
-<p>El aliado dispara con tus modificadores de daño, multidisparo, disparo trasero, burbuja triple, perforantes, teledirigidas, burbujas grandes y explosiones. También le afectan Cadencia eterna, Cadencia invertida, Daño debilitado, Disparo rápido, Lentitud, Escudo y Vida extra.</p>
-</div><button class="bk" onclick="document.getElementById('guide').style.display='none'">Volver</button></div></div>
-<button id="cbtn" aria-label="Modo creativo" title="Modo creativo">🛠️</button>
+</style><style>#guide .guide-major{border:1px solid rgba(120,70,90,.18);border-radius:13px;margin:10px 0;background:rgba(255,255,255,.38);overflow:hidden}#guide .guide-major>summary{font-weight:900;font-size:16px;padding:12px 14px;cursor:pointer;list-style:none;background:rgba(232,66,109,.09)}#guide .guide-major>summary::-webkit-details-marker,#guide .guide-sub>summary::-webkit-details-marker{display:none}#guide .guide-sub{margin:7px 10px;border-left:3px solid rgba(200,64,95,.25);padding-left:9px}#guide .guide-sub>summary{font-weight:800;padding:8px 6px;cursor:pointer;color:#79334d}#guide .guide-sub[open]>summary{color:#b42f58}#guide .guide-sub p{margin:7px 6px 10px}</style></head><body>
+<canvas id="c"></canvas><canvas id="fx"></canvas><div aria-live="polite" id="gameToast" role="status"></div>
+<div id="ver">v.7.66</div>
+<div id="guide"><div class="gbox"><h2>Gu&iacute;a del juego</h2><div class="gbody"><h3>&Iacute;ndice</h3><p>📌 Secciones principales desplegables: </p><details class="guide-major"><summary>🎮 MODOS Y COMBATE</summary><details class="guide-sub"><summary>1. Modos de juego</summary><p><b>Defensa:</b> sobreviv&iacute; a oleadas infinitas y jefes programados. <b>Aventura:</b> avanz&aacute; por fases con jefes y recompensas. <b>Creativo:</b> prob&aacute; virus, jefes, powers y modificadores sin l&iacute;mites habituales. Las variantes creativas permiten elegir Aventura o Defensa.</p></details><details class="guide-sub"><summary>2. Virus y jefes de partida</summary><p>Los virus tienen comportamientos y estad&iacute;sticas diferentes. Los divisores se multiplican al ser derrotados y los m&eacute;dicos curan a otros virus. Desde &Eacute;bola en adelante aumenta la aparici&oacute;n de divisores. La Peste Negra tiene 1750 de vida: empieza con 10 virus y cada 30 segundos duplica un porcentaje de los virus vivos igual a 100 menos su porcentaje de vida restante; por ejemplo, con el jefe al 50% de vida, copia el 50% de los virus. Las copias conservan la vida actual y m&aacute;xima del original. En ese combate aparecen m&aacute;s Divisores, Doble tiro y Multidisparo. Los jefes de partida aparecen durante las partidas. La secci&oacute;n <b>BOSSES</b> re&uacute;ne combates especiales independientes.</p></details><details class="guide-sub"><summary>BOSSES</summary><p>Los <b>jefes</b> aparecen durante las partidas. Los <b>BOSSES</b> son combates especiales elegibles desde el men&uacute;. C&aacute;ncer es el jefe final: tiene tres fases, genera c&eacute;lulas hijas y se regenera mientras alguna siga viva.</p></details><details class="guide-sub"><summary>BOSS especial: COVID-19</summary><p>500 de vida y dificultad Dif&iacute;cil. Al principio y durante varias fases intenta alejarse del jab&oacute;n cada vez m&aacute;s. En la semi-final invoca jefes para defenderse; en la fase final, con poca vida, invoca m&aacute;s defensores y puede traer Glotones Supremos, Tanques, Reyes Divisores y Bombarderos. Al vencerlo desbloque&aacute;s 💎 Regalo.</p></details><details class="guide-sub"><summary>BOSS especial: SIDA</summary><p>Combate similar a Rabia, con un jefe de 2000 de vida. Los virus no reciben potenciadores. Empez&aacute;s con 3 vidas y las estad&iacute;sticas positivas del jugador se reducen a la mitad. Los efectos temporales conservan su duraci&oacute;n, pero tienen la mitad de efecto. Multidisparo y Doble tiro no se reducen; Multidisparo tiene un m&aacute;ximo de nivel 2. El da&ntilde;o puede ser de 0,5.</p></details><details class="guide-sub"><summary>BOSSES FINALES &middot; v.7.66</summary><p><b>🧠 Enfermedad de Creutzfeldt-Jakob (ECJ):</b> 3000 HP. Un jefe pri&oacute;nico que lanza fragmentos da&ntilde;inos. Al llegar al 70% de vida se desorganiza y se divide en tres fragmentos independientes; la vida restante se reparte seg&uacute;n el tama&ntilde;o de cada parte y la suma se conserva.</p><p><b>🟢 Gripe Verde &middot; Left 4 Dead:</b> 2500 HP. Una infecci&oacute;n agresiva inspirada en los infectados zombi: persigue al jab&oacute;n, contagia virus normales cercanos y genera infectados r&aacute;pidos, resistentes y especiales. Las oleadas tienen un l&iacute;mite simult&aacute;neo para que el combate siga siendo posible.</p><p>Ambos se desbloquean al derrotar a los 11 BOSSES anteriores, incluido C&aacute;ncer.</p></details><details class="guide-sub"><summary>C&oacute;mo se juega</summary><p>Sos el jab&oacute;n del centro. Toc&aacute; o arrastr&aacute; el dedo para lanzar burbujas hacia ese lugar. Cada burbuja hace 1 de da&ntilde;o base.</p><p><b>Jugar</b> abre Aventura, que es el modo principal. <b>Defensa</b> abre el modo cl&aacute;sico de supervivencia. En <b>Creativo</b> pod&eacute;s elegir Aventura creativa o Defensa creativa.</p><p>Empez&aacute;s con 5 corazones (1 en Hardcore). Si un virus normal te toca, perd&eacute;s 1 coraz&oacute;n y ese virus desaparece. La explosi&oacute;n elimina virus normales cercanos, pero no da&ntilde;a a los jefes. Despu&eacute;s de recibir da&ntilde;o ten&eacute;s 1,3 s de invulnerabilidad.</p><p>Los powers aparecen aproximadamente cada 5&ndash;8 s en Dif&iacute;cil y permanecen 3 s en pantalla: toc&aacute; uno antes de que desaparezca. La probabilidad de encontrar powers dorados se redujo un 25%; los exclusivos dorados son todav&iacute;a m&aacute;s raros y aparecen con una frecuencia reducida adicional del 78%.</p></details><details class="guide-sub"><summary>Virus normales y dificultad creciente</summary><p>Los virus normales aparecen con una cantidad aleatoria de vida entre un tercio de la vida m&aacute;xima (redondeado hacia abajo) y la vida m&aacute;xima. Esta escala aumenta con el tiempo y m&aacute;s r&aacute;pidamente despu&eacute;s del tercer jefe. Cuanta m&aacute;s vida tienen al aparecer, m&aacute;s lentos se mueven. Despu&eacute;s del quinto jefe, el escalado se vuelve mucho m&aacute;s agresivo: aumenta la vida y velocidad, aparecen m&aacute;s virus especiales y pueden surgir mutaciones inspiradas en la Gripe Verde (corredores, cargadores y brutos) y fragmentos pri&oacute;nicos veloces inspirados en la ECJ.</p><p>Al vencer un jefe que da recompensa, los virus que ya est&aacute;n en pantalla aumentan su vida actual y m&aacute;xima. Desde el cuarto jefe recompensado, ese aumento pasa a ser mucho mayor. La velocidad de los virus normales aumenta un 8% por jefe. Tambi&eacute;n aparece +1 virus por tanda por cada jefe posterior al primero.</p><p>Las tandas aparecen cada vez m&aacute;s seguido con el tiempo. Despu&eacute;s de los primeros 60 s, algunas tandas pueden traer un virus adicional. Desde el tercer jefe programado, los virus comunes y especiales aparecen un poco m&aacute;s r&aacute;pido; los jefes invocados por powers no cuentan para este avance.</p><p>🏎️ <b>Veloz:</b> aparece desde el inicio, tiene 1 de vida y se mueve un 50% m&aacute;s r&aacute;pido que un virus normal.</p></details><details class="guide-sub"><summary>Virus especiales</summary><p>Empiezan a poder aparecer despu&eacute;s de vencer al primer jefe recompensado. Su frecuencia aumenta con el tiempo y con los jefes vencidos. El Todo Divisor reci&eacute;n puede aparecer desde el segundo jefe recompensado.</p><p>🧫 <b>Divisor:</b> al morir se divide en 2 virus normales.</p><p>🪺 <b>Padre Divisor:</b> al morir da 2 Divisores, que luego se dividen en 4 normales.</p><p>🪆 <b>Todo Divisor:</b> al morir da 3 Padres Divisores; toda la cadena genera 21 virus en total.</p><p>🩺 <b>M&eacute;dico:</b> huye de vos y cura 1 de vida cada 1,2 s al virus herido m&aacute;s necesitado dentro de su alcance. No cura jefes ni a s&iacute; mismo y no te ataca.</p><p>🐷 <b>Glot&oacute;n:</b> cada burbuja tiene un 33% de probabilidad independiente de ser absorbida. Si la absorbe, no recibe da&ntilde;o y se cura esa misma cantidad.</p><p>💣 <b>Bombardero:</b> puede aparecer como virus especial y tambi&eacute;n lo invoca el jefe Bombardero. Al morir explota: elimina virus normales cercanos y te da&ntilde;a si est&aacute;s cerca. El escudo te protege; la explosi&oacute;n no elimina jefes.</p></details><details class="guide-sub"><summary>Jefes de partida</summary><p>En Aventura, la secuencia de jefes es Tanque, Bacteri&oacute;fago, Rey Divisor, Glot&oacute;n Supremo y Bombardero; luego se repite con m&aacute;s vida. Al derrotar al Bacteri&oacute;fago, durante 15 s los virus actuales y los que aparezcan ganan +50% de vida, +25% de velocidad y &minus;10% de tama&ntilde;o. Durante ese intervalo tambi&eacute;n aumenta un 10% la aparici&oacute;n de virus especiales.</p><p>En Defensa, en F&aacute;cil aparece un jefe cada 60 s, en Medio cada 45 s y en Dif&iacute;cil y Hardcore cada 30 s. El primero siempre es normal. Desde el segundo, se sortea: Normal 45%, Rey Divisor 15%, Glot&oacute;n Supremo 15%, Tanque 15% y Bombardero 10%. Desde el quinto jefe programado aparecen dos juntos; derrotar a ambos cuenta como un solo jefe. Los jefes invocados por powers no cuentan para llegar al quinto.</p><p>La vida del jefe depende de la vida m&aacute;xima de los virus normales: Normal, Rey Divisor y Glot&oacute;n Supremo tienen &times;2,5; Tanque &times;4; Bombardero &times;2.</p><p>🦁 <b>Rey Divisor:</b> al morir deja 2 Todo Divisores.</p><p>🐲 <b>Glot&oacute;n Supremo:</b> se mantiene lejos, esquiva burbujas, invoca Glotones cada cierto tiempo y tiene un 50% de probabilidad independiente de absorber cada burbuja, cur&aacute;ndose el da&ntilde;o que habr&iacute;a recibido.</p><p>🦏 <b>Tanque:</b> es lento y recibe un 50% menos de da&ntilde;o de cualquier fuente.</p><p>💣 <b>Bombardero:</b> invoca virus Bombarderos cada cierto tiempo.</p><p>Si un jefe te toca, perd&eacute;s la partida al instante. El escudo lo repele. Solo recibe da&ntilde;o de tus burbujas y de ciertos powers o poderes exclusivos.</p><p>Al vencer a un jefe que da recompensa, todos los virus no jefes ganan +1 de vida y eleg&iacute;s 1 mejora entre 3. El power Jefe salvaje invoca un jefe normal que no da esta recompensa; Jefe invocado s&iacute; la da.</p><p>🫁 <b>Dash:</b> durante 8 s pod&eacute;s mantener la pantalla apretada para disparar continuamente y moverte m&aacute;s r&aacute;pido.</p><p>☠️ <b>Peste imparable:</b> aumenta 50% la cadencia; en Aventura tambi&eacute;n mejora velocidad, da&ntilde;o y vidas.</p></details><details class="guide-sub"><summary>BOSS especial: Dengue</summary><p>El combate ocurre en un mapa propio, algo m&aacute;s peque&ntilde;o y con una ambientaci&oacute;n ligeramente m&aacute;s oscura. El Dengue tiene 750 de vida y se ve como una esfera verde y violeta con estrellas naranjas. Se mueve muy lentamente. No ataca directamente: si te acerc&aacute;s demasiado, te persigue; si te toca, perd&eacute;s la partida al instante.</p><p>El Dengue es una esfera verde y violeta con estrellas naranjas. Permanece en reposo hasta recibir el primer impacto. Invoca larvas que evolucionan en mosquitos muy r&aacute;pidos; pod&eacute;s eliminar ambos con burbujas, aunque cuesta acertarles a los mosquitos. Si un mosquito te toca, te quita al azar un modificador positivo activo, nunca uno negativo.</p><p>Al derrotarlo, desbloque&aacute;s permanentemente el power exclusivo dorado Mosquito aliado para Aventura y Defensa, adem&aacute;s del combate contra Tuberculosis.</p><p><b>🦠 Malaria:</b> tiene 1000 de vida y parece una esfera amarilla semitransparente, desgastada, con gr&aacute;nulos rojos y violetas en el interior. Al llegar al 25% de vida, el gl&oacute;bulo se rompe: Malaria sigue como jefe, escapa del jab&oacute;n y expulsa 2 o 3 Mini Malarias por impacto, hasta 18 activas.</p></details><details class="guide-sub"><summary>BOSS especial: &Eacute;bola</summary><p>Tiene cuerpo segmentado. Al bajar al 50% de vida se enfurece y comienza a preparar ataques de cola con una zona de impacto visible. Pod&eacute;s esquivarlos movi&eacute;ndote; cada impacto de burbuja acorta su cuerpo y reduce el alcance de esos ataques.</p></details><details class="guide-sub"><summary>BOSS especial: Gripe Espa&ntilde;ola</summary><p>Tiene 750 de vida. Lanza ondas expansivas peri&oacute;dicas, cada vez m&aacute;s frecuentes cuanto m&aacute;s debilitado est&aacute;, sin depender de que le quites vida. Si te alcanzan, te ralentizan y reducen tu da&ntilde;o un 10% durante 5 segundos.</p></details><details class="guide-sub"><summary>BOSS especial: Tuberculosis</summary><p>El combate usa una arena especial y aparecen dos bacilos de Tuberculosis, cada uno con 250 de vida. Ambos te persiguen lentamente y ten&eacute;s que derrotar a los dos para ganar. El bacilo principal lanza una onda de tos cada cierto tiempo, sin depender de su vida.</p><p>Durante la batalla aparecen virus m&eacute;dicos de forma natural; estos pueden curar a los jefes. Tambi&eacute;n aparecen powers malos de Tos 🌬️ con bastante frecuencia: si toc&aacute;s uno, te qued&aacute;s casi completamente a oscuras durante 5 segundos.</p><p>Al vencer a los dos jefes desbloque&aacute;s 🫁 <b>Dash</b>: un power temporal de 8 segundos que te permite mantener la pantalla apretada para disparar sin parar y aumenta tu velocidad de movimiento un 25% durante ese tiempo.</p></details><details class="guide-sub"><summary>Aventura (nuevo)</summary><p>Un mapa enorme. En celulares aparece la palanquita si eleg&iacute;s ese control; tambi&eacute;n pod&eacute;s activar Movimiento con el dedo en Ajustes para arrastrar el jab&oacute;n. En PC se mueve con WASD o las flechas (se cambian en Controles de PC). Dispar&aacute;s tocando la pantalla o con click izquierdo, y con E en PC.</p><p>Las oleadas: cada oleada tiene su jefe fijo (1: Tanque, 2: Bacteri&oacute;fago, 3: Rey, 4: Glot&oacute;n, 5: Bombardero, y se repite con m&aacute;s vida). Cada oleada trae una cantidad fija de virus. Al agotarse dejan de aparecer hasta que termine la oleada. Los que sobran al terminar no salen en la siguiente, pero los vivos siguen en el mapa. Al morir el jefe termina la oleada, suelta un poder y se desbloquean nuevos virus. Los powers aparecen de a 10 en el mapa, duran 10 s y los agarr&aacute;s toc&aacute;ndolos con el jab&oacute;n. Los virus te persiguen. Despu&eacute;s del 2&ordm; jefe te mov&eacute;s un poco m&aacute;s r&aacute;pido que un virus com&uacute;n.</p><p>Tanque gigante: tiene etapas, invoca virus veloces y viene con 3 m&eacute;dicos. Bacteri&oacute;fago: jefe de partida que al morir fortalece temporalmente a los dem&aacute;s virus. Cadencia eterna y Escudo te dan m&aacute;s velocidad, y Hielo o Tiempo detenido te frenan.</p><p>M&eacute;dicos: curan primero a los jefes, con el 5% de la vida m&aacute;xima de quien curan (m&iacute;nimo 1). En Medio, Dif&iacute;cil y Hardcore, cada jefe (menos el primero) viene con un m&eacute;dico detr&aacute;s.</p><p>Al morir un jefe que da recompensa suelta una mejora permanente de jefe en el lugar donde cay&oacute;. Hay un 15% de probabilidad de que sea un poder exclusivo de jefe. Los virus normales conservan su 5% de probabilidad de soltar powers comunes. En Aventura no aparecen Jefe invocado ni Jefe salvaje. El jefe de la oleada aparece en un momento al azar de la oleada, y los virus siguen saliendo despu&eacute;s. Algunos grupos de 5 entran desde los bordes del mapa.</p><p>Los virus salen del borde del mapa. Cada virus tiene un 5% de soltar un poder al morir. Los jefes aparecen en los c&iacute;rculos rojos grandes. Antes de salir, el c&iacute;rculo late y aparece un aviso con los segundos que faltan. El Glot&oacute;n Supremo cura la mitad del da&ntilde;o que absorbe.</p><p>Mando: se configura en Ajustes, pesta&ntilde;a Mando (Xbox, PlayStation, Nintendo o no reconocido). Pausa: Escape o el bot&oacute;n de pausa. Men&uacute; creativo: la tecla C o su bot&oacute;n. Los jefes 6 en adelante vienen de a dos. Los virus tienen un 5% de soltar un poder al morir (no de jefe). En creativo, los divisores pueden dividirse cerca tuyo.</p></details><details class="guide-sub"><summary>Dificultades de Defensa</summary><p><b>F&aacute;cil:</b> m&aacute;s powers y dorados, menos virus y m&aacute;s lentos, 2 menos de vida m&aacute;xima y menos virus especiales.</p><p><b>Medio:</b> menos virus y especiales, y 2 menos de vida m&aacute;xima.</p><p><b>Dif&iacute;cil:</b> la experiencia completa.</p><p><b>Hardcore:</b> como Dif&iacute;cil, pero con 1 sola vida. Vida extra se reemplaza por el Escudo 🪖 normal de 15 s y no aparecen Jab&oacute;n resistente ni P&eacute;rdida de vida.</p><p><b>Aventura &mdash; Medio:</b> es la dificultad predeterminada. <b>F&aacute;cil</b> reduce los virus por oleada y aumenta los powers dorados. <b>Dif&iacute;cil</b> elimina los dorados positivos, pero conserva los malos dorados. <b>Hardcore</b> usa una sola vida.</p></details></details><details class="guide-major"><summary>🧪 POWERS</summary><details class="guide-sub"><summary>3. Powers y mejoras</summary><p>Los powers temporales se activan al recogerlos. Las mejoras permanentes se acumulan durante la partida. Los powers dorados y exclusivos pueden desbloquearse mediante jefes o c&oacute;digos.</p><p>💎 <b>Regalo:</b> invoca un mini COVID-19 con la vida m&aacute;xima de un virus. En Aventura, al derrotarlo deja caer directamente un poder exclusivo de jefe desbloqueado; en Defensa, permite elegir entre un poder exclusivo de jefe y un power com&uacute;n.</p><p>🧫 <b>Epidemia:</b> combina Plaga y Jefe salvaje: aparecen cinco virus normales y un jefe salvaje sin recompensa.</p><p>🪨 <b>C&aacute;psula:</b> escudo dorado de un impacto; al romperse elimina virus normales cercanos y repele jefes.</p><p>🦟 <b>Mosquito aliado:</b> los powers recogidos preparan disparos que invocan larvas; evolucionan a mosquitos aliados con 3 vidas.</p><p>✴️ <b>UP:</b> duplica al azar un power activo o una mejora acumulada.</p><p>💫 <b>Doble carga:</b> poder exclusivo que a&ntilde;ade 2 burbujas frontales por nivel y aumenta su velocidad.</p><p>🚫 <b>ANTI-VIRUS:</b> poder especial dorado. Cada burbuja suma 1 de da&ntilde;o extra por cada virus vivo en el mapa; con 15 virus, suma +15.</p></details><details class="guide-sub"><summary>Powers comunes</summary><p>🥊 <b>Da&ntilde;o:</b> +1 de da&ntilde;o durante 15 s.</p><p>🏃 <b>Disparo r&aacute;pido:</b> dispar&aacute;s m&aacute;s r&aacute;pido durante 10 s.</p><p>✌️ <b>Doble tiro:</b> lanz&aacute;s 2 burbujas por disparo durante 15 s.</p></details><details class="guide-sub"><summary>Powers dorados</summary><p>❤️ <b>Vida extra:</b> +1 coraz&oacute;n, hasta tu m&aacute;ximo (8 por defecto; Jab&oacute;n resistente lo aumenta). Tambi&eacute;n cura 1 vida a cada aliado. En Hardcore se reemplaza por 🪖 Escudo: un power normal que activa el escudo durante 15 s.</p><p>🔻 <b>Virus &minus;1:</b> quita 1 de vida a todos los virus; los jefes no pueden bajar de 1 por este efecto.</p><p>🌟 <b>Da&ntilde;o eterno:</b> +1 de da&ntilde;o permanente por nivel.</p><p>🚀 <b>Cadencia eterna:</b> dispar&aacute;s m&aacute;s r&aacute;pido permanentemente; tiene hasta 4 niveles.</p><p>🔱 <b>Multidisparo:</b> suma burbujas a cada disparo: 2 en el nivel 1 y 3 en el nivel 2.</p><p>👑 <b>Jefe invocado:</b> aparece un jefe normal. Si lo venc&eacute;s, da la recompensa habitual.</p></details><details class="guide-sub"><summary>Powers malos dorados</summary><p>👹 <b>Jefe salvaje:</b> aparece un jefe normal que no da recompensa al morir.</p><p>💔 <b>P&eacute;rdida de vida:</b> &minus;1 coraz&oacute;n, sin bajar de 1.</p><p>🕳️ <b>Robo:</b> elimina un power temporal activo o quita un nivel de Da&ntilde;o eterno, Cadencia eterna o Multidisparo.</p><p>🔪 <b>Da&ntilde;o debilitado:</b> &minus;1 de da&ntilde;o permanente por nivel. El da&ntilde;o nunca baja de 1.</p><p>💤 <b>Cadencia invertida:</b> aumenta un 18% el tiempo entre disparos por nivel, permanentemente.</p></details><details class="guide-sub"><summary>Powers especiales</summary><p>💣 <b>Explosiones (12 s):</b> tus burbujas explotan al impactar y da&ntilde;an a los virus cercanos, jefes incluidos.</p><p>❄️ <b>Congelar (5 s):</b> los virus se mueven al 8% de su velocidad. Se pausan las tandas normales y la aparici&oacute;n programada de jefes; los jefes Glot&oacute;n Supremo y Bombardero todav&iacute;a pueden invocar sus propios virus. Mientras dura, los potenciadores que est&aacute;n en el mapa y los que ten&eacute;s activos (Da&ntilde;o, R&aacute;pido, Doble tiro, Explosiones y Escudo) se consumen 4 veces m&aacute;s lento; Furia y Lentitud siguen a su ritmo normal. En Aventura el hielo cubre todo el mapa, no solo lo que ves en pantalla.</p><p>🛡️ <b>Escudo (8 s):</b> vos y tus aliados no reciben da&ntilde;o. Si un jefe te toca, rebota.</p><p>🦠 <b>Contagio global (8 s):</b> el da&ntilde;o que le hagas a un virus tambi&eacute;n se aplica a los dem&aacute;s. Es un power especial temporal, no un exclusivo de jefe.</p><p>🪖 <b>Escudo (15 s, Hardcore):</b> versi&oacute;n normal del escudo que aparece en lugar de Vida extra; no es dorado y no aparece en las arenas especiales de jefes.</p><p>☣️ <b>Limpieza:</b> elimina a los virus que no son jefes en pantalla y le quita 5 de vida al jefe (el Tanque recibe la mitad).</p></details><details class="guide-sub"><summary>Powers malos (rojos)</summary><p>💨 <b>Furia:</b> los virus se mueven un 60% m&aacute;s r&aacute;pido durante 8 s.</p><p>🧬 <b>Mutaci&oacute;n:</b> todos los virus en pantalla, incluidos los jefes, ganan +1 de vida actual y m&aacute;xima.</p><p>🦠 <b>Plaga:</b> aparecen 5 virus de golpe.</p><p>🐌 <b>Lentitud:</b> dispar&aacute;s 2,5 veces m&aacute;s lento durante 8 s.</p><p>🌬️ <b>Tos:</b> power malo que aparece con frecuencia durante la batalla contra Tuberculosis. Al tocarlo, la pantalla queda casi completamente oscura durante 5 s.</p></details><details class="guide-sub"><summary>Mejoras de jefe</summary><p>Se elige 1 entre 3 al vencer un jefe que da recompensa. Son permanentes y acumulables; algunas tienen un nivel m&aacute;ximo.</p><p>&harr;️ <b>Disparo trasero:</b> junto con tus disparos normales, agrega m&aacute;s burbujas y distribuye todos los disparos uniformemente en los 360&deg;. La separaci&oacute;n es 360&deg; dividido por la cantidad total de burbujas.</p><p>🔀 <b>Burbuja triple:</b> las burbujas se dividen en 3 mientras vuelan (hasta nivel 3).</p><p>🎯 <b>Teledirigidas:</b> las burbujas buscan al virus m&aacute;s cercano a la l&iacute;nea de direcci&oacute;n hacia la que apuntaste.</p><p>🔥 <b>Mantener apretado:</b> si dej&aacute;s el dedo apretado, dispar&aacute;s sin parar; cada nivel aumenta la velocidad de disparo (hasta nivel 4).</p><p>🫁 <b>Dash (8 s):</b> al desbloquearlo tras vencer a Tuberculosis, pod&eacute;s mantener la pantalla apretada para disparar sin parar y te mov&eacute;s un 25% m&aacute;s r&aacute;pido durante 8 segundos.</p><p>🏹 <b>Perforantes:</b> cada nivel permite que una burbuja atraviese 1 virus adicional.</p><p>🫧 <b>Burbujas grandes:</b> aumenta su tama&ntilde;o y suma +1 de da&ntilde;o por nivel (hasta nivel 5).</p><p>⭕️ <b>Onda expansiva:</b> cada nivel aumenta un 35% el radio de las explosiones.</p><p>🧽 <b>Jab&oacute;n resistente:</b> suma +2 corazones y aumenta en 2 el m&aacute;ximo de vidas. No aparece en Hardcore.</p><p>🧼 <b>Jab&oacute;n aliado:</b> un jab&oacute;n que dispara solo y prioriza a los jefes. Tiene 3 vidas; pod&eacute;s tener hasta 3 aliados en partidas normales. En Creativo no hay un l&iacute;mite fijo, pero cantidades enormes pueden trabar o cerrar el juego.</p></details><details class="guide-sub"><summary>Powers exclusivos</summary><p>Al vencer un jefe que da recompensa, cada una de las 3 cartas tiene un 2% de probabilidad de ser uno de estos poderes. En Aventura, cada jefe tiene un 5% de probabilidad de soltar directamente un exclusivo en vez de una mejora de jefe. Son permanentes y se acumulan por niveles.</p><p>🧨 <b>Bombardeo eterno:</b> todas tus burbujas explotan al impactar. Cada nivel aumenta el radio y el da&ntilde;o.</p><p>⛈️ <b>Tormenta el&eacute;ctrica:</b> cada impacto lanza un rayo que rebota entre virus cercanos: 5 rebotes en el nivel 1 y +3 por nivel. Con Perforantes, cada virus atravesado tambi&eacute;n puede activar rayos.</p><p>🕰️ <b>Tiempo absoluto:</b> cada cierto tiempo congela a todos los virus mientras vos segu&iacute;s disparando. Cada nivel aumenta la duraci&oacute;n y reduce la espera.</p><p>🪐 <b>&Oacute;rbita destructiva:</b> 5 bombas orbitan tu jab&oacute;n y explotan al tocar un virus; cada bomba se regenera a los 4 s. Hacen 5&times; el da&ntilde;o de tus burbujas y explotan en el mismo radio que las burbujas con Explosiones. Onda expansiva agranda el &aacute;rea.</p><p>🌀 <b>Aura aniquiladora:</b> cada 15 s sale un anillo desde el centro que da&ntilde;a una vez a cada virus que toca, jefes incluidos. En el nivel 1 hace 5&times; tu da&ntilde;o; cada nivel suma 1 al multiplicador y reduce el intervalo un 33%.</p><p>🦟 <b>Mosquito aliado (exclusivo dorado):</b> se desbloquea al derrotar al Dengue. Al recogerlo, tu pr&oacute;ximo disparo invoca una larva que evoluciona en un mosquito aliado con 3 vidas. Ataca hasta 10 virus normales y los elimina al instante; no ataca jefes. Los virus pueden da&ntilde;arlo si lo alcanzan antes de que &eacute;l los ataque. Los virus divisores conservan su divisi&oacute;n.</p><p>🦟 <b>Enjambre de mosquitos:</b> power exclusivo del combate contra el Dengue. Hace que el jefe invoque un grupo de mosquitos.</p></details></details><details class="guide-major"><summary>🎨 PERSONALIZACI&Oacute;N</summary><details class="guide-sub"><summary>4. Personalizaci&oacute;n y c&oacute;digos</summary><p>En Personalizar pod&eacute;s cambiar forma, color, texto, forma de burbuja, acabado y estela. Los c&oacute;digos se canjean desde el panel correspondiente; algunos se descubren al vencer jefes. La estela cl&aacute;sica de burbujas est&aacute; disponible desde el comienzo y sigue tanto al jab&oacute;n como a sus disparos.</p></details></details><details class="guide-major"><summary>⚙️ AJUSTES Y CONTROLES</summary><details class="guide-sub"><summary>5. Ajustes y controles</summary><p>Configuraci&oacute;n permite modificar audio, gr&aacute;ficos, shaders, resoluci&oacute;n, controles t&aacute;ctiles y mando. Los shaders afectan a toda la escena, incluidos poderes, escudos, explosiones y efectos visuales.</p></details><details class="guide-sub"><summary>Configuraci&oacute;n (⚙️ arriba a la derecha)</summary><p><b>Personalizar:</b> forma y color del jab&oacute;n, color libre, forma de las burbujas, fondo o imagen propia, texto del jab&oacute;n (hasta 6 caracteres) y resoluci&oacute;n.</p><p><b>Movimiento:</b> la palanquita aparece &uacute;nicamente en celulares y solo cuando est&aacute; seleccionado Movimiento con palanca. Si activ&aacute;s Movimiento con el dedo, la palanquita desaparece y arrastr&aacute;s el jab&oacute;n directamente. En PC no se muestra la palanquita; se usa teclado o mando, o pod&eacute;s elegir Movimiento con el dedo.</p><p><b>Controles:</b> las flechas disparan hacia arriba, abajo, izquierda y derecha; Espacio dispara hacia el puntero. En Aventura, WASD y las flechas mueven el jab&oacute;n; E dispara. Pod&eacute;s cambiar las teclas (no se pueden repetir) y restablecerlas. Esc cancela el cambio de tecla.</p><p><b>Modo Rendimiento:</b> reduce a la mitad las part&iacute;culas y muestra avisos al invocar demasiados virus o aliados en Creativo. Los avisos te preguntan si quer&eacute;s continuar y advierten que el juego puede trabarse o cerrarse.</p><p><b>Velocidad del jab&oacute;n:</b> en Creativo, pesta&ntilde;a Ajustes, pod&eacute;s cambiar la velocidad de movimiento del jab&oacute;n en Aventura creativa.</p><p><b>Audio:</b> en Ajustes pod&eacute;s activar o desactivar los efectos, ajustar su volumen, activar o quitar la m&uacute;sica original de fondo y regular su volumen por separado.</p><p><b>Distinci&oacute;n visual:</b> agrega contornos m&aacute;s marcados a virus y burbujas.</p><p><b>F3 (en PC):</b> muestra FPS, virus activos, burbujas/proyectiles, aliados, part&iacute;culas, resoluci&oacute;n del &aacute;rea de juego y estado del Modo Rendimiento.</p></details><details class="guide-sub"><summary>Qu&eacute; hereda tu aliado</summary><p>El aliado dispara con tus modificadores de da&ntilde;o, multidisparo, disparo trasero, burbuja triple, perforantes, teledirigidas, burbujas grandes y explosiones. Tambi&eacute;n le afectan Cadencia eterna, Cadencia invertida, Da&ntilde;o debilitado, Disparo r&aacute;pido, Lentitud, Escudo y Vida extra.</p></details></details><details class="guide-major"><summary>🧩 CREATIVO Y CUSTOM</summary><details class="guide-sub"><summary>Modo creativo</summary><p>Desde el men&uacute; principal eleg&iacute;s Aventura creativa o Defensa creativa. Ten&eacute;s vidas infinitas y un panel 🛠️ para activar la aparici&oacute;n autom&aacute;tica de virus, jefes y powers; invocar virus, virus especiales o jefes; sumar powers, mejoras y poderes exclusivos; y ajustar tama&ntilde;os, velocidades, da&ntilde;o, cadencia y multiplicador de clics (&times;1, &times;5, &times;10, &times;50, &times;100 o &times;500). En los ajustes de Creativo tambi&eacute;n pod&eacute;s modificar la velocidad del jab&oacute;n. CUSTOM funciona como un programador visual de comandos: eleg&iacute;s un evento (morir, recibir da&ntilde;o, aparecer, cada X segundos o tocar la pantalla), el objeto que lo activa y una acci&oacute;n (spawnear, matar, hacer da&ntilde;o o transformar). Pod&eacute;s elegir virus, jefes, burbujas o powers, ajustar cantidades y decidir d&oacute;nde aparecen. Por ejemplo: al morir un virus, spawnear 2 burbujas; o cada 10 segundos, spawnear 1000 burbujas. Los comandos solo existen durante esa partida creativa y se borran al empezar otra. Los sorteos aleatorios cambian las estad&iacute;sticas y otorgan entre 3 y 8 modificadores aleatorios en cantidades aleatorias.</p><p>En Creativo no hay un l&iacute;mite fijo de aliados, virus ni cantidades de modificadores. Al superar valores recomendados, el juego te advierte antes de continuar; cantidades enormes pueden provocar lag o cerrar la pesta&ntilde;a. El juego se pausa mientras el panel est&aacute; abierto; desde el panel pod&eacute;s administrar virus, powers y ajustes.</p></details></details></div><button class="bk" onclick="document.getElementById('guide').style.display='none'">Volver</button></div></div>
+<button aria-label="Modo creativo" id="cbtn" title="Modo creativo">🛠️</button>
 <div id="cpanel"><div class="gbox"><h2>🎮 Modo creativo</h2><div class="gbody" id="cbody"></div><button class="bk" id="cClose">Cerrar</button></div></div>
 <div id="custom"><div class="gbox"><h2>Personalizar</h2><div class="gbody" id="cusbody"></div><button class="bk" id="cusClose">Listo</button></div></div>
-<button id="gear" aria-label="Configuración" title="Configuración">⚙</button><button id="gamePauseBtn" aria-label="Pausa" title="Pausa" type="button">Ⅱ</button><div id="settings"><div class="gbox"><h2>⚙️ Configuración</h2><div class="gbody" id="setbody"></div><button class="bk" id="setClose">Cerrar</button></div></div><div id="adminPanel"><div class="gbox"><h2>🎟️ Códigos</h2><div class="gbody" id="adminbody"></div><button class="bk" id="adminClose">Cerrar</button></div></div>
+<button aria-label="Configuraci&oacute;n" id="gear" title="Configuraci&oacute;n">⚙</button><button aria-label="Pausa" id="gamePauseBtn" title="Pausa" type="button">Ⅱ</button><div id="settings"><div class="gbox"><h2>⚙️ Configuraci&oacute;n</h2><div class="gbody" id="setbody"></div><button class="bk" id="setClose">Cerrar</button></div></div><div id="adminPanel"><div class="gbox"><h2>🎟️ C&oacute;digos</h2><div class="gbody" id="adminbody"></div><button class="bk" id="adminClose">Cerrar</button></div></div>
 <div id="warn"><div class="gbox"><h2>🚧 Aviso</h2><p id="warnTxt"></p><div class="mbtns"><button id="warnOk">Continuar</button><button id="warnNo">Cancelar</button></div></div></div>
-<div id="pausemenu"><div class="gbox"><h2>⏸️ Pausa</h2><div class="mbtns"><button id="pResume">Continuar</button><button id="pSet">Ajustes</button><button id="pExit">Salir al menú</button></div></div></div>
+<div id="pausemenu"><div class="gbox"><h2>⏸️ Pausa</h2><div class="mbtns"><button id="pResume">Continuar</button><button id="pSet">Ajustes</button><button id="pExit">Salir al men&uacute;</button></div></div></div>
 <div id="dbg"></div>
 <div id="joy"><div id="knob"></div></div><div id="pick"></div>
 <div id="msg"><div id="box"></div></div>
@@ -759,7 +643,7 @@ const CUSTOM_TYPES={norm:'Normal',fast:'Veloz',div:'Divisor',pad:'Padre Divisor'
 const CUSTOM_VIRUS_LIMIT=9000,CUSTOM_BUBBLE_LIMIT=6000,CUSTOM_POWER_LIMIT=200,CUSTOM_COMMAND_LIMIT=50,CUSTOM_COMMAND_BUDGET=5000;
 const CUSTOM_KIND_NAMES={virus:'virus',boss:'jefe',bubble:'burbuja',power:'power'};
 const CUSTOM_ACTION_NAMES={spawn:'spawnear',kill:'matar',damage:'hacer daño',transform:'transformar'};
-let CUSTOM_DRAFT={event:'death',watch:'virus',action:'spawn',target:'bubble',count:2,every:10,damage:1,where:'natural',subtype:'norm',hp:3};
+let CUSTOM_DRAFT={event:'death',watch:'virus',action:'spawn',target:'bubble',count:2,every:10,damage:1,where:'natural',direction:'aim',property:'speed',value:1.5,subtype:'norm',hp:3};
 function customCreativeActive(){return !!(g&&g.started&&g.creative===true&&g.customSession===true&&!g.dengueMode&&!g.tuberculosisMode&&!g.malariaMode&&!g.influenzaMode&&!g.variolaMode&&!g.ebolaMode&&!g.blackPlagueMode&&!g.cancerMode&&!g.ecjMode&&!g.greenFluMode)}
 function customActiveVirusCount(){return g.viruses.reduce((n,v)=>n+(!v.dead?1:0),0)}
 function customTargetLabel(k){return ({virus:'virus',boss:'jefe',bubble:'burbuja',power:'power',any:'cualquier objeto'})[k]||k}
@@ -768,8 +652,8 @@ function customDescribeRule(r){
   const watch=r.event==='timer'||r.event==='tap'?'':(' un '+customTargetLabel(r.watch));
   const target=customTargetLabel(r.target),count=r.count>1?' ×'+r.count:'';
   const what=(r.target==='virus'?CUSTOM_TYPES[r.subtype]||'virus':r.target==='boss'?'Jefe '+r.subtype:r.target==='power'?(PW[r.subtype]?.n||'Power aleatorio'):target);
-  const act=r.action==='spawn'?'Spawnear '+what+count:r.action==='kill'?'Matar '+target+count:r.action==='damage'?'Hacer '+r.damage+' de daño a '+target+count:'Transformar en '+what+count;
-  return ev+watch+' → '+act+(r.where&&['spawn','transform'].includes(r.action)?' · '+({natural:'posición natural',event:'donde ocurrió el evento',soap:'en el jabón',center:'centro',tap:'donde tocaste',random:'lugar aleatorio',edge:'bordes'})[r.where]:'');
+  const act=r.action==='spawn'?'Spawnear '+what+count:r.action==='kill'?'Matar '+target+count:r.action==='damage'?'Hacer '+r.damage+' de daño a '+target+count:r.action==='modify'?'Modificar '+target+' · '+(r.property||'comportamiento')+' = '+r.value:'Transformar en '+what+count;
+  return ev+watch+' → '+act+(r.where&&['spawn','transform'].includes(r.action)?' · '+({natural:'posición natural',event:'donde ocurrió el evento',soap:'en el jabón',center:'centro',tap:'donde tocaste',random:'lugar aleatorio',edge:'bordes'})[r.where]:'')+(r.target==='bubble'&&r.direction&&r.direction!=='aim'?' · dirección '+r.direction:'');
 }
 function customEventMatches(r,event,kind,damage){
   if(r.event!==event)return false;
@@ -804,6 +688,14 @@ function customPosition(rule,origin){
   return null; // Natural: virus en los bordes, burbuja en el jabón, power en cualquier lugar.
 }
 function customClampPoint(p,r){return {x:Math.max(r,Math.min(BXMAX()-r,p.x)),y:Math.max(r,Math.min(BYMAX()-r,p.y))}}
+function customBubbleAngle(r,pos){
+  const mode=r.direction||'aim';
+  if(mode==='up')return -Math.PI/2;if(mode==='down')return Math.PI/2;if(mode==='left')return Math.PI;if(mode==='right')return 0;
+  if(mode==='random')return Math.random()*Math.PI*2;
+  if(mode==='towardSoap')return Math.atan2(CWY()-pos.y,CWX()-pos.x);
+  if(mode==='awaySoap')return Math.atan2(pos.y-CWY(),pos.x-CWX());
+  return Number.isFinite(g.aim)?g.aim:-Math.PI/2;
+}
 function customSpawnFromRule(r,origin,count){
   let n=Math.max(0,Math.min(CUSTOM_COMMAND_BUDGET,Math.floor(count)||0,g.customActionBudget??CUSTOM_COMMAND_BUDGET));
   if(!n)return;
@@ -827,7 +719,7 @@ function customSpawnFromRule(r,origin,count){
     const baseD=Math.max(.1,(1+g.gold.dmg-g.gold.badDmg+(g.fx.dmg>0?1:0)+g.perk.big+cval('bdmg'))*(g.influenzaDebuff>0?.9:1)*(g.adv&&(!g.dengueMode||g.cancerMode)?1+.5*(g.xp?.plagueBoost||0):1))+((g.xp&&g.xp.antiVirus>0)?g.xp.antiVirus*customActiveVirusCount():0);
     for(let i=0;i<n;i++){
       const natural={x:CWX(),y:CWY()},pos=customPosition(r,origin)||natural;
-      const a=Number.isFinite(g.aim)?g.aim:-Math.PI/2,speed=560*S*cval('bspd');
+      const a=customBubbleAngle(r,pos),speed=560*S*cval('bspd');
       const bubble={x:pos.x,y:pos.y,vx:Math.cos(a)*speed,vy:Math.sin(a)*speed,r:10*S*cval('bsize'),d:baseD,bomb:g.fx.bomb>0||g.xp.bomb>0,xb:g.xp.bomb,pierce:g.perk.pierce,sp:g.perk.split,dist:0,home:g.perk.homing,homeOX:pos.x,homeOY:pos.y,homeDX:Math.cos(a),homeDY:Math.sin(a),ally:false,col:CUST.col,dead:false};g.bubbles.push(bubble);made++;customRunEvent('spawn','bubble',bubble,0);
     }
   }else if(r.target==='power'){
@@ -872,6 +764,17 @@ function customApplyAction(r,origin,source){
       const dmg=Math.max(0,Number(r.damage)||0);if(g.powers.includes(o)){customRemovePower(o)}
       else if(g.bubbles.includes(o)){o.customDamage=dmg;o.dead=true}
       else if(g.viruses.includes(o)){const before=o.hp;o.hp-=dmg;o.flash=.1;customRunEvent('damage',o.boss?'boss':'virus',o,Math.max(0,before-o.hp));if(o.hp<=0)o.dead=true}
+    }else if(r.action==='modify'){
+      const val=Number(r.value),prop=r.property;if(!Number.isFinite(val))continue;
+      const virus=g.viruses.includes(o),bubble=g.bubbles.includes(o),power=g.powers.includes(o),factor=Math.max(.05,Math.min(100,val));
+      if(prop==='speed'){if(virus)o.sp=Math.max(.01,(o.sp||0)*factor);else if(bubble){o.vx*=factor;o.vy*=factor}}
+      else if(prop==='size'){if(virus||bubble||power)o.r=Math.max(1,(o.r||1)*factor)}
+      else if(prop==='health'&&virus){o.max=Math.max(.1,val);o.hp=Math.min(o.max,Math.max(.1,val))}
+      else if(prop==='damage'&&bubble)o.d=Math.max(0,val);
+      else if(prop==='duration'&&power){o.max=Math.max(.1,val);o.life=o.max}
+      else if(prop==='homing'&&bubble)o.home=val>=1;
+      else if(prop==='split'&&bubble)o.sp=val>=1?Math.max(1,Math.floor(val)):0;
+      else if(prop==='explosive'&&bubble)o.bomb=val>=1;
     }
   }
 }
@@ -956,7 +859,7 @@ function showStart(){
       '<button id="bSettings" aria-label="Configuración" title="Configuración"><span class="home-icon">⚙️</span></button>'+
       '<button id="bGuide" aria-label="Guía" title="Guía"><span class="home-icon home-guide-icon">!</span></button>'+
       '<button id="bAdmin" aria-label="Códigos" title="Códigos"><span class="home-icon">⌨️</span></button></div>'+
-    '<div class="home-logo" title="¿Hay algo oculto?"><span class="home-logo-soap">SOAP</span><span class="home-logo-adventures">ADVENTURES</span><span class="home-logo-version">v.7.62</span></div><div class="home-shell">'+
+    '<div class="home-logo" title="¿Hay algo oculto?"><span class="home-logo-soap">SOAP</span><span class="home-logo-adventures">ADVENTURES</span><span class="home-logo-version">v.7.66</span></div><div class="home-shell">'+
     '<div class="home-left"><div class="home-soap-wrap">'+
       '<button class="home-soap" id="homeSoap" aria-label="Personalizar jabón"><span class="soap-inner" id="homeSoapText">SOAP</span></button>'+
       '<div class="home-name" id="homeName" aria-hidden="true">SOAP</div></div>'+
@@ -1047,7 +950,7 @@ function renderAdminPanel(){
 }
 document.getElementById('adminClose').onclick=()=>{document.getElementById('adminPanel').style.display='none'};
 document.getElementById('gamePauseBtn').onclick=e=>{e.preventDefault();e.stopPropagation();togglePause()};
-function showAdminBossCreative(){box.innerHTML='<h1>🧪 Creativo de BOSSES</h1><p>Elegí un BOSS para probarlo sin perder vidas. Podés abrir el panel creativo durante la partida.</p><div class="boss-list">'+BOSS_ROSTER.map((n,i)=>'<button '+(i<=12?'class="available"':'disabled')+' data-test-boss="'+i+'">'+(i<=12?'🧪 ':'🔒 ')+n+'<small>'+(i<=12?'Prueba libre · sin derrota':'Próximamente')+'</small></button>').join('')+'</div><div class="mbtns"><button id="adminCreativeBack">Volver al panel admin</button></div>';msg.style.display='flex';box.querySelectorAll('[data-test-boss]').forEach(b=>b.onclick=()=>{const i=Number(b.dataset.testBoss);if(i<=12)startDengueBoss(i,true)});document.getElementById('adminCreativeBack').onclick=openAdminPanel;}
+function showAdminBossCreative(fromCreative=false){box.innerHTML='<h1>🧪 Creativo de BOSSES</h1><p>Elegí un BOSS para probarlo sin perder vidas. Podés abrir el panel creativo durante la partida.</p><div class="boss-list">'+BOSS_ROSTER.map((n,i)=>'<button '+(i<=12?'class="available"':'disabled')+' data-test-boss="'+i+'">'+(i<=12?'🧪 ':'🔒 ')+n+'<small>'+(i<=12?'Prueba libre · sin derrota':'Próximamente')+'</small></button>').join('')+'</div><div class="mbtns"><button id="adminCreativeBack">'+(fromCreative?'Volver al Creativo':'Volver al panel admin')+'</button></div>';msg.style.display='flex';box.querySelectorAll('[data-test-boss]').forEach(b=>b.onclick=()=>{const i=Number(b.dataset.testBoss);if(i<=12)startDengueBoss(i,true)});document.getElementById('adminCreativeBack').onclick=()=>{if(fromCreative){msg.style.display='none';g.cmenu=true;document.getElementById('cpanel').style.display='flex';buildC()}else openAdminPanel()};}
 function showBosses(){
   const unlocked=ADMIN_UNLOCKED,finals=FINAL_BOSSES_UNLOCKED||unlocked;
   const opens=[
@@ -1106,6 +1009,7 @@ function buildC(){
     h+='<h3>Jefes</h3><div class="cbs">'+['normal','rey','glot','tank','bomb'].map(k=>'<button data-a="boss" data-k="'+k+'"><span class="emoji">'+BICON[k]+'</span> '+BNAME[k]+'</button>').join('')+'</div>';
     h+='<h3>Virus especiales</h3><div class="cbs">'+cb('ty',['div','pad','todo','med','glot','fast','bmb'],TYN)+'</div>';
     h+='<h3>Todos los virus</h3><div class="cbs"><button data-a="vh" data-k="full">🩹 Curar todos</button><button data-a="vh" data-k="5">+5 vida</button><button data-a="vh" data-k="-5">−5 vida</button></div>';
+    if(ADMIN_UNLOCKED)h+='<h3>👑 BOSSES especiales</h3><p>Iniciá una prueba creativa independiente de cualquiera de los 13 jefes.</p><div class="cbs"><button data-a="adminBossCreative">🧪 Elegir e invocar un BOSS</button></div>';
   }else if(cTab==='powers'){
     h+='<h3>Automático</h3><div class="cbs"><button data-a="tog" data-k="power"'+on('power')+'>Powers: '+yn('power')+'</button></div>';
     for(const [t,ks] of CPW)h+='<h3>Powers '+t.toLowerCase()+'</h3><div class="cbs">'+cb('pw',ks,PW)+'</div>';
@@ -1117,7 +1021,7 @@ function buildC(){
     const pick=(field,value,label)=>'<button data-a="customPick" data-field="'+field+'" data-val="'+value+'"'+(d[field]===value?' class="on"':'')+'>'+label+'</button>';
     const events=[['death','💥 Al morir / desaparecer'],['damage','💢 Al recibir daño'],['spawn','✨ Al aparecer'],['timer','⏱ Cada X segundos'],['tap','👆 Al tocar la pantalla']];
     const kinds=[['virus','🦠 Virus'],['boss','👑 Jefe'],['bubble','🫧 Burbuja'],['power','🧪 Power']];
-    const actions=[['spawn','➕ Spawnear'],['kill','☠️ Matar'],['damage','💢 Hacer daño'],['transform','🔄 Transformar']];
+    const actions=[['spawn','➕ Spawnear'],['kill','☠️ Matar'],['damage','💢 Hacer daño'],['transform','🔄 Transformar'],['modify','⚙️ Modificar comportamiento']];
     const locations=[['natural','Natural'],['event','Donde ocurrió el evento'],['soap','En el jabón'],['center','Centro de pantalla'],['tap','Donde tocaste'],['random','Lugar aleatorio'],['edge','En los bordes']];
     const opts=k=>k==='virus'?Object.entries(CUSTOM_TYPES).map(([v,n])=>'<option value="'+v+'"'+(d.subtype===v?' selected':'')+'>'+n+'</option>').join():k==='boss'?[['normal','Jefe normal'],['rey','Rey Divisor'],['glot','Glotón Supremo'],['tank','Tanque'],['bomb','Bombardero']].map(([v,n])=>'<option value="'+v+'"'+(d.subtype===v?' selected':'')+'>'+n+'</option>').join():k==='power'?'<option value="random">Power aleatorio</option>'+Object.keys(PW).filter(v=>!v.startsWith('B_')).map(v=>'<option value="'+v+'"'+(d.subtype===v?' selected':'')+'>'+(PW[v].e||'🧪')+' '+PW[v].n+'</option>').join():'';
     h+='<h3>🧩 CUSTOM · Programador de reglas</h3><p>Armá comandos con botones: elegí <b>cuándo</b> pasa algo, <b>qué objeto</b> lo activa y <b>qué acción</b> ocurre. Las reglas solo existen en esta partida creativa; al empezar otra partida se borran.</p>';
@@ -1126,10 +1030,11 @@ function buildC(){
     if(d.event==='timer')h+='<div class="admin-row"><label>Repetir cada (segundos) <input class="cnum" id="customEvery" type="number" min="0.1" max="3600" step="0.1" value="'+d.every+'"></label></div>';
     if(d.event==='damage')h+='<div class="admin-row"><label>Activar cuando reciba al menos este daño <input class="cnum" id="customMinDamage" type="number" min="0" step="any" value="'+(d.minDamage??1)+'"></label></div>';
     h+='<h3>2. ¿Qué acción realiza?</h3><div class="cbs">'+actions.map(q=>pick('action',q[0],q[1])).join('')+'</div>';
-    h+='<h3>'+(d.action==='spawn'?'¿Qué querés spawnear?':d.action==='transform'?'¿En qué se transforma?':'¿A qué objeto afecta?')+'</h3><div class="cbs">'+kinds.map(q=>pick('target',q[0],q[1])).join('')+((d.action==='kill'||d.action==='damage')?pick('target','any','🌐 Cualquiera'): '')+'</div>';
+    h+='<h3>'+(d.action==='spawn'?'¿Qué querés spawnear?':d.action==='transform'?'¿En qué se transforma?':'¿A qué objeto afecta?')+'</h3><div class="cbs">'+kinds.map(q=>pick('target',q[0],q[1])).join('')+((d.action==='kill'||d.action==='damage'||d.action==='modify')?pick('target','any','🌐 Cualquiera'): '')+'</div>';
     if(d.target==='virus'||d.target==='boss')h+='<div class="admin-row"><label>Tipo de '+(d.target==='boss'?'jefe':'virus')+' <select class="cnum" id="customSubtype">'+opts(d.target)+'</select></label>'+(d.target==='virus'&&d.action==='spawn'?'<label>Vida <input class="cnum" id="customHp" type="number" min="0" step="any" value="'+(d.hp??3)+'"></label>':'')+'</div>';
     else if(d.target==='power')h+='<div class="admin-row"><label>Power <select class="cnum" id="customSubtype">'+opts('power')+'</select></label></div>';
-    if(d.action==='spawn'||d.action==='transform')h+='<div class="admin-row"><label>Cantidad <input class="cnum" id="customCount" type="number" min="1" max="5000" value="'+d.count+'"></label><label>Dónde aparece <select class="cnum" id="customWhere">'+locations.map(([v,n])=>'<option value="'+v+'"'+(d.where===v?' selected':'')+'>'+n+'</option>').join('')+'</select></label></div>';
+    if(d.action==='spawn'||d.action==='transform')h+='<div class="admin-row"><label>Cantidad <input class="cnum" id="customCount" type="number" min="1" max="5000" value="'+d.count+'"></label><label>Dónde aparece <select class="cnum" id="customWhere">'+locations.map(([v,n])=>'<option value="'+v+'"'+(d.where===v?' selected':'')+'>'+n+'</option>').join('')+'</select></label></div>'+(d.target==='bubble'?'<div class="admin-row"><label>Dirección de salida <select class="cnum" id="customDirection">'+[['aim','Dirección de disparo'],['up','Arriba'],['down','Abajo'],['left','Izquierda'],['right','Derecha'],['random','Aleatoria'],['towardSoap','Hacia el jabón'],['awaySoap','Alejándose del jabón']].map(([v,n])=>'<option value="'+v+'"'+((d.direction||'aim')===v?' selected':'')+'>'+n+'</option>').join('')+'</select></label></div>':'');
+    else if(d.action==='modify'){const props=d.target==='virus'||d.target==='boss'?[['speed','Velocidad (multiplicador)'],['size','Tamaño (multiplicador)'],['health','Vida (valor fijo)']]:d.target==='bubble'?[['speed','Velocidad (multiplicador)'],['size','Tamaño (multiplicador)'],['damage','Daño (valor fijo)'],['homing','Persecución (1 sí / 0 no)'],['split','División (cantidad / 0 no)'],['explosive','Explosiva (1 sí / 0 no)']]:d.target==='power'?[['size','Tamaño (multiplicador)'],['duration','Duración (segundos)']]:[['size','Tamaño (multiplicador)'],['speed','Velocidad (multiplicador)']];h+='<div class="admin-row"><label>Propiedad <select class="cnum" id="customProperty">'+props.map(([v,n])=>'<option value="'+v+'"'+((d.property||props[0][0])===v?' selected':'')+'>'+n+'</option>').join('')+'</select></label><label>Valor <input class="cnum" id="customValue" type="number" step="any" value="'+(d.value??1.5)+'"></label><label>Cantidad <input class="cnum" id="customCount" type="number" min="1" max="5000" value="'+d.count+'"></label></div>'}
     else h+='<div class="admin-row"><label>Cantidad de objetos <input class="cnum" id="customCount" type="number" min="1" max="5000" value="'+d.count+'"></label>'+(d.action==='damage'?'<label>Daño por objeto <input class="cnum" id="customDamage" type="number" min="0" step="any" value="'+d.damage+'"></label>':'')+'</div>';
     h+='<div class="cbs"><button data-a="customAddRule">➕ Añadir comando</button><button data-a="customResetDraft">↺ Reiniciar constructor</button></div><div class="cbs"><button data-a="customExampleDeathBubbles">Ejemplo: al morir un virus → 2 burbujas</button><button data-a="customExampleTimerBubbles">Ejemplo: cada 10 s → 1000 burbujas</button></div>'; 
     h+='<h3>📜 Comandos de esta partida ('+(g.customRules||[]).length+')</h3>';
@@ -1270,6 +1175,7 @@ document.getElementById('cbody').onclick=e=>{
   const b=e.target.closest('button');if(!b||!b.dataset.a)return;
   const a=b.dataset.a,k=b.dataset.k;
   if(a==='tab'){cTab=k;buildC();return}
+  if(a==='adminBossCreative'&&ADMIN_UNLOCKED){g.cmenu=true;document.getElementById('cpanel').style.display='none';showAdminBossCreative(true);return}
   if(a==='customPick'){
     const f=b.dataset.field,v=b.dataset.val;if(['event','watch','action','target'].includes(f))CUSTOM_DRAFT[f]=v;
     if(f==='target')CUSTOM_DRAFT.subtype=v==='power'?'random':v==='boss'?'normal':'norm';
@@ -1285,18 +1191,18 @@ document.getElementById('cbody').onclick=e=>{
   if(a==='customAddRule'){
     if(!customCreativeActive()){showGameToast('CUSTOM solo funciona en partidas creativas.');return}
     if((g.customRules||[]).length>=CUSTOM_COMMAND_LIMIT){showGameToast('Llegaste al límite de '+CUSTOM_COMMAND_LIMIT+' comandos.');return}
-    const d=CUSTOM_DRAFT,every=Number(document.getElementById('customEvery')?.value??d.every),minDamage=Number(document.getElementById('customMinDamage')?.value??d.minDamage??1),count=Math.floor(Number(document.getElementById('customCount')?.value??d.count)),damage=Number(document.getElementById('customDamage')?.value??d.damage),hp=Number(document.getElementById('customHp')?.value??d.hp??3),subtype=document.getElementById('customSubtype')?.value??d.subtype,where=document.getElementById('customWhere')?.value??d.where;
+    const d=CUSTOM_DRAFT,every=Number(document.getElementById('customEvery')?.value??d.every),minDamage=Number(document.getElementById('customMinDamage')?.value??d.minDamage??1),count=Math.floor(Number(document.getElementById('customCount')?.value??d.count)),damage=Number(document.getElementById('customDamage')?.value??d.damage),hp=Number(document.getElementById('customHp')?.value??d.hp??3),subtype=document.getElementById('customSubtype')?.value??d.subtype,where=document.getElementById('customWhere')?.value??d.where,direction=document.getElementById('customDirection')?.value??d.direction??'aim',property=document.getElementById('customProperty')?.value??d.property??'speed',value=Number(document.getElementById('customValue')?.value??d.value??1.5);
     if(d.event==='timer'&&(!Number.isFinite(every)||every<.1||every>3600)){showGameToast('El intervalo debe estar entre 0,1 y 3600 segundos.');return}
     if(d.event==='damage'&&(!Number.isFinite(minDamage)||minDamage<0)){showGameToast('El daño mínimo no es válido.');return}
-    if(!Number.isFinite(count)||count<1||count>5000||!Number.isFinite(damage)||damage<0||!Number.isFinite(hp)||hp<0){showGameToast('Revisá la cantidad, el daño y la vida.');return}
+    if(!Number.isFinite(count)||count<1||count>5000||!Number.isFinite(damage)||damage<0||!Number.isFinite(hp)||hp<0||!Number.isFinite(value)){showGameToast('Revisá la cantidad, el daño, la vida y el valor.');return}
     const validSub=d.target==='virus'?!!CUSTOM_TYPES[subtype]:d.target==='boss'?['normal','rey','glot','tank','bomb'].includes(subtype):d.target==='power'?(subtype==='random'||!!PW[subtype]):true;
     if(!validSub){showGameToast('Elegí un tipo de objeto válido.');return}
-    const r={id:'cmd'+(CUSTOM_RULE_SEQ++),event:d.event,watch:d.watch,action:d.action,target:d.target,count,every:d.event==='timer'?every:0,left:d.event==='timer'?every:0,minDamage:d.event==='damage'?minDamage:0,damage:d.action==='damage'?damage:0,hp:d.target==='virus'?hp:3,subtype,where:(d.action==='spawn'||d.action==='transform')?where:'natural'};
+    const r={id:'cmd'+(CUSTOM_RULE_SEQ++),event:d.event,watch:d.watch,action:d.action,target:d.target,count,every:d.event==='timer'?every:0,left:d.event==='timer'?every:0,minDamage:d.event==='damage'?minDamage:0,damage:d.action==='damage'?damage:0,hp:d.target==='virus'?hp:3,subtype,where:(d.action==='spawn'||d.action==='transform')?where:'natural',direction,targetDirection:direction,property,value};
     g.customRules=g.customRules||[];g.customRules.push(r);showGameToast('✅ Comando añadido a esta partida.');buildC();return;
   }
   if(a==='customDeleteRule'){g.customRules=(g.customRules||[]).filter(r=>r.id!==k);buildC();return}
   if(a==='customClearRules'){g.customRules=[];showGameToast('Se borraron todos los comandos de esta partida.');buildC();return}
-  if(a==='customResetDraft'){CUSTOM_DRAFT={event:'death',watch:'virus',action:'spawn',target:'bubble',count:2,every:10,damage:1,where:'natural',subtype:'norm',hp:3};buildC();return}
+  if(a==='customResetDraft'){CUSTOM_DRAFT={event:'death',watch:'virus',action:'spawn',target:'bubble',count:2,every:10,damage:1,where:'natural',direction:'aim',property:'speed',value:1.5,subtype:'norm',hp:3};buildC();return}
   if(a==='step'){stepC(k);buildC();return}
   if(a==='quick'){const [key,val]=k.split(':');g.c[key]=Number(val);buildC();return}
   if(a==='setstat'){const input=document.getElementById('stat_'+k),v=parseCreativeNumber(input.value);if(!Number.isFinite(v)){input.style.borderColor='#d00';return}g.c[k]=safeCreativeStat(k,v);buildC();return}
@@ -1321,10 +1227,34 @@ function _oldStart(){box.innerHTML='<h1>🧼 SOUP ADVENTURE</h1><p>Tocá la pant
 showStart();
 
 function postFifthBoss(){return Math.max(0,(g.bossKills||0)-4)}
+// Escalado de los virus comunes a partir del sexto jefe: más vida y mutaciones,
+// sin multiplicar la vida de los BOSSES especiales.
+function lateVirusHpScale(){const n=postFifthBoss();return 1+.15*n+.025*n*n}
+function lateMutationChance(){const n=postFifthBoss();return Math.min(.38,.12+.035*n)}
 function maxHp(){if(g&&g.dengueMode&&Number.isFinite(g.bossVirusBaseHp))return g.bossVirusBaseHp;const k=g.bossKills||0;return 5+k+Math.max(0,k-1)+2*Math.max(0,k-3)+6*Math.max(0,k-2)+8*postFifthBoss()+Math.floor(g.t/25)+D.hp}
+function applyLateVirusScaling(v){
+  if(!v||v.boss||g.creative||g.dengueMode||v.lateScaled||postFifthBoss()<1)return;
+  const scale=lateVirusHpScale();v.hp=v.max=Math.max(1,Math.round(v.hp*scale));v.lateScaled=true;
+  applyLateVirusMutation(v);
+}
+function applyLateVirusMutation(v){
+  if(!v||v.boss||g.creative||g.dengueMode||postFifthBoss()<1)return;
+  const n=postFifthBoss();
+  if(Math.random()<lateMutationChance()&&['norm','fast','div','pad','todo'].includes(v.type)){
+    const r=Math.random(),role=n>=3?(r<.42?'runner':r<.72?'charger':'brute'):(r<.68?'runner':r<.88?'charger':'brute');
+    v.greenInfected=true;v.greenSpecial=true;v.greenRole=role;v.lateMutation=true;v.nosplit=true;
+    if(role==='runner'){v.hp=Math.max(v.hp,Math.ceil(maxHp()*(.7+.035*n)));v.sp*=1.48+.045*n;v.r*=1.08}
+    else if(role==='charger'){v.hp=Math.max(v.hp,Math.ceil(maxHp()*(.9+.04*n)));v.sp*=1.95+.07*n;v.r*=1.04}
+    else{v.hp=Math.max(v.hp,Math.ceil(maxHp()*(1.35+.07*n)));v.sp*=1.12+.025*n;v.r*=1.24}
+    v.max=v.hp;
+  }else if(n>=2&&Math.random()<Math.min(.16,.025*n)&&['norm','fast','div','pad','todo'].includes(v.type)){
+    // Fragmentos priónicos: pequeños, resistentes y muy veloces.
+    v.ecjShard=true;v.lateMutation=true;v.nosplit=true;v.hp=v.max=Math.max(2,Math.ceil(maxHp()*(.22+.025*n)));v.r=Math.max(8*S,9*S);v.sp*=2.45+.12*n;
+  }
+}
 function spawnVirus(boss,hpOv,type){
   const n0=g.viruses.length;_spawnVirus(boss,hpOv,type);
-  if(!boss&&g.viruses.length>n0){const o=g.viruses[g.viruses.length-1],t=type||rollType();const nv=newVirus(o.x,o.y,Math.max(1,o.hp),t,o.face);nv.r*=cval('vsize');g.viruses[g.viruses.length-1]=nv}else if(boss&&g.viruses.length>n0)g.viruses[g.viruses.length-1].r*=cval('vsize');
+  if(!boss&&g.viruses.length>n0){const o=g.viruses[g.viruses.length-1],t=type||rollType();const nv=newVirus(o.x,o.y,Math.max(1,o.hp),t,o.face);nv.r*=cval('vsize');g.viruses[g.viruses.length-1]=nv;applyLateVirusScaling(nv)}else if(boss&&g.viruses.length>n0)g.viruses[g.viruses.length-1].r*=cval('vsize');
   if(g.viruses.length>n0){const v=g.viruses[g.viruses.length-1];if(g.rabiesMode&&!v.boss&&v.type!=='med'){v.sp*=1.1;v.rabiesFury=true}customRunEvent('spawn',v.boss?'boss':'virus',v,0)}
 }
 function _spawnVirus(boss,hpOv,bt0){
@@ -1628,7 +1558,8 @@ function rollType(){
   const P=specProg();
   const divisorBoost=latePathogenBoss?(g.blackPlagueMode?3.6:2.6):1;
   const specialBoost=latePathogenBoss?(g.blackPlagueMode?2.1:1.7):1;
-  const specialChance=Math.min(SPEC.maxShare,(SPEC.base+SPEC.rate*P)*specialBoost)*D.spec*(g.bacterioSpawnWindow>0?1.10:1);if(Math.random()>=Math.min(.95,specialChance))return plain();
+  const lateSpecialBoost=1+.10*postFifthBoss()+.025*postFifthBoss()*postFifthBoss();
+  const specialChance=Math.min(SPEC.maxShare,(SPEC.base+SPEC.rate*P)*specialBoost*lateSpecialBoost)*D.spec*(g.bacterioSpawnWindow>0?1.10:1);if(Math.random()>=Math.min(.95,specialChance))return plain();
   const w={div:Math.max(.05,1-.09*P)*divisorBoost,pad:Math.max(.05,.12+.12*P-.02*P*P)*(latePathogenBoss?1.7:1),glot:.12+.22*P,med:.8+.3*P,bmb:.12+.1*P};
   if(g.bossKills>=2||latePathogenBoss)w.todo=(g.blackPlagueMode?.34:.18)+.35*Math.max(0,P-1)*(latePathogenBoss?1.5:1);
   let r=Math.random()*Object.values(w).reduce((a,b)=>a+b,0);
@@ -1643,7 +1574,7 @@ function _oldRoll(){
 }
 function newVirus(x,y,hp0,type,face){
   if(type=='fast')hp0=1;const hp=Math.max(1,Math.round(hp0*(HPM[type]||1))),rabiesFury=!!g.rabiesMode;
-  const baseSpeed=(type=='fast'?1.5:1)*Math.max(20*S,(82+Math.random()*18-hp*5.5)*S)*(1+.08*Math.max(0,Math.min(g.bossKills,4)-1)+.144*postFifthBoss());
+  const late=postFifthBoss(),baseSpeed=(type=='fast'?1.5:1)*Math.max(20*S,(82+Math.random()*18-hp*5.5)*S)*(1+.08*Math.max(0,Math.min(g.bossKills,4)-1)+.24*late+.035*late*late);
   const v={x,y,hp,max:hp,r:(20+Math.min(hp0,12)*2.2)*S*(RM[type]||1),sp:baseSpeed*(rabiesFury?1.1:1),boss:0,ph:Math.random()*6,id:g.id++,flash:0,face:face??Math.floor(Math.random()*4),type,absorb:0,rabiesFury};if(g.bacterioSpawnWindow>0)applyBacterioVirusBuff(v,g.bacterioSpawnWindow);return v;
 }
 function rollHp(){if(g&&g.dengueMode)return 3+Math.floor(Math.random()*3);const mx=maxHp(),mn=Math.max(1,Math.floor(mx/3));return mn+Math.floor(Math.random()*(mx-mn+1))}
@@ -1658,7 +1589,7 @@ function processDeaths(){
       if(!g.dengueMode&&!g.creative&&!v.boss&&!v.nosplit&&Math.random()<.05)advDropPower(v.x,v.y);
       if(v.type=='bmb'&&!v.noDeathEffect&&!v.nosplit)bombBoom(v);
       const s=v.btype=='rey'?['todo',2]:SPLIT[v.type];if(!s||v.nosplit||(CUST.perf&&g.viruses.length+born.length>=160)||g.viruses.length+born.length>=CUSTOM_VIRUS_LIMIT)continue;
-      for(let i=0;i<s[1];i++){if((CUST.perf&&g.viruses.length+born.length>=160)||g.viruses.length+born.length>=CUSTOM_VIRUS_LIMIT)break;const a=Math.random()*6.28+i*6.283/s[1],c=newVirus(v.x+Math.cos(a)*v.r*.8,v.y+Math.sin(a)*v.r*.8,rollHp(),s[0]);c.r*=cval('vsize');c.grace=.5;born.push(c)}
+      for(let i=0;i<s[1];i++){if((CUST.perf&&g.viruses.length+born.length>=160)||g.viruses.length+born.length>=CUSTOM_VIRUS_LIMIT)break;const a=Math.random()*6.28+i*6.283/s[1],c=newVirus(v.x+Math.cos(a)*v.r*.8,v.y+Math.sin(a)*v.r*.8,rollHp(),s[0]);applyLateVirusScaling(c);c.r*=cval('vsize');c.grace=.5;born.push(c)}
     }
     if(!any)break;
   }
@@ -1677,7 +1608,7 @@ function _oldPD(){
   for(const v of g.viruses){
     if(!v.dead||v.done)continue;v.done=true;
     const s=SPLIT[v.type];if(!s||v.nosplit||(CUST.perf&&g.viruses.length+born.length>=160))continue;
-    for(let i=0;i<s[1];i++){if(CUST.perf&&g.viruses.length+born.length>=160)break;const a=Math.random()*6.28+i*6.283/s[1],c=newVirus(v.x+Math.cos(a)*v.r*.8,v.y+Math.sin(a)*v.r*.8,rollHp(),s[0]);c.r*=cval('vsize');c.grace=.5;born.push(c);customRunEvent('spawn','virus',c,0)}
+    for(let i=0;i<s[1];i++){if(CUST.perf&&g.viruses.length+born.length>=160)break;const a=Math.random()*6.28+i*6.283/s[1],c=newVirus(v.x+Math.cos(a)*v.r*.8,v.y+Math.sin(a)*v.r*.8,rollHp(),s[0]);applyLateVirusScaling(c);c.r*=cval('vsize');c.grace=.5;born.push(c);customRunEvent('spawn','virus',c,0)}
   }
   for(const c of born){
     for(let k=0;k<8;k++){
@@ -2437,7 +2368,7 @@ function advDropAt(x,y){
 }
 function advDropMany(x,y){advDropAt(x,y)}
 function advHud(){
-  if(g.ecjMode)return 'BOSS ECJ · Fragmentación priónica · 3000 HP';if(g.greenFluMode)return 'BOSS GRIPE VERDE · Infección zombi · 2500 HP';if(g.covidMode)return 'BOSS COVID-19 · Epidemia activa · 500 HP';if(g.blackPlagueMode){const b=g.viruses.find(v=>v.boss&&v.btype==='blackPlague');return 'BOSS PESTE NEGRA · Próxima duplicación: '+Math.max(0,Math.ceil(b?.blackPlagueTimer??g.blackPlagueTimer??30))+' s · Duplica '+Math.round(100-(b?b.hp/b.max*100:100))+'%'}if(g.ebolaMode)return 'BOSS ÉBOLA · Cuerpo: '+Math.max(3,Math.ceil(g.viruses.find(v=>v.boss&&v.btype==='ebola')?.bodyLen||13))+' segmentos';if(g.tuberculosisMode)return 'BOSS TUBERCULOSIS · 2 objetivos';if(g.influenzaMode)return 'JEFE GRIPE ESPAÑOLA · Ondas cada 125 de daño';if(g.dengueMode)return 'JEFE DENGUE · Mosquitos: '+((g.dengueBugs&&g.dengueBugs.length)||0);
+  if(g.ecjMode)return 'BOSS ECJ · Fragmentación priónica · 3000 HP';if(g.greenFluMode)return 'BOSS GRIPE VERDE · Infección zombi · 2500 HP';if(g.covidMode)return 'BOSS COVID-19 · Epidemia activa · 500 HP';if(g.blackPlagueMode){const b=g.viruses.find(v=>v.boss&&v.btype==='blackPlague');return 'BOSS PESTE NEGRA · Próxima duplicación: '+Math.max(0,Math.ceil(b?.blackPlagueTimer??g.blackPlagueTimer??30))+' s · Duplica '+Math.round(100-(b?b.hp/b.max*100:100))+'%'}if(g.ebolaMode)return 'BOSS ÉBOLA · Cuerpo: '+Math.max(3,Math.ceil(g.viruses.find(v=>v.boss&&v.btype==='ebola')?.bodyLen||13))+' segmentos';if(g.tuberculosisMode)return 'BOSS TUBERCULOSIS · 2 objetivos · Tos periódica';if(g.influenzaMode)return 'JEFE GRIPE ESPAÑOLA · Ondas periódicas';if(g.dengueMode)return 'JEFE DENGUE · Mosquitos: '+((g.dengueBugs&&g.dengueBugs.length)||0);
   const w=g.wave||1,s=Math.ceil(Math.max(0,g.advT||0));
   if(g.advPhase=='warn')return '¡JEFE LLEGANDO en '+Math.max(0,Math.ceil(g.advWarnT))+' s!';
   if(g.advPhase=='pre')return 'Oleada '+w+' · virus por salir: '+Math.max(0,g.advQuota||0);
@@ -2568,10 +2499,10 @@ function spawnCovidDefender(boss,type,phase){
 }
 function covidBossAI(v,dt){
   const pct=v.hp/v.max,phase=pct>.75?1:pct>.50?2:pct>.30?3:pct>.15?4:5;
-  if(phase!==v.covidPhase){v.covidPhase=phase;const labels={2:'🧫 COVID-19 · Fase 2: Evasión',3:'🧫 COVID-19 · Fase 3: Evasión extrema',4:'🧫 COVID-19 · Semi-final: invoca defensores',5:'🧫 COVID-19 · Fase final: defensa máxima'};if(labels[phase])showGameToast(labels[phase]);pop(v.x,v.y,'#70dcc1',20)}
+  if(phase!==v.covidPhase){v.covidPhase=phase;const labels={2:'🧫 COVID-19 · Fase 2: Evasión',3:'🧫 COVID-19 · Fase 3: Evasión extrema',4:'🧫 COVID-19 · Semi-final: invoca defensores',5:'🧫 COVID-19 · Fase final: defensa máxima'};if(labels[phase])showGameToast(labels[phase]);pop(v.x,v.y,'#70dcc1',20);if(phase===4)v.covidSummonT=7.5;if(phase===5)v.covidSummonT=4.5}
   const escape=[.62,.86,1.08,1.18,1.28][phase-1];v.fleeing=true;v.chasing=false;v.covidEscape=escape;v.sp=(18+phase*2.3)*S;
-  if(phase<4){v.covidSummonT=phase<4?Math.max(0,(v.covidSummonT||0)-dt):0;return}
-  v.covidSummonT=(v.covidSummonT??(phase===4?8:5.4))-dt;
+  if(phase<4)return;
+  v.covidSummonT=(v.covidSummonT??(phase===4?7.5:4.5))-dt;
   if(v.covidSummonT<=0){
     const active=g.viruses.filter(o=>o.bossSupport&&!o.dead).length,max=phase===5?4:2;
     const count=Math.min(max-active,phase===5?2:1),pool=phase===5?['glot','tank','rey','bomb']:['glot','tank'];
@@ -2583,35 +2514,47 @@ function tuberculosisBossAI(v,dt){
   const d=Math.hypot(CWX()-v.x,CWY()-v.y)||1;
   if(d<315*S)v.chasing=true;else if(d>440*S)v.chasing=false;
   v.sp=v.chasing?24*S:18*S;
+  // Los dos bacilos comparten un solo reloj para no duplicar injustamente el ataque.
+  const pair=g.viruses.filter(o=>o.boss&&o.btype==='tuberculosis'&&!o.dead).sort((a,b)=>a.id-b.id),leader=pair[0];
+  if(leader===v){v.tbCoughT=(v.tbCoughT??6)-dt;if(v.tbCoughT<=0){emitBossWave(v,'#72d7c8',690*S,3.5);v.tbCoughT=pair.length>1?9.5:7.5;}}
 }
 function malariaBossAI(v,dt){
   const pct=v.hp/v.max;
-  if(!v.malariaFinal&&pct<=.25){v.malariaFinal=true;v.malariaPhase=2;v.chasing=false;v.fleeing=true;showGameToast('🩸 ¡El glóbulo rojo se rompe! Malaria entra en fase final.');pop(v.x,v.y,'#f4dc70',36);g.rings.push({x:v.x,y:v.y,l:.65,R:v.r*2.1});g.shake=.25}
+  if(!v.malariaFinal&&pct<=.25){v.malariaFinal=true;v.malariaPhase=2;v.chasing=false;v.fleeing=true;v.malariaSummonT=1.5;showGameToast('🩸 ¡El glóbulo rojo se rompe! Malaria entra en fase final.');pop(v.x,v.y,'#f4dc70',36);g.rings.push({x:v.x,y:v.y,l:.65,R:v.r*2.1});g.shake=.25}
   const d=Math.hypot(CWX()-v.x,CWY()-v.y)||1;
   if(v.malariaFinal){v.fleeing=true;v.chasing=false;v.sp=28*S;v.malariaEscapeT=(v.malariaEscapeT||0)+dt}
   else{if(d<315*S)v.chasing=true;else if(d>440*S)v.chasing=false;v.sp=v.chasing?24*S:18*S}
+  // También genera Mini Malarias por tiempo, no solamente cuando recibe disparos.
+  v.malariaSummonT=(v.malariaSummonT??7)-dt;
+  if(v.malariaSummonT<=0&&g.viruses.filter(o=>o.miniMalaria&&!o.dead).length<18){const count=v.malariaFinal?2:1;for(let i=0;i<count;i++)if(g.viruses.filter(o=>o.miniMalaria&&!o.dead).length<18)spawnMiniMalaria(v);v.malariaSummonT=v.malariaFinal?4.2:8.5;}
 }
 function influenzaBossAI(v,dt){
   const d=Math.hypot(CWX()-v.x,CWY()-v.y)||1;
   if(d<300*S)v.chasing=true;else if(d>455*S)v.chasing=false;
   v.sp=v.chasing?19*S:14*S;
+  // Ondas periódicas: la presión no depende de que el jugador le quite vida.
+  const pct=v.hp/v.max,interval=pct>.66?12.5:pct>.33?9:6.2;
+  v.influenzaWaveT=(v.influenzaWaveT??5)-dt;
+  if(v.influenzaWaveT<=0){emitBossWave(v,'#f58bc8',pct<.33?1020*S:860*S,5);v.influenzaWaveT=interval;}
+  // Los umbrales de vida siguen marcando cambios, pero ya no disparan oleadas extra.
   v.nextInfluenzaHP=v.nextInfluenzaHP??625;
-  while(v.nextInfluenzaHP>=125&&v.hp<=v.nextInfluenzaHP){g.influenzaWaves.push({x:v.x,y:v.y,r:0,speed:860*S,max:Math.hypot(MAP,MAP),life:1.7,maxLife:1.7,hit:false});pop(v.x,v.y,'#f58bc8',16);v.nextInfluenzaHP-=125}
+  while(v.nextInfluenzaHP>=125&&v.hp<=v.nextInfluenzaHP)v.nextInfluenzaHP-=125;
 }
 function variolaBossAI(v,dt){
   const pct=v.hp/v.max,phase=pct>.70?1:pct>.42?2:pct>.15?3:4;
   if(phase!==v.variolaPhase){v.variolaPhase=phase;showGameToast(['','🧫 Viruela · Fase 1: Virión estable','🧫 Viruela · Fase 2: Persecución','🧫 Viruela · Fase 3: Desprendimiento','🧫 Viruela · Fase final: Oleada masiva'][phase]);pop(v.x,v.y,'#d8d7d0',22)}
   v.chasing=phase>=2;v.variolaExposed=phase===4;v.sp=phase===1?0:phase===2?16*S:phase===3?19*S:23*S;
   v.variolaSpawnT=(v.variolaSpawnT??5)-dt;
-  if(phase>=3&&v.variolaSpawnT<=0){
+  if(phase>=2&&v.variolaSpawnT<=0){
     const alive=g.viruses.filter(o=>o.variolaPustule&&!o.dead).length;
-    const count=phase===4?Math.min(3,10-alive):Math.min(1,5-alive);
+    const cap=phase===4?10:phase===3?5:3;
+    const count=phase===4?Math.min(3,cap-alive):Math.min(1,cap-alive);
     for(let i=0;i<count;i++){
       if(g.viruses.length>=100)break;
       const a=Math.random()*Math.PI*2,rr=v.r+24*S;const n0=g.viruses.length;spawnVirus(false,2,'norm');
       if(g.viruses.length>n0){const p=g.viruses[g.viruses.length-1];p.x=Math.max(p.r,Math.min(BXMAX()-p.r,v.x+Math.cos(a)*rr));p.y=Math.max(p.r,Math.min(BYMAX()-p.r,v.y+Math.sin(a)*rr));p.hp=p.max=2;p.r=14*S;p.sp=phase===4?66*S:56*S;p.variolaPustule=true;p.nosplit=true;p.grace=.65}
     }
-    v.variolaSpawnT=phase===4?3.4:5.5;
+    v.variolaSpawnT=phase===4?3.4:phase===3?5.5:8.5;
   }
 }
 function variolaHit(v,damage){v.hp-=damage*(v.variolaExposed?1.35:1);v.flash=.1;}
@@ -2625,9 +2568,14 @@ function showVariolaVictory(){
 function showEbolaVictory(){const defeated=g.adminBossName||'Ébola';box.innerHTML='<h1>🏆 ¡'+esc(defeated)+' derrotado!</h1><p>Esquivaste sus ataques de cola y acortaste su cuerpo hasta vencerlo.</p><p>Recompensa dorada: ✴️ <b>UP</b>, duplica al azar un power activo o una mejora acumulada al recogerlo.</p><p>También desbloqueaste el combate contra <b>☠️ Peste Negra</b>.</p>'+bossCodeRewardHTML()+'<div class="mbtns"><button id="dengueRetry">Repetir BOSS</button><button id="dengueBossMenu">BOSSES</button><button id="dengueHome">Menú</button></div>';msg.style.display='flex';msg.style.zIndex='20';const defeatedIndex=g.adminBossIndex??5,wasCreative=!!g.adminBossCreative;document.getElementById('dengueRetry').onclick=()=>startDengueBoss(defeatedIndex,wasCreative);document.getElementById('dengueBossMenu').onclick=showBosses;document.getElementById('dengueHome').onclick=exitToMenu}
 function showBlackPlagueVictory(){const defeated=g.adminBossName||'Peste Negra';box.innerHTML='<h1>🏆 ¡'+esc(defeated)+' derrotada!</h1><p>Venciste a la Peste Negra y su ejército de virus duplicados.</p><p>Su duplicación dependía de su vida restante: cuanto menos le quedaba, mayor era el porcentaje de virus que copiaba cada 30 segundos.</p><p>Recompensa: ☠️ <b>Peste imparable</b>, disparás un 50% más rápido. En Aventura también te movés 25% más rápido, hacés 50% más de daño y ganás 1 vida extra.</p>'+bossCodeRewardHTML()+'<div class="mbtns"><button id="dengueRetry">Repetir BOSS</button><button id="dengueBossMenu">BOSSES</button><button id="dengueHome">Menú</button></div>';msg.style.display='flex';msg.style.zIndex='20';const defeatedIndex=g.adminBossIndex??6,wasCreative=!!g.adminBossCreative;document.getElementById('dengueRetry').onclick=()=>startDengueBoss(defeatedIndex,wasCreative);document.getElementById('dengueBossMenu').onclick=showBosses;document.getElementById('dengueHome').onclick=exitToMenu}
 
+function emitBossWave(v,color='#f38bc6',speed=860*S,debuff=5){
+  if(!v||!g.influenzaWaves)return;
+  g.influenzaWaves.push({x:v.x,y:v.y,r:0,speed,max:Math.hypot(MAP,MAP),life:1.7,maxLife:1.7,hit:false,color,debuffDuration:debuff});
+  pop(v.x,v.y,color,16);
+}
 function updateInfluenzaWaves(dt){
   if(!g.influenzaWaves)return;
-  for(const w of g.influenzaWaves){const old=w.r;w.r=Math.min(w.max,w.r+w.speed*dt);w.life-=dt;const d=Math.hypot(CWX()-w.x,CWY()-w.y);if(!w.hit&&d>=old-26*S&&d<=w.r+26*S){w.hit=true;g.influenzaDebuff=Math.max(g.influenzaDebuff,5);g.shake=Math.max(g.shake,.16);pop(CWX(),CWY(),'#f38bc6',12)}}
+  for(const w of g.influenzaWaves){const old=w.r;w.r=Math.min(w.max,w.r+w.speed*dt);w.life-=dt;const d=Math.hypot(CWX()-w.x,CWY()-w.y);if(!w.hit&&d>=old-26*S&&d<=w.r+26*S){w.hit=true;g.influenzaDebuff=Math.max(g.influenzaDebuff,w.debuffDuration||5);g.shake=Math.max(g.shake,.16);pop(CWX(),CWY(),w.color||'#f38bc6',12)}}
   g.influenzaWaves=g.influenzaWaves.filter(w=>w.life>0&&w.r<w.max);
 }
 function updateDengueBugs(dt){
@@ -2697,7 +2645,7 @@ function showMalariaVictory(){
 function showInfluenzaVictory(){
   discoverCodeClue('influenza');
   const defeated=g.adminBossName||'Gripe Española';
-  box.innerHTML='<h1>🏆 ¡'+esc(defeated)+' derrotada!</h1><p>Superaste las cinco ondas expansivas y venciste al jefe.</p><p>La onda se activa cada 125 puntos de vida perdidos; si te alcanza, te ralentiza y reduce tu daño un 10% durante 5 segundos.</p><p>Recompensa: 🦠 <b>Contagio global</b>. Durante 8 segundos, el daño que le hagas a un virus también se aplica a todos los virus del mapa.</p><p>También desbloqueaste el combate contra Viruela.</p>'+bossCodeRewardHTML()+'<div class="mbtns"><button id="dengueRetry">Repetir jefe</button><button id="dengueBossMenu">BOSSES</button><button id="dengueHome">Menú</button></div>';
+  box.innerHTML='<h1>🏆 ¡'+esc(defeated)+' derrotada!</h1><p>Superaste las cinco ondas expansivas y venciste al jefe.</p><p>Las ondas se activan periódicamente, cada vez más rápido a medida que baja su vida; si te alcanzan, reducen tu daño un 10% durante 5 segundos.</p><p>Recompensa: 🦠 <b>Contagio global</b>. Durante 8 segundos, el daño que le hagas a un virus también se aplica a todos los virus del mapa.</p><p>También desbloqueaste el combate contra Viruela.</p>'+bossCodeRewardHTML()+'<div class="mbtns"><button id="dengueRetry">Repetir jefe</button><button id="dengueBossMenu">BOSSES</button><button id="dengueHome">Menú</button></div>';
   msg.style.display='flex';msg.style.zIndex='20';
   const defeatedIndex=g.adminBossIndex||3,wasCreative=!!g.adminBossCreative;document.getElementById('dengueRetry').onclick=()=>startDengueBoss(defeatedIndex,wasCreative);document.getElementById('dengueBossMenu').onclick=showBosses;document.getElementById('dengueHome').onclick=exitToMenu;
 }
@@ -2757,7 +2705,7 @@ function showCancerVictory(){
   msg.style.display='flex';msg.style.zIndex='20';const ix=g.adminBossIndex??10,cr=!!g.adminBossCreative;document.getElementById('dengueRetry').onclick=()=>startDengueBoss(ix,cr);document.getElementById('dengueBossMenu').onclick=showBosses;document.getElementById('dengueHome').onclick=exitToMenu;
 }
 function showFinalBossVictory(title,description){
-  box.innerHTML='<h1>🏆 ¡'+title+' derrotado!</h1><p>'+description+'</p><p>Completaste uno de los dos BOSSES FINALES de Soap Adventures v.7.62.</p><div class="mbtns"><button id="finalRetry">Repetir BOSS</button><button id="finalBossMenu">BOSSES</button><button id="finalHome">Menú</button></div>';
+  box.innerHTML='<h1>🏆 ¡'+title+' derrotado!</h1><p>'+description+'</p><p>Completaste uno de los dos BOSSES FINALES de Soap Adventures v.7.66.</p><div class="mbtns"><button id="finalRetry">Repetir BOSS</button><button id="finalBossMenu">BOSSES</button><button id="finalHome">Menú</button></div>';
   msg.style.display='flex';msg.style.zIndex='20';const ix=g.adminBossIndex,cr=!!g.adminBossCreative;
   document.getElementById('finalRetry').onclick=()=>startDengueBoss(ix,cr);
   document.getElementById('finalBossMenu').onclick=showBosses;
@@ -2783,8 +2731,8 @@ function startDengueBoss(bossIndex=0,creativeMode=false){
   MAP=1250;D=DIFFS.mid;reset();if(creativeMode&&ADMIN_UNLOCKED){initCreativeState();g.cAuto={virus:true,boss:false,power:true}}g.customSession=false;g.adminBossCreative=!!(creativeMode&&ADMIN_UNLOCKED);g.adminBossIndex=safeIndex;g.adminBossName=BOSS_ROSTER[safeIndex]||'Dengue';g.adv=true;g.dengueMode=true;g.bossVirusBaseHp=maxHp();g.tuberculosisMode=safeIndex===1;g.malariaMode=safeIndex===2;g.influenzaMode=safeIndex===3;g.variolaMode=safeIndex===4;g.ebolaMode=safeIndex===5;g.blackPlagueMode=safeIndex===6;g.rabiesMode=safeIndex===7;g.sidaMode=safeIndex===8;g.covidMode=safeIndex===9;g.cancerMode=safeIndex===10;g.ecjMode=safeIndex===11;g.greenFluMode=safeIndex===12;g.wave=1;g.spawn=.5;g.advPowT=4;g.nextBoss=1e9;g.lives=safeIndex===8?3:5;g.bossFightActive=false;if(g.covidMode)D=DIFFS.hard;
   PX=MAP/2;PY=MAP/2;FACE=-Math.PI/2;MOVE={x:0,y:0};DK={};
   if(g.tuberculosisMode){
-    for(let i=0;i<2;i++){const n0=g.viruses.length;spawnVirus(true,250,'tuberculosis');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+(i===0?460:-460)*S;b.y=MAP/2+(i===0?210:-210)*S;b.r*=1.12;b.sp=18*S;b.chasing=false}}
-  }else if(g.malariaMode){const n0=g.viruses.length;spawnVirus(true,1000,'malaria');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+430*S;b.y=MAP/2-110*S;b.r*=1.35;b.sp=18*S;b.chasing=false}}else if(g.influenzaMode){const n0=g.viruses.length;spawnVirus(true,750,'influenza');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+540*S;b.y=MAP/2+320*S;b.r*=1.1;b.sp=15*S;b.chasing=false;b.nextInfluenzaHP=625}}else if(g.variolaMode){const n0=g.viruses.length;spawnVirus(true,1250,'variola');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+500*S;b.y=MAP/2+250*S;b.r*=1.22;b.sp=15*S;b.chasing=false;b.noHit=0;b.variolaPhase=1;b.variolaSpawnT=7;b.variolaExposed=false}  }else if(g.ebolaMode){const n0=g.viruses.length;spawnVirus(true,1500,'ebola');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+430*S;b.y=MAP/2+180*S;b.r=62*S;b.sp=17*S;b.chasing=false;b.bodyLen=13;b.bodyMax=13;b.tailRegen=0;b.tailHitTimer=0;b.whipPhase='idle';b.whipT=1.8;updateEbolaTrail(b)}}else if(g.blackPlagueMode){const n0=g.viruses.length;spawnVirus(true,1750,'blackPlague');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+430*S;b.y=MAP/2+180*S;b.r=68*S;b.sp=13*S;b.blackPlagueTimer=30;b.plagueColonyTimer=5;b.plaguePhase=1;for(let i=0;i<10;i++)spawnVirus(false,undefined,'norm')}}else if(g.rabiesMode){const n0=g.viruses.length;spawnVirus(true,2000,'rabies');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+430*S;b.y=MAP/2+180*S;b.r=78*S;b.sp=17*S;b.chasing=true;b.rabiesPhase=1;b.rabiesCooldown=2.2;b.rabiesDashT=0;b.rabiesPauseT=0}}else if(g.sidaMode){const n0=g.viruses.length;spawnVirus(true,2000,'sida');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+430*S;b.y=MAP/2+180*S;b.r=78*S;b.sp=17*S;b.chasing=true;b.sidaPhase=1;b.sidaRestore=1;b.sidaOrbit=0}}else if(g.covidMode){const n0=g.viruses.length;spawnVirus(true,500,'covid');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+430*S;b.y=MAP/2+180*S;b.r=68*S;b.sp=18*S;b.chasing=false; b.fleeing=false}}
+    for(let i=0;i<2;i++){const n0=g.viruses.length;spawnVirus(true,250,'tuberculosis');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+(i===0?460:-460)*S;b.y=MAP/2+(i===0?210:-210)*S;b.r*=1.12;b.sp=18*S;b.chasing=false;b.tbCoughT=5.5}}
+  }else if(g.malariaMode){const n0=g.viruses.length;spawnVirus(true,1000,'malaria');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+430*S;b.y=MAP/2-110*S;b.r*=1.35;b.sp=18*S;b.chasing=false}}else if(g.influenzaMode){const n0=g.viruses.length;spawnVirus(true,750,'influenza');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+540*S;b.y=MAP/2+320*S;b.r*=1.1;b.sp=15*S;b.chasing=false;b.nextInfluenzaHP=625;b.influenzaWaveT=5.5}}else if(g.variolaMode){const n0=g.viruses.length;spawnVirus(true,1250,'variola');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+500*S;b.y=MAP/2+250*S;b.r*=1.22;b.sp=15*S;b.chasing=false;b.noHit=0;b.variolaPhase=1;b.variolaSpawnT=7;b.variolaExposed=false}  }else if(g.ebolaMode){const n0=g.viruses.length;spawnVirus(true,1500,'ebola');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+430*S;b.y=MAP/2+180*S;b.r=62*S;b.sp=17*S;b.chasing=false;b.bodyLen=13;b.bodyMax=13;b.tailRegen=0;b.tailHitTimer=0;b.whipPhase='idle';b.whipT=1.8;updateEbolaTrail(b)}}else if(g.blackPlagueMode){const n0=g.viruses.length;spawnVirus(true,1750,'blackPlague');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+430*S;b.y=MAP/2+180*S;b.r=68*S;b.sp=13*S;b.blackPlagueTimer=30;b.plagueColonyTimer=5;b.plaguePhase=1;for(let i=0;i<10;i++)spawnVirus(false,undefined,'norm')}}else if(g.rabiesMode){const n0=g.viruses.length;spawnVirus(true,2000,'rabies');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+430*S;b.y=MAP/2+180*S;b.r=78*S;b.sp=17*S;b.chasing=true;b.rabiesPhase=1;b.rabiesCooldown=2.2;b.rabiesDashT=0;b.rabiesPauseT=0}}else if(g.sidaMode){const n0=g.viruses.length;spawnVirus(true,2000,'sida');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+430*S;b.y=MAP/2+180*S;b.r=78*S;b.sp=17*S;b.chasing=true;b.sidaPhase=1;b.sidaRestore=1;b.sidaOrbit=0}}else if(g.covidMode){const n0=g.viruses.length;spawnVirus(true,500,'covid');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+430*S;b.y=MAP/2+180*S;b.r=68*S;b.sp=18*S;b.chasing=false; b.fleeing=false}}
   else if(g.cancerMode){const n0=g.viruses.length;spawnVirus(true,2500,'cancer');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+430*S;b.y=MAP/2+170*S;b.r=104*S;b.sp=0;b.chasing=false;b.cancerPhase=1;b.cancerSpawnT=5;b.cancerRegenT=0;b.cancerTransition=0;g.cancerPhase=1;g.cancerSpawnT=5;showGameToast('🧬 CÁNCER · Fase 1: Desarrollo')}}
   else if(g.ecjMode){const n0=g.viruses.length;spawnVirus(true,3000,'ecj');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+420*S;b.y=MAP/2+140*S;b.r=105*S;b.sp=8*S;b.chasing=false;b.ecjPhase=1;b.ecjShardTimer=3.2;b.ecjSplitDone=false;showGameToast('🧠 ECJ · 3000 HP · Proteína priónica estable')}}
   else if(g.greenFluMode){const n0=g.viruses.length;spawnVirus(true,2500,'greenFlu');if(g.viruses.length>n0){const b=g.viruses[g.viruses.length-1];b.x=MAP/2+420*S;b.y=MAP/2+140*S;b.r=96*S;b.sp=25*S;b.chasing=true;b.greenFluPhase=1;b.greenFluSpawnT=4.5;showGameToast('🟢 GRIPE VERDE · 2500 HP · Infección agresiva')}}
@@ -2857,6 +2805,38 @@ function explode(x,y){
   const R=170*S*(1+.35*g.perk.wave);g.rings.push({x,y,l:.4,R});pop(x,y,'#ffb347',30);pop(x,y,'#e8426d',16);
   for(const o of g.viruses){if(o.boss||o.dead)continue;if(Math.hypot(o.x-x,o.y-y)<R+o.r){o.dead=true;o.nosplit=true;g.score+=o.max*10;pop(o.x,o.y,colorFor(o.max)[0],14)}}
 }
+// La cápsula resuelve su impacto en una rutina aislada y defensiva: no modifica
+// el array principal mientras se recorre y tolera entidades incompletas.
+function triggerCapsule(x,y){
+  if(!g||!g.capsuleShield)return false;
+  if(!Array.isArray(g.viruses))g.viruses=[];
+  if(!Array.isArray(g.rings))g.rings=[];
+  if(!Array.isArray(g.parts))g.parts=[];
+  g.capsuleShield=false;
+  g.capsuleInvuln=2;
+  g.inv=Math.max(Number.isFinite(g.inv)?g.inv:0,2);
+  g.shake=.3;
+  pop(x,y,'#ffe28a',28);
+  g.rings.push({x,y,l:.5,R:230*S});
+  const targets=g.viruses.slice();
+  for(let i=0;i<targets.length;i++){
+    const nearby=targets[i];
+    if(!nearby||nearby.dead)continue;
+    const nx=Number(nearby.x),ny=Number(nearby.y);
+    if(!Number.isFinite(nx)||!Number.isFinite(ny))continue;
+    const ndx=nx-x,ndy=ny-y,nd=Math.hypot(ndx,ndy)||1;
+    const radius=Number.isFinite(nearby.r)?nearby.r:0;
+    if(nearby.boss){
+      if(nd<300*S+radius){nearby.kx=ndx/nd*950*S;nearby.ky=ndy/nd*950*S;nearby.capsuleRepel=1.8}
+    }else if(nd<230*S+radius){
+      nearby.dead=true;nearby.nosplit=true;
+      const maxHp=Number(nearby.max);
+      if(Number.isFinite(maxHp))g.score+=maxHp*10;
+      pop(nx,ny,'#ffe28a',14);
+    }
+  }
+  return true;
+}
 function update(dt){
   if(!g.started||g.over||g.pick||g.cmenu)return;
   if(g.creative)g.lives=5;
@@ -2917,7 +2897,7 @@ function update(dt){
       }
     }
     if(!v.dead&&v.type!='med'&&!(v.grace>0)&&!(g.fx.tfreeze>0)&&(v.boss||g.inv<=0)&&!(g.capsuleInvuln>0)&&dpl<v.r+sr*.9){
-      let capsuleTriggered=false;if(g.capsuleShield){capsuleTriggered=true;g.capsuleShield=false;g.capsuleInvuln=2;g.inv=Math.max(g.inv,2);g.shake=.3;pop(cx,cy,'#ffe28a',28);g.rings.push({x:cx,y:cy,l:.5,R:230*S});for(const nearby of g.viruses){if(nearby.dead)continue;const ndx=nearby.x-cx,ndy=nearby.y-cy,nd=Math.hypot(ndx,ndy)||1;if(nearby.boss){if(nd<300*S+nearby.r){nearby.kx=ndx/nd*950*S;nearby.ky=ndy/nd*950*S;nearby.capsuleRepel=1.8}}else if(nd<230*S+nearby.r){nearby.dead=true;nearby.nosplit=true;g.score+=nearby.max*10;pop(nearby.x,nearby.y,'#ffe28a',14)}}}else if(g.creative){g.lives=5;g.inv=Math.max(g.inv,.25);g.shake=Math.max(g.shake,.08);if(v.boss){v.kx=-(cx-v.x)/dpl*500*S;v.ky=-(cy-v.y)/dpl*500*S}}else if(g.dengueMode&&v.boss&&(v.btype==='dengue'||v.btype==='tuberculosis'||v.btype==='malaria'||v.btype==='influenza'||v.btype==='variola'||v.btype==='ebola'||v.btype==='blackPlague'||v.btype==='cancer')){if(g.creative){g.shake=.2;g.inv=.8;v.kx=-(cx-v.x)/dpl*500*S;v.ky=-(cy-v.y)/dpl*500*S}else{sfxPlay('damage');g.lives=0;g.shake=.5;pop(cx,cy,'#ffffff',30)}}else if(g.fx.shield>0){g.shake=.15;if(v.boss){v.kx=-(cx-v.x)/dpl*500*S;v.ky=-(cy-v.y)/dpl*500*S}}else if(v.boss){if(g.creative){g.shake=.2;g.inv=.8;v.kx=-(cx-v.x)/dpl*500*S;v.ky=-(cy-v.y)/dpl*500*S}else{sfxPlay('damage');g.lives=0;g.shake=.5;pop(cx,cy,'#ffffff',30)}}else{sfxPlay('damage');g.lives--;g.inv=1.3;g.shake=.3;pop(cx,cy,'#ffffff',14)}
+      let capsuleTriggered=false;if(g.capsuleShield){capsuleTriggered=triggerCapsule(cx,cy)}else if(g.creative){g.lives=5;g.inv=Math.max(g.inv,.25);g.shake=Math.max(g.shake,.08);if(v.boss){v.kx=-(cx-v.x)/dpl*500*S;v.ky=-(cy-v.y)/dpl*500*S}}else if(g.dengueMode&&v.boss&&(v.btype==='dengue'||v.btype==='tuberculosis'||v.btype==='malaria'||v.btype==='influenza'||v.btype==='variola'||v.btype==='ebola'||v.btype==='blackPlague'||v.btype==='cancer')){if(g.creative){g.shake=.2;g.inv=.8;v.kx=-(cx-v.x)/dpl*500*S;v.ky=-(cy-v.y)/dpl*500*S}else{sfxPlay('damage');g.lives=0;g.shake=.5;pop(cx,cy,'#ffffff',30)}}else if(g.fx.shield>0){g.shake=.15;if(v.boss){v.kx=-(cx-v.x)/dpl*500*S;v.ky=-(cy-v.y)/dpl*500*S}}else if(v.boss){if(g.creative){g.shake=.2;g.inv=.8;v.kx=-(cx-v.x)/dpl*500*S;v.ky=-(cy-v.y)/dpl*500*S}else{sfxPlay('damage');g.lives=0;g.shake=.5;pop(cx,cy,'#ffffff',30)}}else{sfxPlay('damage');g.lives--;g.inv=1.3;g.shake=.3;pop(cx,cy,'#ffffff',14)}
       if(!v.boss&&!capsuleTriggered){v.dead=true;v.nosplit=true;explode(cx,cy)}
       if(g.lives<=0&&!g.creative){showGameOver();return}
     }
@@ -3469,7 +3449,7 @@ function bossSummon(v,dt){if(v.btype==='ecj'&&g.ecjMode){ecjBossAI(v,dt);return}
   v.sumT=(v.sumT??2)-dt;if(v.sumT>0)return;v.sumT=t=='glot'?3.2:3.6;
   const ty=t=='glot'?'glot':'bmb';if(g.viruses.filter(o=>o.type==ty&&!o.dead).length>=(t=='glot'?10:8))return;
   const a=Math.random()*6.28,c=newVirus(v.x+Math.cos(a)*v.r,v.y+Math.sin(a)*v.r,rollHp(),ty);
-  c.r*=cval('vsize');c.grace=.5;c.x=Math.max(c.r,Math.min(BXMAX()-c.r,c.x));c.y=Math.max(c.r,Math.min(BYMAX()-c.r,c.y));const spb=safeAt(c.x,c.y,c.r);c.x=spb[0];c.y=spb[1];g.viruses.push(c);pop(c.x,c.y,'#ffd27a',8);
+  applyLateVirusScaling(c);c.r*=cval('vsize');c.grace=.5;c.x=Math.max(c.r,Math.min(BXMAX()-c.r,c.x));c.y=Math.max(c.r,Math.min(BYMAX()-c.r,c.y));const spb=safeAt(c.x,c.y,c.r);c.x=spb[0];c.y=spb[1];g.viruses.push(c);pop(c.x,c.y,'#ffd27a',8);
 }
 
 function kite(v,dt){
@@ -3566,7 +3546,7 @@ function drawBossHealthBar(){
   else if(type==='covid'){markers=[.75,.50,.30,.15];const p=all[0]?.covidPhase||1;phase=['','Fase 1 · Evasión','Fase 2 · Evasión creciente','Fase 3 · Evasión extrema','Semi-final · Defensores','Final · Defensa máxima'][p]||'En reposo'}
   else if(type==='tuberculosis'){markers=[.5];phase=all.length===2?'Dos bacilos activos':'Queda un bacilo'}
   else if(type==='ebola'){markers=[.5];phase=all[0]?.enraged?'Fase final · Ataques acelerados':all[0]?.ebolaRecovery>0?'Ventana vulnerable · Recuperación':'Fase 1 · Extensión y latigazo'}
-  else if(type==='influenza'){markers=[5/6,4/6,3/6,2/6,1/6];phase='Ondas de contagio'}
+  else if(type==='influenza'){markers=[2/3,1/3];phase='Ondas de contagio periódicas'}
   else if(type==='variola'){markers=[.70,.42,.15];phase=['','Fase 1 · Virión estable','Fase 2 · Persecución','Fase 3 · Desprendimiento','Fase final · Oleada vulnerable'][all[0]?.variolaPhase||1]}
   else if(type==='blackPlague'){markers=[2/3,.30];const colonies=all[0]?g.viruses.filter(o=>o.plagueColony&&!o.dead&&o.parentBossId===all[0].id).length:0;phase='Fase '+(all[0]?.plaguePhase||1)+' · '+(colonies?'Colonias activas: '+colonies:'Jefe expuesto')}
   else if(type==='rabies'){markers=[2/3,1/3];const b=all[0];phase=(b?.rabiesPhase===3?'Fase final · Embestidas rápidas':b?.rabiesPhase===2?'Fase 2 · Embestidas dobles':'Fase 1 · Acecho')+(b?.rabiesPauseT>0?' · Pausa antes del ataque':'')}
@@ -3611,7 +3591,7 @@ function draw(){
   drawX();drawPowers();
   for(const p of g.parts){if(!visibleWorld(p.x,p.y,p.r))continue;ctx.globalAlpha=Math.min(1,p.l*2);ctx.fillStyle=p.c;if(PERF_MODE)ctx.fillRect(p.x-p.r,p.y-p.r,p.r*2,p.r*2);else{ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.28);ctx.fill()}}
   for(const r of g.rings){if(!visibleWorld(r.x,r.y,r.R))continue;const k=1-r.l/.4;ctx.globalAlpha=r.l/.4;ctx.strokeStyle='#ffa53a';ctx.lineWidth=7*S;ctx.beginPath();ctx.arc(r.x,r.y,r.R*k,0,6.28);ctx.stroke();ctx.fillStyle='rgba(255,200,90,.25)';ctx.fill()}
-  for(const w of (g.influenzaWaves||[])){if(!visibleWorld(w.x,w.y,w.r+10*S))continue;ctx.globalAlpha=Math.max(0,w.life/w.maxLife)*.72;ctx.strokeStyle='#f18bc7';ctx.lineWidth=9*S;ctx.beginPath();ctx.arc(w.x,w.y,w.r,0,6.28);ctx.stroke();ctx.strokeStyle='rgba(255,205,235,.8)';ctx.lineWidth=2*S;ctx.beginPath();ctx.arc(w.x,w.y,Math.max(0,w.r-13*S),0,6.28);ctx.stroke()}
+  for(const w of (g.influenzaWaves||[])){if(!visibleWorld(w.x,w.y,w.r+10*S))continue;ctx.globalAlpha=Math.max(0,w.life/w.maxLife)*.72;ctx.strokeStyle=w.color||'#f18bc7';ctx.lineWidth=9*S;ctx.beginPath();ctx.arc(w.x,w.y,w.r,0,6.28);ctx.stroke();ctx.strokeStyle=w.color||'rgba(255,205,235,.8)';ctx.lineWidth=2*S;ctx.beginPath();ctx.arc(w.x,w.y,Math.max(0,w.r-13*S),0,6.28);ctx.stroke()}
   ctx.globalAlpha=1;
   ctx.font='bold '+Math.round(20*S)+'px Arial,"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';ctx.textAlign='center';for(const p of g.plus){ctx.globalAlpha=Math.min(1,p.l*2);ctx.fillStyle='#22b04f';ctx.fillText('➕',p.x,p.y)}
   ctx.globalAlpha=1;ctx.restore();
@@ -3727,7 +3707,7 @@ function renderSettings(){
 }
 function diagnosticReport(){
   const lines=[
-    'Soap Adventures v.7.62',
+    'Soap Adventures v.7.66',
     'Navegador: '+navigator.userAgent,
     'Pantalla: '+window.innerWidth+'×'+window.innerHeight,
     'Pixel ratio: '+(window.devicePixelRatio||1),
